@@ -2870,7 +2870,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       <p>
         &copy; <span id="anio">2026</span> Institución Educativa Rural Puerto Rosario.
         <br><span id="selloActualizacion">Contenido actualizado por la institución.</span>
-        <br><a href="admin.html" rel="nofollow">Acceso institucional (rectoría y administración)</a>
+        <br><a href="admin.html" id="enlaceAdmin" rel="nofollow" style="display:none">Acceso institucional (rectoría y administración)</a>
       </p>
     </div>
   </div>
@@ -4159,6 +4159,23 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 
   /* ---------------- 10. Avisar a los buscadores ---------------- */
   document.dispatchEvent(new Event('contenido-actualizado'));
+}());
+</script>
+<script>
+/* ---------------------------------------------------------------------
+   El panel admin.html existe SOLO en el equipo local (no se publica en
+   internet, para proteger la clave de rectoría). Este bloque muestra el
+   enlace "Acceso institucional" únicamente cuando el sitio se abre de
+   forma local (archivo en el PC o servidor local); en la web pública
+   el enlace queda oculto y así nunca aparece roto.
+   --------------------------------------------------------------------- */
+(function () {
+  var h = (location.hostname || '').toLowerCase();
+  var esLocal = location.protocol === 'file:' || h === '' || h === 'localhost' || h === '127.0.0.1' || h === '[::1]';
+  if (esLocal) {
+    var a = document.getElementById('enlaceAdmin');
+    if (a) { a.style.display = 'inline'; }
+  }
 }());
 </script>
 </body>
