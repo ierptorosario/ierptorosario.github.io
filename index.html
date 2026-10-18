@@ -287,7 +287,7 @@ button{font:inherit}
 .topbar__item--pendiente{color:#a8c4b3}
 .topbar__item--pendiente .icon{color:#8fb3a0}
 .topbar__grupo{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;align-items:center}
-.topbar__item a{color:#e6f2ea;text-decoration:none;border-bottom:1px solid rgba(230,242,234,.45);font-weight:600}
+.topbar__item a{color:#e6eefa;text-decoration:none;border-bottom:1px solid rgba(230,242,234,.45);font-weight:600}
 .topbar__item a:hover{color:#fff;border-bottom-color:#fff}
 .red-enlace{display:inline-flex;align-items:center;gap:.35rem;text-decoration:none;border-bottom:1px solid currentColor;font-weight:600}
 .red-enlace:hover{opacity:.82}
@@ -395,7 +395,7 @@ body.nav-abierto .nav-toggle__cerrar{display:inline-flex}
 .hero__acciones{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.7rem}
 .hero__pie{
   position:relative;z-index:2;display:flex;gap:.9rem;align-items:flex-start;
-  border-top:1px solid rgba(255,255,255,.22);padding:1rem 0 1.4rem;color:#c9e2d4;font-size:.83rem;
+  border-top:1px solid rgba(255,255,255,.22);padding:1rem 0 1.4rem;color:#c9d9ea;font-size:.83rem;
 }
 .hero__pie .icon{color:var(--warm-400);margin-top:.2rem}
 
@@ -596,7 +596,7 @@ table.tabla tbody tr:last-child th,table.tabla tbody tr:last-child td{border-bot
    ===================================================================== */
 .site-footer{background:var(--azul-900);color:#b9cec2;padding:clamp(2.5rem,5vw,4rem) 0 0;margin-top:0}
 .site-footer h3{color:#fff;font-size:1rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem}
-.site-footer a{color:#d5e8dc;text-decoration:none}
+.site-footer a{color:#d5e3f0;text-decoration:none}
 .site-footer a:hover{color:#fff;text-decoration:underline}
 .site-footer ul{list-style:none;padding:0;margin:0;display:grid;gap:.45rem;font-size:.92rem}
 .footer-grid{display:grid;gap:clamp(1.5rem,3vw,2.5rem);grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
@@ -732,7 +732,7 @@ html{scroll-behavior:smooth}
 .header-cta .icon{color:#d8f0e2}
 
 /* --- Cifras institucionales (datos verificados) --- */
-.cifras{background:var(--verde-900);color:#e6f2ea}
+.cifras{background:var(--verde-900);color:#e6eefa}
 .cifras__grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr))}
 .cifra{
   display:flex;gap:.9rem;align-items:flex-start;
@@ -785,7 +785,7 @@ html{scroll-behavior:smooth}
   background:linear-gradient(to top,rgba(6,26,20,.93),rgba(6,26,20,.72) 55%,rgba(6,26,20,0));
 }
 .nivel__capa h3{color:#fff;margin:0 0 .2rem;font-size:1.12rem}
-.nivel__capa p{color:#d5e8dc;margin:0;font-size:.85rem}
+.nivel__capa p{color:#d5e3f0;margin:0;font-size:.85rem}
 .nivel__ver{
   display:inline-flex;align-items:center;gap:.35rem;margin-top:.55rem;
   color:var(--warm-400);font-weight:700;font-size:.85rem;
@@ -818,13 +818,13 @@ html{scroll-behavior:smooth}
 }
 .footer-col ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
 .footer-col li{margin-bottom:0}
-.footer-col a{color:#c9e2d4;text-decoration:none;font-size:.9rem;display:inline-flex;align-items:flex-start;gap:.4rem;line-height:1.45}
+.footer-col a{color:#c9d9ea;text-decoration:none;font-size:.9rem;display:inline-flex;align-items:flex-start;gap:.4rem;line-height:1.45}
 .footer-col a:hover{color:#fff;text-decoration:underline}
 .footer-col li>.icon{width:1rem;height:1rem;color:var(--verde-300);flex:0 0 auto;margin-top:.22rem}
 .footer-col a .icon{width:1rem;height:1rem;color:var(--verde-300);flex:0 0 auto;margin-top:.2rem}
 .footer-horario{
   display:flex;align-items:center;gap:.6rem;margin-top:1.2rem;padding-top:1.1rem;
-  border-top:1px solid rgba(255,255,255,.16);color:#c9e2d4;font-size:.9rem;
+  border-top:1px solid rgba(255,255,255,.16);color:#c9d9ea;font-size:.9rem;
 }
 .footer-horario .icon{color:var(--warm-400)}
 
@@ -1200,25 +1200,98 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 .topbar__inner{justify-content:flex-end}
 .topbar__item{white-space:nowrap}
 
-/* Títulos de sección con acabado DORADO METÁLICO y brillo animado */
-@keyframes brilloOro{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+/* Títulos de sección: DORADO METÁLICO con destello que recorre de IZQUIERDA a DERECHA */
+@keyframes brilloOro{0%{background-position:230% 50%}100%{background-position:-30% 50%}}
+@keyframes brilloPlata{0%{background-position:230% 50%}100%{background-position:-30% 50%}}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   .section__head h2{
-    background-image:linear-gradient(100deg,#6d5415 0%,#a8871f 16%,#e6cd7a 26%,#b8912a 34%,#6d5415 48%,#8a6d1f 64%,#dcc579 76%,#6d5415 90%,#6d5415 100%);
-    background-size:220% 100%;
+    background-image:linear-gradient(100deg,
+      #4f3c0c 0%,#7a5f18 8%,#b8912a 17%,#e0c46a 22%,#fffdf2 23.5%,#e8cf7a 25%,#a8871f 31%,
+      #4f3c0c 40%,#6d5415 50%,#c9a227 60%,#f2e0a6 65%,#ffffff 66.5%,#d9bd62 68%,#9c7d1c 74%,
+      #5c4611 82%,#7a5f18 90%,#d9bd62 96%,#fffdf2 97.5%,#c9a227 100%);
+    background-size:240% 100%;
     background-repeat:no-repeat;
     -webkit-background-clip:text;background-clip:text;
     color:transparent;-webkit-text-fill-color:transparent;
-    animation:brilloOro 9s linear infinite;
+    animation:brilloOro 7s linear infinite;
   }
   /* En las secciones de fondo oscuro el oro se aclara para que se lea bien */
   .cifras .section__head h2,
   .section--azul .section__head h2{
-    background-image:linear-gradient(100deg,#c9a227 0%,#e6cd7a 16%,#fff6d6 26%,#e0c46a 38%,#c9a227 52%,#f2e0a6 72%,#c9a227 92%,#c9a227 100%);
+    background-image:linear-gradient(100deg,
+      #a8871f 0%,#d9bd62 7%,#f2e0a6 13%,#ffffff 18%,#f6e6a8 22%,#c9a227 28%,
+      #a8871f 36%,#d9bd62 45%,#f8ecc0 51%,#ffffff 55%,#e8cf7a 58%,#b8912a 64%,
+      #a8871f 72%,#c9a227 81%,#f6e6a8 89%,#ffffff 95%,#e0c46a 100%);
+  }
+  /* Subtítulos (h3): PLATEADO METÁLICO brilloso */
+  .section h3, .section__head h3, .iconbox h3, .card h3, .proyecto h3, .noticia h3{
+    background-image:linear-gradient(100deg,
+      #2e4157 0%,#3d5671 8%,#b0c4d6 16%,#f4f9fd 18%,#c2d2e2 20%,#3d5671 28%,
+      #2b3d51 40%,#4d6784 50%,#cddcea 58%,#f8fbfe 60%,#9db4ca 62%,#38506b 70%,
+      #2b3d51 80%,#4d6784 88%,#cddcea 94%,#ffffff 96%,#2e4157 100%);
+    background-size:240% 100%;
+    background-repeat:no-repeat;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    animation:brilloPlata 9s linear infinite;
+  }
+  /* En fondos oscuros, la plata se aclara */
+  .cifras h3, .section--azul h3, .hero h3, .nivel__capa h3{
+    background-image:linear-gradient(100deg,
+      #a9bccd 0%,#dbe6f1 9%,#ffffff 15%,#eaf2f9 20%,#b6c8d9 27%,
+      #93a9be 36%,#dbe6f1 46%,#ffffff 52%,#c3d3e2 58%,#9db4ca 66%,
+      #8ea5bb 74%,#dfe9f3 86%,#ffffff 94%,#a9bccd 100%);
   }
 }
 @media (prefers-reduced-motion:reduce){
-  .section__head h2{animation:none}
+  .section__head h2, .section h3, .iconbox h3, .card h3, .proyecto h3, .noticia h3{animation:none}
+}
+
+/* =====================================================================
+   20. TARJETAS DE NIVEL CON FOTO CIRCULAR Y PORTADA CON MÁS LUZ
+   ===================================================================== */
+
+/* Cada nivel muestra una fotografía real en círculo que va cambiando
+   entre 3 imágenes (solo con CSS, sin JavaScript). */
+.nivel{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:2.4rem 1.25rem 1.5rem;
+  background:linear-gradient(165deg,#123a63,#061426);
+  border:1px solid rgba(201,162,39,.32);
+}
+.nivel__foto{
+  position:relative;width:clamp(134px,52%,176px);aspect-ratio:1/1;border-radius:50%;
+  overflow:hidden;margin:0 0 1.05rem;background:#0a1c33;
+  box-shadow:0 14px 28px rgba(4,16,33,.5),0 0 0 3px rgba(201,162,39,.92),0 0 0 9px rgba(201,162,39,.15);
+}
+.nivel__foto img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+  animation:rotarNivel 16.5s ease-in-out infinite;
+}
+.nivel__foto img:nth-child(1){opacity:1;animation-delay:0s}
+.nivel__foto img:nth-child(2){animation-delay:5.5s}
+.nivel__foto img:nth-child(3){animation-delay:11s}
+@keyframes rotarNivel{
+  0%{opacity:1}
+  30%{opacity:1}
+  33.33%{opacity:0}
+  96.66%{opacity:0}
+  100%{opacity:1}
+}
+.nivel:hover .nivel__foto img{transform:scale(1.07);transition:transform .6s ease}
+.nivel__capa{position:static;inset:auto;padding:0;background:none}
+.nivel__capa h3{margin:0 0 .35rem;font-size:1.16rem}
+.nivel__capa p{font-size:.86rem;line-height:1.5}
+
+/* Portada: las fotografías se ven más luminosas y no se pierden en el azul */
+.hero__fondo{filter:brightness(1.16) contrast(1.05) saturate(1.12)}
+.hero__velo{background:
+  linear-gradient(100deg,rgba(9,30,56,.92) 0%,rgba(11,37,69,.74) 36%,rgba(11,37,69,.32) 66%,rgba(11,37,69,.06) 100%),
+  linear-gradient(to top,rgba(8,26,50,.78),rgba(8,26,50,0) 58%)}
+
+@media (prefers-reduced-motion:reduce){
+  .nivel__foto img{animation:none}
+  .nivel__foto img:nth-child(1){opacity:1}
 }
 </style>
 </head>
@@ -1401,7 +1474,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     <div class="section__head js-revelar" style="margin-bottom:1.4rem">
       <span class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Datos institucionales</span>
       <h2 id="datos-titulo" style="color:#fff">Información oficial de la institución</h2>
-      <p class="section__lead" style="color:#c9e2d4">
+      <p class="section__lead" style="color:#c9d9ea">
         Estos datos están tomados del encabezado de los documentos oficiales de la institución.
       </p>
     </div>
@@ -1655,7 +1728,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
           </li>
           <li>
             <svg class="icon" aria-hidden="true"><use href="#ico-personas"></use></svg>
-            <div><b>Sedes</b><span>1 sede central y 8 sedes anexas</span></div>
+            <div><b>Sedes</b><span>1 sede central y 10 sedes anexas</span></div>
           </li>
           <li>
             <svg class="icon" aria-hidden="true"><use href="#ico-graduacion"></use></svg>
@@ -1816,11 +1889,11 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
               <svg class="icon" aria-hidden="true"><use href="#ico-abajo"></use></svg>
             </button>
             <div class="acordeon__panel" id="panel-sedes" hidden>
-              <p>La institución cuenta con una <strong>sede central</strong> en la vereda Puerto Rosario y ocho
-              <strong>sedes anexas</strong> de escuela rural. La Resolución No. 0844 del 25 de febrero de 2015
-              anexó las sedes San Rafael del Bombón, San Cayetano, San Luis, El Porvenir, Nueva Unión, Buenos
-              Aires del Mandur, Las Villas y La Pedregosa; la sede La Estrella también hace parte de la
-              institución.</p>
+              <p>La institución cuenta con una <strong>sede central</strong> en la vereda Puerto Rosario y diez
+              <strong>sedes anexas</strong> de escuela rural, <strong>todas en funcionamiento</strong>. La
+              Resolución No. 0844 del 25 de febrero de 2015 anexó las sedes San Rafael del Bombón, San Cayetano,
+              San Luis, El Porvenir, Nueva Unión, Buenos Aires del Mandur, Las Villas y La Pedregosa; también
+              hacen parte de la institución las sedes La Estrella y Las Delicias de Alpamanga.</p>
               <ul class="lista-valores">
                 <li><strong>Sede Central — IER Puerto Rosario</strong> (vereda Puerto Rosario): preescolar a 11.º.</li>
                 <li><strong>ERM La Estrella</strong>: preescolar a 5.º.</li>
@@ -1831,6 +1904,8 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
                 <li><strong>ERM Buenos Aires del Mandur</strong>: preescolar a 5.º.</li>
                 <li><strong>ERM Las Villas</strong>: preescolar a 5.º.</li>
                 <li><strong>ERM La Pedregosa</strong>: preescolar a 5.º.</li>
+                <li><strong>ERM Las Delicias de Alpamanga</strong>: preescolar a 5.º.</li>
+                <li><strong>ERM Nueva Unión</strong>: preescolar a 5.º.</li>
               </ul>
               <p class="campo__ayuda">Fuente: PEI 2025 y Resolución No. 0844 de 2015.</p>
             </div>
@@ -1906,8 +1981,14 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     <div class="niveles js-revelar" style="margin-bottom:2.2rem">
       <div class="nivel">
         <span class="nivel__etiqueta">Confirmado</span>
-        <img src="assets/img/aula-rural.svg" width="800" height="600" loading="lazy" decoding="async"
-             alt="Escena del nivel preescolar">
+        <div class="nivel__foto">
+          <img src="assets/img/facebook/auto-122190035810861024-foto-1.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Estudiantes de preescolar y básica primaria en una celebración institucional">
+          <img src="assets/img/facebook/auto-122203599122861024-foto-2.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Niños y niñas jugando con cometas en el Festival del Viento">
+          <img src="assets/img/facebook/sin-texto-junio-1.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Niños y niñas de la institución en una jornada de celebración">
+        </div>
         <div class="nivel__capa">
           <h3>Preescolar</h3>
           <p>Grado preescolar (transición). La institución garantiza el derecho a la educación desde el grado
@@ -1917,8 +1998,14 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 
       <div class="nivel">
         <span class="nivel__etiqueta">Confirmado</span>
-        <img src="assets/img/lectura.svg" width="800" height="600" loading="lazy" decoding="async"
-             alt="Escena de materiales de lectura de primaria">
+        <div class="nivel__foto">
+          <img src="assets/img/facebook/auto-122184776090861024-foto-4.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Estudiante de básica primaria escribiendo en su cuaderno">
+          <img src="assets/img/facebook/auto-122199609044861024-foto-4.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Estudiantes de primaria en un taller de manualidades">
+          <img src="assets/img/facebook/auto-122199609044861024-foto-2.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Libros y materiales del plan lector de básica primaria">
+        </div>
         <div class="nivel__capa">
           <h3>Básica primaria</h3>
           <p>Grados 1.º a 5.º. Formación en valores, lectura, escritura, matemáticas y cuidado del entorno,
@@ -1928,8 +2015,14 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 
       <div class="nivel">
         <span class="nivel__etiqueta">Confirmado</span>
-        <img src="assets/img/ciencia.svg" width="800" height="600" loading="lazy" decoding="async"
-             alt="Escena de un laboratorio escolar de secundaria">
+        <div class="nivel__foto">
+          <img src="assets/img/noticias/feria-ciencia-2026.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Stand de la feria de ciencia y creatividad de la institución">
+          <img src="assets/img/facebook/auto-122206276388861024-foto-3.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Estudiantes de básica secundaria presentando sus experiencias significativas">
+          <img src="assets/img/facebook/auto-122180707010861024-foto-2.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Estudiantes de básica secundaria en una jornada institucional al aire libre">
+        </div>
         <div class="nivel__capa">
           <h3>Básica secundaria</h3>
           <p>Grados 6.º a 9.º. Se fortalece el pensamiento crítico, la investigación, la ciencia y la
@@ -1939,8 +2032,14 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 
       <div class="nivel">
         <span class="nivel__etiqueta">Confirmado</span>
-        <img src="assets/img/tecnologia.svg" width="800" height="600" loading="lazy" decoding="async"
-             alt="Escena de un computador portátil para la educación media">
+        <div class="nivel__foto">
+          <img src="assets/img/noticias/entrega-computadores-2026.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Estudiantes de educación media con los computadores entregados a la institución">
+          <img src="assets/img/facebook/auto-122195853632861024-foto-2.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Estudiantes de educación media en un acto institucional con la bandera">
+          <img src="assets/img/facebook/auto-122181923636861024-foto-5.jpg" width="600" height="600" loading="lazy" decoding="async"
+               alt="Estudiantes de educación media en una jornada de participación estudiantil">
+        </div>
         <div class="nivel__capa">
           <h3>Educación media (bachillerato)</h3>
           <p>Grados 10.º y 11.º, modalidad académica. Bachillerato completo. El escudo oficial declara
@@ -1950,7 +2049,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     </div>
     <div class="js-revelar">
       <h3>Sedes, jornadas y modalidad</h3>
-      <p class="section__lead" style="margin-bottom:1rem">La institución cuenta con una <strong>sede central</strong> y ocho <strong>sedes anexas</strong> de escuela rural, <strong>todas activas</strong> y con <strong>jornada única</strong>. La sede central atiende desde <strong>preescolar hasta el grado 11.º</strong> (educación media) y las sedes anexas ofrecen <strong>preescolar y básica primaria (hasta 5.º)</strong>.</p>
+              <p class="section__lead" style="margin-bottom:1rem">La institución cuenta con una <strong>sede central</strong> y diez <strong>sedes anexas</strong> de escuela rural, <strong>todas activas</strong> y con <strong>jornada única</strong>. La sede central atiende desde <strong>preescolar hasta el grado 11.º</strong> (educación media) y las sedes anexas ofrecen <strong>preescolar y básica primaria (hasta 5.º)</strong>.</p>
       <div class="tabla-scroll">
         <table class="tabla">
           <caption>Sedes de la Institución Educativa Rural Puerto Rosario. Todas comparten la misma Resolución No. 0844 del 25 de febrero de 2015.</caption>
@@ -2026,6 +2125,20 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
               <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
               <td>Académica</td>
               <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+            </tr>
+            <tr>
+              <th scope="row">ERM Las Delicias de Alpamanga</th>
+              <td>Preescolar a 5.º (básica primaria)</td>
+              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Académica</td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> En funcionamiento</span></td>
+            </tr>
+            <tr>
+              <th scope="row">ERM Nueva Unión</th>
+              <td>Preescolar a 5.º (básica primaria)</td>
+              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Académica</td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> En funcionamiento</span></td>
             </tr>
           </tbody>
         </table>
