@@ -117,13 +117,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Tercera Izada de Bandera",
       "fecha": "1 de octubre de 2026",
       "categoria": "Institucional",
-      "imagen": "assets/img/facebook/tercera-izada-bandera-1.jpg",
+      "imagen": "assets/img/facebook/auto-122208536294861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/tercera-izada-bandera-1.jpg",
-        "assets/img/facebook/tercera-izada-bandera-2.jpg",
-        "assets/img/facebook/tercera-izada-bandera-3.jpg",
-        "assets/img/facebook/tercera-izada-bandera-4.jpg",
-        "assets/img/facebook/tercera-izada-bandera-5.jpg"
+        "assets/img/facebook/auto-122208536294861024-foto-1.jpg",
+        "assets/img/facebook/auto-122208536294861024-foto-2.jpg",
+        "assets/img/facebook/auto-122208536294861024-foto-3.jpg",
+        "assets/img/facebook/auto-122208536294861024-foto-4.jpg",
+        "assets/img/facebook/auto-122208536294861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "🇨🇴🌟 Tercera Izada de Bandera – Ier Puerto Rosario  🌟🇨🇴",
@@ -137,13 +137,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Tercera Escuela de Padres",
       "fecha": "1 de octubre de 2026",
       "categoria": "Comunidad",
-      "imagen": "assets/img/facebook/tercera-escuela-padres-1.jpg",
+      "imagen": "assets/img/facebook/auto-122208533696861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/tercera-escuela-padres-1.jpg",
-        "assets/img/facebook/tercera-escuela-padres-2.jpg",
-        "assets/img/facebook/tercera-escuela-padres-3.jpg",
-        "assets/img/facebook/tercera-escuela-padres-4.jpg",
-        "assets/img/facebook/tercera-escuela-padres-5.jpg"
+        "assets/img/facebook/auto-122208533696861024-foto-1.jpg",
+        "assets/img/facebook/auto-122208533696861024-foto-2.jpg",
+        "assets/img/facebook/auto-122208533696861024-foto-3.jpg",
+        "assets/img/facebook/auto-122208533696861024-foto-4.jpg",
+        "assets/img/facebook/auto-122208533696861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "👨‍👩‍👧‍👦💙 Tercera Escuela de Padres – Ier Puerto Rosario  💙👨‍👩‍👧‍👦",
@@ -157,13 +157,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Primera Celebración del Día del Egresado",
       "fecha": "19 de septiembre de 2026",
       "categoria": "Institucional",
-      "imagen": "assets/img/facebook/dia-del-egresado-1.jpg",
+      "imagen": "assets/img/facebook/auto-122206283174861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/dia-del-egresado-1.jpg",
-        "assets/img/facebook/dia-del-egresado-2.jpg",
-        "assets/img/facebook/dia-del-egresado-3.jpg",
-        "assets/img/facebook/dia-del-egresado-4.jpg",
-        "assets/img/facebook/dia-del-egresado-5.jpg"
+        "assets/img/facebook/auto-122206283174861024-foto-1.jpg",
+        "assets/img/facebook/auto-122206283174861024-foto-2.jpg",
+        "assets/img/facebook/auto-122206283174861024-foto-3.jpg",
+        "assets/img/facebook/auto-122206283174861024-foto-4.jpg",
+        "assets/img/facebook/auto-122206283174861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "🎓💙 Primera Celebración del Día del Egresado – Ier Puerto Rosario 💙🎓💥🎊🎉💯",
@@ -177,13 +177,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Segunda Semana de la Ciencia, la Tecnología y la Innovación",
       "fecha": "19 de septiembre de 2026",
       "categoria": "Ciencia",
-      "imagen": "assets/img/facebook/semana-ciencia-1.jpg",
+      "imagen": "assets/img/facebook/auto-122206276388861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/semana-ciencia-1.jpg",
-        "assets/img/facebook/semana-ciencia-2.jpg",
-        "assets/img/facebook/semana-ciencia-3.jpg",
-        "assets/img/facebook/semana-ciencia-4.jpg",
-        "assets/img/facebook/semana-ciencia-5.jpg"
+        "assets/img/facebook/auto-122206276388861024-foto-1.jpg",
+        "assets/img/facebook/auto-122206276388861024-foto-2.jpg",
+        "assets/img/facebook/auto-122206276388861024-foto-3.jpg",
+        "assets/img/facebook/auto-122206276388861024-foto-4.jpg",
+        "assets/img/facebook/auto-122206276388861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "🔬🚀 Segunda Semana de la Ciencia, la Tecnología y la Innovación – Ier Puerto Rosario 🚀🔬",
@@ -197,13 +197,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Día de la Familia",
       "fecha": "19 de septiembre de 2026",
       "categoria": "Comunidad",
-      "imagen": "assets/img/facebook/dia-de-la-familia-1.jpg",
+      "imagen": "assets/img/facebook/auto-122206267508861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/dia-de-la-familia-1.jpg",
-        "assets/img/facebook/dia-de-la-familia-2.jpg",
-        "assets/img/facebook/dia-de-la-familia-3.jpg",
-        "assets/img/facebook/dia-de-la-familia-4.jpg",
-        "assets/img/facebook/dia-de-la-familia-5.jpg"
+        "assets/img/facebook/auto-122206267508861024-foto-1.jpg",
+        "assets/img/facebook/auto-122206267508861024-foto-2.jpg",
+        "assets/img/facebook/auto-122206267508861024-foto-3.jpg",
+        "assets/img/facebook/auto-122206267508861024-foto-4.jpg",
+        "assets/img/facebook/auto-122206267508861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "👨‍👩‍👧‍👦❤️ Día de la Familia – Ier Puerto Rosario ❤️👨‍👩‍👧‍👦",
@@ -233,13 +233,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Festival del Viento 2026",
       "fecha": "4 de septiembre de 2026",
       "categoria": "Cultural",
-      "imagen": "assets/img/facebook/festival-del-viento-1.jpg",
+      "imagen": "assets/img/facebook/auto-122203599122861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/festival-del-viento-1.jpg",
-        "assets/img/facebook/festival-del-viento-2.jpg",
-        "assets/img/facebook/festival-del-viento-3.jpg",
-        "assets/img/facebook/festival-del-viento-4.jpg",
-        "assets/img/facebook/festival-del-viento-5.jpg"
+        "assets/img/facebook/auto-122203599122861024-foto-1.jpg",
+        "assets/img/facebook/auto-122203599122861024-foto-2.jpg",
+        "assets/img/facebook/auto-122203599122861024-foto-3.jpg",
+        "assets/img/facebook/auto-122203599122861024-foto-4.jpg",
+        "assets/img/facebook/auto-122203599122861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "🪁🌈 Festival del Viento 2026 – Ier Puerto Rosario  🌈🪁",
@@ -253,13 +253,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Celebrando nuestra historia y nuestras tradiciones",
       "fecha": "12 de agosto de 2026",
       "categoria": "Cultural",
-      "imagen": "assets/img/facebook/historia-tradiciones-1.jpg",
+      "imagen": "assets/img/facebook/auto-122199609044861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/historia-tradiciones-1.jpg",
-        "assets/img/facebook/historia-tradiciones-2.jpg",
-        "assets/img/facebook/historia-tradiciones-3.jpg",
-        "assets/img/facebook/historia-tradiciones-4.jpg",
-        "assets/img/facebook/historia-tradiciones-5.jpg"
+        "assets/img/facebook/auto-122199609044861024-foto-1.jpg",
+        "assets/img/facebook/auto-122199609044861024-foto-2.jpg",
+        "assets/img/facebook/auto-122199609044861024-foto-3.jpg",
+        "assets/img/facebook/auto-122199609044861024-foto-4.jpg",
+        "assets/img/facebook/auto-122199609044861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "🇨🇴🎺  Institución Educativa Rural Pto Rosario :  celebrando nuestra historia y nuestras tradiciones 🇨🇴",
@@ -273,13 +273,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Segunda Escuela de Padres y rendición de cuentas",
       "fecha": "24 de julio de 2026",
       "categoria": "Comunidad",
-      "imagen": "assets/img/facebook/escuela-padres-1.jpg",
+      "imagen": "assets/img/facebook/auto-122195855432861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/escuela-padres-1.jpg",
-        "assets/img/facebook/escuela-padres-2.jpg",
-        "assets/img/facebook/escuela-padres-3.jpg",
-        "assets/img/facebook/escuela-padres-4.jpg",
-        "assets/img/facebook/escuela-padres-5.jpg"
+        "assets/img/facebook/auto-122195855432861024-foto-1.jpg",
+        "assets/img/facebook/auto-122195855432861024-foto-2.jpg",
+        "assets/img/facebook/auto-122195855432861024-foto-3.jpg",
+        "assets/img/facebook/auto-122195855432861024-foto-4.jpg",
+        "assets/img/facebook/auto-122195855432861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "👨‍👩‍👧‍👦📚 Segunda Escuela de Padres – Ier Puerto Rosario  🌱",
@@ -293,12 +293,12 @@ window.CONTENIDO_IERP = {
       "titulo": "Izada de Bandera – Segundo Período Académico",
       "fecha": "24 de julio de 2026",
       "categoria": "Institucional",
-      "imagen": "assets/img/facebook/izada-bandera-1.jpg",
+      "imagen": "assets/img/facebook/auto-122195853632861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/izada-bandera-1.jpg",
-        "assets/img/facebook/izada-bandera-2.jpg",
-        "assets/img/facebook/izada-bandera-3.jpg",
-        "assets/img/facebook/izada-bandera-4.jpg"
+        "assets/img/facebook/auto-122195853632861024-foto-1.jpg",
+        "assets/img/facebook/auto-122195853632861024-foto-2.jpg",
+        "assets/img/facebook/auto-122195853632861024-foto-3.jpg",
+        "assets/img/facebook/auto-122195853632861024-foto-4.jpg"
       ],
       "fotos": 4,
       "resumen": "🇨🇴✨ Izada de Bandera – Segundo Período Académico ✨🇨🇴🎯💯",
@@ -312,13 +312,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Entrega de computadores – Tecnologías para Aprender",
       "fecha": "16 de julio de 2026",
       "categoria": "Tecnología",
-      "imagen": "assets/img/facebook/tecnologia-1.jpg",
+      "imagen": "assets/img/facebook/auto-122194474004861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/tecnologia-1.jpg",
-        "assets/img/facebook/tecnologia-2.jpg",
-        "assets/img/facebook/tecnologia-3.jpg",
-        "assets/img/facebook/tecnologia-4.jpg",
-        "assets/img/facebook/tecnologia-5.jpg"
+        "assets/img/facebook/auto-122194474004861024-foto-1.jpg",
+        "assets/img/facebook/auto-122194474004861024-foto-2.jpg",
+        "assets/img/facebook/auto-122194474004861024-foto-3.jpg",
+        "assets/img/facebook/auto-122194474004861024-foto-4.jpg",
+        "assets/img/facebook/auto-122194474004861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻",
@@ -332,13 +332,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Entrega de computadores – Tecnologías para Aprender (2.ª publicación)",
       "fecha": "16 de julio de 2026",
       "categoria": "Tecnología",
-      "imagen": "assets/img/facebook/tecnologia-1.jpg",
+      "imagen": "assets/img/facebook/auto-122194474004861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/tecnologia-1.jpg",
-        "assets/img/facebook/tecnologia-2.jpg",
-        "assets/img/facebook/tecnologia-3.jpg",
-        "assets/img/facebook/tecnologia-4.jpg",
-        "assets/img/facebook/tecnologia-5.jpg"
+        "assets/img/facebook/auto-122194474004861024-foto-1.jpg",
+        "assets/img/facebook/auto-122194474004861024-foto-2.jpg",
+        "assets/img/facebook/auto-122194474004861024-foto-3.jpg",
+        "assets/img/facebook/auto-122194474004861024-foto-4.jpg",
+        "assets/img/facebook/auto-122194474004861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻",
@@ -368,13 +368,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Celebración del Día del Estudiante – Sedes Multigrado",
       "fecha": "20 de junio de 2026",
       "categoria": "Comunidad",
-      "imagen": "assets/img/facebook/dia-del-estudiante-1.jpg",
+      "imagen": "assets/img/facebook/auto-122190035810861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/dia-del-estudiante-1.jpg",
-        "assets/img/facebook/dia-del-estudiante-2.jpg",
-        "assets/img/facebook/dia-del-estudiante-3.jpg",
-        "assets/img/facebook/dia-del-estudiante-4.jpg",
-        "assets/img/facebook/dia-del-estudiante-5.jpg"
+        "assets/img/facebook/auto-122190035810861024-foto-1.jpg",
+        "assets/img/facebook/auto-122190035810861024-foto-2.jpg",
+        "assets/img/facebook/auto-122190035810861024-foto-3.jpg",
+        "assets/img/facebook/auto-122190035810861024-foto-4.jpg",
+        "assets/img/facebook/auto-122190035810861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "🎉👧🧒 Celebración del Día del Estudiante – Sección Primaria Sedes Multigrado Ier Puerto Rosario 🧒👧🎉",
@@ -388,13 +388,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Conmemoración del Día Mundial del Medio Ambiente",
       "fecha": "10 de junio de 2026",
       "categoria": "Ambiental",
-      "imagen": "assets/img/facebook/medio-ambiente-1.jpg",
+      "imagen": "assets/img/facebook/auto-122187885302861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/medio-ambiente-1.jpg",
-        "assets/img/facebook/medio-ambiente-2.jpg",
-        "assets/img/facebook/medio-ambiente-3.jpg",
-        "assets/img/facebook/medio-ambiente-4.jpg",
-        "assets/img/facebook/medio-ambiente-5.jpg"
+        "assets/img/facebook/auto-122187885302861024-foto-1.jpg",
+        "assets/img/facebook/auto-122187885302861024-foto-2.jpg",
+        "assets/img/facebook/auto-122187885302861024-foto-3.jpg",
+        "assets/img/facebook/auto-122187885302861024-foto-4.jpg",
+        "assets/img/facebook/auto-122187885302861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "Conmemoración del Día Mundial del Medio Ambiente en nuestra Institución Educativa Rural Pto Rosario 🌱🌎",
@@ -408,9 +408,9 @@ window.CONTENIDO_IERP = {
       "titulo": "Día de la Afrocolombianidad (2.ª publicación)",
       "fecha": "23 de mayo de 2026",
       "categoria": "Cultural",
-      "imagen": "assets/img/facebook/afrocolombianidad-1.jpg",
+      "imagen": "assets/img/facebook/auto-122184776090861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/afrocolombianidad-1.jpg"
+        "assets/img/facebook/auto-122184776090861024-foto-1.jpg"
       ],
       "fotos": 1,
       "resumen": "Día de la Afrocolombianidad en nuestra Ier Puerto Rosario",
@@ -424,13 +424,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Día de la Afrocolombianidad",
       "fecha": "23 de mayo de 2026",
       "categoria": "Cultural",
-      "imagen": "assets/img/facebook/afrocolombianidad-1.jpg",
+      "imagen": "assets/img/facebook/auto-122184776090861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/afrocolombianidad-1.jpg",
-        "assets/img/facebook/afrocolombianidad-2.jpg",
-        "assets/img/facebook/afrocolombianidad-3.jpg",
-        "assets/img/facebook/afrocolombianidad-4.jpg",
-        "assets/img/facebook/afrocolombianidad-5.jpg"
+        "assets/img/facebook/auto-122184776090861024-foto-1.jpg",
+        "assets/img/facebook/auto-122184776090861024-foto-2.jpg",
+        "assets/img/facebook/auto-122184776090861024-foto-3.jpg",
+        "assets/img/facebook/auto-122184776090861024-foto-4.jpg",
+        "assets/img/facebook/auto-122184776090861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "🖤💛❤️ Día de la Afrocolombianidad – Ier Puerto Rosario  ❤️💛🖤💯🎯",
@@ -444,13 +444,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Participación estudiantil y liderazgo",
       "fecha": "6 de mayo de 2026",
       "categoria": "Institucional",
-      "imagen": "assets/img/facebook/participacion-estudiantil-1.jpg",
+      "imagen": "assets/img/facebook/auto-122181923636861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/participacion-estudiantil-1.jpg",
-        "assets/img/facebook/participacion-estudiantil-2.jpg",
-        "assets/img/facebook/participacion-estudiantil-3.jpg",
-        "assets/img/facebook/participacion-estudiantil-4.jpg",
-        "assets/img/facebook/participacion-estudiantil-5.jpg"
+        "assets/img/facebook/auto-122181923636861024-foto-1.jpg",
+        "assets/img/facebook/auto-122181923636861024-foto-2.jpg",
+        "assets/img/facebook/auto-122181923636861024-foto-3.jpg",
+        "assets/img/facebook/auto-122181923636861024-foto-4.jpg",
+        "assets/img/facebook/auto-122181923636861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "🏫🤝 Participación estudiantil y liderazgo – Ier Puerto Rosario  🤝🏫.",
@@ -464,13 +464,13 @@ window.CONTENIDO_IERP = {
       "titulo": "Día del Árbol",
       "fecha": "29 de abril de 2026",
       "categoria": "Ambiental",
-      "imagen": "assets/img/facebook/dia-del-arbol-1.jpg",
+      "imagen": "assets/img/facebook/auto-122180707010861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/dia-del-arbol-1.jpg",
-        "assets/img/facebook/dia-del-arbol-2.jpg",
-        "assets/img/facebook/dia-del-arbol-3.jpg",
-        "assets/img/facebook/dia-del-arbol-4.jpg",
-        "assets/img/facebook/dia-del-arbol-5.jpg"
+        "assets/img/facebook/auto-122180707010861024-foto-1.jpg",
+        "assets/img/facebook/auto-122180707010861024-foto-2.jpg",
+        "assets/img/facebook/auto-122180707010861024-foto-3.jpg",
+        "assets/img/facebook/auto-122180707010861024-foto-4.jpg",
+        "assets/img/facebook/auto-122180707010861024-foto-5.jpg"
       ],
       "fotos": 5,
       "resumen": "🌳💚 Día del Árbol – Ier Puerto Rosario 💚🌳",

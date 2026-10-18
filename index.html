@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Institución Educativa Rural Puerto Rosario | Puerto Guzmán, Putumayo</title>
 <meta name="description" content="Sitio web institucional de la Institución Educativa Rural Puerto Rosario, vereda Puerto Rosario, municipio de Puerto Guzmán, Putumayo, Colombia.">
-<meta name="theme-color" content="#101014">
+<meta name="theme-color" content="#0b2545">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Institución Educativa Rural Puerto Rosario">
 <meta property="og:title" content="Institución Educativa Rural Puerto Rosario | Puerto Guzmán, Putumayo">
@@ -52,22 +52,22 @@
       ahora apuntan a los tonos elegantes.
    ===================================================================== */
 :root{
-  /* "verde" = familia DORADA / neutra oscura */
-  --verde-900:#111114;
-  --verde-800:#1a1a20;
-  --verde-700:#8a6d1f;
-  --verde-600:#a8871f;
-  --verde-500:#c9a227;
-  --verde-300:#dcc579;
-  --verde-100:#f3ecd6;
-  --verde-50:#faf8f2;
+  /* Familia de marca (azul institucional, tomado del río del escudo) */
+  --verde-900:#0b2545;
+  --verde-800:#10315a;
+  --verde-700:#14507f;
+  --verde-600:#1a6299;
+  --verde-500:#2e7fbf;
+  --verde-300:#9cc4e4;
+  --verde-100:#e6f0f9;
+  --verde-50:#f4f9fd;
 
-  /* "azul" = familia PLATEADA / negra */
-  --azul-900:#0b0b0e;
-  --azul-800:#131318;
-  --azul-700:#1c1c22;
-  --azul-600:#8b8b96;
-  --azul-100:#ececf0;
+  /* Familia neutra profunda (tinta azulada) */
+  --azul-900:#0a1622;
+  --azul-800:#101f33;
+  --azul-700:#182c45;
+  --azul-600:#64748b;
+  --azul-100:#e9eef5;
 
   /* acentos metálicos */
   --warm-600:#8a6a12;
@@ -76,7 +76,7 @@
   --warm-100:#f7f0d8;
 
   --blanco:#ffffff;
-  --tinta:#1a1a1f;
+  --tinta:#101b2b;
   --gris-700:#3f3f47;
   --gris-500:#63636d;
   --gris-400:#9a9aa4;
@@ -91,17 +91,17 @@
   --oro-oscuro:#8a6d1f;
   --plata:#c8c8d0;
   --plata-oscura:#8b8b96;
-  --negro:#101014;
-  --negro-2:#1a1a20;
+  --negro:#0e1a2b;
+  --negro-2:#13233a;
   --metal-oro:linear-gradient(135deg,#f6e6a8 0%,#d8b64a 30%,#c9a227 48%,#a67c00 66%,#e6cd7a 100%);
   --metal-plata:linear-gradient(135deg,#f4f4f8 0%,#d6d6de 35%,#c8c8d0 50%,#9a9aa4 68%,#eaeaf0 100%);
 
   --radio-sm:8px;
   --radio:14px;
   --radio-lg:22px;
-  --sombra-1:0 1px 2px rgba(16,45,32,.05), 0 2px 8px rgba(16,45,32,.05);
-  --sombra-2:0 6px 18px rgba(16,45,32,.08), 0 2px 6px rgba(16,45,32,.05);
-  --sombra-3:0 20px 44px rgba(11,42,74,.16);
+  --sombra-1:0 1px 2px rgba(11,37,69,.06), 0 2px 8px rgba(11,37,69,.06);
+  --sombra-2:0 6px 18px rgba(11,37,69,.10), 0 2px 6px rgba(11,37,69,.06);
+  --sombra-3:0 20px 44px rgba(11,37,69,.18);
 
   --header-h:76px;
   --wrap:1200px;
@@ -1013,6 +1013,174 @@ table.tabla thead th{background:#faf8f2;color:var(--negro)}
 }
 .anio__sub:not(:first-child){margin-top:1.6rem}
 .anio__cuerpo .grid + .anio__sub{margin-top:1.7rem}
+
+/* =====================================================================
+   18. PALETA PROFESIONAL (azul institucional · verde · dorado)
+   Reemplaza los colores fijos de la sección 17 manteniendo la misma
+   estructura, jerarquía y contraste (WCAG AA). Colores tomados del
+   escudo: azul del río, verde de las palmeras y dorado de la pluma.
+   ===================================================================== */
+:root{
+  --ierp-tinta:#101b2b;
+  --ierp-azul-900:#0b2545;
+  --ierp-azul-800:#10315a;
+  --ierp-azul-700:#14507f;
+  --ierp-azul-600:#1a6299;
+  --ierp-azul-500:#2e7fbf;
+  --ierp-azul-100:#e6f0f9;
+  --ierp-azul-50:#f4f9fd;
+  --ierp-verde:#1e6b4f;
+  --ierp-verde-100:#e8f3ee;
+  --ierp-oro:#c9a227;
+  --ierp-oro-oscuro:#8a6d1f;
+  --ierp-oro-100:#f7f0d8;
+  --ierp-metal-oro:linear-gradient(135deg,#f6e6a8 0%,#d8b64a 30%,#c9a227 48%,#a67c00 66%,#e6cd7a 100%);
+}
+
+body{background:#fff;color:var(--ierp-tinta)}
+h1,h2,h3,h4{color:var(--ierp-azul-900);letter-spacing:-.015em;line-height:1.18}
+h2{font-weight:800}
+a{color:var(--ierp-azul-700)}
+a:hover{color:var(--ierp-azul-600)}
+
+/* Barra superior */
+.topbar{background:linear-gradient(90deg,var(--ierp-azul-900),var(--ierp-azul-800));color:#d7e3f0}
+.topbar__item .icon{color:var(--ierp-oro)}
+.topbar__item a{color:#f2e2ad;border-bottom-color:rgba(242,226,173,.42);font-weight:700}
+.topbar__item a:hover{color:#fff;border-bottom-color:#fff}
+.topbar__item--pendiente{color:#a9b7c9}
+.topbar__item--pendiente .icon{color:#8fb0d0}
+
+/* Encabezado fijo */
+.site-header{background:rgba(255,255,255,.98);border-bottom:1px solid #e3e9f0}
+.site-header.is-scrolled{box-shadow:0 8px 26px rgba(11,37,69,.12)}
+.marca__escudo{border-color:#c9d8e8}
+.marca__texto strong{color:var(--ierp-azul-900)}
+.marca__texto small{color:var(--gris-500)}
+.main-nav a{color:var(--ierp-azul-900)}
+.main-nav a:hover{background:var(--ierp-azul-50);color:var(--ierp-azul-700)}
+.main-nav a[aria-current="true"]{background:var(--ierp-azul-100);color:var(--ierp-azul-700)}
+.nav-toggle{color:var(--ierp-azul-900);border-color:var(--gris-300)}
+.nav-toggle:hover{border-color:var(--ierp-azul-600);background:var(--ierp-azul-50)}
+.header-cta{background:linear-gradient(135deg,var(--ierp-azul-700),var(--ierp-azul-900));color:#fff;border:1px solid var(--ierp-oro);box-shadow:0 4px 14px rgba(11,37,69,.25)}
+.header-cta:hover{background:linear-gradient(135deg,var(--ierp-azul-600),var(--ierp-azul-800));color:#fff}
+.header-cta .icon{color:#f2e2ad}
+
+/* Etiqueta de sección */
+.eyebrow{background:linear-gradient(135deg,#eef5fc,#dcebf8);color:var(--ierp-azul-700);border:1px solid #c6dbee}
+
+/* Etiquetas de estado */
+.badge--ok{background:var(--ierp-verde-100);color:#155b41;border-color:#bfe0d2}
+.badge--pendiente{background:var(--gris-100);color:#5b6472;border-color:var(--gris-300)}
+.badge--demo{background:var(--ierp-oro-100);color:#7a5f18;border-color:#e6d9a8}
+
+/* Botones */
+.btn{--btn-bg:linear-gradient(135deg,var(--ierp-azul-600),var(--ierp-azul-800));--btn-fg:#fff;--btn-bd:var(--ierp-azul-800)}
+.btn:hover{--btn-fg:#fff}
+.btn--secondary{--btn-bg:#fff;--btn-fg:var(--ierp-azul-800);--btn-bd:var(--ierp-azul-800)}
+.btn--outline{--btn-bg:transparent;--btn-fg:var(--ierp-azul-700);--btn-bd:var(--ierp-azul-600)}
+.btn--outline:hover{--btn-bg:var(--ierp-azul-50)}
+.btn--ghost{--btn-bg:transparent;--btn-fg:var(--gris-700);--btn-bd:var(--gris-300)}
+.btn--ghost:hover{--btn-bg:var(--ierp-azul-50);--btn-bd:var(--ierp-azul-600)}
+.btn--claro{--btn-bg:transparent;--btn-fg:#fff;--btn-bd:rgba(255,255,255,.6)}
+.btn--claro:hover{--btn-bg:rgba(255,255,255,.16)}
+.btn[aria-disabled="true"],.btn.is-disabled{--btn-bg:var(--gris-100);--btn-fg:#93a0ae;--btn-bd:var(--gris-200)}
+
+/* Filete bajo títulos de sección */
+.section__head h2::after{background:linear-gradient(90deg,var(--ierp-oro),var(--ierp-azul-600))}
+
+/* Portada (hero) */
+.hero{background:var(--ierp-azul-900)}
+.hero__velo{background:
+  linear-gradient(100deg,rgba(11,37,69,.96) 0%,rgba(16,49,90,.88) 42%,rgba(16,49,90,.62) 74%,rgba(11,37,69,.45) 100%),
+  linear-gradient(to top,rgba(11,37,69,.8),rgba(11,37,69,0) 62%)}
+.hero__kicker{color:#f2e2ad;background:rgba(201,162,39,.18);border-color:rgba(201,162,39,.55)}
+.hero__texto{color:#e4edf7}
+.hero__pie{color:#c6d6e6;border-top-color:rgba(201,162,39,.35)}
+.hero__pie .icon{color:var(--ierp-oro)}
+.hero__ctrl{background:rgba(201,162,39,.2);border-color:rgba(201,162,39,.55)}
+.hero__ctrl:hover{background:rgba(201,162,39,.42)}
+.hero__punto{background:rgba(255,255,255,.45);border-color:rgba(201,162,39,.75)}
+.hero__punto[aria-current="true"]{background:var(--ierp-oro)}
+
+/* Secciones oscuras */
+.section--azul{background:linear-gradient(160deg,var(--ierp-azul-900),var(--ierp-azul-800) 55%,#081b34);color:#e2eaf4}
+.section--azul h2,.section--azul h3{color:#fff}
+.section--azul a{color:#f2e2ad}
+.section--azul .eyebrow{background:rgba(201,162,39,.16);color:#f2e2ad;border-color:rgba(201,162,39,.4)}
+.section--azul .section__lead{color:#c9d8e8}
+.section--alt{background:#f5f8fc}
+
+/* Cifras institucionales */
+.cifras{background:linear-gradient(160deg,var(--ierp-azul-900),var(--ierp-azul-800));color:#e2eaf4}
+.cifra{background:rgba(255,255,255,.07);border:1px solid rgba(201,162,39,.30)}
+.cifra__icono{background:var(--ierp-metal-oro);color:#1a1408}
+.cifra span{color:#bccce0}
+.cifras__nota{color:#a9b7c9}
+
+/* Enlaces de interés */
+.enlace-card:hover{border-color:var(--ierp-azul-600)}
+.enlace-card__icono{background:var(--ierp-azul-100);color:var(--ierp-azul-700);border-color:#c6dbee}
+.enlace-card__texto b{color:var(--ierp-azul-900)}
+.enlace-card__flecha{color:var(--ierp-azul-700)}
+.enlace-card--destacado{background:var(--ierp-azul-50);border-color:#c6dbee}
+
+/* Tarjetas de nivel educativo */
+.nivel{background:var(--ierp-azul-900)}
+.nivel__capa{background:linear-gradient(to top,rgba(11,37,69,.94),rgba(11,37,69,.7) 55%,rgba(11,37,69,0))}
+.nivel__capa p{color:#d5e0ec}
+.nivel__ver{color:#f2e2ad}
+.nivel__etiqueta{background:var(--ierp-metal-oro);color:#1a1408}
+
+/* Tablas y fichas */
+table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
+.chip{color:var(--ierp-azul-900)}
+.chip:hover{border-color:var(--ierp-azul-600);background:var(--ierp-azul-50)}
+.chip[aria-pressed="true"]{background:linear-gradient(135deg,var(--ierp-azul-700),var(--ierp-azul-900));border-color:var(--ierp-azul-700);color:#fff}
+
+/* Noticias y detalles */
+.noticia__etiqueta{color:var(--ierp-azul-700)}
+.noticia__fotos{color:var(--ierp-azul-700)}
+.card__fotos{background:rgba(11,37,69,.85)}
+.detalle__fotos{background:var(--ierp-azul-100);color:#123053}
+.detalle__fotos .icon{color:var(--ierp-azul-700)}
+.detalle__etiquetas{color:var(--ierp-azul-700)}
+.carrusel__puntos i{box-shadow:0 0 0 1px rgba(11,37,69,.4)}
+.carrusel__puntos i.is-activo{background:var(--ierp-azul-600)}
+.noticia .card__media::before{background:linear-gradient(90deg,var(--ierp-oro),var(--ierp-azul-600))}
+.noticia:hover h3{color:var(--ierp-azul-700)}
+
+/* Visor de imágenes */
+.visor__figura img{background:var(--ierp-azul-900)}
+.cerrar{background:linear-gradient(135deg,var(--ierp-azul-600),var(--ierp-azul-800))}
+.cerrar:hover{background:var(--ierp-azul-900)}
+
+/* Pie de página */
+.site-footer{background:var(--ierp-azul-900);color:#c4d2e0}
+.site-footer h3{color:#fff}
+.site-footer a{color:#d8e4f0}
+.footer-col a{color:#c4d2e0}
+.footer-col a:hover{color:#fff}
+.footer-col li>.icon,.footer-col a .icon{color:var(--ierp-oro)}
+.footer-horario{color:#c4d2e0;border-top-color:rgba(201,162,39,.28)}
+.footer-horario .icon{color:var(--ierp-oro)}
+
+/* Botón flotante "volver arriba" */
+.volver-arriba{background:linear-gradient(135deg,var(--ierp-azul-700),var(--ierp-azul-900));color:#fff;border:1px solid var(--ierp-oro)}
+.volver-arriba:hover{color:#fff}
+
+/* Acordeones de documentos por año */
+.anio__cabecera{background:linear-gradient(135deg,var(--ierp-azul-800),var(--ierp-azul-900));color:#fff}
+.anio__cabecera:hover{background:linear-gradient(135deg,var(--ierp-azul-700),var(--ierp-azul-800))}
+.anio__num{color:#f2e2ad}
+.anio__meta{color:#c6d6e6}
+.anio__flecha{color:var(--ierp-oro)}
+.anio__sub{color:var(--ierp-azul-700)}
+
+/* Refinamiento tipográfico y de ritmo */
+.section__head h2{letter-spacing:-.02em}
+.noticia h3,.card h3{letter-spacing:-.01em}
+.lead,.section__lead{line-height:1.7}
 </style>
 </head>
 <body>
