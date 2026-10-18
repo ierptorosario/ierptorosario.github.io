@@ -10,8 +10,21 @@
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
  "actualizado": "2026-10-18",
- "generado": "2026-10-18 02:42:59",
+ "generado": "2026-10-18 06:08:35",
  "noticias": [
+  {
+   "titulo": "Institución Educativa Rural Pto Rosario actualizó su foto de portada.",
+   "fecha": "20 de junio de 2026",
+   "categoria": "Facebook",
+   "imagen": "",
+   "fotos": 0,
+   "resumen": "Institución Educativa Rural Pto Rosario actualizó su foto de portada.",
+   "detalle": "<p>Institución Educativa Rural Pto Rosario actualizó su foto de portada.</p>",
+   "enlace": "https://www.facebook.com/permalink.php?story_fbid=1013837758003157&id=61575830740720",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
   {
    "titulo": "🌳💚 Día del Árbol – Ier Puerto Rosario 💚🌳",
    "fecha": "29 de abril de 2026",

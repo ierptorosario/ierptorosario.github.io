@@ -1448,7 +1448,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 }
 
 /* =====================================================================
-   24. HORARIOS DE CLASE (tablas por salón y por docente)
+   24. HORARIOS DE CLASE (tablas por grados)
    ===================================================================== */
 .horarios__bloques{display:grid;gap:1.8rem}
 .horarios__subtitulo{display:flex;align-items:center;gap:.5rem;margin:0 0 .85rem;font-size:1.16rem}
@@ -1936,7 +1936,7 @@ table.horario td .vacio{color:#c3ceda}
       </a>
       <a class="rapido" href="#horarios">
         <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-reloj"></use></svg></span>
-        <b>Horarios de clase</b><span>Por salón y por docente</span>
+        <b>Horarios de clase</b><span>Por grados, de 6.º a 11.º</span>
       </a>
     </div>
   </div>
@@ -2703,7 +2703,7 @@ table.horario td .vacio{color:#c3ceda}
   <div class="wrap">
     <div class="section__head js-revelar">
       <span class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#ico-reloj"></use></svg> Horarios de clase</span>
-      <h2 id="horarios-titulo">Horario por salón y por docente</h2>
+      <h2 id="horarios-titulo">Horario de clases por grados</h2>
       <p class="section__lead" id="horariosLead">
         Horario de la sede principal (básica secundaria y educación media, grados 6.º a 11.º).
       </p>
@@ -2712,16 +2712,12 @@ table.horario td .vacio{color:#c3ceda}
     <div class="horarios__bloques">
       <div class="horarios__bloque js-revelar">
         <h3 class="horarios__subtitulo">
-          <svg class="icon" aria-hidden="true"><use href="#ico-personas"></use></svg> Por salón y grados
+          <svg class="icon" aria-hidden="true"><use href="#ico-personas"></use></svg> Horario por grados
         </h3>
+        <p class="horarios__ayuda">
+          Jornada de 7 horas de clase, de 8:00 a.&nbsp;m. a 2:50 p.&nbsp;m., con descanso y almuerzo.
+        </p>
         <div class="acordeon" id="horariosGrupos"></div>
-      </div>
-
-      <div class="horarios__bloque js-revelar">
-        <h3 class="horarios__subtitulo">
-          <svg class="icon" aria-hidden="true"><use href="#ico-libro"></use></svg> Por docente
-        </h3>
-        <div class="acordeon" id="horariosDocentes"></div>
       </div>
     </div>
 
@@ -5137,8 +5133,7 @@ table.horario td .vacio{color:#c3ceda}
 (function () {
   var H = window.HORARIOS_IERP;
   var cajaGrupos = document.getElementById('horariosGrupos');
-  var cajaDocentes = document.getElementById('horariosDocentes');
-  if (!H || !cajaGrupos || !cajaDocentes) { return; }
+  if (!H || !cajaGrupos) { return; }
 
   var DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
 
@@ -5193,18 +5188,14 @@ table.horario td .vacio{color:#c3ceda}
 
   var htmlGrupos = '';
   (H.grupos || []).forEach(function (g, i) {
-    htmlGrupos += bloque(g.id, g.titulo, g.etiqueta, g.filas || [], i === 0, '');
+    htmlGrupos += bloque(g.id, g.titulo, '', g.filas || [], i === 0, '');
   });
   cajaGrupos.innerHTML = htmlGrupos;
 
-  var htmlDocentes = '';
-  (H.docentes || []).forEach(function (doc, i) {
-    htmlDocentes += bloque(doc.id, doc.nombre, doc.areas, doc.filas || [], i === 0, '');
-  });
-  cajaDocentes.innerHTML = htmlDocentes;
-
   var lead = document.getElementById('horariosLead');
-  if (lead) { lead.textContent = (H.sede || '') + ' ' + (H.vigencia || ''); }
+  if (lead) {
+    lead.textContent = (H.titulo ? H.titulo + '. ' : '') + (H.sede || '') + ' ' + (H.vigencia || '');
+  }
 
   function conectar(caja) {
     caja.addEventListener('click', function (e) {
@@ -5220,7 +5211,6 @@ table.horario td .vacio{color:#c3ceda}
     });
   }
   conectar(cajaGrupos);
-  conectar(cajaDocentes);
 
   /* Descargas: un PDF y una imagen por cada horario (se muestran solo si
      los archivos ya se generaron; hasta entonces el bloque queda oculto). */
@@ -5228,10 +5218,7 @@ table.horario td .vacio{color:#c3ceda}
   var cajaDesc = document.getElementById('horariosDescargas');
   if (lista && cajaDesc && H.descargas === true) {
     var filas = [];
-    (H.grupos || []).forEach(function (g) {
-      filas.push(['Grados ' + g.titulo + (g.etiqueta ? ' (' + g.etiqueta + ')' : ''), g.id]);
-    });
-    (H.docentes || []).forEach(function (doc) { filas.push(['Docente ' + doc.nombre, doc.id]); });
+    (H.grupos || []).forEach(function (g) { filas.push(['Grados ' + g.titulo, g.id]); });
     var html = '';
     filas.forEach(function (f) {
       html += '<li>' +
@@ -5242,7 +5229,11 @@ table.horario td .vacio{color:#c3ceda}
           '<svg class="icon" aria-hidden="true"><use href="#ico-imagen"></use></svg>Imagen</a>' +
       '</li>';
     });
-    if (html) { lista.innerHTML = html; cajaDesc.hidden = false; }
+    html += '<li><span class="horarios__nombre">Todos los horarios en un solo archivo</span>' +
+      '<a href="documentos/horarios/todos-los-horarios.pdf" target="_blank" rel="noopener">' +
+      '<svg class="icon" aria-hidden="true"><use href="#ico-doc"></use></svg>PDF para imprimir</a></li>';
+    lista.innerHTML = html;
+    cajaDesc.hidden = false;
   }
 }());
 
@@ -5289,7 +5280,7 @@ table.horario td .vacio{color:#c3ceda}
     ['Institución', 'Reseña histórica, misión, visión, principios, símbolos y sedes', '#institucion', 'Sección', 'historia mision vision principios simbolos escudo bandera sedes perfil'],
     ['Oferta educativa', 'Niveles, grados, sedes y modalidades', '#oferta', 'Sección', 'preescolar primaria secundaria media grados matricula jornada sedes'],
     ['Nuestros espacios', 'Aula de sistemas, zona deportiva, huerta, pasillos y plaza cubierta', '#espacios', 'Sección', 'espacios instalaciones huerta cancha aulas recorrido'],
-    ['Horarios de clase', 'Horario por salón (6.º, 7.º, 8.º, 9.º, 10.º y 11.º) y por docente', '#horarios', 'Sección', 'horario clases salones grados docentes jornada descanso almuerzo'],
+    ['Horarios de clase', 'Horario por grados: sexto y séptimo, octavo y noveno, décimo y once', '#horarios', 'Sección', 'horario clases grados jornada descanso almuerzo'],
     ['Proyectos', 'InnovaTec, ferias de ciencia, medio ambiente y tecnología', '#proyectos', 'Sección', 'proyectos innovatec semillero investigacion ciencia tecnologia'],
     ['Noticias', 'Noticias, eventos y avisos de la institución', '#noticias', 'Sección', 'noticias eventos avisos'],
     ['Galería de fotografías', 'Nuestro día a día en imágenes', '#galeria', 'Sección', 'galeria fotos imagenes'],
@@ -5332,13 +5323,8 @@ table.horario td .vacio{color:#c3ceda}
   if (H) {
     (H.grupos || []).forEach(function (g) {
       agregar('Horario de ' + g.titulo,
-        (g.etiqueta ? g.etiqueta + '. ' : '') + 'Horario de clases por salón',
-        '#horarios', 'Horario', 'horario clases salon grados ' + (H.vigencia || ''));
-    });
-    (H.docentes || []).forEach(function (d) {
-      agregar('Horario del docente: ' + d.nombre,
-        (d.areas || '') + '. Horario por docente',
-        '#horarios', 'Horario', 'horario docente profesor ' + (H.vigencia || ''));
+        'Horario de clases por grados. Jornada de 8:00 a. m. a 2:50 p. m.',
+        '#horarios', 'Horario', 'horario clases grados ' + (H.vigencia || ''));
     });
   }
 
