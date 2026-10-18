@@ -348,8 +348,11 @@ body.nav-abierto .nav-toggle__cerrar{display:inline-flex}
    ===================================================================== */
 .hero{position:relative;overflow:hidden;background:var(--verde-900)}
 .hero__carrusel{position:absolute;inset:0}
-.hero__fondo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
+.hero__fondo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .55s ease}
 .hero__fondo.is-activa{opacity:1}
+/* Video corto de la institución: fondo vivo de la portada (estilo Bishop Dunne) */
+.hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+@media (prefers-reduced-motion:reduce){.hero__video{display:none}}
 .hero__controles{
   position:absolute;z-index:3;right:clamp(.7rem,3vw,2rem);bottom:clamp(.7rem,3vw,1.6rem);
   display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;
@@ -1201,13 +1204,16 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 .topbar__item{white-space:nowrap}
 
 /* Títulos de sección: DORADO METÁLICO con destello que recorre de IZQUIERDA a DERECHA */
-@keyframes brilloOro{0%{background-position:230% 50%}100%{background-position:-30% 50%}}
-@keyframes brilloPlata{0%{background-position:230% 50%}100%{background-position:-30% 50%}}
+/* El destello se mueve SOLO dentro del rango que el degradado alcanza a cubrir.
+   Antes salía de ese rango y el título quedaba transparente (desaparecía). */
+@keyframes brilloOro{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes brilloPlata{0%{background-position:100% 50%}100%{background-position:0% 50%}}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   .section__head h2{
     background-image:linear-gradient(100deg,
       #5c4611 0%,#6d5415 10%,#8a6d1f 20%,#b8912a 28%,#d9bd62 34%,#e2c96e 36%,#c9a227 40%,#9c7d1c 46%,
       #5c4611 56%,#6d5415 66%,#a8871f 76%,#d9bd62 84%,#e2c96e 87%,#b8912a 92%,#6d5415 100%);
+    background-color:#a8871f; /* respaldo: si el degradado no cubriera, el título se sigue leyendo */
     background-size:240% 100%;
     background-repeat:no-repeat;
     -webkit-background-clip:text;background-clip:text;
@@ -1220,12 +1226,14 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     background-image:linear-gradient(100deg,
       #a8871f 0%,#c9a227 10%,#d9bd62 20%,#f0d98a 29%,#f6e6a8 33%,#e0c46a 38%,#c9a227 48%,
       #a8871f 60%,#b8912a 70%,#e8cf7a 80%,#f0d98a 85%,#d9bd62 90%,#c9a227 100%);
+    background-color:#c9a227;
   }
   /* Subtítulos (h3): PLATEADO METÁLICO brilloso */
   .section h3, .section__head h3, .iconbox h3, .card h3, .proyecto h3, .noticia h3{
     background-image:linear-gradient(100deg,
       #2b3d51 0%,#33465c 12%,#43596f 24%,#5d7590 33%,#8ba3bb 39%,#9fb4c9 42%,#67809b 46%,#455c76 54%,
       #2b3d51 64%,#33465c 74%,#546c88 84%,#7f97b1 91%,#43596f 100%);
+    background-color:#3c5169;
     background-size:240% 100%;
     background-repeat:no-repeat;
     -webkit-background-clip:text;background-clip:text;
@@ -1238,6 +1246,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       #a9bccd 0%,#dbe6f1 9%,#ffffff 15%,#eaf2f9 20%,#b6c8d9 27%,
       #93a9be 36%,#dbe6f1 46%,#ffffff 52%,#c3d3e2 58%,#9db4ca 66%,
       #8ea5bb 74%,#dfe9f3 86%,#ffffff 94%,#a9bccd 100%);
+    background-color:#b9c9d8;
   }
 }
 @media (prefers-reduced-motion:reduce){
@@ -1312,16 +1321,16 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 
 /* Audio de fondo: botón redondo, pequeño y discreto (abajo a la izquierda) */
 .audio-fondo{
-  position:fixed;left:1rem;bottom:1rem;z-index:70;
-  width:2.7rem;height:2.7rem;border-radius:50%;
+  position:fixed;left:.6rem;bottom:.6rem;z-index:70;
+  width:2.35rem;height:2.35rem;border-radius:50%;
   display:grid;place-items:center;cursor:pointer;
-  color:#e8eefa;background:rgba(11,37,69,.72);
-  border:1px solid rgba(201,162,39,.5);
+  color:#e8eefa;background:rgba(11,37,69,.66);
+  border:1px solid rgba(201,162,39,.45);
   -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
-  opacity:.5;transition:opacity .25s ease,transform .25s ease,background .25s ease;
+  opacity:.42;transition:opacity .25s ease,transform .25s ease,background .25s ease;
 }
 .audio-fondo:hover,.audio-fondo:focus-visible{opacity:1;transform:scale(1.07);background:rgba(11,37,69,.94)}
-.audio-fondo .icon{width:1.25rem;height:1.25rem}
+.audio-fondo .icon{width:1.1rem;height:1.1rem}
 .audio-fondo.is-sonando{opacity:.85;color:#f2e2ad;border-color:var(--ierp-oro)}
 .audio-fondo.is-sugerido{opacity:.95;animation:latidoAudio 2.6s ease-in-out infinite}
 @keyframes latidoAudio{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
@@ -4365,29 +4374,68 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     var dots = qsa('.hero__punto', puntos);
     var credito = qs('#heroCredito');
     var botonPausa = qs('#heroPausa');
-    var actual = 0;
-    var temporizador = null;
     var pausado = false;
     var reducir = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     var zona = caja.parentNode || caja;
+    var INTERVALO = 2000; // las fotografías de la portada cambian cada 2 segundos
+
+    /* Video corto de la institución como fondo vivo de la portada.
+       Se carga solo en pantallas grandes y si la persona no pidió menos
+       movimiento, para no gastar datos en los celulares. */
+    var videoPortada = null;
+    if (!reducir && window.innerWidth >= 900) {
+      videoPortada = document.createElement('video');
+      videoPortada.className = 'hero__video';
+      videoPortada.muted = true;
+      videoPortada.defaultMuted = true;
+      videoPortada.loop = true;
+      videoPortada.autoplay = true;
+      videoPortada.playsInline = true;
+      videoPortada.setAttribute('muted', '');
+      videoPortada.setAttribute('playsinline', '');
+      videoPortada.setAttribute('preload', 'auto');
+      videoPortada.setAttribute('aria-hidden', 'true');
+      videoPortada.setAttribute('tabindex', '-1');
+      videoPortada.setAttribute('poster', 'assets/video/portada-video-poster.jpg');
+      videoPortada.innerHTML = '<source src="assets/video/portada-video.mp4" type="video/mp4">';
+      caja.insertBefore(videoPortada, caja.firstChild);
+      var arranque = videoPortada.play();
+      if (arranque && arranque['catch']) { arranque['catch'](function () {}); }
+    }
+
+    /* Guion de la portada: fotografía → video → fotografía → video…
+       Así la portada se ve viva y las transiciones son rápidas. */
+    var guion = [];
+    fotos.forEach(function (f, i) {
+      guion.push(i);
+      if (videoPortada) { guion.push(null); } // null = se ve el video de fondo
+    });
+
+    var actual = 0; // posición dentro del guion
+    var temporizador = null;
 
     function pintar(n) {
-      actual = (n + fotos.length) % fotos.length;
-      imgs.forEach(function (im, i) { im.classList.toggle('is-activa', i === actual); });
-      dots.forEach(function (d, i) { d.setAttribute('aria-current', String(i === actual)); });
-      if (credito) credito.textContent = hay(fotos[actual].alt) ? fotos[actual].alt : 'Fotografía de la institución.';
+      actual = (n + guion.length) % guion.length;
+      var foto = guion[actual];
+      imgs.forEach(function (im, i) { im.classList.toggle('is-activa', foto !== null && i === foto); });
+      dots.forEach(function (d, i) { d.setAttribute('aria-current', String(foto !== null && i === foto)); });
+      if (credito) {
+        credito.textContent = foto === null
+          ? 'Video de la institución.'
+          : (hay(fotos[foto].alt) ? fotos[foto].alt : 'Fotografía de la institución.');
+      }
     }
     function avanzar(paso) { pintar(actual + paso); }
     function arrancar() {
       if (reducir || pausado || temporizador) return;
-      temporizador = window.setInterval(function () { avanzar(1); }, 7000);
+      temporizador = window.setInterval(function () { avanzar(1); }, INTERVALO);
     }
     function detener() { if (temporizador) { window.clearInterval(temporizador); temporizador = null; } }
 
     var bAnt = qs('#heroAnterior'), bSig = qs('#heroSiguiente');
     if (bAnt) bAnt.addEventListener('click', function () { avanzar(-1); });
     if (bSig) bSig.addEventListener('click', function () { avanzar(1); });
-    dots.forEach(function (d, i) { d.addEventListener('click', function () { pintar(i); }); });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { pintar(guion.indexOf(i)); }); });
 
     if (botonPausa) {
       botonPausa.addEventListener('click', function () {
