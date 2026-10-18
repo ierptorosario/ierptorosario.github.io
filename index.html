@@ -4380,10 +4380,13 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     var INTERVALO = 2000; // las fotografías de la portada cambian cada 2 segundos
 
     /* Video corto de la institución como fondo vivo de la portada.
-       Se carga solo en pantallas grandes y si la persona no pidió menos
-       movimiento, para no gastar datos en los celulares. */
+       No se carga si la persona pidió menos movimiento, si activó el ahorro
+       de datos o si el navegador avisa que la conexión es muy lenta: en esos
+       casos queda la fotografía de portada. */
+    var red = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
+    var conexionLenta = red.saveData === true || /(^|-)2g/i.test(red.effectiveType || '');
     var videoPortada = null;
-    if (!reducir && window.innerWidth >= 900) {
+    if (!reducir && !conexionLenta) {
       videoPortada = document.createElement('video');
       videoPortada.className = 'hero__video';
       videoPortada.muted = true;
