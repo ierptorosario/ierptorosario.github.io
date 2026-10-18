@@ -1196,6 +1196,10 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 .main-nav a{padding:.5rem .58rem;font-size:.88rem}
 .header-cta{font-size:.87rem;padding:.5rem .8rem}
 
+/* La barra superior queda en UNA sola línea, solo con los datos de contacto */
+.topbar__inner{justify-content:flex-end}
+.topbar__item{white-space:nowrap}
+
 /* Títulos de sección con acabado DORADO METÁLICO y brillo animado */
 @keyframes brilloOro{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
@@ -1274,10 +1278,6 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
      ===================================================================== -->
 <div class="topbar">
   <div class="wrap topbar__inner">
-    <p class="topbar__item">
-      <svg class="icon" aria-hidden="true"><use href="#ico-pin"></use></svg>
-      <span>Vereda Puerto Rosario &middot; Puerto Guzmán &middot; Putumayo</span>
-    </p>
     <div class="topbar__grupo">
       <p class="topbar__item" id="topTelefono">
         <svg class="icon" aria-hidden="true"><use href="#ico-telefono"></use></svg>
@@ -3816,10 +3816,6 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     });
     var fav = qs('link[rel="icon"]');
     if (fav) fav.href = inst.escudo;
-  }
-  if (hay(inst.ubicacion)) {
-    var topUbic = qs('.topbar__item span');
-    if (topUbic) topUbic.textContent = inst.ubicacion;
   }
 
   /* ---------------- 2. Portada y carrusel de fotografías ---------------- */
