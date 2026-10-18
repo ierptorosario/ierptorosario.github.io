@@ -133,7 +133,7 @@ img,svg{max-width:100%}
 img{height:auto;display:block}
 h1,h2,h3,h4{font-family:var(--fuente-titulo);line-height:1.2;color:var(--verde-900);margin:0 0 .6em;font-weight:700;letter-spacing:-.01em}
 h1{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.4rem);line-height:1.12}
-h2{font-size:clamp(1.5rem,1.15rem + 1.4vw,2.3rem)}
+h2{font-size:clamp(1.28rem,1rem + 1.02vw,1.92rem)}
 h3{font-size:clamp(1.1rem,1rem + .5vw,1.4rem)}
 p{margin:0 0 1em}
 a{color:var(--verde-700);text-decoration-thickness:2px;text-underline-offset:3px}
@@ -409,6 +409,11 @@ body.nav-abierto .nav-toggle__cerrar{display:inline-flex}
 .panel-doble{display:grid;gap:clamp(1.4rem,3vw,2.6rem);align-items:start}
 .panel-doble__texto{background:#fff;border:1px solid var(--gris-200);border-radius:var(--radio-lg);padding:clamp(1.3rem,3vw,2rem);box-shadow:var(--sombra-1)}
 .panel-doble__lateral{display:grid;gap:1rem}
+/* La reseña histórica y los paneles de acordeón deben verse iguales que el
+   resto del sitio: mismo tamaño de letra y mismo espaciado. */
+.panel-doble__texto h3{font-size:1.16rem;margin:0 0 .55rem}
+.panel-doble__texto p, .acordeon__panel p{font-size:.97rem;line-height:1.7;margin:0 0 .95rem}
+.panel-doble__texto p:last-child, .acordeon__panel p:last-child{margin-bottom:0}
 
 .acordeon{border:1px solid var(--gris-200);border-radius:var(--radio-lg);background:#fff;overflow:hidden;box-shadow:var(--sombra-1)}
 .acordeon__item+.acordeon__item{border-top:1px solid var(--gris-200)}
@@ -430,11 +435,6 @@ body.nav-abierto .nav-toggle__cerrar{display:inline-flex}
 .lista-valores--chips li{background:var(--verde-100);color:var(--verde-800);border-radius:999px;padding:.28rem .75rem;font-size:.85rem;font-weight:600}
 .bandera{width:min(230px,72%);margin:.7rem auto .35rem}
 .bandera img{display:block;width:100%;height:auto;border:1px solid var(--gris-200);border-radius:6px;box-shadow:var(--sombra-1)}
-.letra-himno{margin-top:.9rem;border:1px solid var(--gris-200);border-radius:var(--radio);padding:.15rem .95rem;background:#fff}
-.letra-himno summary{cursor:pointer;font-weight:600;color:var(--verde-700);padding:.6rem 0}
-.letra-himno p{margin:.5rem 0;line-height:1.75;color:var(--gris-700)}
-.letra-himno__intro{font-style:italic;color:var(--verde-800)}
-.letra-himno__rotulo{margin:.9rem 0 .1rem;font-weight:700;color:var(--verde-700);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
 
 /* --- 9.2 Oferta educativa: tabla editable ----------------------- */
 .tabla-scroll{overflow-x:auto;border:1px solid var(--gris-200);border-radius:var(--radio);background:#fff;box-shadow:var(--sombra-1)}
@@ -1211,14 +1211,16 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   .section__head h2{
     background-image:linear-gradient(100deg,
-      #5c4611 0%,#6d5415 10%,#8a6d1f 20%,#b8912a 28%,#d9bd62 34%,#e2c96e 36%,#c9a227 40%,#9c7d1c 46%,
-      #5c4611 56%,#6d5415 66%,#a8871f 76%,#d9bd62 84%,#e2c96e 87%,#b8912a 92%,#6d5415 100%);
+      #6b5213 0%,#8a6a17 8%,#b8912a 16%,#e0bf55 24%,#f7e29a 28%,#fff6cc 30%,#f2d778 33%,#c9a227 38%,
+      #8a6a17 48%,#a8821c 56%,#dcc05f 66%,#f7e29a 72%,#fff6cc 75%,#eed474 79%,#b8912a 87%,#7a5d14 100%);
     background-color:#a8871f; /* respaldo: si el degradado no cubriera, el título se sigue leyendo */
-    background-size:240% 100%;
+    background-size:260% 100%;
     background-repeat:no-repeat;
     -webkit-background-clip:text;background-clip:text;
     color:transparent;-webkit-text-fill-color:transparent;
-    animation:brilloOro 7s linear infinite;
+    animation:brilloOro 5.5s linear infinite;
+    /* Letras con volumen (relieve 3D) y brillo de oro pulido */
+    filter:drop-shadow(0 1px 0 #453508) drop-shadow(0 2px 3px rgba(30,22,2,.5)) drop-shadow(0 0 12px rgba(255,222,126,.35));
   }
   /* En las secciones de fondo oscuro el oro se aclara para que se lea bien */
   .cifras .section__head h2,
@@ -1228,17 +1230,18 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       #a8871f 60%,#b8912a 70%,#e8cf7a 80%,#f0d98a 85%,#d9bd62 90%,#c9a227 100%);
     background-color:#c9a227;
   }
-  /* Subtítulos (h3): PLATEADO METÁLICO brilloso */
+  /* Subtítulos (h3): PLATEADO tipo diamante, con relieve y destello */
   .section h3, .section__head h3, .iconbox h3, .card h3, .proyecto h3, .noticia h3{
     background-image:linear-gradient(100deg,
-      #2b3d51 0%,#33465c 12%,#43596f 24%,#5d7590 33%,#8ba3bb 39%,#9fb4c9 42%,#67809b 46%,#455c76 54%,
-      #2b3d51 64%,#33465c 74%,#546c88 84%,#7f97b1 91%,#43596f 100%);
+      #2e4257 0%,#3c5169 10%,#55708e 20%,#8aa4bd 30%,#c6d8e8 36%,#eef6fd 39%,#9fb4c9 44%,
+      #4a627c 52%,#2e4257 62%,#456079 74%,#9fb8d0 82%,#eaf3fb 86%,#6d87a3 93%,#3c5169 100%);
     background-color:#3c5169;
     background-size:240% 100%;
     background-repeat:no-repeat;
     -webkit-background-clip:text;background-clip:text;
     -webkit-text-fill-color:transparent;color:transparent;
-    animation:brilloPlata 9s linear infinite;
+    animation:brilloPlata 8s linear infinite;
+    filter:drop-shadow(0 1px 0 rgba(9,22,38,.5)) drop-shadow(0 1px 3px rgba(130,180,235,.22));
   }
   /* En fondos oscuros, la plata se aclara */
   .cifras h3, .section--azul h3, .hero h3, .nivel__capa h3{
@@ -1367,7 +1370,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
   margin:0 0 1.3rem;text-align:center;color:#fff;
   font-size:1.12rem;font-weight:700;letter-spacing:.01em;
 }
-.rapidos__grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.9rem}
+.rapidos__grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.9rem}
 .rapido{
   display:flex;flex-direction:column;align-items:center;gap:.55rem;text-align:center;
   padding:1.25rem .7rem;border-radius:16px;text-decoration:none;color:#eaf2fb;
@@ -1393,8 +1396,191 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 .rapido:nth-child(4) .rapido__icono{background:linear-gradient(135deg,#ffb9cd,var(--ierp-rosa));color:#47091c}
 .rapido:nth-child(5) .rapido__icono{background:linear-gradient(135deg,#cdc6ff,#7f6cf0);color:#1b0f4d}
 .rapido:nth-child(6) .rapido__icono{background:linear-gradient(135deg,#bdf0c6,#3fb75c);color:#08300f}
-@media (max-width:960px){.rapidos__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:960px){.rapidos__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:560px){.rapidos__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* =====================================================================
+   23. NUESTROS ESPACIOS
+   Cada tarjeta muestra dos fotografías reales de la institución que van
+   cambiando solas (solo con CSS, sin JavaScript).
+   ===================================================================== */
+.espacios__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}
+.espacio{
+  background:linear-gradient(165deg,#123a63,#061426);
+  border:1px solid rgba(201,162,39,.32);border-radius:var(--radio-lg);
+  overflow:hidden;padding-bottom:1.05rem;
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+}
+.espacio:hover{transform:translateY(-6px);border-color:var(--ierp-oro);
+  box-shadow:0 20px 40px rgba(4,16,33,.5)}
+.espacio__foto{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0a1c33;margin-bottom:.95rem}
+.espacio__foto img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+  animation:rotarEspacio 15s ease-in-out infinite;
+}
+.espacio__foto img:nth-child(1){opacity:1;animation-delay:0s}
+.espacio__foto img:nth-child(2){animation-delay:7.5s}
+@keyframes rotarEspacio{
+  0%,42%{opacity:1}
+  50%,92%{opacity:0}
+  100%{opacity:1}
+}
+.espacio h3{margin:0 .95rem .35rem;font-size:1.05rem}
+.espacio p{margin:0 .95rem;font-size:.92rem;line-height:1.6;color:#c3d6e8}
+.espacio__etiqueta{
+  position:absolute;left:.6rem;bottom:.6rem;z-index:2;
+  font-size:.72rem;font-weight:700;letter-spacing:.02em;
+  background:rgba(6,20,38,.82);border:1px solid rgba(201,162,39,.5);
+  border-radius:999px;padding:.2rem .6rem;color:#f2e2ad;
+}
+@media (max-width:960px){.espacios__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.espacios__video{margin:1.7rem 0 0}
+.espacios__video video{
+  width:100%;height:auto;display:block;border-radius:var(--radio-lg);
+  border:1px solid rgba(201,162,39,.4);background:#061426;
+  box-shadow:0 18px 40px rgba(4,16,33,.45);
+}
+.espacios__video figcaption{margin-top:.7rem;font-size:.9rem;color:#b9cde2;line-height:1.6}
+@media (max-width:560px){.espacios__grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  .espacio__foto img{animation:none}
+  .espacio__foto img:nth-child(1){opacity:1}
+}
+
+/* =====================================================================
+   24. HORARIOS DE CLASE (tablas por salón y por docente)
+   ===================================================================== */
+.horarios__bloques{display:grid;gap:1.8rem}
+.horarios__subtitulo{display:flex;align-items:center;gap:.5rem;margin:0 0 .85rem;font-size:1.16rem}
+.horarios__subtitulo .icon{width:1.15rem;height:1.15rem;flex:none}
+.horarios__tabla-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:.4rem}
+table.horario{width:100%;border-collapse:collapse;font-size:.9rem;min-width:620px;background:#fff}
+table.horario caption{text-align:left;padding:.2rem .2rem .7rem;color:var(--gris-500);font-size:.85rem}
+table.horario th,table.horario td{border:1px solid #d8e2ee;padding:.5rem .55rem;vertical-align:top;text-align:left}
+table.horario thead th{
+  background:linear-gradient(160deg,#123a63,#0a2440);color:#fff;font-size:.8rem;
+  letter-spacing:.03em;text-transform:uppercase;text-align:center;
+}
+table.horario thead th:first-child{text-align:left}
+table.horario tbody th{background:#eef5fc;font-weight:700;color:var(--ierp-azul-900);white-space:nowrap;font-size:.86rem}
+table.horario tbody th b{display:inline-block;min-width:1rem;color:var(--ierp-oro)}
+table.horario tbody tr:nth-child(even) td{background:#fafcfe}
+table.horario tr.es-pausa th,table.horario tr.es-pausa td{
+  background:#fdf6e3;color:#7d6410;font-weight:700;font-style:italic;font-size:.85rem;
+}
+table.horario td .vacio{color:#c3ceda}
+.horarios__areas{display:block;font-weight:400;font-size:.8rem;color:#5a6b7e;margin-top:.15rem}
+.horarios__descargas{margin-top:1.8rem;border:1px solid rgba(201,162,39,.35);border-radius:var(--radio-lg);padding:1.1rem 1.2rem;background:#fff}
+.horarios__ayuda{margin:0 0 .8rem;font-size:.92rem;color:#5a6b7e}
+.horarios__lista{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.horarios__lista li{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;font-size:.93rem}
+.horarios__lista .icon{width:1rem;height:1rem;color:var(--ierp-oro)}
+.horarios__lista a{
+  display:inline-flex;align-items:center;gap:.3rem;font-weight:600;color:var(--ierp-azul-700);
+  text-decoration:none;border-bottom:1px solid rgba(20,80,127,.3);
+}
+.horarios__lista a:hover{border-color:var(--ierp-azul-700)}
+.horarios__lista .horarios__nombre{font-weight:700;color:var(--ierp-azul-900);min-width:15rem}
+@media (max-width:640px){
+  table.horario{font-size:.84rem}
+  table.horario th,table.horario td{padding:.4rem}
+  .horarios__lista .horarios__nombre{min-width:0}
+}
+
+/* =====================================================================
+   25. BUSCADOR DEL SITIO (barra superior)
+   ===================================================================== */
+.buscar{
+  position:relative;display:flex;align-items:center;gap:.35rem;margin-left:auto;
+  background:transparent;border:1px solid transparent;
+  border-radius:999px;padding:.15rem;cursor:pointer;
+  transition:background .2s ease,border-color .2s ease,padding .2s ease;
+}
+.buscar:hover{background:rgba(255,255,255,.16)}
+.buscar.is-abierto,.buscar:focus-within{
+  background:rgba(255,255,255,.2);border-color:var(--ierp-oro);padding:.15rem .6rem;cursor:text;
+}
+.buscar__abrir{
+  display:inline-flex;align-items:center;justify-content:center;flex:none;
+  background:transparent;border:0;padding:.15rem;cursor:pointer;border-radius:999px;
+}
+.buscar:hover .icon,.buscar.is-abierto .icon{color:#fff}
+.buscar .icon{width:1rem;height:1rem;color:#f2e2ad;flex:none}
+.buscar input[type=search]{
+  appearance:none;-webkit-appearance:none;background:transparent;border:0;outline:none;
+  color:#fff;font:inherit;font-size:.88rem;width:0;padding:0;
+  transition:width .22s ease,padding .22s ease;
+}
+.buscar.is-abierto input[type=search],.buscar:focus-within input[type=search]{
+  width:min(46vw,220px);padding:.22rem 0;
+}
+.buscar input[type=search]::placeholder{color:rgba(255,255,255,.72)}
+.buscar input[type=search]::-webkit-search-cancel-button{display:none}
+.buscar__limpiar{
+  display:inline-flex;align-items:center;justify-content:center;flex:none;
+  background:transparent;border:0;padding:.1rem;cursor:pointer;border-radius:999px;
+}
+.buscar__limpiar .icon{color:#ffd9d9}
+.buscar__resultados{
+  position:absolute;top:calc(100% + .55rem);right:0;z-index:80;
+  width:min(580px,86vw);max-height:64vh;overflow-y:auto;text-align:left;
+  background:#fff;border:1px solid #cddbe9;border-radius:var(--radio);
+  box-shadow:0 22px 48px rgba(6,20,38,.3);list-style:none;margin:0;padding:.4rem;
+}
+.buscar__resultados[hidden]{display:none}
+.buscar__resultados li{margin:0}
+.buscar__resultados a{
+  display:block;padding:.55rem .7rem;border-radius:10px;text-decoration:none;
+  color:var(--ierp-azul-900);border:0;
+}
+.buscar__resultados a:hover,.buscar__resultados a.is-activo{background:var(--ierp-azul-50)}
+.buscar__resultados b{display:block;font-size:.94rem;line-height:1.3}
+.buscar__resultados span{display:block;font-size:.78rem;color:#5a6b7e;margin-top:.1rem}
+.buscar__vacio{padding:.7rem .8rem;color:#5a6b7e;font-size:.9rem}
+.buscar__pie{padding:.45rem .8rem .2rem;border-top:1px solid #e6edf5;color:#7a8898;font-size:.76rem}
+@media (max-width:700px){
+  .buscar{margin-left:0}
+  .buscar__resultados{width:min(92vw,580px);right:auto;left:0}
+}
+
+/* =====================================================================
+   26. SUBMENÚS DEL MENÚ PRINCIPAL (semitransparentes)
+   ===================================================================== */
+.menu__item{position:relative}
+.menu__item > a{display:inline-flex;align-items:center;gap:.3rem}
+.menu__flecha{width:.72rem;height:.72rem;opacity:.7;transition:transform .2s ease}
+.menu__item:hover > a .menu__flecha,
+.menu__item:focus-within > a .menu__flecha{transform:rotate(180deg)}
+.submenu{
+  position:absolute;top:calc(100% + .4rem);left:0;z-index:70;min-width:16rem;
+  list-style:none;margin:0;padding:.45rem;display:grid;gap:.05rem;text-align:left;
+  background:rgba(250,252,255,.82);
+  -webkit-backdrop-filter:blur(10px) saturate(1.25);
+  backdrop-filter:blur(10px) saturate(1.25);
+  border:1px solid rgba(201,162,39,.42);border-radius:14px;
+  box-shadow:0 20px 46px rgba(4,16,33,.3);
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .18s ease,transform .18s ease,visibility .18s ease;
+}
+.menu__item:hover > .submenu,
+.menu__item:focus-within > .submenu{opacity:1;visibility:visible;transform:none}
+.submenu a{
+  display:block;padding:.44rem .62rem;border-radius:9px;font-size:.87rem;
+  font-weight:600;color:var(--ierp-azul-900);white-space:normal;
+}
+.submenu a:hover{background:rgba(20,80,127,.13);color:var(--ierp-azul-700)}
+@media (max-width:1279px){
+  .menu__item > a{display:flex;width:100%}
+  .menu__flecha{display:none}
+  .submenu{
+    position:static;min-width:0;opacity:1;visibility:visible;transform:none;
+    box-shadow:none;border:0;border-left:2px solid rgba(201,162,39,.5);
+    border-radius:0;margin:.1rem 0 .3rem 1.1rem;padding:.15rem 0 .15rem .15rem;
+    background:rgba(20,80,127,.05);
+    -webkit-backdrop-filter:none;backdrop-filter:none;
+  }
+  .submenu a{padding:.5rem .7rem;font-size:.92rem}
+}
 
 /* --- Píldoras de innovación --------------------------------------- */
 .innovar__pills{list-style:none;display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1.5rem;padding:0}
@@ -1508,6 +1694,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
   <symbol id="ico-mapa" viewBox="0 0 24 24"><path d="M9 4 3.5 6.5v13L9 17l6 2.5 5.5-2.5v-13L15 6.5z"/><path d="M9 4v13M15 6.5v13"/></symbol>
   <symbol id="ico-externo" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5.5a1 1 0 0 1-1 1H4.5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1H10"/></symbol>
   <symbol id="ico-zoom" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l4.5 4.5M8 10.5h5M10.5 8v5"/></symbol>
+  <symbol id="ico-lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3 21 21"/></symbol>
   <symbol id="ico-pausa" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
   <symbol id="ico-reproducir" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></symbol>
   <symbol id="ico-sonido" viewBox="0 0 24 24"><path d="M4 9.4h3.3L12 5.4v13.2l-4.7-4H4z"/><path d="M15.4 9.2a4 4 0 0 1 0 5.6M17.9 7a7.4 7.4 0 0 1 0 10"/></symbol>
@@ -1534,6 +1721,21 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
         <svg class="icon icon--mini" aria-hidden="true"><use href="#ico-externo"></use></svg>
       </p>
     </div>
+
+    <form class="buscar" id="buscarForm" role="search" autocomplete="off">
+      <button type="button" class="buscar__abrir" id="buscarAbrir" aria-expanded="false" aria-controls="buscarCampo">
+        <svg class="icon" aria-hidden="true"><use href="#ico-lupa"></use></svg>
+        <span class="sr-only">Buscar en el sitio</span>
+      </button>
+      <label class="sr-only" for="buscarCampo">Buscar en el sitio: horarios, documentos, noticias…</label>
+      <input type="search" id="buscarCampo" name="q" placeholder="Escriba y pulse Enter…"
+             aria-controls="buscarResultados" aria-expanded="false" aria-describedby="buscarAyuda">
+      <button type="button" class="buscar__limpiar" id="buscarLimpiar" hidden aria-label="Borrar la búsqueda">
+        <svg class="icon" aria-hidden="true"><use href="#ico-cerrar"></use></svg>
+      </button>
+      <p class="sr-only" id="buscarAyuda">Escriba una palabra como «horario» y aparecerán los resultados del sitio. Use las flechas para elegir y Enter para abrir.</p>
+      <ul class="buscar__resultados" id="buscarResultados" role="listbox" aria-label="Resultados de la búsqueda" hidden></ul>
+    </form>
   </div>
 </div>
 
@@ -1558,13 +1760,75 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 
     <nav class="main-nav" id="menu-principal" aria-label="Menú principal del sitio">
       <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#institucion">Institución</a></li>
-        <li><a href="#oferta">Oferta educativa</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#noticias">Noticias</a></li>
-        <li><a href="#documentos">Documentos</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li class="menu__item">
+          <a href="#inicio">Inicio<svg class="icon menu__flecha" aria-hidden="true"><use href="#ico-abajo"></use></svg></a>
+          <ul class="submenu">
+            <li><a href="#inicio">Portada y presentación</a></li>
+            <li><a href="#rapidos">Accesos rápidos</a></li>
+            <li><a href="#datos">Información oficial en cifras</a></li>
+            <li><a href="#accesos">Ubicar la información</a></li>
+          </ul>
+        </li>
+        <li class="menu__item">
+          <a href="#institucion">Institución<svg class="icon menu__flecha" aria-hidden="true"><use href="#ico-abajo"></use></svg></a>
+          <ul class="submenu">
+            <li><a href="#institucion">Identidad y reseña histórica</a></li>
+            <li><a href="#panel-mision">Misión</a></li>
+            <li><a href="#panel-vision">Visión</a></li>
+            <li><a href="#panel-principios">Principios institucionales</a></li>
+            <li><a href="#panel-simbolos">Símbolos institucionales</a></li>
+            <li><a href="#panel-perfil">Perfil del estudiante</a></li>
+            <li><a href="#panel-sedes">Sedes de la institución</a></li>
+            <li><a href="#comunidad">Comunidad y escuela de familias</a></li>
+          </ul>
+        </li>
+        <li class="menu__item">
+          <a href="#oferta">Oferta educativa<svg class="icon menu__flecha" aria-hidden="true"><use href="#ico-abajo"></use></svg></a>
+          <ul class="submenu">
+            <li><a href="#oferta">Niveles, grados y modalidades</a></li>
+            <li><a href="#espacios">Nuestros espacios</a></li>
+            <li><a href="#horarios">Horarios de clase</a></li>
+          </ul>
+        </li>
+        <li class="menu__item">
+          <a href="#proyectos">Proyectos<svg class="icon menu__flecha" aria-hidden="true"><use href="#ico-abajo"></use></svg></a>
+          <ul class="submenu">
+            <li><a href="#proyectos">Semillero de investigación</a></li>
+            <li><a href="#proyectos">InnovaTec y feria de la ciencia</a></li>
+            <li><a href="#proyectos">Medio ambiente y territorio</a></li>
+            <li><a href="#proyectos">Tecnología e informática</a></li>
+          </ul>
+        </li>
+        <li class="menu__item">
+          <a href="#noticias">Noticias<svg class="icon menu__flecha" aria-hidden="true"><use href="#ico-abajo"></use></svg></a>
+          <ul class="submenu">
+            <li><a href="#noticias">Noticias y eventos</a></li>
+            <li><a href="#galeria">Galería de fotografías</a></li>
+            <li><a href="#multimedia">Videos institucionales</a></li>
+          </ul>
+        </li>
+        <li class="menu__item">
+          <a href="#documentos">Documentos<svg class="icon menu__flecha" aria-hidden="true"><use href="#ico-abajo"></use></svg></a>
+          <ul class="submenu">
+            <li><a href="#documentos">Todos los documentos</a></li>
+            <li><a href="#documentos">PEI</a></li>
+            <li><a href="#documentos">SIEE</a></li>
+            <li><a href="#documentos">Manual de convivencia</a></li>
+            <li><a href="#documentos">Calendario escolar</a></li>
+            <li><a href="#documentos">Guías de estudio</a></li>
+            <li><a href="#transparencia">Transparencia e información pública</a></li>
+          </ul>
+        </li>
+        <li class="menu__item">
+          <a href="#contacto">Contacto<svg class="icon menu__flecha" aria-hidden="true"><use href="#ico-abajo"></use></svg></a>
+          <ul class="submenu">
+            <li><a href="#contacto">Formulario de mensajes</a></li>
+            <li><a href="#contacto">Teléfonos y correos</a></li>
+            <li><a href="#panel-sedes">Ubicación y sedes</a></li>
+            <li><a href="#horarios">Horarios de atención escolar</a></li>
+            <li><a href="#transparencia">Canales de atención</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
 
@@ -1623,6 +1887,10 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
           <svg class="icon" aria-hidden="true"><use href="#ico-chispa"></use></svg>
           Explora nuestros proyectos
         </a>
+        <a class="btn btn--secondary" href="#espacios">
+          <svg class="icon" aria-hidden="true"><use href="#ico-pin"></use></svg>
+          Conoce nuestros espacios
+        </a>
       </div>
     </div>
   </div>
@@ -1665,6 +1933,10 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       <a class="rapido" href="#noticias">
         <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-periodico"></use></svg></span>
         <b>Noticias</b><span>Eventos, logros y avisos</span>
+      </a>
+      <a class="rapido" href="#horarios">
+        <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-reloj"></use></svg></span>
+        <b>Horarios de clase</b><span>Por salón y por docente</span>
       </a>
     </div>
   </div>
@@ -2031,32 +2303,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
               <p class="campo__ayuda">Bandera institucional: dos franjas horizontales (blanca y gris) con el
               escudo al centro, según la descripción del PEI 2025.</p>
 
-              <h4>Himno institucional</h4>
-              <p>
-                <audio controls preload="none" style="width:100%;max-width:440px">
-                  <source src="assets/audio/himno-institucional.mp3" type="audio/mpeg">
-                  Su navegador no puede reproducir este audio.
-                </audio>
-              </p>
-              <p class="pendiente"><strong>Pendiente: letra y música oficiales aprobadas.</strong> El PEI registra
-              el himno como «(pendiente)». La letra y la grabación disponibles son una <strong>muestra
-              preliminar creada con apoyo de inteligencia artificial</strong>.</p>
-              <details class="letra-himno">
-                <summary>Ver la letra de la muestra preliminar</summary>
-                <p class="letra-himno__intro">Institución Educativa Rural Puerto Rosario,<br>sembrando saber, esperanza y honor.</p>
-                <p class="letra-himno__rotulo">Primera estrofa</p>
-                <p>En las tierras verdes del Putumayo,<br>donde el río acompaña nuestro andar,<br>se levanta orgullosa nuestra escuela,<br>como un faro que nos guía a caminar.<br>Somos hijos de campos y senderos,<br>de familias que nos enseñan a luchar;<br>con esfuerzo construimos nuestro futuro,<br>con valores, respeto y dignidad.</p>
-                <p class="letra-himno__rotulo">Coro</p>
-                <p>¡Puerto Rosario, templo de esperanza,<br>fuente de saber, de honor y de verdad!<br>En tus aulas florecen nuestros sueños,<br>y aprendemos cada día a transformar.<br>¡Adelante, juventud estudiosa,<br>con la ciencia, el trabajo y la unión!<br>Nuestra escuela ilumina los caminos,<br>¡Puerto Rosario vive en nuestro corazón!</p>
-                <p class="letra-himno__rotulo">Segunda estrofa</p>
-                <p>Aquí el libro se encuentra con la vida,<br>y el saber se convierte en acción;<br>aprendemos a pensar y a crear,<br>con respeto, compromiso y corazón.<br>Nuestros maestros siembran esperanza,<br>con paciencia, entrega y vocación;<br>y en las manos de niños y jóvenes<br>crece fuerte nuestra educación.</p>
-                <p class="letra-himno__rotulo">Tercera estrofa</p>
-                <p>Con la ciencia encendemos nuevas luces,<br>con tecnología aprendemos a crear;<br>cada idea se convierte en esperanza,<br>cada sueño puede hacerse realidad.<br>Unidos desde todas nuestras sedes,<br>una misma voz nos llama a avanzar;<br>solidarios, honestos y valientes,<br>llevaremos nuestra escuela más allá.</p>
-                <p class="letra-himno__rotulo">Puente</p>
-                <p>¡Ciencia! ¡Conocimiento! ¡Trabajo! ¡Unidad!<br>¡Puerto Rosario, siempre adelante,<br>por la educación y la comunidad!</p>
-                <p class="letra-himno__rotulo">Final</p>
-                <p>Puerto Rosario, querida institución,<br>semillero de esperanza y de valor.<br>Con orgullo llevaremos tu enseñanza,<br>¡por siempre vivirás en nuestro corazón!</p>
-              </details>
+              
 
             </div>
           </div>
@@ -2335,6 +2582,159 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 <!-- =====================================================================
      7. INNOVACIÓN Y PROYECTOS
      ===================================================================== -->
+<!-- =====================================================================
+     NUESTROS ESPACIOS: para que el estudiante reconozca los lugares
+     donde transcurre la vida escolar (fotografías reales de la sede).
+     ===================================================================== -->
+<section class="section" id="espacios" aria-labelledby="espacios-titulo">
+  <div class="wrap">
+    <div class="section__head js-revelar">
+      <span class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#ico-pin"></use></svg> Nuestros espacios</span>
+      <h2 id="espacios-titulo">Conoce los espacios donde aprendemos</h2>
+      <p class="section__lead">
+        Estos son los lugares donde transcurre la vida escolar en la sede principal. Las fotografías
+        van cambiando para que reconozcas cada rincón de la institución.
+      </p>
+    </div>
+
+    <div class="espacios__grid js-revelar">
+
+      <article class="espacio">
+        <div class="espacio__foto">
+          <img src="assets/img/espacios/sala-de-sistemas-1.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Aula de sistemas de la institución con computadores portátiles y mesas de trabajo">
+          <img src="assets/img/espacios/sala-de-sistemas-2.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Aula de sistemas vista desde el fondo, con los puestos de trabajo de los estudiantes">
+          <span class="espacio__etiqueta">Tecnología e Informática</span>
+        </div>
+        <h3>Aula de sistemas</h3>
+        <p>Aquí se dictan las clases de Tecnología e Informática y se crean los prototipos de InnovaTec y
+        del Día de la Inteligencia Artificial.</p>
+      </article>
+
+      <article class="espacio">
+        <div class="espacio__foto">
+          <img src="assets/img/espacios/patio-central-1.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Patio central de la institución con el coliseo cubierto y las aulas alrededor">
+          <img src="assets/img/espacios/patio-central-2.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Patio de la institución con las aulas y los corredores">
+          <span class="espacio__etiqueta">Encuentro y descanso</span>
+        </div>
+        <h3>Patio central</h3>
+        <p>El punto de encuentro de la comunidad educativa: formaciones, izadas de bandera, descansos y
+        actividades culturales.</p>
+      </article>
+
+      <article class="espacio">
+        <div class="espacio__foto">
+          <img src="assets/img/espacios/zona-deportiva-1.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Zona deportiva y de juegos de la institución, con estructura para la recreación">
+          <img src="assets/img/espacios/zona-deportiva-2.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Zona verde y deportiva de la institución rodeada de árboles">
+          <span class="espacio__etiqueta">Educación física y recreación</span>
+        </div>
+        <h3>Zona deportiva y de juegos</h3>
+        <p>Espacio para educación física, recreación, juegos tradicionales y el encuentro deportivo
+        entre grados y sedes.</p>
+      </article>
+
+      <article class="espacio">
+        <div class="espacio__foto">
+          <img src="assets/img/espacios/huerta-escolar-1.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Huerta escolar y jardines sembrados por los estudiantes junto a los corredores">
+          <img src="assets/img/espacios/huerta-escolar-2.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Cultivos y jardines de la institución cuidados por la comunidad educativa">
+          <span class="espacio__etiqueta">Ciencias naturales y ambiente</span>
+        </div>
+        <h3>Huerta y jardines</h3>
+        <p>La huerta escolar es un aula viva: allí se aprende ciencias naturales, soberanía alimentaria y
+        cuidado del ambiente.</p>
+      </article>
+
+      <article class="espacio">
+        <div class="espacio__foto">
+          <img src="assets/img/espacios/pasillos-verdes-1.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Pasillo cubierto con jardineras que conecta las aulas de la institución">
+          <img src="assets/img/espacios/pasillos-verdes-2.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Sendero rodeado de plantas y árboles dentro de la institución">
+          <span class="espacio__etiqueta">Territorio y biodiversidad</span>
+        </div>
+        <h3>Pasillos y senderos verdes</h3>
+        <p>Los corredores con jardineras conectan las aulas y acompañan la jornada entre árboles,
+        plantas y el paisaje del territorio.</p>
+      </article>
+
+      <article class="espacio">
+        <div class="espacio__foto">
+          <img src="assets/img/espacios/plaza-cubierta-1.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Plaza cubierta de la institución, con malla y espacio para actividades grupales">
+          <img src="assets/img/espacios/plaza-cubierta-2.jpg" width="900" height="506" loading="lazy" decoding="async"
+               alt="Zona cubierta de la institución con mesas para actividades y descanso">
+          <span class="espacio__etiqueta">Actos y ferias</span>
+        </div>
+        <h3>Plaza cubierta</h3>
+        <p>Zona techada para actos culturales, ferias de la ciencia, talleres y actividades cuando
+        llueve.</p>
+      </article>
+
+    </div>
+
+    <figure class="espacios__video js-revelar">
+      <video controls preload="none" playsinline muted width="1280" height="720"
+             poster="assets/video/recorrido-espacios-poster.jpg"
+             aria-label="Recorrido en video por los espacios de la institución">
+        <source src="assets/video/recorrido-espacios.mp4" type="video/mp4">
+        Su navegador no puede reproducir este video. Arriba están las fotografías de los espacios.
+      </video>
+      <figcaption>
+        Recorrido por la sede principal: el aula de sistemas, la zona deportiva, la huerta escolar,
+        los pasillos verdes y la plaza cubierta.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- =====================================================================
+     HORARIOS DE CLASE
+     Los datos viven en datos/horarios.js, generado desde el archivo
+     oficial de la institución (HORARIO DE CLASE ... .xlsx).
+     ===================================================================== -->
+<section class="section section--alt" id="horarios" aria-labelledby="horarios-titulo">
+  <div class="wrap">
+    <div class="section__head js-revelar">
+      <span class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#ico-reloj"></use></svg> Horarios de clase</span>
+      <h2 id="horarios-titulo">Horario por salón y por docente</h2>
+      <p class="section__lead" id="horariosLead">
+        Horario de la sede principal (básica secundaria y educación media, grados 6.º a 11.º).
+      </p>
+    </div>
+
+    <div class="horarios__bloques">
+      <div class="horarios__bloque js-revelar">
+        <h3 class="horarios__subtitulo">
+          <svg class="icon" aria-hidden="true"><use href="#ico-personas"></use></svg> Por salón y grados
+        </h3>
+        <div class="acordeon" id="horariosGrupos"></div>
+      </div>
+
+      <div class="horarios__bloque js-revelar">
+        <h3 class="horarios__subtitulo">
+          <svg class="icon" aria-hidden="true"><use href="#ico-libro"></use></svg> Por docente
+        </h3>
+        <div class="acordeon" id="horariosDocentes"></div>
+      </div>
+    </div>
+
+    <div class="horarios__descargas" id="horariosDescargas" hidden>
+      <h3 class="horarios__subtitulo">
+        <svg class="icon" aria-hidden="true"><use href="#ico-doc"></use></svg> Descargar e imprimir
+      </h3>
+      <p class="horarios__ayuda">Cada horario se puede ver o imprimir en formato PDF y compartir como imagen.</p>
+      <ul class="horarios__lista" id="horariosLista"></ul>
+    </div>
+  </div>
+</section>
+
 <section class="section section--alt" id="proyectos" aria-labelledby="proyectos-titulo">
   <div class="wrap">
     <div class="section__head js-revelar">
@@ -3044,14 +3444,6 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
           <p>Correo electrónico, teléfono y horarios oficiales de atención al público.</p>
         </div>
       </article>
-      <article class="card js-revelar">
-        <div class="card__body">
-          <span class="badge badge--pendiente"><svg class="icon" aria-hidden="true"><use href="#ico-reloj"></use></svg> Por implementar</span>
-          <h3>Protección de datos personales</h3>
-          <p>Política de tratamiento de datos personales y aviso de privacidad, pendientes de revisión
-          institucional.</p>
-        </div>
-      </article>
     </div>
   </div>
 </section>
@@ -3132,8 +3524,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
           <svg class="icon" aria-hidden="true"><use href="#ico-mail"></use></svg>
           <div>
             <p>Su mensaje llega directamente al correo institucional
-            <strong>ierpuertorosario@gmail.com</strong> y a
-            <strong>ierpuertorosario1@gmail.com</strong>.</p>
+            <strong>ierpuertorosario@gmail.com</strong>.</p>
           </div>
         </div>
 
@@ -3244,11 +3635,6 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 
     <div class="footer-legal">
       <p>
-        <strong>Aviso de privacidad y tratamiento de datos personales:</strong> pendiente de revisión
-        institucional. No se declara el cumplimiento de la Ley 1581 de 2012 ni de políticas internas hasta
-        que la institución publique su política oficial.
-      </p>
-      <p>
         &copy; <span id="anio">2026</span> Institución Educativa Rural Puerto Rosario.
         <br><span id="selloActualizacion">Contenido actualizado por la institución.</span>
         <br><a href="admin.html" id="enlaceAdmin" rel="nofollow" style="display:none">Acceso institucional (rectoría y administración)</a>
@@ -3273,7 +3659,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
         aria-label="Activar o detener la música de fondo" title="Música de fondo">
   <svg class="icon" aria-hidden="true"><use href="#ico-silencio"></use></svg>
 </button>
-<audio id="audioFondo" src="assets/audio/himno-institucional.mp3" loop preload="auto"></audio>
+<audio id="audioFondo" src="assets/audio/musica-de-fondo.mp3" loop preload="auto"></audio>
 
 <!-- =====================================================================
      VISOR DE IMÁGENES (ampliación de la galería)
@@ -3427,6 +3813,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
      institucional (admin.html). Si no se carga este archivo, el sitio
      conserva el contenido incluido en esta misma página. -->
 <script src="datos/contenido.js"></script>
+<script src="datos/horarios.js"></script>
 <!-- Noticias coleccionadas AUTOMÁTICAMENTE por el actualizador
      (actualizador/fallback-fb.js): nuevas publicaciones de la página de
      Facebook, con su texto completo y todas sus fotografías. Este archivo
@@ -3904,7 +4291,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     var estado = qs('#estadoForm');
     if (!form || !estado) return;
 
-    var DESTINOS = 'ierpuertorosario@gmail.com,ierpuertorosario1@gmail.com';
+    var DESTINOS = 'ierpuertorosario@gmail.com';
     var boton = form.querySelector('button[type="submit"]');
     var textoBoton = boton ? boton.innerHTML : '';
     var valor = function (sel) { var c = qs(sel, form); return c ? c.value : ''; };
@@ -3961,8 +4348,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       }).catch(function () {
         nota('alerta', 'ico-alerta',
           '<p><strong>No se pudo enviar automáticamente.</strong> Escríbanos a ' +
-          '<a href="mailto:ierpuertorosario@gmail.com">ierpuertorosario@gmail.com</a> o a ' +
-          '<a href="mailto:ierpuertorosario1@gmail.com">ierpuertorosario1@gmail.com</a>, ' +
+          '<a href="mailto:ierpuertorosario@gmail.com">ierpuertorosario@gmail.com</a>, ' +
           'o <a href="' + correoAlterno() + '">abra su correo con el mensaje ya escrito</a>.</p>');
       }).finally(function () {
         if (boton) { boton.disabled = false; boton.innerHTML = textoBoton; }
@@ -4379,40 +4765,10 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     var zona = caja.parentNode || caja;
     var INTERVALO = 2000; // las fotografías de la portada cambian cada 2 segundos
 
-    /* Video corto de la institución como fondo vivo de la portada.
-       No se carga si la persona pidió menos movimiento, si activó el ahorro
-       de datos o si el navegador avisa que la conexión es muy lenta: en esos
-       casos queda la fotografía de portada. */
-    var red = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
-    var conexionLenta = red.saveData === true || /(^|-)2g/i.test(red.effectiveType || '');
-    var videoPortada = null;
-    if (!reducir && !conexionLenta) {
-      videoPortada = document.createElement('video');
-      videoPortada.className = 'hero__video';
-      videoPortada.muted = true;
-      videoPortada.defaultMuted = true;
-      videoPortada.loop = true;
-      videoPortada.autoplay = true;
-      videoPortada.playsInline = true;
-      videoPortada.setAttribute('muted', '');
-      videoPortada.setAttribute('playsinline', '');
-      videoPortada.setAttribute('preload', 'auto');
-      videoPortada.setAttribute('aria-hidden', 'true');
-      videoPortada.setAttribute('tabindex', '-1');
-      videoPortada.setAttribute('poster', 'assets/video/portada-video-poster.jpg');
-      videoPortada.innerHTML = '<source src="assets/video/portada-video.mp4" type="video/mp4">';
-      caja.insertBefore(videoPortada, caja.firstChild);
-      var arranque = videoPortada.play();
-      if (arranque && arranque['catch']) { arranque['catch'](function () {}); }
-    }
-
-    /* Guion de la portada: fotografía → video → fotografía → video…
-       Así la portada se ve viva y las transiciones son rápidas. */
-    var guion = [];
-    fotos.forEach(function (f, i) {
-      guion.push(i);
-      if (videoPortada) { guion.push(null); } // null = se ve el video de fondo
-    });
+    /* La portada muestra únicamente las tres fotografías de la comunidad
+       educativa (docentes y estudiantes). El video del recorrido por los
+       espacios quedó en la sección "Nuestros espacios". */
+    var guion = fotos.map(function (f, i) { return i; });
 
     var actual = 0; // posición dentro del guion
     var temporizador = null;
@@ -4770,6 +5126,400 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     var a = document.getElementById('enlaceAdmin');
     if (a) { a.style.display = 'inline'; }
   }
+}());
+</script>
+<script>
+/* =====================================================================
+   HORARIOS DE CLASE — dibuja las tablas con los datos de datos/horarios.js
+   Estructura de la jornada: 3 bloques, DESCANSO, 2 bloques, ALMUERZO
+   y 2 bloques finales (7 horas de clase, de 8:00 a. m. a 3:00 p. m.).
+   ===================================================================== */
+(function () {
+  var H = window.HORARIOS_IERP;
+  var cajaGrupos = document.getElementById('horariosGrupos');
+  var cajaDocentes = document.getElementById('horariosDocentes');
+  if (!H || !cajaGrupos || !cajaDocentes) { return; }
+
+  var DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+
+  function esc(t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function tabla(filas, pie) {
+    var html = '<table class="horario">' +
+      (pie ? '<caption>' + esc(pie) + '</caption>' : '') +
+      '<thead><tr><th scope="col">Hora</th>';
+    var d, f;
+    for (d = 0; d < DIAS.length; d++) { html += '<th scope="col">' + DIAS[d] + '</th>'; }
+    html += '</tr></thead><tbody>';
+
+    for (f = 0; f < filas.length; f++) {
+      var fila = filas[f];
+      var hora = esc(fila.inicio) + ' – ' + esc(fila.fin);
+      if (fila.tipo === 'pausa') {
+        html += '<tr class="es-pausa"><th scope="row">' + hora + '</th>' +
+          '<td colspan="' + DIAS.length + '">' + esc(fila.etiqueta || 'Pausa') + '</td></tr>';
+        continue;
+      }
+      html += '<tr><th scope="row"><b>' + esc(fila.item) + '</b>' +
+        '<span class="horarios__hora">' + hora + '</span></th>';
+      for (d = 0; d < DIAS.length; d++) {
+        var valor = (fila.dias && fila.dias[d]) ? fila.dias[d] : '';
+        html += '<td>' + (valor ? esc(valor) : '<span class="vacio">—</span>') + '</td>';
+      }
+      html += '</tr>';
+    }
+    return html + '</tbody></table>';
+  }
+
+  function bloque(id, titulo, sub, filas, abierto, pie) {
+    var panel = 'panel-' + id;
+    return '<div class="acordeon__item">' +
+      '<button class="acordeon__boton" type="button" aria-expanded="' + (abierto ? 'true' : 'false') +
+        '" aria-controls="' + panel + '">' +
+        '<svg class="icon" aria-hidden="true"><use href="#ico-reloj"></use></svg>' +
+        '<span class="horarios__titulo"><b>' + esc(titulo) + '</b>' +
+        (sub ? '<span class="horarios__areas">' + esc(sub) + '</span>' : '') + '</span>' +
+        '<svg class="icon" aria-hidden="true"><use href="#ico-abajo"></use></svg>' +
+      '</button>' +
+      '<div class="acordeon__panel" id="' + panel + '"' + (abierto ? '' : ' hidden') + '>' +
+        '<div class="horarios__tabla-scroll">' + tabla(filas, pie) + '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  var htmlGrupos = '';
+  (H.grupos || []).forEach(function (g, i) {
+    htmlGrupos += bloque(g.id, g.titulo, g.etiqueta, g.filas || [], i === 0, '');
+  });
+  cajaGrupos.innerHTML = htmlGrupos;
+
+  var htmlDocentes = '';
+  (H.docentes || []).forEach(function (doc, i) {
+    htmlDocentes += bloque(doc.id, doc.nombre, doc.areas, doc.filas || [], i === 0, '');
+  });
+  cajaDocentes.innerHTML = htmlDocentes;
+
+  var lead = document.getElementById('horariosLead');
+  if (lead) { lead.textContent = (H.sede || '') + ' ' + (H.vigencia || ''); }
+
+  function conectar(caja) {
+    caja.addEventListener('click', function (e) {
+      var boton = e.target.closest ? e.target.closest('.acordeon__boton') : null;
+      if (!boton || !caja.contains(boton)) { return; }
+      var panel = document.getElementById(boton.getAttribute('aria-controls'));
+      var abierto = boton.getAttribute('aria-expanded') === 'true';
+      boton.setAttribute('aria-expanded', abierto ? 'false' : 'true');
+      if (panel) {
+        if (abierto) { panel.setAttribute('hidden', ''); }
+        else { panel.removeAttribute('hidden'); }
+      }
+    });
+  }
+  conectar(cajaGrupos);
+  conectar(cajaDocentes);
+
+  /* Descargas: un PDF y una imagen por cada horario (se muestran solo si
+     los archivos ya se generaron; hasta entonces el bloque queda oculto). */
+  var lista = document.getElementById('horariosLista');
+  var cajaDesc = document.getElementById('horariosDescargas');
+  if (lista && cajaDesc && H.descargas === true) {
+    var filas = [];
+    (H.grupos || []).forEach(function (g) {
+      filas.push(['Grados ' + g.titulo + (g.etiqueta ? ' (' + g.etiqueta + ')' : ''), g.id]);
+    });
+    (H.docentes || []).forEach(function (doc) { filas.push(['Docente ' + doc.nombre, doc.id]); });
+    var html = '';
+    filas.forEach(function (f) {
+      html += '<li>' +
+        '<span class="horarios__nombre">' + esc(f[0]) + '</span>' +
+        '<a href="documentos/horarios/' + f[1] + '.pdf" target="_blank" rel="noopener">' +
+          '<svg class="icon" aria-hidden="true"><use href="#ico-doc"></use></svg>PDF para imprimir</a>' +
+        '<a href="assets/img/horarios/' + f[1] + '.png" target="_blank" rel="noopener">' +
+          '<svg class="icon" aria-hidden="true"><use href="#ico-imagen"></use></svg>Imagen</a>' +
+      '</li>';
+    });
+    if (html) { lista.innerHTML = html; cajaDesc.hidden = false; }
+  }
+}());
+
+/* =====================================================================
+   BUSCADOR DEL SITIO — una lupa en la barra superior
+   ===================================================================== */
+(function () {
+  var form = document.getElementById('buscarForm');
+  var boton = document.getElementById('buscarAbrir');
+  var campo = document.getElementById('buscarCampo');
+  var caja = document.getElementById('buscarResultados');
+  var limpiar = document.getElementById('buscarLimpiar');
+  if (!form || !campo || !caja) { return; }
+
+  function esc(t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function norm(t) {
+    var s = String(t == null ? '' : t).toLowerCase();
+    if (s.normalize) { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+    return s.replace(/[^a-z0-9\s.\-]/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  var indice = [];
+  function agregar(titulo, detalle, url, categoria, palabras) {
+    if (!titulo) { return; }
+    indice.push({
+      t: titulo,
+      d: detalle || '',
+      u: url || '#inicio',
+      c: categoria || '',
+      b: norm(titulo + ' ' + (detalle || '') + ' ' + (categoria || '') + ' ' + (palabras || ''))
+    });
+  }
+
+  /* 1. Secciones del sitio */
+  [
+    ['Inicio', 'Portada y presentación de la institución', '#inicio', 'Sección', 'portada principal'],
+    ['Accesos rápidos', 'Qué información necesita hoy', '#rapidos', 'Sección', 'accesos rapidos'],
+    ['Información oficial en cifras', 'Estudiantes, sedes, docentes y jornada', '#datos', 'Sección', 'cifras datos institucion'],
+    ['Institución', 'Reseña histórica, misión, visión, principios, símbolos y sedes', '#institucion', 'Sección', 'historia mision vision principios simbolos escudo bandera sedes perfil'],
+    ['Oferta educativa', 'Niveles, grados, sedes y modalidades', '#oferta', 'Sección', 'preescolar primaria secundaria media grados matricula jornada sedes'],
+    ['Nuestros espacios', 'Aula de sistemas, zona deportiva, huerta, pasillos y plaza cubierta', '#espacios', 'Sección', 'espacios instalaciones huerta cancha aulas recorrido'],
+    ['Horarios de clase', 'Horario por salón (6.º, 7.º, 8.º, 9.º, 10.º y 11.º) y por docente', '#horarios', 'Sección', 'horario clases salones grados docentes jornada descanso almuerzo'],
+    ['Proyectos', 'InnovaTec, ferias de ciencia, medio ambiente y tecnología', '#proyectos', 'Sección', 'proyectos innovatec semillero investigacion ciencia tecnologia'],
+    ['Noticias', 'Noticias, eventos y avisos de la institución', '#noticias', 'Sección', 'noticias eventos avisos'],
+    ['Galería de fotografías', 'Nuestro día a día en imágenes', '#galeria', 'Sección', 'galeria fotos imagenes'],
+    ['Videos institucionales', 'Videos del Día de la IA, convivencia y más', '#multimedia', 'Sección', 'videos multimedia'],
+    ['Documentos', 'PEI, SIEE, manual de convivencia, calendario y guías', '#documentos', 'Sección', 'documentos pei siee manual convivencia calendario guias pdf'],
+    ['Comunidad y escuela de familias', 'Escuela de padres, plan lector y gobierno escolar', '#comunidad', 'Sección', 'comunidad familias escuela padres plan lector gobierno escolar'],
+    ['Transparencia', 'Información pública y canales de atención', '#transparencia', 'Sección', 'transparencia informacion publica rendicion de cuentas'],
+    ['Contacto', 'Teléfonos, correos, ubicación y formulario de mensajes', '#contacto', 'Sección', 'contacto telefono correo ubicacion mensaje formulario']
+  ].forEach(function (s) { agregar(s[0], s[1], s[2], s[3], s[4]); });
+
+  /* 2. Contenido administrable (datos/contenido.js) */
+  var C = window.CONTENIDO_IERP || {};
+  (C.documentos || []).forEach(function (d) {
+    if (!d || d.publicado === false) { return; }
+    agregar(d.titulo, (d.categoria ? d.categoria + '. ' : '') + (d.descripcion || ''),
+      d.archivo || '#documentos', 'Documento', String(d.anio || '') + ' pdf');
+  });
+  (C.noticias || []).forEach(function (n) {
+    if (!n || n.publicado === false) { return; }
+    agregar(n.titulo, (n.fecha ? n.fecha + '. ' : '') + (n.resumen || ''), '#noticias', 'Noticia', '');
+  });
+  (C.proyectos || []).forEach(function (p) {
+    if (!p || p.publicado === false) { return; }
+    agregar(p.titulo, (p.area ? p.area + '. ' : '') + (p.descripcion || ''), '#proyectos', 'Proyecto', '');
+  });
+  (C.videos || []).forEach(function (v) {
+    if (!v || !v.titulo) { return; }
+    agregar(v.titulo, (v.fecha ? v.fecha + '. ' : '') + (v.descripcion || ''),
+      '#multimedia', 'Video', '');
+  });
+  var inst = C.institucion || {};
+  (inst.sedes || []).forEach(function (s) {
+    if (!s || typeof s !== 'object') { return; }
+    agregar(s.nombre || s.titulo, s.descripcion || s.detalle || 'Sede de la institución',
+      '#institucion', 'Sede', (s.municipio || '') + ' ' + (s.vereda || ''));
+  });
+
+  /* 3. Horarios (datos/horarios.js) */
+  var H = window.HORARIOS_IERP;
+  if (H) {
+    (H.grupos || []).forEach(function (g) {
+      agregar('Horario de ' + g.titulo,
+        (g.etiqueta ? g.etiqueta + '. ' : '') + 'Horario de clases por salón',
+        '#horarios', 'Horario', 'horario clases salon grados ' + (H.vigencia || ''));
+    });
+    (H.docentes || []).forEach(function (d) {
+      agregar('Horario del docente: ' + d.nombre,
+        (d.areas || '') + '. Horario por docente',
+        '#horarios', 'Horario', 'horario docente profesor ' + (H.vigencia || ''));
+    });
+  }
+
+  /* Abre el acordeón al que apunta un enlace (misión, visión, horario…) */
+  function abrirDestino(hash) {
+    var id = String(hash || '').replace('#', '');
+    if (!id) { return; }
+    var panel = document.getElementById(id);
+    if (!panel || !panel.classList || !panel.classList.contains('acordeon__panel')) { return; }
+    if (panel.hasAttribute('hidden')) {
+      var b = document.querySelector('.acordeon__boton[aria-controls="' + id + '"]');
+      if (b && b.getAttribute('aria-expanded') !== 'true') { b.click(); }
+    }
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) { return; }
+    window.setTimeout(function () { abrirDestino(a.getAttribute('href')); }, 80);
+  });
+  window.addEventListener('hashchange', function () { abrirDestino(location.hash); });
+  abrirDestino(location.hash);
+
+  /* Interfaz del buscador */
+  var activo = -1;
+
+  function ocultar() {
+    caja.hidden = true;
+    campo.setAttribute('aria-expanded', 'false');
+    activo = -1;
+  }
+
+  function recoger() {
+    ocultar();
+    campo.value = '';
+    if (limpiar) { limpiar.hidden = true; }
+    form.classList.remove('is-abierto');
+    if (boton) { boton.setAttribute('aria-expanded', 'false'); }
+  }
+
+  function pintar(lista, consulta) {
+    if (!consulta) { ocultar(); return; }
+    if (!lista.length) {
+      caja.innerHTML = '<li class="buscar__vacio">No se encontró «' + esc(consulta) +
+        '». Pruebe con otra palabra: horario, PEI, matrícula, contacto…</li>';
+    } else {
+      var html = '';
+      lista.forEach(function (r, i) {
+        var extra = r.d ? String(r.d).replace(/\s+/g, ' ').slice(0, 120) : '';
+        html += '<li role="option" id="buscar-op-' + i + '">' +
+          '<a href="' + esc(r.u) + '" data-i="' + i + '"><b>' + esc(r.t) + '</b>' +
+          '<span>' + esc(r.c) + (extra ? ' · ' + esc(extra) : '') + '</span></a></li>';
+      });
+      html += '<li class="buscar__pie" role="presentation">' + lista.length +
+        ' resultado' + (lista.length === 1 ? '' : 's') + ' · use las flechas y Enter</li>';
+      caja.innerHTML = html;
+    }
+    caja.hidden = false;
+    campo.setAttribute('aria-expanded', 'true');
+    activo = -1;
+  }
+
+  function buscar(consulta) {
+    var q = norm(consulta);
+    if (q.length < 2) { ocultar(); return; }
+    var terminos = q.split(' ');
+    var res = [];
+    for (var i = 0; i < indice.length; i++) {
+      var e = indice[i], puntos = 0, ok = true;
+      for (var t = 0; t < terminos.length; t++) {
+        var pos = e.b.indexOf(terminos[t]);
+        if (pos < 0) { ok = false; break; }
+        puntos += pos < 24 ? 3 : 1;
+      }
+      if (!ok) { continue; }
+      var nt = norm(e.t);
+      if (nt.indexOf(q) === 0) { puntos += 15; }
+      else if (nt.indexOf(q) > -1) { puntos += 7; }
+      res.push({ t: e.t, d: e.d, u: e.u, c: e.c, p: puntos, o: i });
+    }
+    res.sort(function (a, b) { return b.p - a.p || a.o - b.o; });
+    pintar(res.slice(0, 10), consulta);
+  }
+
+  function abrir() {
+    form.classList.add('is-abierto');
+    if (boton) { boton.setAttribute('aria-expanded', 'true'); }
+    campo.focus();
+    campo.select();
+  }
+
+  function ir(enlace) {
+    if (!enlace) { return; }
+    var destino = enlace.getAttribute('href') || '';
+    recoger();
+    if (destino.charAt(0) === '#') {
+      var seccion = document.getElementById(destino.slice(1));
+      if (seccion) {
+        abrirDestino(destino);
+        seccion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (history.replaceState) { history.replaceState(null, '', destino); }
+      }
+    } else if (destino) {
+      window.open(destino, '_blank', 'noopener');
+    }
+  }
+
+  if (boton) {
+    boton.addEventListener('click', function () {
+      if (form.classList.contains('is-abierto') && campo.value) { campo.focus(); return; }
+      if (form.classList.contains('is-abierto')) { recoger(); return; }
+      abrir();
+    });
+  }
+
+  form.addEventListener('mousedown', function (e) {
+    if (e.target === campo || caja.contains(e.target) || (boton && boton.contains(e.target))) { return; }
+    e.preventDefault();
+    abrir();
+  });
+
+  campo.addEventListener('input', function () {
+    if (limpiar) { limpiar.hidden = !campo.value; }
+    form.classList.add('is-abierto');
+    buscar(campo.value);
+  });
+
+  campo.addEventListener('focus', function () {
+    form.classList.add('is-abierto');
+    if (campo.value.length >= 2) { buscar(campo.value); }
+  });
+
+  campo.addEventListener('keydown', function (e) {
+    var enlaces = caja.querySelectorAll('a');
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      if (!enlaces.length) { return; }
+      e.preventDefault();
+      activo = e.key === 'ArrowDown'
+        ? (activo + 1) % enlaces.length
+        : (activo <= 0 ? enlaces.length - 1 : activo - 1);
+      for (var i = 0; i < enlaces.length; i++) {
+        enlaces[i].classList.toggle('is-activo', i === activo);
+      }
+      if (enlaces[activo].scrollIntoView) { enlaces[activo].scrollIntoView({ block: 'nearest' }); }
+      return;
+    }
+    if (e.key === 'Escape') { recoger(); return; }
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (enlaces.length) { ir((activo >= 0 && enlaces[activo]) ? enlaces[activo] : enlaces[0]); }
+      else { buscar(campo.value); }
+    }
+  });
+
+  caja.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a') : null;
+    if (a) { e.preventDefault(); ir(a); }
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var enlaces = caja.querySelectorAll('a');
+    if (enlaces.length) { ir((activo >= 0 && enlaces[activo]) ? enlaces[activo] : enlaces[0]); }
+    else { buscar(campo.value); }
+  });
+
+  if (limpiar) {
+    limpiar.addEventListener('click', function () { campo.value = ''; limpiar.hidden = true; ocultar(); campo.focus(); });
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!form.contains(e.target)) { recoger(); }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    var t = e.target || {};
+    if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) { return; }
+    if (e.key === '/' || ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K'))) {
+      e.preventDefault();
+      abrir();
+    }
+  });
 }());
 </script>
 </body>

@@ -72,7 +72,8 @@ window.CONTENIDO_IERP = {
     ]
   },
 
-  himno: 'assets/audio/himno-institucional.mp3',
+  /* Música de fondo del sitio (borrador, no es un himno oficial). */
+  musicaFondo: 'assets/audio/musica-de-fondo.mp3',
 
   areas: [
     { slug: 'tecnologia', nombre: 'Tecnología e Informática' },
@@ -550,23 +551,17 @@ window.CONTENIDO_IERP = {
       descripcion: 'Recorrido por la institución para recibir a los niños y las niñas que ingresan al grado preescolar.',
       archivo: 'assets/video/bienvenida-preescolar.mp4',
       poster: 'assets/video/bienvenida-preescolar-portada.jpg' },
-    { id: 'rector',
-      titulo: 'Saludo y despedida del rector',
-      fecha: '3 de octubre de 2026',
-      descripcion: 'Mensaje de saludo y despedida del rector a la comunidad educativa.',
-      archivo: 'assets/video/saludo-del-rector.mp4',
-      poster: 'assets/video/saludo-del-rector-portada.jpg' },
-    { id: 'innovatec',
-      titulo: 'Proyecto Innovatec',
+    { id: 'andrea',
+      titulo: 'Andrea y el Cambio en Puerto Rosario',
       fecha: '2026',
-      descripcion: 'Los estudiantes presentan los prototipos con los que resuelven necesidades de su vereda.',
-      archivo: 'assets/video/proyecto-innovatec.mp4',
-      poster: 'assets/video/proyecto-innovatec-portada.jpg' },
-    { id: 'institucional',
-      titulo: 'Estrategias, espacios y proyectos de la institución',
+      descripcion: 'Historia animada sobre Puerto Rosario, sus paisajes y su gente, para compartir en familia.',
+      archivo: 'assets/video/andrea-y-el-cambio.mp4',
+      poster: 'assets/video/andrea-y-el-cambio-portada.jpg' },
+    { id: 'convivencia',
+      titulo: 'Manual de convivencia: aprendamos a convivir',
       fecha: '2026',
-      descripcion: 'Recorrido por las estrategias, los espacios y los proyectos que hacen parte de la IER Puerto Rosario.',
-      archivo: 'assets/video/bienvenida-institucional.mp4',
-      poster: 'assets/video/bienvenida-institucional-portada.jpg' }
+      descripcion: 'Explica de forma sencilla qué es el manual de convivencia y su sentido formativo: las normas también educan en valores.',
+      archivo: 'assets/video/manual-de-convivencia.mp4',
+      poster: 'assets/video/manual-de-convivencia-portada.jpg' }
   ]
 };
