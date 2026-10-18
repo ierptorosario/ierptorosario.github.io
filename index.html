@@ -316,11 +316,15 @@ button{font:inherit}
   display:grid;place-items:center;padding:3px;
 }
 .marca__escudo img{width:100%;height:100%;object-fit:contain}
-.marca__texto{display:flex;flex-direction:column;min-width:0}
+.marca__texto{display:flex;flex-direction:column;min-width:0;gap:0}
 .marca__texto strong{
   font-family:var(--fuente-titulo);font-weight:700;color:var(--verde-900);
-  font-size:clamp(.92rem,.85rem + .35vw,1.08rem);line-height:1.2;
+  font-size:clamp(.92rem,.85rem + .35vw,1.08rem);line-height:1.08;
 }
+/* Nombre de la sede en dos líneas: «Institución Educativa Rural» y, muy
+   cerca, «Puerto Rosario». */
+.marca__texto .marca__linea1{line-height:1.08}
+.marca__texto .marca__linea2{line-height:1.02}
 .marca__texto small{color:var(--gris-500);font-size:.78rem;letter-spacing:.02em}
 
 .nav-toggle{
@@ -508,6 +512,40 @@ table.tabla tbody tr:last-child th,table.tabla tbody tr:last-child td{border-bot
 .carrusel__puntos i.is-activo{background:#fff;transform:scale(1.25)}
 .detalle__galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.5rem;margin-top:.9rem}
 .detalle__galeria img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radio-sm);border:1px solid var(--gris-200)}
+
+/* --- 9.6 Publicaciones anteriores de Facebook (solo título + enlace) --- */
+.noticias__anteriores{
+  margin-top:2rem;padding:1.1rem 1.2rem;border-radius:var(--radio-md);
+  background:linear-gradient(150deg,#ffffff,#f3f8fd);
+  border:1px solid #d5e3f0;box-shadow:0 14px 34px rgba(11,37,69,.09);
+}
+.noticias__anteriores-titulo{
+  display:flex;align-items:center;gap:.5rem;margin:0 0 .35rem;
+  font-size:1.02rem;color:var(--ierp-azul-900);
+}
+.noticias__anteriores-titulo .icon{width:1.15rem;height:1.15rem;color:var(--oro-oscuro)}
+.noticias__anteriores-ayuda{margin:0 0 .8rem;font-size:.84rem;color:var(--gris-500)}
+.noticias__anteriores-lista{list-style:none;margin:0;padding:0;display:grid;gap:.3rem}
+.noticias__anteriores-lista li{
+  display:flex;align-items:baseline;justify-content:space-between;gap:.8rem;
+  padding:.5rem .65rem;border-radius:10px;border-bottom:1px dashed rgba(11,37,69,.12);
+}
+.noticias__anteriores-lista li:last-child{border-bottom:0}
+.noticias__anteriores-lista a{
+  display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;
+  color:var(--ierp-azul-800);text-decoration:none;font-size:.9rem;line-height:1.35;
+}
+.noticias__anteriores-lista a:hover .anteriores__titulo{text-decoration:underline}
+.anteriores__titulo{font-weight:600}
+.anteriores__ver{
+  display:inline-flex;align-items:center;gap:.3rem;font-size:.76rem;font-weight:700;
+  color:var(--oro-oscuro);text-transform:uppercase;letter-spacing:.04em;
+}
+.anteriores__ver .icon{width:.85rem;height:.85rem}
+.anteriores__fecha{font-size:.78rem;color:var(--gris-500);white-space:nowrap}
+@media (max-width:700px){
+  .noticias__anteriores-lista li{flex-direction:column;gap:.2rem}
+}
 @media (prefers-reduced-motion: reduce){.carrusel__img{transition:none}}
 
 /* --- 9.6 Galería ------------------------------------------------- */
@@ -1563,12 +1601,25 @@ table.horario td .vacio{color:#c3ceda}
   transition:opacity .18s ease,transform .18s ease,visibility .18s ease;
 }
 .menu__item:hover > .submenu,
-.menu__item:focus-within > .submenu{opacity:1;visibility:visible;transform:none}
+.menu__item:focus-within > .submenu,
+.menu__item.is-abierto > .submenu{opacity:1;visibility:visible;transform:none}
 .submenu a{
-  display:block;padding:.44rem .62rem;border-radius:9px;font-size:.87rem;
-  font-weight:600;color:var(--ierp-azul-900);white-space:normal;
+  display:block;padding:.4rem .58rem;border-radius:9px;font-size:.78rem;
+  font-weight:400;font-family:Arial,"Arial Nova","Helvetica Neue",Helvetica,sans-serif;
+  letter-spacing:.01em;color:var(--ierp-azul-900);white-space:normal;
+  transition:background .16s ease,color .16s ease,transform .16s ease,box-shadow .16s ease;
 }
-.submenu a:hover{background:rgba(20,80,127,.13);color:var(--ierp-azul-700)}
+.submenu a:hover,
+.submenu a:focus-visible{
+  background:linear-gradient(90deg,rgba(201,162,39,.24),rgba(20,80,127,.12));
+  color:var(--ierp-azul-700);transform:translateX(3px);
+  box-shadow:inset 0 0 0 1px rgba(201,162,39,.38);
+}
+.submenu a.is-elegido{
+  background:linear-gradient(90deg,rgba(201,162,39,.46),rgba(20,80,127,.22));
+  color:var(--ierp-azul-900);
+  box-shadow:inset 0 0 0 1px rgba(201,162,39,.62);
+}
 @media (max-width:1279px){
   .menu__item > a{display:flex;width:100%}
   .menu__flecha{display:none}
@@ -1579,7 +1630,7 @@ table.horario td .vacio{color:#c3ceda}
     background:rgba(20,80,127,.05);
     -webkit-backdrop-filter:none;backdrop-filter:none;
   }
-  .submenu a{padding:.5rem .7rem;font-size:.92rem}
+  .submenu a{padding:.45rem .65rem;font-size:.8rem}
 }
 
 /* --- Píldoras de innovación --------------------------------------- */
@@ -1749,7 +1800,8 @@ table.horario td .vacio{color:#c3ceda}
         <img src="assets/img/escudo.png" width="56" height="56" alt="">
       </span>
       <span class="marca__texto">
-        <strong>Institución Educativa Rural Puerto Rosario</strong>
+        <strong class="marca__linea1">Institución Educativa Rural</strong>
+        <strong class="marca__linea2">Puerto Rosario</strong>
       </span>
     </a>
 
@@ -3037,6 +3089,19 @@ table.horario td .vacio{color:#c3ceda}
       <p>No se encontraron noticias que coincidan con tu búsqueda.</p>
       <button class="btn btn--outline btn--sm" type="button" id="limpiarNoticias2">Limpiar búsqueda</button>
     </div>
+
+    <!-- Publicaciones más antiguas: se muestra solo el título con el enlace
+         para leerlas completas en la página oficial de Facebook. -->
+    <div class="noticias__anteriores js-revelar" id="noticiasAnteriores" hidden>
+      <h3 class="noticias__anteriores-titulo">
+        <svg class="icon" aria-hidden="true"><use href="#ico-calendario"></use></svg>
+        Publicaciones anteriores
+      </h3>
+      <p class="noticias__anteriores-ayuda">
+        Estas publicaciones están en la página oficial de Facebook. Pulse el título para leerlas completas allí.
+      </p>
+      <ul class="noticias__anteriores-lista" id="listaNoticiasAnteriores"></ul>
+    </div>
   </div>
 </section>
 
@@ -3931,6 +3996,55 @@ table.horario td .vacio{color:#c3ceda}
   }
 
   /* -------------------------------------------------------------------
+     2. Submenús del menú principal: se despliegan al pasar el mouse y
+        también al hacer clic; la opción bajo el cursor se ilumina.
+     ------------------------------------------------------------------- */
+  (function submenusPrincipales() {
+    var items = qsa('#menu-principal .menu__item');
+    if (!items.length) return;
+
+    function cerrarTodos(excepto) {
+      items.forEach(function (it) { if (it !== excepto) it.classList.remove('is-abierto'); });
+    }
+
+    items.forEach(function (it) {
+      var enlace = null, submenu = null;
+      Array.prototype.forEach.call(it.children, function (hijo) {
+        if (!enlace && hijo.tagName === 'A') enlace = hijo;
+        if (!submenu && hijo.classList && hijo.classList.contains('submenu')) submenu = hijo;
+      });
+      if (!enlace || !submenu) return;
+
+      /* Clic: despliega el submenú (en pantallas grandes). Un segundo clic ya
+         deja seguir el enlace de la opción principal. */
+      enlace.addEventListener('click', function (e) {
+        if (window.innerWidth <= 1279) return;          // menú vertical: ya se ve
+        if (it.classList.contains('is-abierto')) { it.classList.remove('is-abierto'); return; }
+        e.preventDefault();
+        cerrarTodos(it);
+        it.classList.add('is-abierto');
+      });
+
+      /* Al elegir una opción del submenú se cierra y se resalta el destino. */
+      submenu.addEventListener('click', function (e) {
+        var destino = e.target.closest ? e.target.closest('a') : null;
+        it.classList.remove('is-abierto');
+        if (destino) {
+          destino.classList.add('is-elegido');
+          setTimeout(function () { destino.classList.remove('is-elegido'); }, 1400);
+        }
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest || !e.target.closest('#menu-principal .menu__item')) cerrarTodos(null);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') cerrarTodos(null);
+    });
+  }());
+
+  /* -------------------------------------------------------------------
      3. Sombra del encabezado al desplazarse / botón "volver arriba"
      ------------------------------------------------------------------- */
   var encabezado = qs('.site-header');
@@ -4052,6 +4166,7 @@ table.horario td .vacio{color:#c3ceda}
 
     function filtrar() {
       var tarjetas = qsa('#listaNoticias .noticia'); // se consulta cada vez
+      var antiguas = qsa('#listaNoticiasAnteriores li');
       var q = normalizar(campo.value);
       var visibles = 0;
       tarjetas.forEach(function (t) {
@@ -4059,10 +4174,21 @@ table.horario td .vacio{color:#c3ceda}
         t.hidden = !coincide;
         if (coincide) visibles++;
       });
+      /* Las publicaciones anteriores también entran en la búsqueda. */
+      var antiguasVisibles = 0;
+      antiguas.forEach(function (li) {
+        var coincide = !q || normalizar(li.textContent).indexOf(q) !== -1;
+        li.hidden = !coincide;
+        if (coincide) antiguasVisibles++;
+      });
+      var cajaAnt = qs('#noticiasAnteriores');
+      if (cajaAnt) cajaAnt.hidden = antiguas.length === 0 || (!!q && antiguasVisibles === 0);
       if (contador) {
+        var totalN = tarjetas.length + antiguas.length;
+        var halladas = visibles + antiguasVisibles;
         contador.textContent = q
-          ? (visibles === 1 ? '1 noticia encontrada' : visibles + ' noticias encontradas')
-          : (tarjetas.length === 1 ? '1 noticia publicada' : tarjetas.length + ' noticias publicadas');
+          ? (halladas === 1 ? '1 noticia encontrada' : halladas + ' noticias encontradas')
+          : (totalN === 1 ? '1 noticia publicada' : totalN + ' noticias publicadas');
       }
       if (sinResultados) sinResultados.hidden = visibles !== 0;
       if (limpiar) limpiar.hidden = !q;
@@ -4712,8 +4838,23 @@ table.horario td .vacio{color:#c3ceda}
   /* ---------------- 1. Identidad institucional ---------------- */
   var inst = C.institucion || {};
   if (hay(inst.nombre)) {
-    qsa('.marca__texto strong, .footer-marca strong').forEach(function (el) { el.textContent = inst.nombre; });
-    document.title = inst.nombre + ' | Puerto Guzmán, Putumayo';
+    /* La marca del encabezado va en dos líneas: «Institución Educativa Rural»
+       y, muy cerca, «Puerto Rosario». El nombre completo viene del contenido. */
+    var nombreInst = String(inst.nombre).trim();
+    var linea1 = nombreInst;
+    var linea2 = '';
+    var mSede = /^(.*?)\s+(Puerto Rosario)\s*$/i.exec(nombreInst);
+    if (mSede) { linea1 = mSede[1].trim(); linea2 = mSede[2]; }
+    var marcaLineas = qsa('.marca__texto strong');
+    if (marcaLineas.length >= 2) {
+      marcaLineas[0].textContent = linea1;
+      marcaLineas[1].textContent = linea2 || linea1;
+      marcaLineas[0].setAttribute('title', nombreInst);
+    } else {
+      marcaLineas.forEach(function (el) { el.textContent = nombreInst; });
+    }
+    qsa('.footer-marca strong').forEach(function (el) { el.textContent = nombreInst; });
+    document.title = nombreInst + ' | Puerto Guzmán, Putumayo';
   }
   if (hay(inst.escudo)) {
     qsa('.marca__escudo img, .footer-marca img').forEach(function (el) {
@@ -4944,7 +5085,13 @@ table.horario td .vacio{color:#c3ceda}
       var visiblesN = C.noticias.filter(function (n) { return n && n.publicada !== false; })
         .slice()
         .sort(function (a, b) { return fechaNoticia(b.fecha) - fechaNoticia(a.fecha); });
-      listaN.innerHTML = visiblesN.map(function (n) {
+      /* Las publicaciones más recientes se muestran como tarjetas completas.
+         Las anteriores se listan solo con el título y el enlace a la página
+         oficial de Facebook, para que la página siga siendo liviana. */
+      var LIMITE_TARJETAS = 20;
+      var destacadasN = visiblesN.slice(0, LIMITE_TARJETAS);
+      var anterioresN = visiblesN.slice(LIMITE_TARJETAS);
+      listaN.innerHTML = destacadasN.map(function (n) {
         var galeriaN = (Array.isArray(n.imagenes) ? n.imagenes.filter(function (s) { return hay(s); }) : []);
         if (galeriaN.length < 2 && hay(n.imagen)) galeriaN = [n.imagen];
         var tplId = crearPlantilla(
@@ -4984,6 +5131,31 @@ table.horario td .vacio{color:#c3ceda}
           '</div></article>';
       }).join('');
       iniciarCarruseles(listaN);
+
+      /* Publicaciones anteriores: solo título + enlace a Facebook. */
+      var cajaAnt = qs('#noticiasAnteriores');
+      var listaAnt = qs('#listaNoticiasAnteriores');
+      if (cajaAnt && listaAnt) {
+        if (anterioresN.length) {
+          listaAnt.innerHTML = anterioresN.map(function (n) {
+            var u = String(n.enlace || '').trim();
+            var seguro = /^https?:\/\/[^\s<>"']+$/i.test(u) ? u : '';
+            var titulo = esc(n.titulo || 'Publicación institucional');
+            var fecha = hay(n.fecha) ? '<span class="anteriores__fecha">' + esc(n.fecha) + '</span>' : '';
+            if (seguro) {
+              return '<li><a href="' + esc(seguro) + '" target="_blank" rel="noopener">' +
+                '<span class="anteriores__titulo">' + titulo + '</span>' +
+                '<span class="anteriores__ver">Leer en Facebook ' + ico('externo') + '</span>' +
+                '</a>' + fecha + '</li>';
+            }
+            return '<li><span class="anteriores__titulo">' + titulo + '</span>' + fecha + '</li>';
+          }).join('');
+          cajaAnt.hidden = false;
+        } else {
+          listaAnt.innerHTML = '';
+          cajaAnt.hidden = true;
+        }
+      }
     }
   }
 

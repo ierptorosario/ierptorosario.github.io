@@ -93,9 +93,9 @@ window.CONTENIDO_IERP = {
     { titulo: 'Medio ambiente y siembra', src: 'assets/img/facebook/auto-122187885302861024-foto-3.jpg', alt: 'Estudiantes sembrando y cuidando las plantas de la institución', referencia: false, publicado: true },
     { titulo: 'Periódico mural escolar', src: 'assets/img/galeria/periodico-mural.jpg', alt: 'Trabajo de los estudiantes en el periódico mural escolar', referencia: false, publicado: true },
     { titulo: 'Tecnología e informática', src: 'assets/img/noticias/entrega-computadores-2026.jpg', alt: 'Estudiantes con los computadores entregados a la institución', referencia: false, publicado: true },
-    { titulo: 'Plan lector y biblioteca', src: 'assets/img/fotos-libres/lectura-1.jpg', alt: 'Niño de espaldas leyendo un libro en su pupitre durante la jornada escolar', referencia: false, publicado: true },
-    { titulo: 'Escuela de familias', src: 'assets/img/fotos-libres/familias-1.jpg', alt: 'Familias reunidas en la escuela de padres', referencia: false, publicado: true },
-    { titulo: 'Comunidad educativa y familias', src: 'assets/img/fotos-libres/comunidad-1.jpg', alt: 'Encuentro de la comunidad educativa al aire libre', referencia: false, publicado: true }
+    { titulo: 'Plan lector y biblioteca', src: 'assets/img/facebook/auto-122179744838861024-foto-3.jpg', alt: 'Mural del Día del Idioma elaborado por los estudiantes de la institución', referencia: false, publicado: true },
+    { titulo: 'Escuela de familias', src: 'assets/img/facebook/auto-122208533696861024-foto-3.jpg', alt: 'Familias y docentes reunidos en la Tercera Escuela de Padres de la institución', referencia: false, publicado: true },
+    { titulo: 'Participación estudiantil', src: 'assets/img/facebook/auto-122181923636861024-foto-1.jpg', alt: 'Encuentro de participación estudiantil y liderazgo con estudiantes y docentes', referencia: false, publicado: true }
   ],
 
   noticias: [
@@ -348,7 +348,11 @@ window.CONTENIDO_IERP = {
       "enlace": "https://www.facebook.com/61575830740720/posts/122194474004861024/",
       "fuente": "Facebook",
       "demo": false,
-      "publicada": true
+      /* Es la MISMA entrega de computadores publicada dos veces en Facebook el
+         16 de julio. Se deja oculta para no repetir la noticia, pero se
+         conserva aquí para que el coleccionista automático no la vuelva a
+         agregar. */
+      "publicada": false
     },
     {
       "titulo": "Publicación institucional",
@@ -364,7 +368,9 @@ window.CONTENIDO_IERP = {
       "enlace": "https://www.facebook.com/61575830740720/posts/122190037664861024/",
       "fuente": "Facebook",
       "demo": false,
-      "publicada": true
+      /* Facebook creó este aviso automático al cambiar la foto de portada de la
+         página: no es una publicación de la institución. Se deja oculto. */
+      "publicada": false
     },
     {
       "titulo": "Celebración del Día del Estudiante – Sedes Multigrado",
@@ -489,8 +495,8 @@ window.CONTENIDO_IERP = {
     { titulo: 'Innovatec: ideas que resuelven problemas del campo', area: 'innovatec', imagen: 'assets/img/proyectos/teleferico-innovatec.jpg', descripcion: 'Proyecto de teleférico artesanal con el que los estudiantes exploran cómo mover cargas y materiales en un terreno quebrado, aprovechando recursos del entorno y trabajo en equipo.', detalle: '<p>Proyecto de <strong>teleférico artesanal</strong> desarrollado por los estudiantes para pensar soluciones de transporte en el terreno quebrado de la vereda.</p>', demo: false, publicado: true },
     { titulo: 'Sala de Tecnología e Informática', area: 'tecnologia', imagen: 'assets/img/proyectos/timbre-electrico-innovatec.jpg', descripcion: 'Montaje de circuitos eléctricos básicos —como el timbre eléctrico— para comprender el funcionamiento de la energía eléctrica, el interruptor y los componentes del circuito.', detalle: '<p>Proyecto de <strong>circuito eléctrico: timbre eléctrico</strong>, con el que los estudiantes identifican los componentes de un circuito, la fuente de energía y el papel del interruptor.</p>', demo: false, publicado: true },
     { titulo: 'Vivero, huerta y manejo de residuos', area: 'medioambiente', imagen: 'assets/img/proyectos/filtro-de-agua-innovatec.jpg', descripcion: 'Proyecto de filtro de agua y manejo responsable de los recursos: los estudiantes experimentan con materiales filtrantes y reflexionan sobre el cuidado del agua y la clasificación de residuos.', detalle: '<p>Proyecto de <strong>filtro de agua</strong> y cuidado de los recursos naturales, en el que los estudiantes experimentan con materiales filtrantes y analizan la importancia del agua para la vereda.</p>', demo: false, publicado: true },
-    { titulo: 'Plan lector y tradición oral', area: 'lectura', imagen: 'assets/img/lectura.svg', descripcion: 'Espacio de lectura que combina la biblioteca escolar, la lectura en voz alta, la escritura creativa y la recopilación de relatos y saberes de las familias de la vereda.', detalle: '<p>La biblioteca escolar y los proyectos de lectura acompañan la formación en comprensión, expresión oral y amor por la palabra.</p>', demo: false, publicado: true },
-    { titulo: 'Escuela de familias y participación comunitaria', area: 'comunidad', imagen: 'assets/img/comunidad.svg', descripcion: 'Estrategia de participación: encuentros con las familias, apoyo a las actividades escolares y articulación con las organizaciones de la vereda.', detalle: '<p>Los encuentros con las familias refuerzan la corresponsabilidad educativa y la articulación con la comunidad de la vereda.</p>', demo: false, publicado: true }
+    { titulo: 'Plan lector y tradición oral', area: 'lectura', imagen: 'assets/img/facebook/auto-122179744838861024-foto-1.jpg', descripcion: 'Espacio de lectura que combina la biblioteca escolar, la lectura en voz alta, la escritura creativa y la recopilación de relatos y saberes de las familias de la vereda.', detalle: '<p>La biblioteca escolar y los proyectos de lectura acompañan la formación en comprensión, expresión oral y amor por la palabra.</p><p>En la conmemoración del Día del Idioma, los estudiantes de sexto presentaron lecturas en voz alta y exposiciones sobre sus libros favoritos.</p>', demo: false, publicado: true },
+    { titulo: 'Escuela de familias y participación comunitaria', area: 'comunidad', imagen: 'assets/img/facebook/auto-122208533696861024-foto-3.jpg', descripcion: 'Estrategia de participación: encuentros con las familias, apoyo a las actividades escolares y articulación con las organizaciones de la vereda.', detalle: '<p>Los encuentros con las familias refuerzan la corresponsabilidad educativa y la articulación con la comunidad de la vereda.</p><p>En la Tercera Escuela de Padres se socializaron los avances académicos y disciplinarios y se escucharon las propuestas de las familias.</p>', demo: false, publicado: true }
   ],
 
   documentos: [

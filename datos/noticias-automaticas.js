@@ -10,17 +10,43 @@
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
  "actualizado": "2026-10-18",
- "generado": "2026-10-18 06:08:35",
+ "generado": "2026-10-18 06:21:58",
  "noticias": [
   {
-   "titulo": "Institución Educativa Rural Pto Rosario actualizó su foto de portada.",
-   "fecha": "20 de junio de 2026",
+   "titulo": "Día del Idioma y Día del Libro",
+   "fecha": "23 de abril de 2026",
    "categoria": "Facebook",
-   "imagen": "",
-   "fotos": 0,
-   "resumen": "Institución Educativa Rural Pto Rosario actualizó su foto de portada.",
-   "detalle": "<p>Institución Educativa Rural Pto Rosario actualizó su foto de portada.</p>",
-   "enlace": "https://www.facebook.com/permalink.php?story_fbid=1013837758003157&id=61575830740720",
+   "imagen": "assets/img/facebook/auto-122179744838861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "En nuestra Institución Educativa Rural Pto Rosario conmemoramos el Día del Idioma y el Día del Libro, una fecha especial para resaltar la importancia de la lectura, la escritura y el valor de nuestro idioma como herra…",
+   "detalle": "<p>📚✨ Día del Idioma y Día del Libro – Ier Puerto Rosario ✨📚🎊🎉💥💥💥</p><p>En nuestra Institución Educativa Rural Pto Rosario conmemoramos el Día del Idioma y el Día del Libro, una fecha especial para resaltar la importancia de la lectura, la escritura y el valor de nuestro idioma como herramienta para aprender, expresar ideas y construir conocimiento.🤓🧠👀.</p><p>Los libros nos permiten viajar a nuevos mundos, despertar la imaginación y fortalecer el pensamiento crítico de nuestros estudiantes.</p><p>📖 Desde nuestras aulas seguimos promoviendo el amor por la lectura y el respeto por nuestro idioma, formando estudiantes que descubren en los libros una puerta abierta al conocimiento.</p><p>Agradecemos a nuestra compañera Rosa Alba Pipicano Galindez por su liderazgo en esta área y a los compañeros docentes de la sede central por su apoyo y colaboración brindada.</p><p>✨ Leer es aprender, soñar y crecer.</p><p>#DíaDelIdioma #DíaDelLibro #IERPuertoRosario #AmorPorLaLectura #EducaciónConValores 📚</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122179744838861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "🇨🇴✨ Izada de Bandera – Primer Periodo Académico ✨🇨🇴 Ier Puerto Rosario 💯",
+   "fecha": "23 de abril de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122179748090861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "En nuestra Institución Educativa Rural Pto Rosario realizamos la Izada de Bandera correspondiente al primer periodo académico, un espacio especial para reconocer el compromiso, la dedicación y el buen desempeño de nue…",
+   "detalle": "<p>🇨🇴✨ Izada de Bandera – Primer Periodo Académico ✨🇨🇴 Ier Puerto Rosario 💯</p><p>En nuestra Institución Educativa Rural Pto Rosario realizamos la Izada de Bandera correspondiente al primer periodo académico, un espacio especial para reconocer el compromiso, la dedicación y el buen desempeño de nuestros estudiantes.💯🎯</p><p>Durante esta ceremonia destacamos a aquellos estudiantes que, con su esfuerzo, responsabilidad y valores, se hicieron merecedores de este reconocimiento.</p><p>De igual manera, exaltamos el acompañamiento y compromiso de los padres de familia, quienes cumplen un papel fundamental en el proceso educativo de sus hijos.🎯💯🎊🎉</p><p>👏 Felicitamos a todos los estudiantes y familias reconocidas, motivándolos a seguir trabajando con entusiasmo y perseverancia.</p><p>Agradecemos a todos nuestros compañeros docentes por el apoyo y colaboración brindada en la actividad.</p><p>📚 En la IER Puerto Rosario seguimos formando con valores, compromiso y amor por la educación.</p><p>#IERPuertoRosario #IzadaDeBandera #Reconocimiento #EducaciónConValores #ComunidadEducativa</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122179748090861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "Primera Escuela de Padres",
+   "fecha": "25 de abril de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122179951646861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "En la Institución Educativa Rural Pto Rosario llevamos a cabo nuestra Primera Escuela de Padres 2026, un valioso espacio de encuentro, diálogo y aprendizaje conjunto.",
+   "detalle": "<p>👨‍👩‍👧‍👦💚 Escuela de Padres – Ier Puerto Rosario 💚👨‍👩‍👧‍👦🎯🧠👀</p><p>En la Institución Educativa Rural Pto Rosario llevamos a cabo nuestra Primera Escuela de Padres 2026, un valioso espacio de encuentro, diálogo y aprendizaje conjunto.</p><p>Durante la jornada se promovieron buenos hábitos de crianza y se fortaleció la corresponsabilidad entre la familia y la institución educativa, reconociendo que el trabajo en equipo es fundamental para la formación integral de nuestros estudiantes.</p><p>✨ Estos espacios nos permiten reflexionar, compartir experiencias y seguir construyendo una comunidad basada en el respeto, el amor y el compromiso.</p><p>Agradecemos a los compañeros docentes de sección primaria y docente orientadora Martinez Andrea por líderar esta importante actividad pedagógica.</p><p>🤝 Familia y escuela: unidos por el bienestar de nuestros niños y jóvenes.</p><p>#IERPuertoRosario #EscuelaDePadres #Corresponsabilidad #CrianzaPositiva #ComunidadEducativa</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122179951646861024/",
    "fuente": "Facebook",
    "demo": false,
    "publicada": true
@@ -104,19 +130,6 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "publicada": true
   },
   {
-   "titulo": "Institución Educativa Rural Pto Rosario actualizó su foto de portada.",
-   "fecha": "20 de junio de 2026",
-   "categoria": "Facebook",
-   "imagen": "",
-   "fotos": 0,
-   "resumen": "Institución Educativa Rural Pto Rosario actualizó su foto de portada.",
-   "detalle": "<p>Institución Educativa Rural Pto Rosario actualizó su foto de portada.</p>",
-   "enlace": "https://www.facebook.com/61575830740720/posts/122190037664861024/",
-   "fuente": "Facebook",
-   "demo": false,
-   "publicada": true
-  },
-  {
    "titulo": "💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻",
    "fecha": "16 de julio de 2026",
    "categoria": "Facebook",
@@ -125,19 +138,6 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "resumen": "Nuesra Institución Educativa Rural Puerto Rosario expresa su más sincero agradecimiento al Ministerio TIC, al programa Computadores para Educar y a la estrategia Tecnologías para Aprender, por hacer posible la entrega…",
    "detalle": "<p>💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻</p><p>Nuesra Institución Educativa Rural Puerto Rosario expresa su más sincero agradecimiento al Ministerio TIC, al programa Computadores para Educar y a la estrategia Tecnologías para Aprender, por hacer posible la entrega de computadores portátiles de uso personal a nuestros estudiantes de noveno y décimo grado.</p><p>De igual manera, extendemos un especial reconocimiento a la Secretaría de Educación Departamental del Putumayo , a la Alcaldía Puerto Guzman - Putumayo, a la Coordinación de Educación Municipal, a nuestros docentes y a la Rectoría de la Ier Pto Rosario, quienes, con su compromiso, gestión y trabajo articulado, hicieron posible que nuestra institución fuera beneficiaria de esta importante convocatoria.</p><p>🤝 Este logro demuestra que cuando las instituciones trabajan unidas por un mismo propósito, se generan oportunidades que transforman la vida de nuestros niños y jóvenes.</p><p>💙 Estos equipos no solo fortalecen los procesos de enseñanza y aprendizaje, sino que también impulsan el desarrollo de competencias digitales, amplían las oportunidades educativas y contribuyen a que nuestros estudiantes construyan un proyecto de vida con mayores posibilidades de éxito.</p><p>Seguiremos trabajando con compromiso para que la educación continúe siendo el camino que transforma vidas, reduce brechas y abre las puertas a un mejor futuro para nuestra comunidad.</p><p>¡Gracias por creer en la educación rural y en el talento de nuestros estudiantes! 🌟📚</p><p>#ierpuertorosario #ComputadoresParaEducar #MinisterioTIC #TecnologíasParaAprender #EducaciónRural #TrabajoEnEquipo #ProyectoDeVida #TransformandoVidas</p>",
    "enlace": "https://www.facebook.com/61575830740720/posts/122194474004861024/",
-   "fuente": "Facebook",
-   "demo": false,
-   "publicada": true
-  },
-  {
-   "titulo": "💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻",
-   "fecha": "16 de julio de 2026",
-   "categoria": "Facebook",
-   "imagen": "",
-   "fotos": 0,
-   "resumen": "Nuestra Institución Educativa Rural Puerto Rosario expresa su más sincero agradecimiento al Ministerio TIC, al programa...",
-   "detalle": "<p>💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻</p><p>Nuestra Institución Educativa Rural Puerto Rosario expresa su más sincero agradecimiento al Ministerio TIC, al programa...</p>",
-   "enlace": "https://www.facebook.com/61575830740720/posts/122194474826861024/",
    "fuente": "Facebook",
    "demo": false,
    "publicada": true
@@ -156,7 +156,7 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "publicada": true
   },
   {
-   "titulo": "👨‍👩‍👧‍👦📚 Segunda Escuela de Padres – Ier Puerto Rosario 🌱",
+   "titulo": "Segunda Escuela de Padres",
    "fecha": "24 de julio de 2026",
    "categoria": "Facebook",
    "imagen": "assets/img/facebook/auto-122195855432861024-foto-1.jpg",
@@ -247,7 +247,7 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "publicada": true
   },
   {
-   "titulo": "👨‍👩‍👧‍👦💙 Tercera Escuela de Padres – Ier Puerto Rosario 💙👨‍👩‍👧‍👦",
+   "titulo": "Tercera Escuela de Padres",
    "fecha": "1 de octubre de 2026",
    "categoria": "Facebook",
    "imagen": "assets/img/facebook/auto-122208533696861024-foto-1.jpg",
