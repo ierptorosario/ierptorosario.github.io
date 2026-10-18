@@ -109,8 +109,8 @@
   /* Tipografía: Poppins para el texto y Montserrat para los títulos,
      layout de la página puede implementarse igual en otro sitio. Si no hay internet, el navegador
      usa las fuentes que ya vienen en Windows (Segoe UI). */
-  --fuente:"Poppins","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
-  --fuente-titulo:"Montserrat","Segoe UI Semibold","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  --fuente:Arial,"Helvetica Neue",Helvetica,"Segoe UI",sans-serif;
+  --fuente-titulo:Arial,"Helvetica Neue",Helvetica,"Segoe UI",sans-serif;
 
   --transicion:.28s cubic-bezier(.4,.15,.2,1);
 }
@@ -672,7 +672,7 @@ table.tabla tbody tr:last-child th,table.tabla tbody tr:last-child td{border-bot
   .panel-doble{grid-template-columns:1.5fr 1fr}
   .contacto-grid{grid-template-columns:1fr 1.1fr}
 }
-@media (max-width:1023px){
+@media (max-width:1279px){
   :root{--header-h:68px}
   .nav-toggle{display:inline-flex}
   .main-nav{
@@ -1181,6 +1181,41 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 .section__head h2{letter-spacing:-.02em}
 .noticia h3,.card h3{letter-spacing:-.01em}
 .lead,.section__lead{line-height:1.7}
+
+/* =====================================================================
+   19. AJUSTES FINOS: ENCABEZADO EN UNA SOLA LÍNEA Y TÍTULOS DORADOS
+   ===================================================================== */
+
+/* El encabezado aprovecha mejor el ancho de la pantalla y el nombre
+   institucional NUNCA se parte en varias líneas. */
+.site-header .wrap{max-width:1440px}
+.site-header__inner{gap:.9rem}
+.marca__texto{flex:0 1 auto;min-width:0;overflow:hidden}
+.marca__texto strong{white-space:nowrap;display:block;overflow:hidden;text-overflow:ellipsis}
+.main-nav ul{gap:.1rem}
+.main-nav a{padding:.5rem .58rem;font-size:.88rem}
+.header-cta{font-size:.87rem;padding:.5rem .8rem}
+
+/* Títulos de sección con acabado DORADO METÁLICO y brillo animado */
+@keyframes brilloOro{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .section__head h2{
+    background-image:linear-gradient(100deg,#6d5415 0%,#a8871f 16%,#e6cd7a 26%,#b8912a 34%,#6d5415 48%,#8a6d1f 64%,#dcc579 76%,#6d5415 90%,#6d5415 100%);
+    background-size:220% 100%;
+    background-repeat:no-repeat;
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    animation:brilloOro 9s linear infinite;
+  }
+  /* En las secciones de fondo oscuro el oro se aclara para que se lea bien */
+  .cifras .section__head h2,
+  .section--azul .section__head h2{
+    background-image:linear-gradient(100deg,#c9a227 0%,#e6cd7a 16%,#fff6d6 26%,#e0c46a 38%,#c9a227 52%,#f2e0a6 72%,#c9a227 92%,#c9a227 100%);
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .section__head h2{animation:none}
+}
 </style>
 </head>
 <body>
@@ -1272,7 +1307,6 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       </span>
       <span class="marca__texto">
         <strong>Institución Educativa Rural Puerto Rosario</strong>
-        <small>Puerto Guzmán &middot; Putumayo &middot; Colombia</small>
       </span>
     </a>
 
@@ -1295,7 +1329,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 
     <a class="header-cta" href="#documentos">
       <svg class="icon" aria-hidden="true"><use href="#ico-doc"></use></svg>
-      Documentos oficiales
+      Documentos
     </a>
   </div>
 </header>
@@ -1798,9 +1832,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
                 <li><strong>ERM Las Villas</strong>: preescolar a 5.º.</li>
                 <li><strong>ERM La Pedregosa</strong>: preescolar a 5.º.</li>
               </ul>
-              <p class="campo__ayuda">Fuente: PEI 2025 y Resolución No. 0844 de 2015. Nota: la sede Nueva Unión fue
-              cerrada temporalmente en 2017 (Resolución No. 0567); las sedes Las Delicias de Mangalpa y Alpamanga
-              fueron cerrada y desanexada, respectivamente, en 2012.</p>
+              <p class="campo__ayuda">Fuente: PEI 2025 y Resolución No. 0844 de 2015.</p>
             </div>
           </div>
         </div>
@@ -1998,7 +2030,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
           </tbody>
         </table>
       </div>
-      <p class="campo__ayuda">Fuente: PEI 2025 y Resolución No. 0844 del 25 de febrero de 2015. Todas las sedes están <strong>activas</strong> y comparten la <strong>misma resolución</strong> de anexión y la <strong>jornada única</strong>. Nota histórica: la sede Nueva Unión fue cerrada temporalmente en 2017 (Resolución No. 0567); las sedes Las Delicias de Mangalpa y Alpamanga fueron cerrada y desanexada, respectivamente, en 2012.</p>
+      <p class="campo__ayuda">Fuente: PEI 2025 y Resolución No. 0844 del 25 de febrero de 2015. Todas las sedes están <strong>activas</strong> y comparten la <strong>misma resolución</strong> de anexión y la <strong>jornada única</strong>.</p>
     </div>
   </div>
 </section>
