@@ -1443,15 +1443,17 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
    cambiando solas (solo con CSS, sin JavaScript).
    ===================================================================== */
 .espacios__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}
+/* Cada cuadro muestra solo la fotografía con su etiqueta: el nombre del
+   espacio va dentro de la foto (antes había un recuadro de texto debajo). */
 .espacio{
   background:linear-gradient(165deg,#123a63,#061426);
   border:1px solid rgba(201,162,39,.32);border-radius:var(--radio-lg);
-  overflow:hidden;padding-bottom:1.05rem;
+  overflow:hidden;
   transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
 }
 .espacio:hover{transform:translateY(-6px);border-color:var(--ierp-oro);
   box-shadow:0 20px 40px rgba(4,16,33,.5)}
-.espacio__foto{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0a1c33;margin-bottom:.95rem}
+.espacio__foto{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0a1c33}
 .espacio__foto img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
   animation:rotarEspacio 15s ease-in-out infinite;
@@ -1463,13 +1465,12 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
   50%,92%{opacity:0}
   100%{opacity:1}
 }
-.espacio h3{margin:0 .95rem .35rem;font-size:1.05rem}
-.espacio p{margin:0 .95rem;font-size:.92rem;line-height:1.6;color:#c3d6e8}
 .espacio__etiqueta{
-  position:absolute;left:.6rem;bottom:.6rem;z-index:2;
-  font-size:.72rem;font-weight:700;letter-spacing:.02em;
-  background:rgba(6,20,38,.82);border:1px solid rgba(201,162,39,.5);
-  border-radius:999px;padding:.2rem .6rem;color:#f2e2ad;
+  position:absolute;left:.65rem;bottom:.65rem;z-index:2;
+  font-size:.82rem;font-weight:700;letter-spacing:.01em;
+  background:rgba(6,20,38,.84);border:1px solid rgba(201,162,39,.55);
+  border-radius:999px;padding:.28rem .8rem;color:#f7e7b8;
+  text-shadow:0 1px 2px rgba(0,0,0,.5);
 }
 @media (max-width:960px){.espacios__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .espacios__video{margin:1.7rem 0 0}
@@ -2657,11 +2658,8 @@ table.horario td .vacio{color:#c3ceda}
                alt="Aula de sistemas de la institución con computadores portátiles y mesas de trabajo">
           <img src="assets/img/espacios/sala-de-sistemas-2.jpg" width="900" height="506" loading="lazy" decoding="async"
                alt="Aula de sistemas vista desde el fondo, con los puestos de trabajo de los estudiantes">
-          <span class="espacio__etiqueta">Tecnología e Informática</span>
+          <span class="espacio__etiqueta">Aula de sistemas</span>
         </div>
-        <h3>Aula de sistemas</h3>
-        <p>Aquí se dictan las clases de Tecnología e Informática y se crean los prototipos de InnovaTec y
-        del Día de la Inteligencia Artificial.</p>
       </article>
 
       <article class="espacio">
@@ -2670,11 +2668,8 @@ table.horario td .vacio{color:#c3ceda}
                alt="Patio central de la institución con el coliseo cubierto y las aulas alrededor">
           <img src="assets/img/espacios/patio-central-2.jpg" width="900" height="506" loading="lazy" decoding="async"
                alt="Patio de la institución con las aulas y los corredores">
-          <span class="espacio__etiqueta">Encuentro y descanso</span>
+          <span class="espacio__etiqueta">Patio central</span>
         </div>
-        <h3>Patio central</h3>
-        <p>El punto de encuentro de la comunidad educativa: formaciones, izadas de bandera, descansos y
-        actividades culturales.</p>
       </article>
 
       <article class="espacio">
@@ -2683,11 +2678,8 @@ table.horario td .vacio{color:#c3ceda}
                alt="Zona deportiva y de juegos de la institución, con estructura para la recreación">
           <img src="assets/img/espacios/zona-deportiva-2.jpg" width="900" height="506" loading="lazy" decoding="async"
                alt="Zona verde y deportiva de la institución rodeada de árboles">
-          <span class="espacio__etiqueta">Educación física y recreación</span>
+          <span class="espacio__etiqueta">Zona deportiva y de juegos</span>
         </div>
-        <h3>Zona deportiva y de juegos</h3>
-        <p>Espacio para educación física, recreación, juegos tradicionales y el encuentro deportivo
-        entre grados y sedes.</p>
       </article>
 
       <article class="espacio">
@@ -2696,11 +2688,8 @@ table.horario td .vacio{color:#c3ceda}
                alt="Huerta escolar y jardines sembrados por los estudiantes junto a los corredores">
           <img src="assets/img/espacios/huerta-escolar-2.jpg" width="900" height="506" loading="lazy" decoding="async"
                alt="Cultivos y jardines de la institución cuidados por la comunidad educativa">
-          <span class="espacio__etiqueta">Ciencias naturales y ambiente</span>
+          <span class="espacio__etiqueta">Huerta y jardines</span>
         </div>
-        <h3>Huerta y jardines</h3>
-        <p>La huerta escolar es un aula viva: allí se aprende ciencias naturales, soberanía alimentaria y
-        cuidado del ambiente.</p>
       </article>
 
       <article class="espacio">
@@ -2709,11 +2698,8 @@ table.horario td .vacio{color:#c3ceda}
                alt="Pasillo cubierto con jardineras que conecta las aulas de la institución">
           <img src="assets/img/espacios/pasillos-verdes-2.jpg" width="900" height="506" loading="lazy" decoding="async"
                alt="Sendero rodeado de plantas y árboles dentro de la institución">
-          <span class="espacio__etiqueta">Territorio y biodiversidad</span>
+          <span class="espacio__etiqueta">Pasillos y senderos verdes</span>
         </div>
-        <h3>Pasillos y senderos verdes</h3>
-        <p>Los corredores con jardineras conectan las aulas y acompañan la jornada entre árboles,
-        plantas y el paisaje del territorio.</p>
       </article>
 
       <article class="espacio">
@@ -2722,11 +2708,8 @@ table.horario td .vacio{color:#c3ceda}
                alt="Plaza cubierta de la institución, con malla y espacio para actividades grupales">
           <img src="assets/img/espacios/plaza-cubierta-2.jpg" width="900" height="506" loading="lazy" decoding="async"
                alt="Zona cubierta de la institución con mesas para actividades y descanso">
-          <span class="espacio__etiqueta">Actos y ferias</span>
+          <span class="espacio__etiqueta">Plaza cubierta</span>
         </div>
-        <h3>Plaza cubierta</h3>
-        <p>Zona techada para actos culturales, ferias de la ciencia, talleres y actividades cuando
-        llueve.</p>
       </article>
 
     </div>
