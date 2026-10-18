@@ -1206,9 +1206,8 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   .section__head h2{
     background-image:linear-gradient(100deg,
-      #4f3c0c 0%,#7a5f18 8%,#b8912a 17%,#e0c46a 22%,#fffdf2 23.5%,#e8cf7a 25%,#a8871f 31%,
-      #4f3c0c 40%,#6d5415 50%,#c9a227 60%,#f2e0a6 65%,#ffffff 66.5%,#d9bd62 68%,#9c7d1c 74%,
-      #5c4611 82%,#7a5f18 90%,#d9bd62 96%,#fffdf2 97.5%,#c9a227 100%);
+      #5c4611 0%,#6d5415 10%,#8a6d1f 20%,#b8912a 28%,#d9bd62 34%,#e2c96e 36%,#c9a227 40%,#9c7d1c 46%,
+      #5c4611 56%,#6d5415 66%,#a8871f 76%,#d9bd62 84%,#e2c96e 87%,#b8912a 92%,#6d5415 100%);
     background-size:240% 100%;
     background-repeat:no-repeat;
     -webkit-background-clip:text;background-clip:text;
@@ -1219,16 +1218,14 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
   .cifras .section__head h2,
   .section--azul .section__head h2{
     background-image:linear-gradient(100deg,
-      #a8871f 0%,#d9bd62 7%,#f2e0a6 13%,#ffffff 18%,#f6e6a8 22%,#c9a227 28%,
-      #a8871f 36%,#d9bd62 45%,#f8ecc0 51%,#ffffff 55%,#e8cf7a 58%,#b8912a 64%,
-      #a8871f 72%,#c9a227 81%,#f6e6a8 89%,#ffffff 95%,#e0c46a 100%);
+      #a8871f 0%,#c9a227 10%,#d9bd62 20%,#f0d98a 29%,#f6e6a8 33%,#e0c46a 38%,#c9a227 48%,
+      #a8871f 60%,#b8912a 70%,#e8cf7a 80%,#f0d98a 85%,#d9bd62 90%,#c9a227 100%);
   }
   /* Subtítulos (h3): PLATEADO METÁLICO brilloso */
   .section h3, .section__head h3, .iconbox h3, .card h3, .proyecto h3, .noticia h3{
     background-image:linear-gradient(100deg,
-      #2e4157 0%,#3d5671 8%,#b0c4d6 16%,#f4f9fd 18%,#c2d2e2 20%,#3d5671 28%,
-      #2b3d51 40%,#4d6784 50%,#cddcea 58%,#f8fbfe 60%,#9db4ca 62%,#38506b 70%,
-      #2b3d51 80%,#4d6784 88%,#cddcea 94%,#ffffff 96%,#2e4157 100%);
+      #2b3d51 0%,#33465c 12%,#43596f 24%,#5d7590 33%,#8ba3bb 39%,#9fb4c9 42%,#67809b 46%,#455c76 54%,
+      #2b3d51 64%,#33465c 74%,#546c88 84%,#7f97b1 91%,#43596f 100%);
     background-size:240% 100%;
     background-repeat:no-repeat;
     -webkit-background-clip:text;background-clip:text;
@@ -1293,6 +1290,166 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
   .nivel__foto img{animation:none}
   .nivel__foto img:nth-child(1){opacity:1}
 }
+
+/* =====================================================================
+   21. CONTADOR DE VISITAS, HIMNO INSTITUCIONAL Y AVISOS
+   ===================================================================== */
+.nota--info{border-color:#bcd3e8;background:var(--ierp-azul-50)}
+.nota--info .icon{color:var(--ierp-azul-700)}
+.nota--info strong{color:var(--ierp-azul-800)}
+
+.footer-extra{display:flex;flex-wrap:wrap;gap:.7rem 1.4rem;align-items:center;margin-top:1.1rem}
+.btn-audio{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font:inherit;font-size:.86rem;font-weight:600;cursor:pointer;
+  color:#e8eefa;background:rgba(201,162,39,.16);
+  border:1px solid rgba(201,162,39,.5);border-radius:999px;padding:.42rem .9rem;
+  transition:background .2s ease,border-color .2s ease;
+}
+.btn-audio:hover{background:rgba(201,162,39,.34);border-color:var(--ierp-oro)}
+.btn-audio:focus-visible{outline:3px solid var(--warm-400);outline-offset:2px}
+.btn-audio .icon{width:1.05rem;height:1.05rem}
+
+/* Audio de fondo: botón redondo, pequeño y discreto (abajo a la izquierda) */
+.audio-fondo{
+  position:fixed;left:1rem;bottom:1rem;z-index:70;
+  width:2.7rem;height:2.7rem;border-radius:50%;
+  display:grid;place-items:center;cursor:pointer;
+  color:#e8eefa;background:rgba(11,37,69,.72);
+  border:1px solid rgba(201,162,39,.5);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  opacity:.5;transition:opacity .25s ease,transform .25s ease,background .25s ease;
+}
+.audio-fondo:hover,.audio-fondo:focus-visible{opacity:1;transform:scale(1.07);background:rgba(11,37,69,.94)}
+.audio-fondo .icon{width:1.25rem;height:1.25rem}
+.audio-fondo.is-sonando{opacity:.85;color:#f2e2ad;border-color:var(--ierp-oro)}
+.audio-fondo.is-sugerido{opacity:.95;animation:latidoAudio 2.6s ease-in-out infinite}
+@keyframes latidoAudio{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
+@media (prefers-reduced-motion:reduce){.audio-fondo.is-sugerido{animation:none}}
+@media (max-width:520px){.audio-fondo{left:.55rem;bottom:.55rem;width:2.4rem;height:2.4rem}}
+.audio-fondo .icon{color:currentColor}
+.footer-contador{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;color:#c9d9ea}
+.footer-contador .icon{width:1.05rem;height:1.05rem;color:var(--ierp-oro)}
+.footer-contador b{color:#f2e2ad;font-weight:700}
+
+/* =====================================================================
+   22. IDENTIDAD PROPIA: ACCESOS RÁPIDOS, INNOVACIÓN Y MULTIMEDIA
+   Azul institucional + celeste + turquesa + acentos amarillos y naranjas,
+   con elevaciones y giros 3D muy suaves al pasar el cursor.
+   ===================================================================== */
+:root{
+  --ierp-turquesa:#12b3a6;
+  --ierp-celeste:#41b8e6;
+  --ierp-sol:#f5a623;
+  --ierp-rosa:#e2557b;
+}
+
+/* --- Franja de accesos rápidos por público ------------------------- */
+.rapidos{
+  position:relative;padding:2.4rem 0 2.8rem;
+  background:
+    radial-gradient(920px 320px at 6% 0%,rgba(18,179,166,.30),transparent 62%),
+    radial-gradient(920px 320px at 94% 0%,rgba(245,166,35,.26),transparent 62%),
+    linear-gradient(150deg,#061c33,#0b2545 52%,#0e3459);
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.rapidos__titulo{
+  margin:0 0 1.3rem;text-align:center;color:#fff;
+  font-size:1.12rem;font-weight:700;letter-spacing:.01em;
+}
+.rapidos__grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.9rem}
+.rapido{
+  display:flex;flex-direction:column;align-items:center;gap:.55rem;text-align:center;
+  padding:1.25rem .7rem;border-radius:16px;text-decoration:none;color:#eaf2fb;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),background .25s ease,
+             border-color .25s ease,box-shadow .3s ease;
+}
+.rapido:hover,.rapido:focus-visible{
+  transform:translateY(-7px) rotateX(7deg) rotateY(-7deg) scale(1.035);
+  background:rgba(255,255,255,.14);border-color:var(--ierp-sol);
+  box-shadow:0 20px 38px rgba(2,12,26,.5);
+}
+.rapido__icono{
+  width:3.05rem;height:3.05rem;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,#ffd98a,var(--ierp-sol));color:#3a2500;
+  box-shadow:inset 0 -3px 8px rgba(0,0,0,.18);
+}
+.rapido__icono .icon{width:1.5rem;height:1.5rem;color:currentColor}
+.rapido b{font-size:.95rem;line-height:1.2}
+.rapido span{font-size:.76rem;line-height:1.3;color:#b9cde2}
+.rapido:nth-child(2) .rapido__icono{background:linear-gradient(135deg,#7ef0e6,var(--ierp-turquesa));color:#03302c}
+.rapido:nth-child(3) .rapido__icono{background:linear-gradient(135deg,#a9e6fb,var(--ierp-celeste));color:#03334a}
+.rapido:nth-child(4) .rapido__icono{background:linear-gradient(135deg,#ffb9cd,var(--ierp-rosa));color:#47091c}
+.rapido:nth-child(5) .rapido__icono{background:linear-gradient(135deg,#cdc6ff,#7f6cf0);color:#1b0f4d}
+.rapido:nth-child(6) .rapido__icono{background:linear-gradient(135deg,#bdf0c6,#3fb75c);color:#08300f}
+@media (max-width:960px){.rapidos__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.rapidos__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* --- Píldoras de innovación --------------------------------------- */
+.innovar__pills{list-style:none;display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1.5rem;padding:0}
+.innovar__pills li{
+  display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;font-weight:600;
+  padding:.45rem .9rem;border-radius:999px;color:#0b2545;
+  background:linear-gradient(135deg,#eaf6f5,#e6f0f9);border:1px solid #cfe4e2;
+}
+.innovar__pills .icon{width:1.05rem;height:1.05rem;color:var(--ierp-turquesa)}
+
+/* --- Bloque destacado (Día de la IA) ------------------------------ */
+.destacado{
+  position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:1.6rem;
+  align-items:stretch;margin:0 0 2rem;padding:1.1rem;border-radius:20px;
+  background:linear-gradient(150deg,#ffffff,#f2f8fe);
+  border:1px solid #d5e3f0;box-shadow:0 22px 46px rgba(11,37,69,.12);
+  overflow:hidden;
+}
+.destacado::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:5px;
+  background:linear-gradient(90deg,var(--ierp-azul-700),var(--ierp-turquesa),var(--ierp-celeste),var(--ierp-sol));
+}
+.destacado__media{margin:0;border-radius:14px;overflow:hidden;position:relative;min-height:250px}
+.destacado__media img{width:100%;height:100%;object-fit:cover;display:block}
+.destacado__media figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:.7rem .9rem;
+  font-size:.8rem;color:#fff;background:linear-gradient(0deg,rgba(4,18,34,.86),transparent);
+}
+.destacado__texto{padding:.7rem 1rem 1rem}
+.destacado__texto h3{margin:.3rem 0 .7rem;font-size:1.4rem}
+.destacado__lista{list-style:none;margin:0 0 .8rem;padding:0;display:grid;gap:.5rem}
+.destacado__lista li{display:flex;gap:.55rem;align-items:flex-start;font-size:.93rem;color:#2c3d52}
+.destacado__lista .icon{width:1.15rem;height:1.15rem;flex:none;margin-top:.15rem;color:var(--ierp-turquesa)}
+.destacado__media--video{background:#04121f;display:grid;place-items:center}
+.destacado__media--video video{width:100%;height:100%;max-height:560px;object-fit:contain;display:block}
+@media (max-width:920px){.destacado{grid-template-columns:1fr}}
+
+/* --- Multimedia (videos institucionales) -------------------------- */
+.multimedia__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.3rem}
+.video-card{
+  background:#0e2c4d;border:1px solid rgba(255,255,255,.16);border-radius:18px;
+  overflow:hidden;box-shadow:0 20px 40px rgba(4,16,30,.35);
+}
+.video-card video{width:100%;display:block;background:#04121f;aspect-ratio:16/9;object-fit:contain}
+.video-card__cuerpo{padding:1rem 1.1rem 1.2rem;color:#dbe8f5}
+.video-card__cuerpo h3{margin:.2rem 0 .45rem;font-size:1.08rem}
+.video-card__cuerpo p{margin:0;font-size:.9rem;color:#bdd0e4}
+.video-card__fecha{
+  display:inline-flex;align-items:center;gap:.4rem;font-size:.76rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:#ffd98a;
+}
+.video-card__fecha .icon{width:1rem;height:1rem}
+
+/* --- Elevación y zoom suaves de las tarjetas ---------------------- */
+.card,.proyecto{transform-style:preserve-3d;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease}
+.card:hover,.proyecto:hover{transform:translateY(-6px);box-shadow:0 24px 44px rgba(11,37,69,.18)}
+.card__media img{transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+.card:hover .card__media img{transform:scale(1.06)}
+.nivel__foto img{transition:opacity .6s ease}
+@media (prefers-reduced-motion:reduce){
+  .rapido:hover,.rapido:focus-visible{transform:none}
+  .card:hover,.proyecto:hover{transform:none}
+  .card:hover .card__media img{transform:none}
+}
 </style>
 </head>
 <body>
@@ -1344,6 +1501,8 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
   <symbol id="ico-zoom" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l4.5 4.5M8 10.5h5M10.5 8v5"/></symbol>
   <symbol id="ico-pausa" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
   <symbol id="ico-reproducir" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></symbol>
+  <symbol id="ico-sonido" viewBox="0 0 24 24"><path d="M4 9.4h3.3L12 5.4v13.2l-4.7-4H4z"/><path d="M15.4 9.2a4 4 0 0 1 0 5.6M17.9 7a7.4 7.4 0 0 1 0 10"/></symbol>
+  <symbol id="ico-silencio" viewBox="0 0 24 24"><path d="M4 9.4h3.3L12 5.4v13.2l-4.7-4H4z"/><path d="M15.8 10.1 20 14.3M20 10.1l-4.2 4.2"/></symbol>
 </svg>
 
 <!-- =====================================================================
@@ -1461,6 +1620,44 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
   <div class="wrap hero__pie">
     <svg class="icon" aria-hidden="true"><use href="#ico-camara"></use></svg>
     <span id="heroCredito">Fotografía de la comunidad educativa de la institución.</span>
+  </div>
+</section>
+
+<!-- =====================================================================
+     2.b ACCESOS RÁPIDOS POR PÚBLICO
+     Franja de seis tarjetas para que cada visitante llegue en un clic a
+     lo que busca: estudiantes, familias, docentes, calendario, documentos
+     y noticias.
+     ===================================================================== -->
+<section class="rapidos" id="rapidos" aria-labelledby="rapidos-titulo">
+  <div class="wrap">
+    <h2 class="rapidos__titulo" id="rapidos-titulo">¿Qué información necesita hoy?</h2>
+    <div class="rapidos__grid">
+      <a class="rapido" href="#oferta">
+        <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-graduacion"></use></svg></span>
+        <b>Estudiantes</b><span>Niveles, grados y sedes</span>
+      </a>
+      <a class="rapido" href="#comunidad">
+        <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-personas"></use></svg></span>
+        <b>Familias</b><span>Escuela de padres y comunidad</span>
+      </a>
+      <a class="rapido" href="#institucion">
+        <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-libro"></use></svg></span>
+        <b>Docentes</b><span>PEI, SIEE y horizonte institucional</span>
+      </a>
+      <a class="rapido" href="#documentos">
+        <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-calendario"></use></svg></span>
+        <b>Calendario</b><span>Calendario escolar y matrículas</span>
+      </a>
+      <a class="rapido" href="#documentos">
+        <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-doc"></use></svg></span>
+        <b>Documentos</b><span>PEI, SIEE y manual de convivencia</span>
+      </a>
+      <a class="rapido" href="#noticias">
+        <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-periodico"></use></svg></span>
+        <b>Noticias</b><span>Eventos, logros y avisos</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1661,17 +1858,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       </p>
     </div>
 
-    <div class="nota nota--demo js-revelar" role="note" style="margin-bottom:1.8rem">
-      <svg class="icon" aria-hidden="true"><use href="#ico-alerta"></use></svg>
-      <div>
-        <p><strong>Fuentes de la información.</strong> La <strong>misión</strong>, la <strong>visión</strong>, el
-        <strong>perfil del estudiante</strong>, la <strong>reseña histórica</strong>, la <strong>bandera</strong>
-        y el <strong>escudo</strong> provienen del PEI 2025. Los <strong>principios</strong>,
-        <strong>valores</strong> y <strong>objetivos institucionales</strong> provienen del documento
-        «Horizonte institucional» (2025). Los datos institucionales (resolución, DANE, NIT, correo y teléfono)
-        provienen del PEI, del SIEE y del encabezado oficial de los documentos de la institución.</p>
-      </div>
-    </div>
+    <p class="campo__ayuda js-revelar" style="margin-bottom:1.8rem">Fuente: PEI 2025 y documento «Horizonte institucional» (2025).</p>
 
     <div class="panel-doble">
       <div class="panel-doble__texto js-revelar">
@@ -1736,15 +1923,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
           </li>
         </ul>
         <p class="campo__ayuda" style="margin-top:1rem">
-          <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span>
-          El <strong>lema</strong> y la <strong>modalidad</strong> se tomaron del <em>escudo oficial</em>; la
-          <strong>resolución</strong>, el <strong>DANE</strong>, el <strong>NIT</strong>, el <strong>correo</strong>
-          y el <strong>teléfono</strong>, del encabezado de los documentos oficiales (PEI, SIEE y Manual de
-          Convivencia); y la <strong>jornada única</strong>, del PEI.
-        </p>
-        <p class="campo__ayuda">
-          <span class="badge badge--pendiente"><svg class="icon" aria-hidden="true"><use href="#ico-reloj"></use></svg> Por confirmar</span>
-          Los datos marcados así no se han inventado: se publicarán únicamente cuando la institución los entregue.
+          Fuente: escudo oficial, PEI, SIEE y Manual de Convivencia de la institución.
         </p>
       </div>
 
@@ -1970,7 +2149,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     <div class="nota nota--info js-revelar" role="note" style="margin-bottom:1.8rem">
       <svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg>
       <div>
-        <p><strong>Niveles confirmados.</strong> La institución confirmó que ofrece <strong>preescolar,
+        <p><strong>Niveles que ofrece la institución.</strong> Se ofrece <strong>preescolar,
         básica primaria, básica secundaria y educación media (10.º y 11.º)</strong>. La aprobación de
         funcionamiento está respaldada por la Resolución No. 0844 del 25 de febrero de 2015. Si la
         Secretaría de Educación del Putumayo expide un acto administrativo nuevo para la media, se anexará
@@ -1980,14 +2159,13 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 
     <div class="niveles js-revelar" style="margin-bottom:2.2rem">
       <div class="nivel">
-        <span class="nivel__etiqueta">Confirmado</span>
         <div class="nivel__foto">
-          <img src="assets/img/facebook/auto-122190035810861024-foto-1.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Estudiantes de preescolar y básica primaria en una celebración institucional">
-          <img src="assets/img/facebook/auto-122203599122861024-foto-2.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Niños y niñas jugando con cometas en el Festival del Viento">
-          <img src="assets/img/facebook/sin-texto-junio-1.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Niños y niñas de la institución en una jornada de celebración">
+          <img src="assets/img/fotos-libres/preescolar-1.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Niños y niñas de preescolar jugando con un paracaídas de colores">
+          <img src="assets/img/fotos-libres/preescolar-2.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Niños de preescolar jugando y aprendiendo con sus docentes">
+          <img src="assets/img/fotos-libres/preescolar-3.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Niña de preescolar armando figuras con bloques de colores">
         </div>
         <div class="nivel__capa">
           <h3>Preescolar</h3>
@@ -1997,14 +2175,13 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       </div>
 
       <div class="nivel">
-        <span class="nivel__etiqueta">Confirmado</span>
         <div class="nivel__foto">
-          <img src="assets/img/facebook/auto-122184776090861024-foto-4.jpg" width="600" height="600" loading="lazy" decoding="async"
+          <img src="assets/img/fotos-libres/primaria-1.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Estudiantes de básica primaria participando con entusiasmo en clase">
+          <img src="assets/img/fotos-libres/primaria-2.jpg" width="700" height="700" loading="lazy" decoding="async"
                alt="Estudiante de básica primaria escribiendo en su cuaderno">
-          <img src="assets/img/facebook/auto-122199609044861024-foto-4.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Estudiantes de primaria en un taller de manualidades">
-          <img src="assets/img/facebook/auto-122199609044861024-foto-2.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Libros y materiales del plan lector de básica primaria">
+          <img src="assets/img/fotos-libres/primaria-3.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Estudiantes de básica primaria trabajando en el aula">
         </div>
         <div class="nivel__capa">
           <h3>Básica primaria</h3>
@@ -2014,14 +2191,13 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       </div>
 
       <div class="nivel">
-        <span class="nivel__etiqueta">Confirmado</span>
         <div class="nivel__foto">
-          <img src="assets/img/noticias/feria-ciencia-2026.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Stand de la feria de ciencia y creatividad de la institución">
-          <img src="assets/img/facebook/auto-122206276388861024-foto-3.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Estudiantes de básica secundaria presentando sus experiencias significativas">
-          <img src="assets/img/facebook/auto-122180707010861024-foto-2.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Estudiantes de básica secundaria en una jornada institucional al aire libre">
+          <img src="assets/img/fotos-libres/secundaria-1.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Estudiantes de básica secundaria investigando en la biblioteca escolar">
+          <img src="assets/img/fotos-libres/secundaria-2.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Estudiantes de básica secundaria en una práctica de ciencias naturales">
+          <img src="assets/img/fotos-libres/secundaria-3.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Material de laboratorio para las prácticas de ciencias de la básica secundaria">
         </div>
         <div class="nivel__capa">
           <h3>Básica secundaria</h3>
@@ -2031,19 +2207,18 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       </div>
 
       <div class="nivel">
-        <span class="nivel__etiqueta">Confirmado</span>
         <div class="nivel__foto">
-          <img src="assets/img/noticias/entrega-computadores-2026.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Estudiantes de educación media con los computadores entregados a la institución">
-          <img src="assets/img/facebook/auto-122195853632861024-foto-2.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Estudiantes de educación media en un acto institucional con la bandera">
-          <img src="assets/img/facebook/auto-122181923636861024-foto-5.jpg" width="600" height="600" loading="lazy" decoding="async"
-               alt="Estudiantes de educación media en una jornada de participación estudiantil">
+          <img src="assets/img/fotos-libres/media-1.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Estudiantes de educación media trabajando con computadores portátiles">
+          <img src="assets/img/fotos-libres/media-2.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Docente orientando una clase con estudiantes de educación media">
+          <img src="assets/img/fotos-libres/media-3.jpg" width="700" height="700" loading="lazy" decoding="async"
+               alt="Estudiantes de educación media en el aula de clase">
         </div>
         <div class="nivel__capa">
           <h3>Educación media (bachillerato)</h3>
           <p>Grados 10.º y 11.º, modalidad académica. Bachillerato completo. El escudo oficial declara
-          «Modalidad Académica» y la institución confirma la apertura de estos grados.</p>
+          «Modalidad Académica» y la institución ofrece estos grados.</p>
         </div>
       </div>
     </div>
@@ -2065,78 +2240,78 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
           <tbody>
             <tr>
               <th scope="row">Sede Central &mdash; IER Puerto Rosario</th>
-              <td>Preescolar a 11.º (preescolar, básica primaria, básica secundaria y media) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
-              <td>Académica <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
-              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Publicado</span></td>
+              <td>Preescolar a 11.º (preescolar, básica primaria, básica secundaria y media)</td>
+              <td>Única (Decreto 2105)</td>
+              <td>Académica</td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Activa</span></td>
             </tr>
             <tr>
               <th scope="row">ERM La Estrella</th>
               <td>Preescolar a 5.º (básica primaria)</td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Única (Decreto 2105)</td>
               <td>Académica</td>
-              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Activa</span></td>
             </tr>
             <tr>
               <th scope="row">ERM San Rafael del Bombón</th>
               <td>Preescolar a 5.º (básica primaria)</td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Única (Decreto 2105)</td>
               <td>Académica</td>
-              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Activa</span></td>
             </tr>
             <tr>
               <th scope="row">ERM San Cayetano</th>
               <td>Preescolar a 5.º (básica primaria)</td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Única (Decreto 2105)</td>
               <td>Académica</td>
-              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Activa</span></td>
             </tr>
             <tr>
               <th scope="row">ERM San Luis</th>
               <td>Preescolar a 5.º (básica primaria)</td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Única (Decreto 2105)</td>
               <td>Académica</td>
-              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Activa</span></td>
             </tr>
             <tr>
               <th scope="row">ERM El Porvenir</th>
               <td>Preescolar a 5.º (básica primaria)</td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Única (Decreto 2105)</td>
               <td>Académica</td>
-              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Activa</span></td>
             </tr>
             <tr>
               <th scope="row">ERM Buenos Aires del Mandur</th>
               <td>Preescolar a 5.º (básica primaria)</td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Única (Decreto 2105)</td>
               <td>Académica</td>
-              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Activa</span></td>
             </tr>
             <tr>
               <th scope="row">ERM Las Villas</th>
               <td>Preescolar a 5.º (básica primaria)</td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Única (Decreto 2105)</td>
               <td>Académica</td>
-              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Activa</span></td>
             </tr>
             <tr>
               <th scope="row">ERM La Pedregosa</th>
               <td>Preescolar a 5.º (básica primaria)</td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Única (Decreto 2105)</td>
               <td>Académica</td>
-              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Activa</span></td>
             </tr>
             <tr>
               <th scope="row">ERM Las Delicias de Alpamanga</th>
               <td>Preescolar a 5.º (básica primaria)</td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Única (Decreto 2105)</td>
               <td>Académica</td>
               <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> En funcionamiento</span></td>
             </tr>
             <tr>
               <th scope="row">ERM Nueva Unión</th>
               <td>Preescolar a 5.º (básica primaria)</td>
-              <td>Única (Decreto 2105) <span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Confirmado</span></td>
+              <td>Única (Decreto 2105)</td>
               <td>Académica</td>
               <td><span class="badge badge--ok"><svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> En funcionamiento</span></td>
             </tr>
@@ -2160,6 +2335,33 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
         Proyectos que los estudiantes desarrollan con su territorio como aula: indagación, prototipos,
         ferias de ciencia y tecnología, cuidado del medio ambiente y participación de las familias.
       </p>
+    </div>
+
+    <ul class="innovar__pills js-revelar">
+      <li><svg class="icon" aria-hidden="true"><use href="#ico-chispa"></use></svg> Innovatec</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#ico-laboratorio"></use></svg> Ferias de ciencia</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#ico-portatil"></use></svg> Tecnología e Informática</li>
+      <li><svg class="icon" aria-hidden="true"><use href="#ico-hoja"></use></svg> Territorio y biodiversidad</li>
+    </ul>
+
+    <!-- Destacado: Día de la Inteligencia Artificial (2 de octubre) -->
+    <div class="destacado js-revelar">
+      <figure class="destacado__media">
+        <img src="assets/img/noticias/feria-ciencia-2026.jpg" width="900" height="600" loading="lazy" decoding="async"
+             alt="Estudiantes presentando sus proyectos en la feria de ciencia, tecnología e innovación">
+        <figcaption>Feria de Ciencia, Tecnología e Innovación &middot; 2026</figcaption>
+      </figure>
+      <div class="destacado__texto">
+        <span class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#ico-chispa"></use></svg> 2 de octubre</span>
+        <h3>Día de la Inteligencia Artificial en Puerto Rosario</h3>
+        <p>Una jornada completa dedicada a la inteligencia artificial: qué es, cómo se usa en el campo
+        y en la vida diaria, y cómo se construye con herramientas libres.</p>
+        <ul class="destacado__lista">
+          <li><svg class="icon" aria-hidden="true"><use href="#ico-portatil"></use></svg> Talleres de ciudadanía digital y uso responsable de la IA.</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#ico-laboratorio"></use></svg> Demostraciones y prototipos creados por los estudiantes.</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#ico-hoja"></use></svg> Aplicaciones de la IA al campo, al agua y a la biodiversidad.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="filtros js-revelar" id="filtrosProyectos" role="group" aria-label="Filtrar proyectos por área">
@@ -2430,6 +2632,26 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       <p>No se encontraron noticias que coincidan con tu búsqueda.</p>
       <button class="btn btn--outline btn--sm" type="button" id="limpiarNoticias2">Limpiar búsqueda</button>
     </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     8.b MULTIMEDIA (VIDEOS INSTITUCIONALES)
+     La sección aparece sola cuando hay videos publicados en el arreglo
+     "videos" de datos/contenido.js. Si no hay ninguno, queda oculta:
+     así el sitio nunca muestra un reproductor vacío.
+     ===================================================================== -->
+<section class="section section--alt" id="multimedia" aria-labelledby="multimedia-titulo" hidden>
+  <div class="wrap">
+    <div class="section__head js-revelar">
+      <span class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#ico-camara"></use></svg> Multimedia</span>
+      <h2 id="multimedia-titulo">Nuestros videos institucionales</h2>
+      <p class="section__lead">
+        Recorridos por la institución, jornadas especiales y momentos de la comunidad educativa,
+        en video.
+      </p>
+    </div>
+    <div class="multimedia__grid" id="multimediaGrid"></div>
   </div>
 </section>
 
@@ -2780,8 +3002,8 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
         <div class="card__body">
           <span class="badge badge--pendiente"><svg class="icon" aria-hidden="true"><use href="#ico-reloj"></use></svg> Por implementar</span>
           <h3>Información institucional</h3>
-          <p>Datos generales de la institución, naturaleza jurídica, sedes y responsables, cuando estén
-          oficialmente confirmados.</p>
+          <p>Datos generales de la institución, naturaleza jurídica, sedes y responsables, cuando la
+          institución los publique.</p>
         </div>
       </article>
       <article class="card js-revelar">
@@ -2889,15 +3111,20 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
         </div>
       </div>
 
-      <form class="formulario js-revelar" id="formContacto" novalidate>
+      <form class="formulario js-revelar" id="formContacto" method="POST"
+            action="https://formsubmit.co/ierpuertorosario@gmail.com" novalidate>
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde el sitio web del IER Puerto Rosario">
+        <input type="hidden" name="_cc" value="ierpuertorosario1@gmail.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
         <h3>Escríbenos</h3>
 
-        <div class="nota nota--demo" role="note" style="margin-bottom:1.2rem">
-          <svg class="icon" aria-hidden="true"><use href="#ico-alerta"></use></svg>
+        <div class="nota nota--info" role="note" style="margin-bottom:1.2rem">
+          <svg class="icon" aria-hidden="true"><use href="#ico-mail"></use></svg>
           <div>
-            <p><strong>Formulario de demostración.</strong> Esta página no tiene servidor ni correo
-            configurado: al enviar, <strong>no se envía ningún mensaje</strong> y los datos no se guardan ni
-            se transmiten. Sirve únicamente para mostrar cómo funcionará el formulario.</p>
+            <p>Su mensaje llega directamente al correo institucional
+            <strong>ierpuertorosario@gmail.com</strong> y a
+            <strong>ierpuertorosario1@gmail.com</strong>.</p>
           </div>
         </div>
 
@@ -2931,7 +3158,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 
         <button class="btn btn--primary btn--bloque" type="submit">
           <svg class="icon" aria-hidden="true"><use href="#ico-flecha"></use></svg>
-          Enviar mensaje (demostración)
+          Enviar mensaje
         </button>
 
         <div class="estado-form" id="estadoForm" role="status" aria-live="polite"></div>
@@ -3017,6 +3244,12 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
         <br><span id="selloActualizacion">Contenido actualizado por la institución.</span>
         <br><a href="admin.html" id="enlaceAdmin" rel="nofollow" style="display:none">Acceso institucional (rectoría y administración)</a>
       </p>
+      <p class="footer-extra">
+        <span class="footer-contador" id="contadorVisitas" hidden>
+          <svg class="icon" aria-hidden="true"><use href="#ico-personas"></use></svg>
+          Visitas: <b id="contadorNumero">401</b>
+        </span>
+      </p>
     </div>
   </div>
 </footer>
@@ -3025,6 +3258,13 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 <button class="volver-arriba" id="volverArriba" type="button" aria-label="Volver al inicio de la página">
   <svg class="icon" aria-hidden="true"><use href="#ico-arriba"></use></svg>
 </button>
+
+<!-- Audio de fondo: suena muy bajo y se puede detener en cualquier momento -->
+<button class="audio-fondo" id="btnAudioFondo" type="button" aria-pressed="false"
+        aria-label="Activar o detener la música de fondo" title="Música de fondo">
+  <svg class="icon" aria-hidden="true"><use href="#ico-silencio"></use></svg>
+</button>
+<audio id="audioFondo" src="assets/audio/himno-institucional.mp3" loop preload="auto"></audio>
 
 <!-- =====================================================================
      VISOR DE IMÁGENES (ampliación de la galería)
@@ -3648,32 +3888,76 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
   }());
 
   /* -------------------------------------------------------------------
-     12. Formulario de contacto (DEMOSTRACIÓN: no envía nada)
+     12. Formulario de contacto (envía a los correos institucionales)
      ------------------------------------------------------------------- */
   (function formularioContacto() {
     var form = qs('#formContacto');
     var estado = qs('#estadoForm');
     if (!form || !estado) return;
 
+    var DESTINOS = 'ierpuertorosario@gmail.com,ierpuertorosario1@gmail.com';
+    var boton = form.querySelector('button[type="submit"]');
+    var textoBoton = boton ? boton.innerHTML : '';
+    var valor = function (sel) { var c = qs(sel, form); return c ? c.value : ''; };
+
+    function nota(clase, icono, html) {
+      estado.innerHTML = '<div class="nota nota--' + clase + '" role="note">' +
+        '<svg class="icon" aria-hidden="true"><use href="#' + icono + '"></use></svg>' +
+        '<div>' + html + '</div></div>';
+    }
+
+    function correoAlterno() {
+      var cuerpo = 'Nombre: ' + valor('#nombre') + '\n' +
+                   'Correo: ' + valor('#correo') + '\n' +
+                   'Asunto: ' + valor('#asunto') + '\n\n' + valor('#mensaje');
+      return 'mailto:' + DESTINOS +
+        '?subject=' + encodeURIComponent('Mensaje desde el sitio web del IER Puerto Rosario') +
+        '&body=' + encodeURIComponent(cuerpo);
+    }
+
     form.addEventListener('submit', function (e) {
-      e.preventDefault(); // Evita cualquier envío: no existe servidor
+      e.preventDefault();
 
       if (!form.checkValidity()) {
         form.reportValidity();
-        estado.innerHTML =
-          '<div class="nota nota--alerta"><svg class="icon" aria-hidden="true"><use href="#ico-alerta"></use></svg>' +
-          '<div><p><strong>Revise los campos obligatorios.</strong> Complete nombre, correo, asunto y mensaje para continuar.</p></div></div>';
+        nota('alerta', 'ico-alerta',
+          '<p><strong>Revise los campos obligatorios.</strong> Complete nombre, correo, asunto y mensaje para continuar.</p>');
         return;
       }
 
-      var nombre = (qs('#nombre', form) || {}).value || '';
-      estado.innerHTML =
-        '<div class="nota nota--demo" role="note"><svg class="icon" aria-hidden="true"><use href="#ico-info"></use></svg>' +
-        '<div><p><strong>Demostración completada.</strong> Gracias, ' +
-        nombre.replace(/[<>&"]/g, '') +
-        '. Este formulario <strong>no envía mensajes ni guarda datos</strong>: el sitio aún no tiene servidor ni correo configurado.</p>' +
-        '<p>Para publicarlo de verdad se debe conectar un servicio de envío o un formulario con backend autorizado por la institución.</p></div></div>';
-      form.reset();
+      var datos = {
+        _subject: 'Nuevo mensaje desde el sitio web del IER Puerto Rosario',
+        _cc: 'ierpuertorosario1@gmail.com',
+        _template: 'table',
+        Nombre: valor('#nombre'),
+        Correo: valor('#correo'),
+        Asunto: valor('#asunto'),
+        Mensaje: valor('#mensaje')
+      };
+
+      if (boton) { boton.disabled = true; boton.innerHTML = 'Enviando…'; }
+      nota('info', 'ico-reloj', '<p>Enviando su mensaje…</p>');
+
+      fetch('https://formsubmit.co/ajax/ierpuertorosario@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(datos)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('respuesta ' + r.status);
+        return r.json();
+      }).then(function () {
+        nota('info', 'ico-ver',
+          '<p><strong>Mensaje enviado.</strong> Gracias por escribirnos: su mensaje llegó al correo institucional y le responderemos lo antes posible.</p>');
+        form.reset();
+      }).catch(function () {
+        nota('alerta', 'ico-alerta',
+          '<p><strong>No se pudo enviar automáticamente.</strong> Escríbanos a ' +
+          '<a href="mailto:ierpuertorosario@gmail.com">ierpuertorosario@gmail.com</a> o a ' +
+          '<a href="mailto:ierpuertorosario1@gmail.com">ierpuertorosario1@gmail.com</a>, ' +
+          'o <a href="' + correoAlterno() + '">abra su correo con el mensaje ya escrito</a>.</p>');
+      }).finally(function () {
+        if (boton) { boton.disabled = false; boton.innerHTML = textoBoton; }
+      });
     });
   }());
 
@@ -3682,6 +3966,124 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
      ------------------------------------------------------------------- */
   var anio = qs('#anio');
   if (anio) anio.textContent = new Date().getFullYear();
+
+  /* -------------------------------------------------------------------
+     14. Contador de visitas del sitio (el conteo inicia en 401)
+     ------------------------------------------------------------------- */
+  (function contadorVisitas() {
+    var caja = qs('#contadorVisitas');
+    var num = qs('#contadorNumero');
+    if (!caja || !num) return;
+    var BASE = 400;
+    caja.hidden = false;
+
+    fetch('https://abacus.jasoncameron.dev/hit/ier-puerto-rosario-sitio/visitas')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var total = BASE + (d && typeof d.value === 'number' ? d.value : 0);
+        num.textContent = total.toLocaleString('es-CO');
+      })
+      .catch(function () {
+        num.textContent = (BASE + 1).toLocaleString('es-CO');
+      });
+  }());
+
+  /* -------------------------------------------------------------------
+     15. Audio de fondo: suena muy bajo desde que se abre la página y se
+         puede detener en cualquier momento con el botón discreto.
+     ------------------------------------------------------------------- */
+  (function audioDeFondo() {
+    var btn = qs('#btnAudioFondo');
+    var audio = qs('#audioFondo');
+    if (!btn || !audio) return;
+
+    audio.volume = 0.16; // volumen muy bajo: acompaña, no protagoniza
+    var intervenido = false;
+
+    function pintar(activo) {
+      btn.setAttribute('aria-pressed', activo ? 'true' : 'false');
+      btn.setAttribute('aria-label', activo ? 'Detener la música de fondo' : 'Activar la música de fondo');
+      btn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#' +
+        (activo ? 'ico-sonido' : 'ico-silencio') + '"></use></svg>';
+      btn.classList.toggle('is-sonando', activo);
+      if (activo) btn.classList.remove('is-sugerido');
+    }
+
+    function arrancar() {
+      var p = audio.play();
+      if (p && p.then) {
+        p.then(function () { pintar(true); })['catch'](function () {
+          pintar(false);
+          btn.classList.add('is-sugerido'); // el navegador la bloqueó: se ofrece el botón
+        });
+      } else {
+        pintar(true);
+      }
+    }
+
+    btn.addEventListener('click', function () {
+      intervenido = true;
+      btn.classList.remove('is-sugerido');
+      if (audio.paused) { arrancar(); } else { audio.pause(); pintar(false); }
+    });
+
+    pintar(false);
+    arrancar(); // intenta sonar sola, siempre en tono bajo
+
+    // Los navegadores suelen pedir un primer gesto de la persona:
+    // al primer toque, tecla o desplazamiento, la música arranca.
+    var despertar = function () {
+      if (!intervenido && audio.paused) arrancar();
+      window.removeEventListener('pointerdown', despertar);
+      window.removeEventListener('keydown', despertar);
+      window.removeEventListener('scroll', despertar);
+    };
+    window.addEventListener('pointerdown', despertar);
+    window.addEventListener('keydown', despertar);
+    window.addEventListener('scroll', despertar);
+  }());
+
+  /* -------------------------------------------------------------------
+     16. Multimedia: publica los videos cargados en datos/contenido.js
+     ------------------------------------------------------------------- */
+  (function multimedia() {
+    var seccion = qs('#multimedia');
+    var caja = qs('#multimediaGrid');
+    if (!seccion || !caja) return;
+
+    var todos = (window.CONTENIDO_IERP && window.CONTENIDO_IERP.videos) || [];
+    var videos = todos.filter(function (v) { return v && v.archivo; });
+    if (!videos.length) return;
+
+    seccion.hidden = false;
+    caja.innerHTML = videos.map(function (v) {
+      var poster = v.poster ? ' poster="' + v.poster + '"' : '';
+      var fecha = v.fecha
+        ? '<span class="video-card__fecha"><svg class="icon" aria-hidden="true"><use href="#ico-calendario"></use></svg>' + v.fecha + '</span>'
+        : '';
+      var pie = v.descripcion ? '<p>' + v.descripcion + '</p>' : '';
+      var enlace = v.facebook
+        ? '<p style="margin:.8rem 0 0"><a class="btn btn--claro btn--sm" href="' + v.facebook +
+          '" target="_blank" rel="noopener noreferrer">Ver en Facebook ' +
+          '<svg class="icon" aria-hidden="true"><use href="#ico-externo"></use></svg></a></p>'
+        : '';
+      return '<article class="video-card">' +
+        '<video controls preload="none" playsinline' + poster + ' src="' + v.archivo + '"></video>' +
+        '<div class="video-card__cuerpo">' + fecha +
+        '<h3>' + (v.titulo || 'Video institucional') + '</h3>' + pie + enlace +
+        '</div></article>';
+    }).join('');
+
+    // El video del Día de la IA se muestra, además, en el bloque destacado
+    var ia = videos.filter(function (v) { return v.id === 'ia'; })[0];
+    var media = qs('.destacado__media');
+    if (ia && media) {
+      media.innerHTML = '<video controls preload="none" playsinline' +
+        (ia.poster ? ' poster="' + ia.poster + '"' : '') +
+        ' src="' + ia.archivo + '"></video>';
+      media.classList.add('destacado__media--video');
+    }
+  }());
 
 }());
 </script>

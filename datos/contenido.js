@@ -92,9 +92,9 @@ window.CONTENIDO_IERP = {
     { titulo: 'Medio ambiente y siembra', src: 'assets/img/facebook/auto-122187885302861024-foto-3.jpg', alt: 'Estudiantes sembrando y cuidando las plantas de la institución', referencia: false, publicado: true },
     { titulo: 'Periódico mural escolar', src: 'assets/img/galeria/periodico-mural.jpg', alt: 'Trabajo de los estudiantes en el periódico mural escolar', referencia: false, publicado: true },
     { titulo: 'Tecnología e informática', src: 'assets/img/noticias/entrega-computadores-2026.jpg', alt: 'Estudiantes con los computadores entregados a la institución', referencia: false, publicado: true },
-    { titulo: 'Plan lector y biblioteca', src: 'assets/img/facebook/auto-122184776090861024-foto-5.jpg', alt: 'Estudiante leyendo y escribiendo en su cuaderno durante la jornada escolar', referencia: false, publicado: true },
-    { titulo: 'Escuela de familias', src: 'assets/img/noticias/escuela-de-padres-2026.jpg', alt: 'Familias reunidas en la escuela de padres de la institución', referencia: false, publicado: true },
-    { titulo: 'Comunidad educativa y familias', src: 'assets/img/facebook/auto-122208533696861024-foto-1.jpg', alt: 'Encuentro de familias, estudiantes y docentes de la comunidad educativa', referencia: false, publicado: true }
+    { titulo: 'Plan lector y biblioteca', src: 'assets/img/fotos-libres/lectura-1.jpg', alt: 'Niño de espaldas leyendo un libro en su pupitre durante la jornada escolar', referencia: false, publicado: true },
+    { titulo: 'Escuela de familias', src: 'assets/img/fotos-libres/familias-1.jpg', alt: 'Familias reunidas en la escuela de padres', referencia: false, publicado: true },
+    { titulo: 'Comunidad educativa y familias', src: 'assets/img/fotos-libres/comunidad-1.jpg', alt: 'Encuentro de la comunidad educativa al aire libre', referencia: false, publicado: true }
   ],
 
   noticias: [
@@ -531,5 +531,42 @@ window.CONTENIDO_IERP = {
     { titulo: 'Plan de área de Tecnología e Informática 2026', categoria: 'Planes de estudio por área', icono: 'libro', descripcion: 'Versión 2026 del plan de área de tecnología e informática, organizada por centros de interés.', archivo: 'documentos/plan-tecnologia-e-informatica-2026.pdf', anio: '2026', publicado: true },
     { titulo: 'Malla curricular de Tecnología e Informática 2026', categoria: 'Planes de estudio por área', icono: 'libro', descripcion: 'Malla curricular 2026 de tecnología e informática por grado y periodo.', archivo: 'documentos/malla-curricular-tecnologia-2026.pdf', anio: '2026', publicado: true },
     { titulo: 'Planeador de Tecnología e Informática 2026 (grados 1.º a 10.º)', categoria: 'Planes de estudio por área', icono: 'libro', descripcion: 'Planeador de los cuatro periodos del año 2026 para los grados 1.º a 10.º.', archivo: 'documentos/planeador-tecnologia-grados-1-10-2026.pdf', anio: '2026', publicado: true }
+  ],
+
+  /* ---- VIDEOS INSTITUCIONALES ---------------------------------------
+     Cada elemento de este arreglo se publica en la sección "Multimedia".
+     Si el arreglo queda vacío, la sección no se muestra (así el sitio
+     nunca enseña un reproductor sin contenido). --------------------- */
+  videos: [
+    { id: 'ia',
+      titulo: 'Día de la Inteligencia Artificial',
+      fecha: '2 de octubre de 2026',
+      descripcion: 'Jornada dedicada a la inteligencia artificial: talleres, demostraciones y prototipos creados por los estudiantes.',
+      archivo: 'assets/video/dia-de-la-inteligencia-artificial.mp4',
+      poster: 'assets/video/dia-de-la-inteligencia-artificial-portada.jpg' },
+    { id: 'bienvenida',
+      titulo: 'Bienvenida a los nuevos estudiantes de preescolar',
+      fecha: '2026',
+      descripcion: 'Recorrido por la institución para recibir a los niños y las niñas que ingresan al grado preescolar.',
+      archivo: 'assets/video/bienvenida-preescolar.mp4',
+      poster: 'assets/video/bienvenida-preescolar-portada.jpg' },
+    { id: 'rector',
+      titulo: 'Saludo y despedida del rector',
+      fecha: '3 de octubre de 2026',
+      descripcion: 'Mensaje de saludo y despedida del rector a la comunidad educativa.',
+      archivo: 'assets/video/saludo-del-rector.mp4',
+      poster: 'assets/video/saludo-del-rector-portada.jpg' },
+    { id: 'innovatec',
+      titulo: 'Proyecto Innovatec',
+      fecha: '2026',
+      descripcion: 'Los estudiantes presentan los prototipos con los que resuelven necesidades de su vereda.',
+      archivo: 'assets/video/proyecto-innovatec.mp4',
+      poster: 'assets/video/proyecto-innovatec-portada.jpg' },
+    { id: 'institucional',
+      titulo: 'Estrategias, espacios y proyectos de la institución',
+      fecha: '2026',
+      descripcion: 'Recorrido por las estrategias, los espacios y los proyectos que hacen parte de la IER Puerto Rosario.',
+      archivo: 'assets/video/bienvenida-institucional.mp4',
+      poster: 'assets/video/bienvenida-institucional-portada.jpg' }
   ]
 };
