@@ -10,7 +10,7 @@
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
  "actualizado": "2026-10-18",
- "generado": "2026-10-18 06:21:58",
+ "generado": "2026-10-18 13:21:11",
  "noticias": [
   {
    "titulo": "Día del Idioma y Día del Libro",
