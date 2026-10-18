@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración de referencia: escuela rural y aula de clase">
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe3f7"/><stop offset="1" stop-color="#f2f7e8"/></linearGradient>
+    <linearGradient id="loma1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9ed7a6"/><stop offset="1" stop-color="#63b877"/></linearGradient>
+    <linearGradient id="loma2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f9d63"/><stop offset="1" stop-color="#2f7d4f"/></linearGradient>
+    <g id="arbol">
+      <rect x="-5" y="0" width="10" height="46" rx="3" fill="#6b4b32"/>
+      <circle cx="0" cy="-10" r="32" fill="#2f7d4f"/>
+      <circle cx="-22" cy="8" r="22" fill="#3d9159"/>
+      <circle cx="22" cy="6" r="24" fill="#3d9159"/>
+    </g>
+  </defs>
+  <rect width="800" height="500" fill="url(#cielo)"/>
+  <circle cx="662" cy="92" r="44" fill="#ffe6ad" opacity=".85"/>
+  <path d="M0 300C110 246 210 292 320 264 430 236 520 288 630 262 700 246 760 262 800 254V500H0Z" fill="url(#loma1)"/>
+  <path d="M0 372C120 322 250 366 380 340 510 314 620 362 800 330V500H0Z" fill="url(#loma2)"/>
+  <g>
+    <rect x="250" y="250" width="300" height="150" rx="10" fill="#fdfaf1"/>
+    <path d="M232 252 400 164 568 252Z" fill="#c7603f"/>
+    <rect x="376" y="330" width="50" height="70" rx="5" fill="#2f7d4f"/>
+    <g fill="#7fc4e6" stroke="#1f5f8f" stroke-width="3">
+      <rect x="278" y="292" width="52" height="46" rx="4"/>
+      <rect x="346" y="292" width="52" height="46" rx="4"/>
+      <rect x="470" y="292" width="52" height="46" rx="4"/>
+    </g>
+    <rect x="440" y="292" width="30" height="46" rx="4" fill="#e6ded0"/>
+    <rect x="556" y="168" width="6" height="122" fill="#5b6b5f"/>
+    <path d="M562 174h52v28h-52z" fill="#f2c14e"/>
+  </g>
+  <use href="#arbol" transform="translate(120 402) scale(1.2)"/>
+  <use href="#arbol" transform="translate(706 418) scale(.95)"/>
+  <path d="M400 400c-18 42-42 68-58 100h150c-18-32-48-58-58-100z" fill="#d9c8a8" opacity=".7"/>
+</svg>

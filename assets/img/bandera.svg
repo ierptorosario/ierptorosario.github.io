@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 300 200" width="300" height="200" role="img"
+     aria-label="Bandera institucional: franja blanca en la parte superior, franja gris en la parte inferior y el escudo de la institución al centro">
+  <title>Bandera de la Institución Educativa Rural Puerto Rosario</title>
+  <desc>Dos franjas horizontales de igual tamaño: la superior blanca (paz y armonía) y la inferior gris (autonomía institucional e independencia de los estudiantes), con el escudo de la institución al centro.</desc>
+  <rect x="0" y="0" width="300" height="100" fill="#ffffff"/>
+  <rect x="0" y="100" width="300" height="100" fill="#9aa0a6"/>
+  <rect x="0" y="0" width="300" height="200" fill="none" stroke="#c9ced3" stroke-width="1"/>
+  <image xlink:href="escudo.png" x="106" y="56" width="88" height="88"
+         preserveAspectRatio="xMidYMid meet"/>
+</svg>

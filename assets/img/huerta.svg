@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración de referencia: huerta, vivero y seguridad alimentaria">
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9eff8"/><stop offset="1" stop-color="#f6fbf0"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#cielo)"/>
+  <circle cx="666" cy="92" r="44" fill="#ffe6ad" opacity=".9"/>
+  <path d="M0 300C140 258 300 292 460 268 600 248 700 272 800 258V500H0Z" fill="#9ed7a6" opacity=".8"/>
+  <path d="M0 360C160 328 340 356 520 336 660 320 730 336 800 326V500H0Z" fill="#5aa869" opacity=".75"/>
+  <g>
+    <rect x="120" y="380" width="220" height="30" rx="10" fill="#8a5f3d"/>
+    <rect x="140" y="344" width="180" height="40" rx="8" fill="#6b4b32"/>
+    <rect x="420" y="404" width="240" height="30" rx="10" fill="#8a5f3d"/>
+    <rect x="442" y="368" width="196" height="40" rx="8" fill="#6b4b32"/>
+  </g>
+  <g stroke="#2f7d4f" stroke-width="7" stroke-linecap="round" fill="none">
+    <path d="M180 344v-58M240 344v-72M300 344v-52"/>
+    <path d="M482 368v-62M548 368v-74M614 368v-54"/>
+  </g>
+  <g fill="#7cc98b">
+    <circle cx="180" cy="278" r="20"/><circle cx="240" cy="264" r="24"/><circle cx="300" cy="284" r="19"/>
+    <circle cx="482" cy="298" r="20"/><circle cx="548" cy="286" r="24"/><circle cx="614" cy="306" r="19"/>
+  </g>
+  <g transform="translate(360 250)">
+    <path d="M-52-40h104l-14 62h-76z" fill="#7fc4e6"/>
+    <path d="M52-24l52-22v20L52-4z" fill="#7fc4e6"/>
+    <path d="M-30-40c14-24 46-24 60 0" fill="none" stroke="#7fc4e6" stroke-width="8"/>
+    <path d="M-42 22v14a10 10 0 0 0 10 10h64a10 10 0 0 0 10-10V22z" fill="#1f5f8f"/>
+  </g>
+</svg>

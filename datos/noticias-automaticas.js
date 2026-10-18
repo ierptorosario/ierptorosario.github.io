@@ -1,0 +1,276 @@
+/* =====================================================================
+   DATOS AUTOMÁTICOS: NOTICIAS PUBLICADAS EN LA PÁGINA DE FACEBOOK
+   Institución Educativa Rural Puerto Rosario
+   ---------------------------------------------------------------------
+   Este archivo NO SE EDITA A MANO. Lo escribe automáticamente el
+   coleccionista actualizador/fallback-fb.js, a su vez llamado por
+   actualizador.ps1. El sitio (index.html) lo lee y lo combina con
+   datos/contenido.js. Solo agrega, nunca borra.
+   ===================================================================== */
+window.CONTENIDO_NOTICIAS_AUTO = {
+ "version": 1,
+ "actualizado": "2026-10-18",
+ "generado": "2026-10-18 01:28:03",
+ "noticias": [
+  {
+   "titulo": "🌳💚 Día del Árbol – Ier Puerto Rosario 💚🌳",
+   "fecha": "29 de abril de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122180707010861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "Hoy conmemoramos el Día del Árbol en nuestra Institución Educativa Rural Pto Rosario, una fecha para recordar que cada árbol es vida, esperanza y futuro para nuestro planeta.🌲🏞️🎯",
+   "detalle": "<p>🌳💚 Día del Árbol – Ier Puerto Rosario 💚🌳</p><p>Hoy conmemoramos el Día del Árbol en nuestra Institución Educativa Rural Pto Rosario, una fecha para recordar que cada árbol es vida, esperanza y futuro para nuestro planeta.🌲🏞️🎯</p><p>En todas nuestras sedes sembramos más que conocimientos: sembramos conciencia, respeto y amor por la naturaleza 🌱. Nuestros árboles nos brindan sombra, aire puro y nos enseñan el valor de cuidar lo que nos rodea.💯🎯</p><p>✨ Educar también es aprender a proteger la vida en todas sus formas, gracias al comité de medio ambiente, docentes y estudiantes por su participación activa.</p><p>🌿 Cuidar un árbol es cuidar nuestro futuro.</p><p>#DíaDelÁrbol #IERPuertoRosario #CuidadoDelMedioAmbiente #EducaciónAmbiental #AmorPorLaNaturaleza</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122180707010861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "🏫🤝 Participación estudiantil y liderazgo – Ier Puerto Rosario 🤝🏫.",
+   "fecha": "6 de mayo de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122181923636861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "Nuestros estudiantes representantes de la Institución Educativa Rural Pto Rosario participaron en la importante jornada convocada por la ASEP y la Secretaría de Educación Departamental, donde se dieron cita los Person…",
+   "detalle": "<p>🏫🤝 Participación estudiantil y liderazgo – Ier Puerto Rosario 🤝🏫.</p><p>Nuestros estudiantes representantes de la Institución Educativa Rural Pto Rosario participaron en la importante jornada convocada por la ASEP y la Secretaría de Educación Departamental, donde se dieron cita los Personeros, Contralores y Presidentes de estudiantes de las instituciones educativas del municipio de Puerto Guzmán.</p><p>✨ Estos espacios fortalecen el liderazgo, la participación democrática y el compromiso de nuestros jóvenes con sus instituciones y comunidades educativas.</p><p>👏 Felicitamos a nuestros estudiantes por representar con responsabilidad, respeto y sentido de pertenencia a nuestra institución, demostrando que la voz de los estudiantes es fundamental para seguir construyendo una educación participativa y con valores, de igual manera agradecemos al comité de democracia y educación sexual, por su apoyo en estos espacios.</p><p>#IERPuertoRosario #LiderazgoEstudiantil #ParticipaciónDemocrática #PuertoGuzmán #TrabajoEnEquipo</p><p>#Ierptorlsario</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122181923636861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "🖤💛❤️ Día de la Afrocolombianidad – Ier Puerto Rosario ❤️💛🖤💯🎯",
+   "fecha": "23 de mayo de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122184776090861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "En nuestra Institución Educativa Rural Pto Rosario conmemoramos el Día de la Afrocolombianidad, una fecha para reconocer, valorar y exaltar la riqueza cultural, las tradiciones, la historia y el importante aporte de l…",
+   "detalle": "<p>🖤💛❤️ Día de la Afrocolombianidad – Ier Puerto Rosario ❤️💛🖤💯🎯</p><p>En nuestra Institución Educativa Rural Pto Rosario conmemoramos el Día de la Afrocolombianidad, una fecha para reconocer, valorar y exaltar la riqueza cultural, las tradiciones, la historia y el importante aporte de las comunidades afrocolombianas a nuestra sociedad.</p><p>✨ A través de esta actividad promovimos en nuestros estudiantes valores como el respeto, la igualdad, la diversidad y el reconocimiento de nuestras raíces culturales.</p><p>📚 Educar también es enseñar a valorar nuestras diferencias y construir una sociedad más incluyente, respetuosa y llena de identidad cultural.</p><p>👏 Gracias a todos los estudiantes, comité de democracia, docentes y comunidad educativa que participaron en esta significativa jornada.</p><p>#DíaDeLaAfrocolombianidad #IERPuertoRosario #DiversidadCultural #EducaciónConValores</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122184776090861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "Día de la Afrocolombianidad en nuestra Ier Puerto Rosario",
+   "fecha": "23 de mayo de 2026",
+   "categoria": "Facebook",
+   "imagen": "",
+   "fotos": 0,
+   "resumen": "Día de la Afrocolombianidad en nuestra Ier Puerto Rosario",
+   "detalle": "<p>Día de la Afrocolombianidad en nuestra Ier Puerto Rosario</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122184777140861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "Conmemoración del Día Mundial del Medio Ambiente en nuestra Institución Educativa Rural Pto Rosario",
+   "fecha": "10 de junio de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122187885302861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "En la Ier Puerto Rosario nos unimos a la conmemoración del Día Mundial del Medio Ambiente, una fecha que nos invita a reflexionar sobre la importancia de cuidar, proteger y conservar los recursos naturales que nos bri…",
+   "detalle": "<p>Conmemoración del Día Mundial del Medio Ambiente en nuestra Institución Educativa Rural Pto Rosario 🌱🌎</p><p>En la Ier Puerto Rosario nos unimos a la conmemoración del Día Mundial del Medio Ambiente, una fecha que nos invita a reflexionar sobre la importancia de cuidar, proteger y conservar los recursos naturales que nos brinda nuestro planeta.</p><p>A través de diferentes actividades, nuestros estudiantes fortalecieron su compromiso con el medio ambiente, promoviendo valores como la responsabilidad, el respeto por la naturaleza y la conciencia ecológica.🎯💯🌿🌳</p><p>🌳 Cada acción cuenta cuando se trata de proteger nuestro entorno, agradecemos al comité de medio ambiente, docentes y estudiantes de nuestra institución 💯🙏🏼</p><p>Desde la escuela seguimos formando ciudadanos comprometidos con el desarrollo sostenible y la construcción de un futuro más verde para las nuevas generaciones.🔥</p><p>💚 Cuidar el medio ambiente es una tarea de todos.</p><p>#DíaDelMedioAmbiente #IERPuertoRosario #EducaciónAmbiental #CuidemosElPlaneta #AmorPorLaNaturaleza #SembrandoFuturo :::</p><p>#ierptorosario</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122187885302861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "🎉👧🧒 Celebración del Día del Estudiante – Sección Primaria Sedes Multigrado Ier Puerto Rosario",
+   "fecha": "20 de junio de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122190035810861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "Nuestra Institución Educativa Rural Pto Rosario celebró con alegría el Día del Estudiante junto a los niños y niñas de las sedes multigrado de primaria, en una jornada llena de sonrisas, integración, recreación y mome…",
+   "detalle": "<p>🎉👧🧒 Celebración del Día del Estudiante – Sección Primaria Sedes Multigrado Ier Puerto Rosario 🧒👧🎉</p><p>Nuestra Institución Educativa Rural Pto Rosario celebró con alegría el Día del Estudiante junto a los niños y niñas de las sedes multigrado de primaria, en una jornada llena de sonrisas, integración, recreación y momentos inolvidables.</p><p>✨ Esta actividad fue un reconocimiento a nuestros estudiantes, quienes con su entusiasmo, creatividad y ganas de aprender llenan de vida nuestras aulas cada día.</p><p>Durante la celebración compartimos espacios de sana convivencia, fortaleciendo valores como la amistad, el respeto, la solidaridad y el trabajo en equipo.🎊🎉🤩🥳</p><p>💙 Agradecemos a los docentes, orientadora escolar, Docente PTA, padres de familia y a todos quienes hicieron posible esta hermosa jornada, dedicada a quienes son la razón de ser de nuestra institución: nuestros estudiantes.🙏🏼🤗</p><p>🌟 ¡Feliz Día del Estudiante! Que nunca pierdan la alegría de aprender, soñar y construir un futuro lleno de oportunidades.</p><p>#DíaDelEstudiante #IERPuertoRosario #SedesMultigrado #EducaciónConAmor #NiñezFeliz #FormandoFuturo</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122190035810861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "Institución Educativa Rural Pto Rosario actualizó su foto de portada.",
+   "fecha": "20 de junio de 2026",
+   "categoria": "Facebook",
+   "imagen": "",
+   "fotos": 0,
+   "resumen": "Institución Educativa Rural Pto Rosario actualizó su foto de portada.",
+   "detalle": "<p>Institución Educativa Rural Pto Rosario actualizó su foto de portada.</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122190037664861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻",
+   "fecha": "16 de julio de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122194474004861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "Nuesra Institución Educativa Rural Puerto Rosario expresa su más sincero agradecimiento al Ministerio TIC, al programa Computadores para Educar y a la estrategia Tecnologías para Aprender, por hacer posible la entrega…",
+   "detalle": "<p>💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻</p><p>Nuesra Institución Educativa Rural Puerto Rosario expresa su más sincero agradecimiento al Ministerio TIC, al programa Computadores para Educar y a la estrategia Tecnologías para Aprender, por hacer posible la entrega de computadores portátiles de uso personal a nuestros estudiantes de noveno y décimo grado.</p><p>De igual manera, extendemos un especial reconocimiento a la Secretaría de Educación Departamental del Putumayo , a la Alcaldía Puerto Guzman - Putumayo, a la Coordinación de Educación Municipal, a nuestros docentes y a la Rectoría de la Ier Pto Rosario, quienes, con su compromiso, gestión y trabajo articulado, hicieron posible que nuestra institución fuera beneficiaria de esta importante convocatoria.</p><p>🤝 Este logro demuestra que cuando las instituciones trabajan unidas por un mismo propósito, se generan oportunidades que transforman la vida de nuestros niños y jóvenes.</p><p>💙 Estos equipos no solo fortalecen los procesos de enseñanza y aprendizaje, sino que también impulsan el desarrollo de competencias digitales, amplían las oportunidades educativas y contribuyen a que nuestros estudiantes construyan un proyecto de vida con mayores posibilidades de éxito.</p><p>Seguiremos trabajando con compromiso para que la educación continúe siendo el camino que transforma vidas, reduce brechas y abre las puertas a un mejor futuro para nuestra comunidad.</p><p>¡Gracias por creer en la educación rural y en el talento de nuestros estudiantes! 🌟📚</p><p>#ierpuertorosario #ComputadoresParaEducar #MinisterioTIC #TecnologíasParaAprender #EducaciónRural #TrabajoEnEquipo #ProyectoDeVida #TransformandoVidas</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122194474004861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻",
+   "fecha": "16 de julio de 2026",
+   "categoria": "Facebook",
+   "imagen": "",
+   "fotos": 0,
+   "resumen": "Nuestra Institución Educativa Rural Puerto Rosario expresa su más sincero agradecimiento al Ministerio TIC, al programa...",
+   "detalle": "<p>💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻</p><p>Nuestra Institución Educativa Rural Puerto Rosario expresa su más sincero agradecimiento al Ministerio TIC, al programa...</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122194474826861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "🇨🇴✨ Izada de Bandera – Segundo Período Académico ✨🇨🇴🎯💯",
+   "fecha": "24 de julio de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122195853632861024-foto-1.jpg",
+   "fotos": 4,
+   "resumen": "En nuestra Institución Educativa Rural Pto Rosario llevamos a cabo la Izada de Bandera correspondiente al segundo período académico, un acto cívico en el que reconocimos el compromiso, la dedicación y el esfuerzo de n…",
+   "detalle": "<p>🇨🇴✨ Izada de Bandera – Segundo Período Académico ✨🇨🇴🎯💯</p><p>En nuestra Institución Educativa Rural Pto Rosario llevamos a cabo la Izada de Bandera correspondiente al segundo período académico, un acto cívico en el que reconocimos el compromiso, la dedicación y el esfuerzo de nuestros estudiantes.</p><p>Durante esta ceremonia exaltamos a quienes, con su excelente desempeño académico, convivencia, liderazgo y práctica de valores, se hicieron merecedores de este reconocimiento. Asimismo, destacamos el valioso acompañamiento de los padres de familia, cuyo apoyo y compromiso son fundamentales para el crecimiento personal y académico de sus hijos.</p><p>👏 Felicitamos a todos los estudiantes homenajeados y a sus familias por este importante logro. Que este reconocimiento sea una motivación para continuar esforzándose, superando retos y siendo ejemplo para toda la comunidad educativa.</p><p>📚 En la Ier Puerto Rosario creemos que cada logro es el resultado del trabajo conjunto entre estudiantes, familias y docentes, unidos por un mismo propósito: formar ciudadanos íntegros, responsables y comprometidos con su futuro.</p><p>¡Sigamos construyendo juntos una educación basada en el esfuerzo, los valores y la excelencia! 💙</p><p>#IERPuertoRosario #IzadaDeBandera #Reconocimiento #EducaciónConValores #ExcelenciaAcadémica #ComunidadEducativa</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122195853632861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "👨‍👩‍👧‍👦📚 Segunda Escuela de Padres – Ier Puerto Rosario 🌱",
+   "fecha": "24 de julio de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122195855432861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "En nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario llevamos a cabo con gran éxito la Segunda Escuela de Padres, un espacio de encuentro, diálogo y participación que fortaleció los ví…",
+   "detalle": "<p>👨‍👩‍👧‍👦📚 Segunda Escuela de Padres – Ier Puerto Rosario 🌱</p><p>En nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario llevamos a cabo con gran éxito la Segunda Escuela de Padres, un espacio de encuentro, diálogo y participación que fortaleció los vínculos entre la familia y la escuela.💯🎯🎊🆗🤩</p><p>Durante la jornada contamos con la valiosa articulación de la Biblioteca Pública Municipal de Puerto Guzmán Alcaldía Puerto Guzman - Putumayo con quienes vamos a desarrollar un excelente proyecto de huertas escolares y familiares, promoviendo la educación ambiental, la seguridad alimentaria y el trabajo en equipo como herramientas para el aprendizaje y el desarrollo de nuestras familias.</p><p>Asimismo, se realizó la Rendición de Cuentas del primer semestre de 2026, socializando a la comunidad educativa los avances, logros y acciones desarrolladas por nuestra institución, en un ejercicio de transparencia, participación y compromiso con la calidad educativa💯💥⚡.</p><p>Finalmente, se hizo la entrega de los boletines correspondientes al segundo período académico, brindando a los padres de familia la oportunidad de conocer el desempeño de sus hijos y fortalecer el acompañamiento en su proceso formativo.🎯🥉🏅🎖️🏆</p><p>🤝 Agradecemos a todos los padres de familia por su asistencia y compromiso, a la Biblioteca Pública Municipal de Puerto Guzmán por su valioso apoyo y a nuestros docentes por su dedicación en la organización de esta importante jornada.🎯</p><p>Familia y escuela, trabajando de la mano para sembrar conocimientos, valores y un mejor futuro para nuestros estudiantes. 💙🌱📚</p><p>#IERPuertoRosario #EscuelaDePadres #TrabajoEnEquipo #RendiciónDeCuentas #ProyectoDeHuertas #BibliotecaPública #EducaciónConValores #ComunidadEducativa</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122195855432861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "🇨🇴🎺 Institución Educativa Rural Pto Rosario : celebrando nuestra historia y nuestras tradiciones",
+   "fecha": "12 de agosto de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122199609044861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "La Ier Puerto Rosario participó activamente en la conmemoración de la Batalla de Boyacá, una fecha que nos invita a recordar nuestra historia y a fortalecer el amor y respeto por nuestros símbolos patrios.🇨🇴💯",
+   "detalle": "<p>🇨🇴🎺 Institución Educativa Rural Pto Rosario : celebrando nuestra historia y nuestras tradiciones 🇨🇴</p><p>La Ier Puerto Rosario participó activamente en la conmemoración de la Batalla de Boyacá, una fecha que nos invita a recordar nuestra historia y a fortalecer el amor y respeto por nuestros símbolos patrios.🇨🇴💯</p><p>🎺 Con mucho orgullo, nuestra Banda de Paz rindió homenaje a esta importante fecha y acompañó el desfile que recorrió las principales calles de Puerto Rosario, llevando música, alegría y sentido de pertenencia a nuestra comunidad.</p><p>🪀⚽ Como parte de esta celebración también disfrutamos de los VI Juegos Tradicionales Autóctonos, donde nuestros estudiantes participaron en actividades como bolas, trompos, encostalados, entre otros juegos que hacen parte de nuestras tradiciones.💥🎉🎊💯</p><p>Estos espacios permiten disfrutar de un sano esparcimiento, compartir entre compañeros y fortalecer valores como el respeto, la solidaridad, el compañerismo, la sana competencia y el trabajo en equipo.🎯</p><p>💙 En la IER Puerto Rosario seguimos promoviendo espacios donde nuestros estudiantes aprendan, disfruten, conozcan nuestra historia y mantengan vivas nuestras tradiciones.</p><p>🇨🇴 ¡Porque educar también es preservar nuestra identidad y celebrar lo que somos!</p><p>#IERPuertoRosario #BatallaDeBoyacá #JuegosTradicionales #BandaDePaz #IdentidadCultural #Valores #SanoEsparcimiento #PuertoRosario</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122199609044861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "🪁🌈 Festival del Viento 2026 – Ier Puerto Rosario 🌈🪁",
+   "fecha": "4 de septiembre de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122203599122861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "Con gran entusiasmo y alegría, nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario celebró el tradicional Festival del Viento, una jornada llena de color, integración y diversión, en la…",
+   "detalle": "<p>🪁🌈 Festival del Viento 2026 – Ier Puerto Rosario 🌈🪁</p><p>Con gran entusiasmo y alegría, nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario celebró el tradicional Festival del Viento, una jornada llena de color, integración y diversión, en la que participaron activamente estudiantes, docentes y padres de familia.💥🎊🎉💯</p><p>✨ El cielo se llenó de sueños y esperanza con el vuelo de hermosas cometas, mientras las familias compartían momentos inolvidables de unión y sana convivencia.</p><p>Durante la actividad se premiaron diferentes categorías: 🏆 La cometa más grande. 🏆 La cometa más pequeña. 🏆 La cometa que más alto voló. 🏆 La cometa que más lejos llegó.💥🎊🎉💥💥💥🎊🎊</p><p>🤝 Más que una competencia, este festival fue una oportunidad para fortalecer los lazos de amistad, el compañerismo, el trabajo en equipo y el sentido de pertenencia por nuestra institución.🙏🏼</p><p>💙 Agradecemos a toda la comunidad educativa por hacer de esta jornada un espacio de alegría, creatividad y encuentro familiar, demostrando una vez más que cuando escuela y familia trabajan juntas, construyen experiencias que dejan huella en el corazón de nuestros estudiantes.</p><p>🪁 Que nuestros sueños vuelen tan alto como las🤗🙏🏼 cometas que iluminaron el cielo de Puerto Rosario.</p><p>#FestivalDelViento #IERPuertoRosario #Cometas #IntegraciónFamiliar #TrabajoEnEquipo #ConvivenciaEscolar #EducaciónConValores #ComunidadEducativa 🪁💙🌤️</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122203599122861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "Compartimos directorio actualizado en el marco del plan de acción de nuestro PGIRE.",
+   "fecha": "9 de septiembre de 2026",
+   "categoria": "Facebook",
+   "imagen": "",
+   "fotos": 0,
+   "resumen": "Compartimos directorio actualizado en el marco del plan de acción de nuestro PGIRE.",
+   "detalle": "<p>Compartimos directorio actualizado en el marco del plan de acción de nuestro PGIRE.</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122204545850861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "👨‍👩‍👧‍👦❤️ Día de la Familia – Ier Puerto Rosario ❤️👨‍👩‍👧‍👦",
+   "fecha": "19 de septiembre de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122206267508861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "En nuestra Institución Educativa Rural Pto Rosario celebramos con alegría el Día de la Familia, una jornada especial que reunió a padres, estudiantes, docentes y comunidad educativa en torno a los valores que fortalec…",
+   "detalle": "<p>👨‍👩‍👧‍👦❤️ Día de la Familia – Ier Puerto Rosario ❤️👨‍👩‍👧‍👦</p><p>En nuestra Institución Educativa Rural Pto Rosario celebramos con alegría el Día de la Familia, una jornada especial que reunió a padres, estudiantes, docentes y comunidad educativa en torno a los valores que fortalecen nuestros hogares y nuestra institución.🙏🏼🎊💥🎉🎊🎊</p><p>✨ Durante este encuentro disfrutamos de actos culturales, actividades deportivas y espacios de integración que permitieron fortalecer la unión familiar, el trabajo en equipo, el respeto, la solidaridad y el compañerismo.🙏🏼🎊💥</p><p>🤝 También compartimos momentos de alegría y fraternidad, reafirmando que la familia es el primer escenario donde se construyen los valores que orientan la vida de nuestros niños y jóvenes.</p><p>🎭⚽ Las presentaciones culturales y deportivas demostraron el talento, el compromiso y la participación activa de nuestra comunidad educativa, convirtiendo esta celebración en una experiencia inolvidable para todos.</p><p>💙 Agradecemos a las familias por su asistencia y entusiasmo, porque cuando escuela y familia caminan juntas, se fortalecen los procesos educativos y se construye un mejor futuro para nuestros estudiantes, agradecemos a todo el comercio de Pto Guzmán y a Pto Rosario, a la Alcaldía Puerto Guzman - Putumayo Diputado Nolver Figueroa Delgado que se vincularon con los detalles, gracias compañeros docentes por todo el apoyo brindado 🙏🏼🤗</p><p>¡La familia es el corazón de la educación y la base de una sociedad llena de valores y esperanza!</p><p>#DíaDeLaFamilia #IERPuertoRosario #UniónFamiliar #TrabajoEnEquipo #EducaciónConValores #ComunidadEducativa #FamiliaYEscuela</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122206267508861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "🔬🚀 Segunda Semana de la Ciencia, la Tecnología y la Innovación – Ier Puerto Rosario 🚀🔬",
+   "fecha": "19 de septiembre de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122206276388861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "En nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario se vivió con gran entusiasmo la Segunda Semana de la Ciencia, la Tecnología y la Innovación, un espacio donde nuestros estudiantes…",
+   "detalle": "<p>🔬🚀 Segunda Semana de la Ciencia, la Tecnología y la Innovación – Ier Puerto Rosario 🚀🔬</p><p>En nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario se vivió con gran entusiasmo la Segunda Semana de la Ciencia, la Tecnología y la Innovación, un espacio donde nuestros estudiantes de primaria y secundaria demostraron su creatividad, curiosidad y capacidad para aprender a través de la experimentación.💥💥🎊🎉🫯🫯🫯🎉🔥🔥</p><p>🧪 Durante la jornada se presentaron diversos experimentos y proyectos que permitieron fortalecer el pensamiento científico, la investigación, la observación y la búsqueda de soluciones a situaciones de la vida cotidiana.</p><p>🤝 Esta actividad destacó el valor del trabajo en equipo, el aprendizaje colaborativo, la innovación y el compromiso de nuestros estudiantes con la construcción de nuevos conocimientos.</p><p>👏 Agradecemos el valioso acompañamiento de los padres de familia, el compromiso de nuestros docentes y el liderazgo del Comité Innovatec, quienes hicieron posible el desarrollo exitoso de esta importante semana académica.💥🎊🎉💯</p><p>✨ En la IER Puerto Rosario seguimos promoviendo espacios que inspiran a nuestros estudiantes a investigar, crear, innovar y descubrir que el conocimiento es la herramienta más poderosa para transformar su entorno y construir un mejor futuro.</p><p>💡📚 La ciencia nos permite comprender el mundo; la tecnología y la innovación nos ayudan a transformarlo.</p><p>#IERPuertoRosario #SemanaDeLaCiencia #Innovación #Tecnología #Investigación #Innovatec #AprendizajeColaborativo #EducaciónConCalidad #TrabajoEnEquipo</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122206276388861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "🎓💙 Primera Celebración del Día del Egresado – Ier Puerto Rosario 💙🎓💥🎊🎉💯",
+   "fecha": "19 de septiembre de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122206283174861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "Con gran alegría y emoción, nuestra Institución Educativa Rural Pto Rosario celebró por primera vez el Día del Egresado, un encuentro especial para recordar experiencias, fortalecer lazos y reafirmar el sentido de per…",
+   "detalle": "<p>🎓💙 Primera Celebración del Día del Egresado – Ier Puerto Rosario 💙🎓💥🎊🎉💯</p><p>Con gran alegría y emoción, nuestra Institución Educativa Rural Pto Rosario celebró por primera vez el Día del Egresado, un encuentro especial para recordar experiencias, fortalecer lazos y reafirmar el sentido de pertenencia hacia nuestra institución.🤗🙏🏼</p><p>✨ Uno de los momentos más significativos de la jornada fue la actividad de la Cápsula del Tiempo, en la que nuestras egresadas plasmaron sus sueños, pensamientos, metas y mensajes para el futuro. Este valioso tesoro será abierto dentro de dos años, permitiéndoles reencontrarse con los anhelos y reflexiones que hoy guardan en sus corazones.💥🩵</p><p>🥂 Durante la celebración también compartimos un brindis y realizamos la entrega de certificados de reconocimiento, destacando el vínculo que nuestros egresados mantienen con la institución y los valores que continúan proyectando en sus vidas.</p><p>🤝 Este encuentro permitió fortalecer la identidad institucional, el compañerismo y el agradecimiento por las enseñanzas y experiencias vividas en la IER Puerto Rosario.</p><p>💙 Ser egresado no significa cerrar una etapa, sino llevar siempre consigo los valores, aprendizajes y recuerdos que hacen parte de nuestra historia.</p><p>👏 Gracias a todos los egresados que participaron e hicieron de esta primera celebración un momento inolvidable, gracias compañeros docentes por el apoyo brindado 🙏🏼.</p><p>#DíaDelEgresado #IERPuertoRosario #SentidoDePertenencia #CápsulaDelTiempo #ValoresQueTrascienden #OrgulloInstitucional #EgresadosIERPuertoRosario</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122206283174861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "👨‍👩‍👧‍👦💙 Tercera Escuela de Padres – Ier Puerto Rosario 💙👨‍👩‍👧‍👦",
+   "fecha": "1 de octubre de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122208533696861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "En nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario llevamos a cabo nuestra Tercera Escuela de Padres, un espacio para encontrarnos, dialogar y reflexionar sobre el importante papel q…",
+   "detalle": "<p>👨‍👩‍👧‍👦💙 Tercera Escuela de Padres – Ier Puerto Rosario 💙👨‍👩‍👧‍👦</p><p>En nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario llevamos a cabo nuestra Tercera Escuela de Padres, un espacio para encontrarnos, dialogar y reflexionar sobre el importante papel que tenemos como familias en la formación de nuestros niños, niñas y jóvenes.🙏🏼🎊🎉❤️</p><p>Durante la jornada conversamos sobre nuestros compromisos como padres y acudientes, la importancia de acompañar a nuestros hijos en cada etapa de su vida y, especialmente, sobre la necesidad de inculcar buenos valores desde el hogar, de igual forma se inició el proyecto Latidos del Corazón, por parte de la Alcaldía Puerto Guzman - Putumayo</p><p>❤️ El respeto, la responsabilidad, la honestidad, la solidaridad y el amor son semillas que se cultivan cada día y que, con el ejemplo, ayudan a nuestros hijos a crecer como mejores personas.❤️</p><p>🤝 Familia y escuela somos un equipo. Cuando caminamos juntos, acompañamos mejor a nuestros estudiantes y contribuimos a construir sus sueños y proyectos de vida.</p><p>🙏 Agradecemos a las familias por su participación y disposición para seguir aprendiendo y fortaleciendo juntos nuestra comunidad educativa y a todos nuestros compañeros docentes.</p><p>¡Educar es una tarea compartida y los valores comienzan en casa! 🌱📚</p><p>#IERPuertoRosario #EscuelaDePadres #FamiliaYEscuela #EducaciónConValores #CompromisoFamiliar #ComunidadEducativa</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122208533696861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "🇨🇴🌟 Tercera Izada de Bandera – Ier Puerto Rosario 🌟🇨🇴",
+   "fecha": "1 de octubre de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122208536294861024-foto-1.jpg",
+   "fotos": 5,
+   "resumen": "En nuestra Institución Educativa Rural Pto Rosario llevamos a cabo nuestra Tercera Izada de Bandera, un espacio especial para reconocer el esfuerzo, la dedicación y el compromiso de nuestros estudiantes.🏅🏆🎖️🎯",
+   "detalle": "<p>🇨🇴🌟 Tercera Izada de Bandera – Ier Puerto Rosario 🌟🇨🇴</p><p>En nuestra Institución Educativa Rural Pto Rosario llevamos a cabo nuestra Tercera Izada de Bandera, un espacio especial para reconocer el esfuerzo, la dedicación y el compromiso de nuestros estudiantes.🏅🏆🎖️🎯</p><p>Durante esta jornada destacamos a nuestros mejores estudiantes por su rendimiento académico y disciplina, reconociendo en ellos valores como la responsabilidad, la constancia, el respeto y el deseo de superarse cada día. 👏📚🏅🎯</p><p>También disfrutamos de una importante actividad de bilingüismo, donde nuestros estudiantes tuvieron la oportunidad de demostrar sus aprendizajes y fortalecer sus habilidades en el idioma inglés de una manera dinámica y significativa. 🇬🇧📖🎤</p><p>Estos espacios nos recuerdan que educar no es solamente alcanzar buenos resultados académicos, sino también formar estudiantes responsables, disciplinados, seguros de sí mismos y preparados para asumir nuevos retos.</p><p>Felicitamos a todos nuestros estudiantes reconocidos y agradecemos a los docentes y familias por acompañar y apoyar cada uno de sus procesos. 💙🎯</p><p>¡En la IER Puerto Rosario seguimos reconociendo el esfuerzo, fortaleciendo los aprendizajes y construyendo juntos nuevas oportunidades para nuestros estudiantes!🙏🏼❤️</p><p>#IERPuertoRosario #TerceraIzadaDeBandera #ReconocimientoEstudiantil #RendimientoAcadémico #Disciplina #Bilingüismo #EducaciónConValores #ComunidadEducativa</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122208536294861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "Los esperamos en nuestra Ier Puerto Rosario",
+   "fecha": "15 de octubre de 2026",
+   "categoria": "Facebook",
+   "imagen": "",
+   "fotos": 0,
+   "resumen": "Los esperamos en nuestra Ier Puerto Rosario",
+   "detalle": "<p>Los esperamos en nuestra Ier Puerto Rosario</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122211002024861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  }
+ ]
+};

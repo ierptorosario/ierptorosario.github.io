@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración esquemática de referencia: ubicación general de la vereda Puerto Rosario en Puerto Guzmán, Putumayo. No es un mapa geográfico exacto.">
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9f4ea"/><stop offset="100%" stop-color="#dcecf7"/></linearGradient>
+    <pattern id="cuadricula" width="45" height="45" patternUnits="userSpaceOnUse">
+      <path d="M45 0H0V45" fill="none" stroke="#b9d3c4" stroke-width="1.4"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="480" fill="url(#fondo)"/>
+  <rect width="900" height="480" fill="url(#cuadricula)" opacity=".7"/>
+  <path d="M0 250C140 210 260 268 400 236 540 204 660 258 900 214V480H0Z" fill="#a9d9b0" opacity=".65"/>
+  <path d="M70 470C160 340 220 300 300 250 380 200 420 140 470 40" fill="none" stroke="#8ecbea" stroke-width="26" stroke-linecap="round" opacity=".9"/>
+  <path d="M120 90C260 130 340 210 470 250 610 292 720 300 860 300" fill="none" stroke="#c7603f" stroke-width="7" stroke-dasharray="18 14" stroke-linecap="round" opacity=".75"/>
+  <g transform="translate(470 250)">
+    <path d="M0 34C0 34 30 4 30-16A30 30 0 1 0-30-16C-30 4 0 34 0 34Z" fill="#c7603f" stroke="#ffffff" stroke-width="6"/>
+    <circle cx="0" cy="-16" r="11" fill="#ffffff"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#14532d">
+    <text x="512" y="238" font-size="22" font-weight="700">Vereda Puerto Rosario</text>
+    <text x="512" y="264" font-size="17" fill="#3f7a58">Municipio de Puerto Guzmán · Putumayo</text>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#6f8e7c">
+    <text x="60" y="440">Croquis ilustrativo de referencia · no corresponde a una escala real</text>
+  </g>
+</svg>

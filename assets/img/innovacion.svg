@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración de referencia: innovación, ciencia y tecnología">
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8f2ff"/><stop offset="100%" stop-color="#eefaf0"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#fondo)"/>
+  <circle cx="400" cy="270" r="200" fill="#cfe6f7" opacity=".55"/>
+  <g transform="translate(300 250)">
+    <circle cx="0" cy="-10" r="86" fill="#ffe6ad" stroke="#f2a83b" stroke-width="7"/>
+    <path d="M-18 62h36v26a18 18 0 0 1-18 18 18 18 0 0 1-18-18z" fill="#123a63"/>
+    <rect x="-30" y="96" width="60" height="16" rx="8" fill="#123a63"/>
+    <path d="M-8-40 8-40 2 10-2 10z" fill="#f2a83b"/>
+    <g stroke="#f2a83b" stroke-width="8" stroke-linecap="round">
+      <path d="M0-120v-26"/><path d="M-64-96l-20-18"/><path d="M64-96l20-18"/><path d="M-92-14h-26"/><path d="M92-14h26"/>
+    </g>
+  </g>
+  <g transform="translate(590 200)">
+    <circle cx="0" cy="0" r="46" fill="none" stroke="#2f7d4f" stroke-width="16" stroke-dasharray="14 11"/>
+    <circle cx="0" cy="0" r="17" fill="#2f7d4f"/>
+  </g>
+  <g transform="translate(620 366)">
+    <path d="M0-62c22 26 30 52 30 84l-30 16-30-16c0-32 8-58 30-84z" fill="#ffffff" stroke="#123a63" stroke-width="6" stroke-linejoin="round"/>
+    <circle cx="0" cy="-6" r="12" fill="#7fc4e6" stroke="#123a63" stroke-width="5"/>
+    <path d="M-16 40l16 30 16-30z" fill="#f2a83b"/>
+  </g>
+  <g fill="#7cc98b"><circle cx="150" cy="380" r="12"/><circle cx="190" cy="410" r="8"/></g>
+</svg>

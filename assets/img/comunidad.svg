@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración de referencia: comunidad educativa y familias">
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cbe8f7"/><stop offset="1" stop-color="#f5fbf1"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#cielo)"/>
+  <circle cx="400" cy="250" r="190" fill="#9ed7a6" opacity=".35"/>
+  <circle cx="120" cy="110" r="46" fill="#ffe6ad" opacity=".85"/>
+  <path d="M0 430C160 396 320 424 480 404 620 386 720 404 800 392V500H0Z" fill="#63b877" opacity=".55"/>
+  <rect x="150" y="352" width="500" height="14" rx="7" fill="#2f7d4f" opacity=".35"/>
+  <g fill="#14532d">
+    <g transform="translate(200 300)"><circle cx="0" cy="0" r="27"/><path d="M-32 132V62a32 32 0 0 1 64 0v70z"/></g>
+    <g transform="translate(330 288)"><circle cx="0" cy="0" r="31"/><path d="M-36 144V62a36 36 0 0 1 72 0v82z"/></g>
+    <g transform="translate(470 288)"><circle cx="0" cy="0" r="31"/><path d="M-36 144V62a36 36 0 0 1 72 0v82z"/></g>
+    <g transform="translate(600 300)"><circle cx="0" cy="0" r="27"/><path d="M-32 132V62a32 32 0 0 1 64 0v70z"/></g>
+  </g>
+  <g stroke="#2f7d4f" stroke-width="12" stroke-linecap="round" opacity=".9">
+    <path d="M232 320h68"/><path d="M366 306h70"/><path d="M540 306h60"/>
+  </g>
+  <g fill="#f2a83b"><circle cx="140" cy="200" r="10"/><circle cx="676" cy="180" r="12"/><circle cx="700" cy="230" r="7"/></g>
+</svg>

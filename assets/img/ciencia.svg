@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración de referencia: ciencia y laboratorio escolar">
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef7ff"/><stop offset="100%" stop-color="#eafaf0"/></linearGradient>
+    <linearGradient id="liquido" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc98b"/><stop offset="1" stop-color="#2f7d4f"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#fondo)"/>
+  <circle cx="400" cy="300" r="210" fill="#d7ecf9" opacity=".6"/>
+  <g stroke="#a9c9dd" stroke-width="3" fill="none" opacity=".8">
+    <path d="M170 150 250 220 400 160 540 240 640 190"/>
+  </g>
+  <g fill="#8fb9d6"><circle cx="170" cy="150" r="9"/><circle cx="400" cy="160" r="9"/><circle cx="640" cy="190" r="9"/></g>
+  <g transform="translate(400 320)">
+    <path d="M-16-170h32v58l58 96a36 36 0 0 1-31 54h-86a36 36 0 0 1-31-54l58-96z" fill="#ffffff" stroke="#123a63" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M-40-20 0-86l40 66a28 28 0 0 1-24 42h-32a28 28 0 0 1-24-42z" fill="url(#liquido)"/>
+    <rect x="-26" y="-186" width="52" height="18" rx="8" fill="#123a63"/>
+    <g fill="#7fc4e6">
+      <circle cx="-6" cy="-4" r="10"/><circle cx="18" cy="-24" r="7"/><circle cx="-24" cy="-40" r="6"/>
+    </g>
+  </g>
+  <g transform="translate(160 360)">
+    <rect x="-46" y="-70" width="92" height="100" rx="10" fill="#ffffff" stroke="#123a63" stroke-width="6"/>
+    <path d="M-46 0h92v20a10 10 0 0 1-10 10h-72a10 10 0 0 1-10-10z" fill="#f2a83b"/>
+  </g>
+  <g transform="translate(640 370)">
+    <circle cx="0" cy="0" r="46" fill="none" stroke="#2f7d4f" stroke-width="10"/>
+    <circle cx="0" cy="0" r="16" fill="#2f7d4f"/>
+    <circle cx="70" cy="-40" r="12" fill="#f2a83b"/>
+    <circle cx="86" cy="30" r="9" fill="#7fc4e6"/>
+  </g>
+</svg>

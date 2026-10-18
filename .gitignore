@@ -1,0 +1,31 @@
+# =====================================================================
+#  Archivos que NO se publican en internet (GitHub Pages)
+#  I.E. Rural Puerto Rosario
+#  Todo lo que esté aquí sigue existiendo en el computador, pero NO
+#  se sube a la web. Es para proteger el panel y el trabajo interno.
+# =====================================================================
+
+# Panel privado (tiene la clave a la vista: no se publica)
+admin.html
+
+# Carpetas de trabajo interno
+entrada/
+documentacion/
+actualizador/
+
+# Documentos de trabajo (instrucciones internas)
+README.md
+README.txt
+*.bat
+LEEME.txt
+**/LEEME.txt
+
+# Registros y copias de seguridad
+*.log
+respaldo-*.zip
+*.zip
+
+# Archivos del sistema
+Thumbs.db
+desktop.ini
+.DS_Store

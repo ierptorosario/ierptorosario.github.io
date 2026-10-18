@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración de referencia: actividades culturales y arte">
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe9cf"/><stop offset="1" stop-color="#f5fbf1"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#cielo)"/>
+  <circle cx="400" cy="180" r="120" fill="#ffdca8" opacity=".6"/>
+  <g>
+    <path d="M150 60h500v46l-250 34-250-34z" fill="#c7603f"/>
+    <g>
+      <path d="M150 106h62v46h-62z" fill="#f2c14e"/>
+      <path d="M212 106h62v46h-62z" fill="#7cc98b"/>
+      <path d="M274 106h62v46h-62z" fill="#7fc4e6"/>
+      <path d="M336 106h62v46h-62z" fill="#e08a6a"/>
+      <path d="M398 106h62v46h-62z" fill="#f2c14e"/>
+      <path d="M460 106h62v46h-62z" fill="#7cc98b"/>
+      <path d="M522 106h62v46h-62z" fill="#7fc4e6"/>
+      <path d="M584 106h46v46h-46z" fill="#e08a6a"/>
+    </g>
+  </g>
+  <g fill="#14532d">
+    <g transform="translate(250 330)"><circle cx="0" cy="0" r="26"/><path d="M-30 150V58a30 30 0 0 1 60 0v92z"/><path d="M-30 150l-26 20M30 150l26 20" stroke="#14532d" stroke-width="14" stroke-linecap="round"/></g>
+    <g transform="translate(400 310)"><circle cx="0" cy="0" r="30"/><path d="M-34 170V58a34 34 0 0 1 68 0v112z"/><path d="M-34 170l-30 22M34 170l30 22" stroke="#14532d" stroke-width="15" stroke-linecap="round"/></g>
+    <g transform="translate(550 330)"><circle cx="0" cy="0" r="26"/><path d="M-30 150V58a30 30 0 0 1 60 0v92z"/><path d="M-30 150l-26 20M30 150l26 20" stroke="#14532d" stroke-width="14" stroke-linecap="round"/></g>
+  </g>
+  <g fill="#123a63">
+    <path d="M660 200v80" stroke="#123a63" stroke-width="7"/>
+    <ellipse cx="646" cy="288" rx="22" ry="17" transform="rotate(-20 646 288)"/>
+    <path d="M700 246v70" stroke="#123a63" stroke-width="6"/>
+    <ellipse cx="690" cy="322" rx="18" ry="14" transform="rotate(-20 690 322)"/>
+  </g>
+</svg>

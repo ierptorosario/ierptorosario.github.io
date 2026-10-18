@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración de referencia: lectura y plan lector">
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cbe8f7"/><stop offset="1" stop-color="#f4fbf1"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#cielo)"/>
+  <circle cx="150" cy="90" r="52" fill="#ffe6ad" opacity=".8"/>
+  <circle cx="640" cy="400" r="150" fill="#9ed7a6" opacity=".45"/>
+  <circle cx="140" cy="390" r="110" fill="#63b877" opacity=".35"/>
+  <g transform="translate(400 330)">
+    <path d="M-210 0c66-28 132-28 210 0 78-28 144-28 210 0v104c-66-26-132-26-210 0-78-26-144-26-210 0z" fill="#fdfaf1" stroke="#14532d" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M0 0v104" stroke="#14532d" stroke-width="6"/>
+    <g stroke="#9bb7a6" stroke-width="5" stroke-linecap="round">
+      <path d="M-176 26h128M-176 52h104M-176 78h84M48 26h128M72 52h104M92 78h84"/>
+    </g>
+  </g>
+  <g transform="translate(400 210)">
+    <rect x="-7" y="0" width="14" height="60" rx="5" fill="#6b4b32"/>
+    <circle cx="0" cy="-26" r="40" fill="#2f7d4f"/>
+    <circle cx="-34" cy="2" r="26" fill="#3d9159"/>
+    <circle cx="34" cy="0" r="28" fill="#3d9159"/>
+    <circle cx="0" cy="-58" r="20" fill="#7cc98b"/>
+  </g>
+  <g fill="#f2a83b" opacity=".9">
+    <circle cx="196" cy="164" r="10"/><circle cx="238" cy="128" r="7"/><circle cx="596" cy="150" r="11"/><circle cx="556" cy="112" r="7"/>
+  </g>
+  <g fill="#5aa869" opacity=".85">
+    <circle cx="120" cy="212" r="8"/><circle cx="676" cy="228" r="9"/><circle cx="640" cy="272" r="6"/>
+  </g>
+</svg>
