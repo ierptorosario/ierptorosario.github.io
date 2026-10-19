@@ -1554,6 +1554,24 @@ table.horario td .vacio{color:#c3ceda}
 .horarios__areas{display:block;font-weight:400;font-size:.8rem;color:#5a6b7e;margin-top:.15rem}
 .horarios__descargas{margin-top:1.8rem;border:1px solid rgba(201,162,39,.35);border-radius:var(--radio-lg);padding:1.1rem 1.2rem;background:#fff}
 .horarios__ayuda{margin:0 0 .8rem;font-size:.92rem;color:#5a6b7e}
+/* Horario por día: botones para escoger el día y cuadro de dos columnas,
+   para que en el celular no haya que desplazar la tabla hacia los lados. */
+.horarios__dias{display:flex;flex-wrap:wrap;gap:.4rem;margin:.15rem 0 .9rem}
+.dia-chip{
+  font:inherit;font-size:.84rem;font-weight:700;cursor:pointer;
+  padding:.42rem .9rem;border-radius:999px;
+  color:var(--ierp-azul-900);background:#fff;border:1px solid var(--gris-200);
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.dia-chip:hover{background:#f6f1de;border-color:var(--oro)}
+.dia-chip.is-activo{background:var(--ierp-azul-900);color:#fff;border-color:var(--ierp-azul-900)}
+.dia-chip--semana{margin-left:auto}
+table.horario--dia{min-width:0}
+.horarios__dia[hidden],.horarios__semana[hidden]{display:none}
+@media (max-width:640px){
+  .dia-chip--semana{margin-left:0}
+  .horarios__dias{gap:.35rem}
+}
 .horarios__lista{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
 .horarios__lista li{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;font-size:.93rem}
 .horarios__lista .icon{width:1rem;height:1rem;color:var(--ierp-oro)}
@@ -5767,6 +5785,7 @@ table.horario td .vacio{color:#c3ceda}
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  /* Cuadro de la semana completa (5 columnas), para quien quiera ver todo. */
   function tabla(filas, pie) {
     var html = '<table class="horario">' +
       (pie ? '<caption>' + esc(pie) + '</caption>' : '') +
@@ -5794,6 +5813,46 @@ table.horario td .vacio{color:#c3ceda}
     return html + '</tbody></table>';
   }
 
+  /* Cuadro de UN día (dos columnas): así en el celular no hay que desplazar
+     la tabla hacia los lados para leer la clase de hoy. */
+  function tablaDia(filas, idx, pie) {
+    var html = '<table class="horario horario--dia">' +
+      (pie ? '<caption>' + esc(pie) + '</caption>' : '') +
+      '<thead><tr><th scope="col">Hora</th><th scope="col">' + DIAS[idx] + '</th></tr></thead><tbody>';
+    for (var f = 0; f < filas.length; f++) {
+      var fila = filas[f];
+      var hora = esc(fila.inicio) + ' – ' + esc(fila.fin);
+      if (fila.tipo === 'pausa') {
+        html += '<tr class="es-pausa"><th scope="row">' + hora + '</th>' +
+          '<td>' + esc(fila.etiqueta || 'Pausa') + '</td></tr>';
+        continue;
+      }
+      var valor = (fila.dias && fila.dias[idx]) ? fila.dias[idx] : '';
+      html += '<tr><th scope="row"><b>' + esc(fila.item) + '</b>' +
+        '<span class="horarios__hora">' + hora + '</span></th>' +
+        '<td>' + (valor ? esc(valor) : '<span class="vacio">—</span>') + '</td></tr>';
+    }
+    return html + '</tbody></table>';
+  }
+
+  /* ¿Qué día se muestra al abrir? El de hoy; si es fin de semana, el lunes. */
+  var HOY = new Date().getDay();                       // 0 = domingo
+  var ES_ENTRE_SEMANA = (HOY >= 1 && HOY <= 5);
+  var DIA_INICIAL = ES_ENTRE_SEMANA ? HOY - 1 : 0;
+
+  function botonesDia(id) {
+    return '<div class="horarios__dias" role="tablist" aria-label="Cambiar el día del horario">' +
+      DIAS.map(function (nombre, i) {
+        var activo = (i === DIA_INICIAL);
+        return '<button class="dia-chip' + (activo ? ' is-activo' : '') + '" type="button" role="tab"' +
+          ' data-grupo="' + id + '" data-dia="' + i + '" aria-selected="' + (activo ? 'true' : 'false') + '">' +
+          nombre + '</button>';
+      }).join('') +
+      '<button class="dia-chip dia-chip--semana" type="button" role="tab" data-grupo="' + id +
+        '" data-dia="semana" aria-selected="false">Semana completa</button>' +
+    '</div>';
+  }
+
   function bloque(id, titulo, sub, filas, abierto, pie) {
     var panel = 'panel-' + id;
     return '<div class="acordeon__item">' +
@@ -5805,7 +5864,13 @@ table.horario td .vacio{color:#c3ceda}
         '<svg class="icon" aria-hidden="true"><use href="#ico-abajo"></use></svg>' +
       '</button>' +
       '<div class="acordeon__panel" id="' + panel + '"' + (abierto ? '' : ' hidden') + '>' +
-        '<div class="horarios__tabla-scroll">' + tabla(filas, pie) + '</div>' +
+        botonesDia(id) +
+        '<div class="horarios__tabla-scroll horarios__dia" id="dia-' + id + '">' +
+          tablaDia(filas, DIA_INICIAL, pie) +
+        '</div>' +
+        '<div class="horarios__tabla-scroll horarios__semana" id="semana-' + id + '" hidden>' +
+          tabla(filas, pie) +
+        '</div>' +
       '</div>' +
     '</div>';
   }
@@ -5816,9 +5881,43 @@ table.horario td .vacio{color:#c3ceda}
   });
   cajaGrupos.innerHTML = htmlGrupos;
 
+  /* Cambiar de día (o ver la semana completa) sin recargar la página. */
+  cajaGrupos.addEventListener('click', function (e) {
+    var chip = e.target.closest ? e.target.closest('.dia-chip') : null;
+    if (!chip || !cajaGrupos.contains(chip)) { return; }
+    var id = chip.getAttribute('data-grupo');
+    var dia = chip.getAttribute('data-dia');
+    var cajaDia = document.getElementById('dia-' + id);
+    var cajaSemana = document.getElementById('semana-' + id);
+
+    var botones = cajaGrupos.querySelectorAll('.dia-chip[data-grupo="' + id + '"]');
+    for (var i = 0; i < botones.length; i++) {
+      var esEste = (botones[i] === chip);
+      botones[i].classList.toggle('is-activo', esEste);
+      botones[i].setAttribute('aria-selected', esEste ? 'true' : 'false');
+    }
+
+    if (dia === 'semana') {
+      if (cajaSemana) { cajaSemana.hidden = false; }
+      if (cajaDia) { cajaDia.hidden = true; }
+      return;
+    }
+    var grupo = (H.grupos || []).filter(function (g) { return g.id === id; })[0];
+    if (cajaDia && grupo) {
+      cajaDia.innerHTML = tablaDia(grupo.filas || [], parseInt(dia, 10), '');
+      cajaDia.hidden = false;
+    }
+    if (cajaSemana) { cajaSemana.hidden = true; }
+  });
+
   var lead = document.getElementById('horariosLead');
   if (lead) {
-    lead.textContent = (H.titulo ? H.titulo + '. ' : '') + (H.sede || '') + ' ' + (H.vigencia || '');
+    lead.textContent = (H.titulo ? H.titulo + '. ' : '') + (H.sede || '') + ' ' + (H.vigencia || '') +
+      (ES_ENTRE_SEMANA
+        ? ' Abajo se muestra el horario del día de hoy (' + DIAS[DIA_INICIAL].toLowerCase() +
+          '); con los botones puede ver otro día o la semana completa.'
+        : ' Hoy es fin de semana: abajo se muestra el horario del lunes; con los botones' +
+          ' puede ver otro día o la semana completa.');
   }
 
   function conectar(caja) {
