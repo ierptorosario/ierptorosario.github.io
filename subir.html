@@ -107,8 +107,9 @@
     <div id="cajaClave">
       <label for="clave">Clave de publicación</label>
       <input id="clave" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_... (o github_pat_...)">
-      <p class="ayuda">No se muestra ni se comparte: queda guardada en este equipo.</p>
+      <p class="ayuda">Se pega <b>una sola vez</b>: después esta página la recuerda en este equipo y usted solo escribe el nombre del documento y elige el PDF.</p>
       <button class="boton" type="button" id="btnGuardarClave">Guardar y comprobar</button>
+      <button class="boton boton--suave" type="button" id="btnPegarClave" style="margin-left:.45rem">Pegar desde el portapapeles</button>
     </div>
 
     <div id="cajaClaveOk" class="oculto">
@@ -658,6 +659,36 @@
   campos.anio.value = new Date().getFullYear();
   campos.form.addEventListener('submit', subirDocumento);
   $('#btnGuardarClave').addEventListener('click', guardarClave);
+
+  /* Botón para no tener que escribir la clave: la trae del portapapeles
+     (después de copiarla en GitHub) y la comprueba sola. */
+  var btnPegar = document.getElementById('btnPegarClave');
+  if (btnPegar) {
+    btnPegar.addEventListener('click', function () {
+      esconder(campos.avisoClaveError);
+      if (!navigator.clipboard || !navigator.clipboard.readText) {
+        mostrar(campos.avisoClaveError,
+          'Este navegador no deja leer el portapapeles. Pegue la clave con Ctrl+V ' +
+          '(en el celular: mantenga pulsado el campo y elija «Pegar»).', 'info');
+        return;
+      }
+      navigator.clipboard.readText().then(function (texto) {
+        var t = String(texto || '').trim();
+        if (!t) {
+          mostrar(campos.avisoClaveError,
+            'El portapapeles está vacío. Primero copie la clave en GitHub (el botón de las dos hojas) ' +
+            'y vuelva a pulsar aquí.', 'info');
+          return;
+        }
+        campos.clave.value = t;
+        guardarClave();
+      }).catch(function () {
+        mostrar(campos.avisoClaveError,
+          'El navegador no dio permiso para usar el portapapeles. Pegue la clave con Ctrl+V ' +
+          '(en el celular: mantenga pulsado el campo y elija «Pegar»).', 'info');
+      });
+    });
+  }
   campos.clave.addEventListener('keydown', function (e) { if (e.key === 'Enter') { guardarClave(); } });
   $('#btnCambiarClave').addEventListener('click', function () {
     try { localStorage.removeItem(CLAVE_LS); } catch (e) { /* nada */ }
