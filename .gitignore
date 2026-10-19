@@ -29,3 +29,9 @@ respaldo-*.zip
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# OpenCode (asistente local: NO se publica en la web)
+opencode.jsonc
+opencode.json
+.opencode/
+AGENTS.md

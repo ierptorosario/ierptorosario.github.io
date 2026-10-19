@@ -124,15 +124,15 @@ body{
   margin:0;
   font-family:var(--fuente);
   font-size:clamp(1rem,.97rem + .18vw,1.075rem);
-  line-height:1.65;
+  line-height:1.4;
   color:var(--tinta);
   background:var(--fondo);
   overflow-x:hidden;
 }
 img,svg{max-width:100%}
 img{height:auto;display:block}
-h1,h2,h3,h4{font-family:var(--fuente-titulo);line-height:1.2;color:var(--verde-900);margin:0 0 .6em;font-weight:700;letter-spacing:-.01em}
-h1{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.4rem);line-height:1.12}
+h1,h2,h3,h4{font-family:var(--fuente-titulo);line-height:1.1;color:var(--verde-900);margin:0 0 .6em;font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.4rem);line-height:1.05}
 h2{font-size:clamp(1.28rem,1rem + 1.02vw,1.92rem)}
 h3{font-size:clamp(1.1rem,1rem + .5vw,1.4rem)}
 p{margin:0 0 1em}
@@ -416,7 +416,7 @@ body.nav-abierto .nav-toggle__cerrar{display:inline-flex}
 /* La reseña histórica y los paneles de acordeón deben verse iguales que el
    resto del sitio: mismo tamaño de letra y mismo espaciado. */
 .panel-doble__texto h3{font-size:1.16rem;margin:0 0 .55rem}
-.panel-doble__texto p, .acordeon__panel p{font-size:.97rem;line-height:1.7;margin:0 0 .95rem}
+.panel-doble__texto p, .acordeon__panel p{font-size:.97rem;line-height:1.45;margin:0 0 .8rem}
 .panel-doble__texto p:last-child, .acordeon__panel p:last-child{margin-bottom:0}
 
 .acordeon{border:1px solid var(--gris-200);border-radius:var(--radio-lg);background:#fff;overflow:hidden;box-shadow:var(--sombra-1)}
@@ -433,7 +433,7 @@ body.nav-abierto .nav-toggle__cerrar{display:inline-flex}
 .acordeon__panel{padding:0 1.2rem 1.25rem;color:var(--gris-700);font-size:.97rem}
 .acordeon__panel[hidden]{display:none}
 .acordeon__panel h4{margin:1rem 0 .4rem;font-size:1rem;color:var(--verde-800)}
-.lista-valores{margin:.2rem 0 .8rem;padding-left:1.15rem;color:var(--gris-700);font-size:.95rem;line-height:1.7}
+.lista-valores{margin:.2rem 0 .8rem;padding-left:1.15rem;color:var(--gris-700);font-size:.95rem;line-height:1.45}
 .lista-valores li{margin:.15rem 0}
 .lista-valores--chips{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;padding:0;margin:.2rem 0 .8rem}
 .lista-valores--chips li{background:var(--verde-100);color:var(--verde-800);border-radius:999px;padding:.28rem .75rem;font-size:.85rem;font-weight:600}
@@ -847,7 +847,7 @@ html{scroll-behavior:smooth}
 .iconbox__cabecera{display:flex;align-items:center;gap:.65rem;margin-bottom:.55rem}
 .iconbox__cabecera .icon{width:1.6rem;height:1.6rem;color:var(--verde-700);flex:0 0 auto}
 .iconbox h3{margin:0;font-size:1.02rem}
-.iconbox p{margin:0;font-size:.92rem;color:var(--gris-700);line-height:1.6}
+.iconbox p{margin:0;font-size:.92rem;color:var(--gris-700);line-height:1.4}
 
 /* --- Pie de página en columnas --- */
 @media (min-width:1000px){
@@ -1079,7 +1079,7 @@ table.tabla thead th{background:#faf8f2;color:var(--negro)}
 }
 
 body{background:#fff;color:var(--ierp-tinta)}
-h1,h2,h3,h4{color:var(--ierp-azul-900);letter-spacing:-.015em;line-height:1.18}
+h1,h2,h3,h4{color:var(--ierp-azul-900);letter-spacing:-.015em;line-height:1.1}
 h2{font-weight:800}
 a{color:var(--ierp-azul-700)}
 a:hover{color:var(--ierp-azul-600)}
@@ -1221,7 +1221,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 /* Refinamiento tipográfico y de ritmo */
 .section__head h2{letter-spacing:-.02em}
 .noticia h3,.card h3{letter-spacing:-.01em}
-.lead,.section__lead{line-height:1.7}
+.lead,.section__lead{line-height:1.45}
 
 /* =====================================================================
    19. AJUSTES FINOS: ENCABEZADO EN UNA SOLA LÍNEA Y TÍTULOS DORADOS
@@ -1328,7 +1328,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 .nivel:hover .nivel__foto img{transform:scale(1.07);transition:transform .6s ease}
 .nivel__capa{position:static;inset:auto;padding:0;background:none}
 .nivel__capa h3{margin:0 0 .35rem;font-size:1.16rem}
-.nivel__capa p{font-size:.86rem;line-height:1.5}
+.nivel__capa p{font-size:.86rem;line-height:1.38}
 
 /* Portada: las fotografías se ven más luminosas y no se pierden en el azul */
 .hero__fondo{filter:brightness(1.16) contrast(1.05) saturate(1.12)}
@@ -1698,6 +1698,80 @@ table.horario td .vacio{color:#c3ceda}
   .card:hover .card__media img{transform:none}
 }
 </style>
+<style>
+/* =====================================================================
+   AJUSTES FINALES
+   Se escriben de últimas para que tengan prioridad sobre los demás.
+   ===================================================================== */
+
+/* --- 1. Texto con el espacio entre línea y línea más ajustado --- */
+.noticia p,.proyecto p,.card p,.detalle p,.docente b,.docente span,.docente small{line-height:1.42}
+
+/* --- 2. Botón flotante con la imagen de la institución: volver al inicio --- */
+.volver-arriba{
+  width:auto;height:auto;border-radius:999px;
+  padding:.4rem .95rem .4rem .45rem;
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:linear-gradient(135deg,#123a63,#061426);
+  color:#f7e7b8;border:1px solid #c9a227;
+  font-size:.82rem;font-weight:700;letter-spacing:.02em;
+  opacity:1;visibility:visible;transform:none;
+  box-shadow:0 12px 28px rgba(4,16,33,.42);
+  z-index:220;
+}
+.volver-arriba img{
+  width:34px;height:34px;border-radius:50%;background:#fff;padding:2px;object-fit:contain;flex:none;
+}
+.volver-arriba:hover{color:#fff;background:linear-gradient(135deg,#18508a,#0a2440)}
+@media (max-width:520px){
+  .volver-arriba{padding:.35rem .8rem .35rem .35rem;font-size:.78rem}
+  .volver-arriba img{width:30px;height:30px}
+}
+
+/* --- 3. Botón «Salir» en una esquina del visor y de la ventana --- */
+.cerrar{
+  top:.55rem;right:.55rem;width:auto;height:auto;border-radius:999px;
+  padding:.45rem .9rem;display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.82rem;font-weight:700;background:#b23a2a;color:#fff;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);z-index:6;
+}
+.cerrar .icon{width:1rem;height:1rem}
+.cerrar:hover{background:#8f2c1f;color:#fff}
+
+/* --- 4. Listado de docentes --- */
+.docentes__titulo{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:1.02rem;margin:1.5rem 0 .7rem;
+}
+.docentes__titulo:first-child{margin-top:0}
+.docentes__n{
+  font-size:.74rem;font-weight:700;color:#6b5a1e;background:#f6eccf;
+  border:1px solid rgba(201,162,39,.55);border-radius:999px;padding:.08rem .5rem;
+}
+.docentes__grid{
+  display:grid;gap:.7rem;list-style:none;margin:0;padding:0;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));
+}
+.docente{
+  background:#fff;border:1px solid #e3e3e9;border-radius:14px;padding:.8rem .9rem;
+  display:flex;flex-direction:column;gap:.2rem;
+  transition:border-color .25s,box-shadow .25s,transform .25s;
+}
+.docente:hover{border-color:#c9a227;box-shadow:0 12px 24px rgba(4,16,33,.12);transform:translateY(-3px)}
+.docente b{font-size:.97rem;color:#0b2545;line-height:1.2}
+.docente__cargo{font-size:.8rem;color:#5a6b7e}
+.docente__area{font-size:.78rem;color:#8a6d1f;font-weight:700}
+@media (prefers-reduced-motion:reduce){
+  .docente:hover{transform:none}
+}
+
+/* --- 5. Videos dentro de las noticias y los proyectos --- */
+.detalle video,#modalCuerpo video{
+  display:block;margin:.8rem auto;border-radius:14px;background:#000;
+  width:auto;max-width:100%;max-height:70vh;height:auto;
+  box-shadow:0 10px 24px rgba(4,16,33,.25);
+}
+</style>
 </head>
 <body>
 <a class="salto-a-contenido" href="#contenido">Saltar al contenido principal</a>
@@ -1832,6 +1906,7 @@ table.horario td .vacio{color:#c3ceda}
             <li><a href="#panel-simbolos">Símbolos institucionales</a></li>
             <li><a href="#panel-perfil">Perfil del estudiante</a></li>
             <li><a href="#panel-sedes">Sedes de la institución</a></li>
+            <li><a href="#docentes">Docentes 2026</a></li>
             <li><a href="#comunidad">Comunidad y escuela de familias</a></li>
           </ul>
         </li>
@@ -1925,12 +2000,6 @@ table.horario td .vacio{color:#c3ceda}
         Educación rural en el Putumayo
       </p>
       <h1 id="hero-titulo">Aprender, crear y transformar nuestro territorio</h1>
-      <p class="hero__texto">
-        Formamos niñas, niños y jóvenes con pensamiento crítico, sentido de pertenencia y capacidad
-        de innovar, para que el conocimiento se convierta en bienestar para sus familias y para el
-        campo putumayense. Apostamos por la formación integral, la convivencia, la lectura, la
-        ciencia, la tecnología y el compromiso con la comunidad.
-      </p>
       <div class="hero__acciones">
         <a class="btn btn--secondary" href="#institucion">
           <svg class="icon" aria-hidden="true"><use href="#ico-escudo"></use></svg>
@@ -2631,6 +2700,80 @@ table.horario td .vacio{color:#c3ceda}
 </section>
 
 <!-- =====================================================================
+     6.2 NUESTROS DOCENTES (listado 2026 entregado por rectoría)
+     Los números de documento NO se publican: son datos personales.
+     ===================================================================== -->
+<section class="section section--alt" id="docentes" aria-labelledby="docentes-titulo">
+  <div class="wrap">
+    <div class="section__head js-revelar">
+      <span class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#ico-personas"></use></svg> Nuestro equipo</span>
+      <h2 id="docentes-titulo">Docentes 2026</h2>
+      <p class="section__lead">
+        Docentes de aula, docente PTA y rectoría de la institución, con la sede donde prestan su
+        servicio durante el año escolar 2026.
+      </p>
+    </div>
+    <div id="docentesLista" class="js-revelar"></div>
+    <noscript>
+      <div class="nota nota--info" style="margin:0 0 1.2rem">
+        <p><strong>JavaScript está desactivado.</strong> Este es el listado de docentes 2026. Para verlo
+        organizado por sede, active JavaScript.</p>
+      </div>
+      <h3 class="docentes__titulo">Rectoría<span class="docentes__n">1</span></h3>
+      <ul class="docentes__grid">
+        <li class="docente"><b>Oliverio Barrera Sanchez</b><span class="docente__cargo">Rector</span></li>
+      </ul>
+      <h3 class="docentes__titulo">Sede central<span class="docentes__n">10</span></h3>
+      <ul class="docentes__grid">
+        <li class="docente"><b>Andrea Martinez Martinez</b><span class="docente__cargo">Docente de aula</span></li>
+        <li class="docente"><b>Carlos Johan Paz Duarte</b><span class="docente__cargo">Docente de aula</span><span class="docente__area">Área: Educación Física</span></li>
+        <li class="docente"><b>Carlos Mario Vargas Pinzon</b><span class="docente__cargo">Docente de aula</span></li>
+        <li class="docente"><b>Dora Angela Romo Garcia</b><span class="docente__cargo">Docente de aula</span></li>
+        <li class="docente"><b>Jhon Jairo Nupan Gonzales</b><span class="docente__cargo">Docente de aula</span></li>
+        <li class="docente"><b>Jimmy Fernando Cortes Rivera</b><span class="docente__cargo">Docente de aula · Representante ASEP</span></li>
+        <li class="docente"><b>Maria Yasmin Ceron</b><span class="docente__cargo">Docente de aula</span></li>
+        <li class="docente"><b>Melva Yaqueline Diaz Mejia</b><span class="docente__cargo">Docente de aula</span></li>
+        <li class="docente"><b>Rosa Alba Pipicano Galindez</b><span class="docente__cargo">Docente de aula</span></li>
+        <li class="docente"><b>Sully Evelin Rosero Sacanambuy</b><span class="docente__cargo">Docente PTA</span></li>
+      </ul>
+      <h3 class="docentes__titulo">Sede Bombón<span class="docentes__n">1</span></h3>
+      <ul class="docentes__grid">
+        <li class="docente"><b>Angela Odilia Carlosama</b><span class="docente__cargo">Docente de aula</span></li>
+      </ul>
+      <h3 class="docentes__titulo">Sede Buenos Aires del Mandur<span class="docentes__n">1</span></h3>
+      <ul class="docentes__grid">
+        <li class="docente"><b>Luis Ivan Pinchao Mirama</b><span class="docente__cargo">Docente de aula</span></li>
+      </ul>
+      <h3 class="docentes__titulo">Sede Las Delicias<span class="docentes__n">1</span></h3>
+      <ul class="docentes__grid">
+        <li class="docente"><b>Normandia Peña Mosquera</b><span class="docente__cargo">Docente de aula</span></li>
+      </ul>
+      <h3 class="docentes__titulo">Sede Las Villas<span class="docentes__n">1</span></h3>
+      <ul class="docentes__grid">
+        <li class="docente"><b>Gilberto Dagua Baicue</b><span class="docente__cargo">Docente de aula</span></li>
+      </ul>
+      <h3 class="docentes__titulo">Sede Nueva Unión<span class="docentes__n">1</span></h3>
+      <ul class="docentes__grid">
+        <li class="docente"><b>Oveth Ruales Trujillo</b><span class="docente__cargo">Docente de aula</span></li>
+      </ul>
+      <h3 class="docentes__titulo">Sede Porvenir<span class="docentes__n">1</span></h3>
+      <ul class="docentes__grid">
+        <li class="docente"><b>Elfrida Omaira Rosero Chicaiza</b><span class="docente__cargo">Docente de aula</span></li>
+      </ul>
+      <h3 class="docentes__titulo">Sede San Cayetano<span class="docentes__n">1</span></h3>
+      <ul class="docentes__grid">
+        <li class="docente"><b>Maria Eugenia Lopez Realpe</b><span class="docente__cargo">Docente de aula</span></li>
+      </ul>
+      <h3 class="docentes__titulo">Sede San Luis<span class="docentes__n">1</span></h3>
+      <ul class="docentes__grid">
+        <li class="docente"><b>Esperanza Gomez Jamioy</b><span class="docente__cargo">Docente de aula</span></li>
+      </ul>
+    </noscript>
+    <p class="campo__ayuda" id="docentesNota" style="margin-top:1.1rem"></p>
+  </div>
+</section>
+
+<!-- =====================================================================
      7. INNOVACIÓN Y PROYECTOS
      ===================================================================== -->
 <!-- =====================================================================
@@ -2712,18 +2855,6 @@ table.horario td .vacio{color:#c3ceda}
 
     </div>
 
-    <figure class="espacios__video js-revelar">
-      <video controls preload="none" playsinline muted width="1280" height="720"
-             poster="assets/video/recorrido-espacios-poster.jpg"
-             aria-label="Recorrido en video por los espacios de la institución">
-        <source src="assets/video/recorrido-espacios.mp4" type="video/mp4">
-        Su navegador no puede reproducir este video. Arriba están las fotografías de los espacios.
-      </video>
-      <figcaption>
-        Recorrido por la sede principal: el aula de sistemas, la zona deportiva, la huerta escolar,
-        los pasillos verdes y la plaza cubierta.
-      </figcaption>
-    </figure>
   </div>
 </section>
 
@@ -3692,8 +3823,9 @@ table.horario td .vacio{color:#c3ceda}
 </footer>
 
 <!-- Botón flotante: volver arriba -->
-<button class="volver-arriba" id="volverArriba" type="button" aria-label="Volver al inicio de la página">
-  <svg class="icon" aria-hidden="true"><use href="#ico-arriba"></use></svg>
+<button class="volver-arriba" id="volverArriba" type="button" aria-label="Volver al inicio de la página" title="Volver al inicio">
+  <img src="assets/img/escudo.png" width="34" height="34" alt="" decoding="async">
+  <span>Inicio</span>
 </button>
 
 <!-- Audio de fondo: suena muy bajo y se puede detener en cualquier momento -->
@@ -3708,8 +3840,9 @@ table.horario td .vacio{color:#c3ceda}
      ===================================================================== -->
 <div class="overlay" id="visor" role="dialog" aria-modal="true" aria-label="Visor de imágenes de la galería" hidden>
   <div class="overlay__caja">
-    <button class="cerrar" id="visorCerrar" type="button" aria-label="Cerrar el visor de imágenes">
+    <button class="cerrar" id="visorCerrar" type="button" aria-label="Salir del visor de imágenes">
       <svg class="icon" aria-hidden="true"><use href="#ico-cerrar"></use></svg>
+      <span>Salir</span>
     </button>
     <figure class="visor__figura">
       <img id="visorImagen" src="assets/img/hero-paisaje.svg" alt="">
@@ -3731,8 +3864,9 @@ table.horario td .vacio{color:#c3ceda}
      ===================================================================== -->
 <div class="overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitulo" hidden>
   <div class="overlay__caja modal__caja">
-    <button class="cerrar" id="modalCerrar" type="button" aria-label="Cerrar la ventana de información">
+    <button class="cerrar" id="modalCerrar" type="button" aria-label="Salir de la ventana de información">
       <svg class="icon" aria-hidden="true"><use href="#ico-cerrar"></use></svg>
+      <span>Salir</span>
     </button>
     <h2 id="modalTitulo">Información</h2>
     <div id="modalCuerpo"></div>
@@ -3856,6 +3990,7 @@ table.horario td .vacio{color:#c3ceda}
      conserva el contenido incluido en esta misma página. -->
 <script src="datos/contenido.js"></script>
 <script src="datos/horarios.js"></script>
+<script src="datos/docentes.js"></script>
 <!-- Noticias coleccionadas AUTOMÁTICAMENTE por el actualizador
      (actualizador/fallback-fb.js): nuevas publicaciones de la página de
      Facebook, con su texto completo y todas sus fotografías. Este archivo
@@ -4384,6 +4519,54 @@ table.horario td .vacio{color:#c3ceda}
     modal.addEventListener('click', function (e) {
       if (e.target === modal || e.target.classList.contains('overlay__caja')) cerrar();
     });
+  }());
+
+  /* -------------------------------------------------------------------
+     11.2 Listado de docentes (datos/docentes.js)
+     ------------------------------------------------------------------- */
+  (function listadoDocentes() {
+    var caja = qs('#docentesLista');
+    var D = window.DOCENTES_IERP;
+    if (!caja || !D || !D.docentes || !D.docentes.length) return;
+
+    function limpia(t) {
+      return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    var grupos = {};
+    D.docentes.forEach(function (d) {
+      if (!d || !d.nombre) return;
+      var sede = d.sede || 'Sede central';
+      if (!grupos[sede]) grupos[sede] = [];
+      grupos[sede].push(d);
+    });
+
+    function prioridad(nombre) {
+      return nombre === 'Rectoría' ? 0 : (nombre === 'Sede central' ? 1 : 2);
+    }
+    var sedes = Object.keys(grupos).sort(function (a, b) {
+      return prioridad(a) !== prioridad(b) ? prioridad(a) - prioridad(b) : a.localeCompare(b, 'es');
+    });
+
+    caja.innerHTML = sedes.map(function (sede) {
+      var lista = grupos[sede].slice().sort(function (a, b) {
+        return String(a.nombre).localeCompare(String(b.nombre), 'es');
+      });
+      var items = lista.map(function (d) {
+        return '<li class="docente"><b>' + limpia(d.nombre) + '</b>' +
+          (d.cargo ? '<span class="docente__cargo">' + limpia(d.cargo) + '</span>' : '') +
+          (d.area ? '<span class="docente__area">Área: ' + limpia(d.area) + '</span>' : '') +
+          '</li>';
+      }).join('');
+      return '<h3 class="docentes__titulo">' + limpia(sede) +
+        '<span class="docentes__n">' + lista.length + '</span></h3>' +
+        '<ul class="docentes__grid">' + items + '</ul>';
+    }).join('');
+
+    var nota = qs('#docentesNota');
+    if (nota && D.nota) nota.textContent = D.nota;
   }());
 
   /* -------------------------------------------------------------------
@@ -5431,6 +5614,7 @@ table.horario td .vacio{color:#c3ceda}
     ['Accesos rápidos', 'Qué información necesita hoy', '#rapidos', 'Sección', 'accesos rapidos'],
     ['Información oficial en cifras', 'Estudiantes, sedes, docentes y jornada', '#datos', 'Sección', 'cifras datos institucion'],
     ['Institución', 'Reseña histórica, misión, visión, principios, símbolos y sedes', '#institucion', 'Sección', 'historia mision vision principios simbolos escudo bandera sedes perfil'],
+    ['Docentes 2026', 'Listado de docentes con la sede donde prestan su servicio', '#docentes', 'Sección', 'docentes profesores maestros planta docente listado equipo 2026 sedes rector orientadora'],
     ['Oferta educativa', 'Niveles, grados, sedes y modalidades', '#oferta', 'Sección', 'preescolar primaria secundaria media grados matricula jornada sedes'],
     ['Nuestros espacios', 'Aula de sistemas, zona deportiva, huerta, pasillos y plaza cubierta', '#espacios', 'Sección', 'espacios instalaciones huerta cancha aulas recorrido'],
     ['Horarios de clase', 'Horario por grados: sexto y séptimo, octavo y noveno, décimo y once', '#horarios', 'Sección', 'horario clases grados jornada descanso almuerzo'],

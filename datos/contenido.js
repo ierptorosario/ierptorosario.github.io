@@ -63,7 +63,7 @@ window.CONTENIDO_IERP = {
 
   portada: {
     titulo: 'Aprender, crear y transformar nuestro territorio',
-    texto: 'Formamos niñas, niños y jóvenes con pensamiento crítico, sentido de pertenencia y capacidad de innovar, para que el conocimiento se convierta en bienestar para sus familias y para el campo putumayense. Apostamos por la formación integral, la convivencia, la lectura, la ciencia, la tecnología y el compromiso con la comunidad.',
+    texto: '',
     imagen: 'assets/img/portada-2026.jpg',
     imagenes: [
       { src: 'assets/img/portada-2026.jpg', alt: 'Fotografía de la comunidad educativa de la Institución Educativa Rural Puerto Rosario reunida en la sede' },
@@ -99,6 +99,22 @@ window.CONTENIDO_IERP = {
   ],
 
   noticias: [
+    {
+      "titulo": "Feria de la Ciencia y visita de la Alcaldía de Puerto Guzmán",
+      "fecha": "23 de septiembre de 2026",
+      "categoria": "Ciencia y comunidad",
+      "imagen": "assets/img/noticias/feria-ciencia-2026.jpg",
+      "imagenes": [
+        "assets/img/noticias/feria-ciencia-2026.jpg"
+      ],
+      "fotos": 1,
+      "resumen": "Gracias a la Alcaldía de Puerto Guzmán por visitarnos y motivar la ciencia, la tecnología y la innovación en nuestros estudiantes.",
+      "detalle": "<p>Gracias <strong>Alcaldía de Puerto Guzmán</strong> por visitarnos y motivar la ciencia, la tecnología y la innovación en nuestros estudiantes de la IER Puerto Rosario.</p><p>«La ciencia también se vive y se construye desde nuestras aulas»: en el marco del Día de la Familia vivimos una jornada muy especial, en la que además disfrutamos de la Feria de la Ciencia, la Tecnología y la Innovación, y nuestros estudiantes demostraron todo su talento.</p><video controls preload=\"metadata\" playsinline width=\"960\" height=\"540\" poster=\"assets/img/noticias/feria-ciencia-2026.jpg\"><source src=\"assets/video/feria-ciencia-alcaldia-2026.mp4\" type=\"video/mp4\">Su navegador no puede reproducir este video; puede verlo en la publicación original de Facebook.</video><p class=\"campo__ayuda\">Publicación compartida de la Alcaldía de Puerto Guzmán en la página del rector, 23 de septiembre de 2026.</p>",
+      "enlace": "https://www.facebook.com/PuertoGuzman/videos/1776598933609065",
+      "fuente": "Facebook",
+      "demo": false,
+      "publicada": true
+    },
     {
       "titulo": "Los esperamos en nuestra IER Puerto Rosario",
       "fecha": "15 de octubre de 2026",
@@ -568,6 +584,13 @@ window.CONTENIDO_IERP = {
       fecha: '2026',
       descripcion: 'Explica de forma sencilla qué es el manual de convivencia y su sentido formativo: las normas también educan en valores.',
       archivo: 'assets/video/manual-de-convivencia.mp4',
-      poster: 'assets/video/manual-de-convivencia-portada.jpg' }
+      poster: 'assets/video/manual-de-convivencia-portada.jpg' },
+    { id: 'feria-ciencia-alcaldia',
+      titulo: 'Feria de la Ciencia y visita de la Alcaldía de Puerto Guzmán',
+      fecha: '23 de septiembre de 2026',
+      descripcion: 'Feria de la Ciencia, la Tecnología y la Innovación en la institución, con la visita y el acompañamiento de la Alcaldía de Puerto Guzmán.',
+      archivo: 'assets/video/feria-ciencia-alcaldia-2026.mp4',
+      poster: 'assets/img/noticias/feria-ciencia-2026.jpg',
+      facebook: 'https://www.facebook.com/PuertoGuzman/videos/1776598933609065' }
   ]
 };
