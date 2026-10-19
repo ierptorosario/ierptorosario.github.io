@@ -14,5 +14,14 @@ window.DOCUMENTOS_AUTO = [
     "descripcion": "SIEE 2025",
     "fecha": "18 de octubre de 2026",
     "publicado": true
+  },
+  {
+    "titulo": "RESOLUCION DE APROBACION DE GRADO 11",
+    "archivo": "documentos/resolucion-de-aprobacion-de-grado-11-2026.pdf",
+    "anio": "2026",
+    "categoria": "Institucional",
+    "descripcion": "",
+    "fecha": "19 de octubre de 2026",
+    "publicado": true
   }
 ];
