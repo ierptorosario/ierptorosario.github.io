@@ -63,6 +63,9 @@
      texto aparezca antes en los celulares con internet lento. -->
 <link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-700.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Estilos del mapa (librería Leaflet, guardada aquí mismo en
+     assets/leaflet/): el sitio NO depende de ningún CDN. -->
+<link rel="stylesheet" href="assets/leaflet/leaflet.css">
 <noscript>
   <!-- Sin JavaScript el contenido debe seguir siendo visible y navegable -->
   <style>.js-revelar{opacity:1 !important;transform:none !important}
@@ -1963,6 +1966,16 @@ table.horario thead th:first-child{z-index:4}
 .horarios__tabla-scroll::-webkit-scrollbar-track,.tabla-scroll::-webkit-scrollbar-track{background:#e9eef4;border-radius:999px}
 .horarios__tabla-scroll::-webkit-scrollbar-thumb,.tabla-scroll::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#c9a227,#e2c15a);border-radius:999px}
 
+/* --- Celular: ninguna caja con tabla ancha puede empujar la página ---
+       (un elemento de rejilla no se encoge solo; sin esto, el cuadro de la
+       «semana completa» del horario se salía de la pantalla del celular) */
+.horarios__bloques > *,
+.horarios__bloque,
+.acordeon__item,
+.acordeon__panel,
+.tabla-scroll,
+.horarios__tabla-scroll{min-width:0;max-width:100%}
+
 /* --- Controles del navegador y cifras con el sello de la casa --- */
 input,select,textarea,progress{accent-color:var(--ierp-oro)}
 .footer-contador b,.cifra,.cifras b{font-variant-numeric:tabular-nums}
@@ -1984,6 +1997,31 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
   table.horario{min-width:0;box-shadow:none}
   .card,.doc,.docente,.espacio,.video-card,.nivel{box-shadow:none !important;break-inside:avoid}
   video,iframe{display:none !important}
+}
+
+/* --- Mapa real (OpenStreetMap): compacto, bonito y sin gastar datos --- */
+.mapa-caja{max-width:520px}
+.mapa-caja__lienzo{position:relative;height:clamp(220px,46vw,280px);background:#e9eff5;overflow:hidden}
+.mapa-caja__lienzo img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover}
+.mapa-caja .leaflet-container{font:inherit;background:#e9eff5}
+.mapa-caja .leaflet-control-attribution{font-size:.66rem;line-height:1.3;background:rgba(255,255,255,.88)}
+.mapa-caja .leaflet-control-zoom a{color:#0b2545;font-weight:700}
+/* Las marcas del mapa: un punto dorado y su nombre. No reciben clics
+   (así el dedo nunca queda atrapado en el mapa). */
+.marca-ier,.marca-ier *{pointer-events:none}
+.marca-ier__punto{
+  position:absolute;left:-.42rem;top:-.42rem;width:.84rem;height:.84rem;border-radius:50%;
+  background:radial-gradient(circle at 34% 32%,#f6dc85,#c9a227);border:2px solid #fff;
+  box-shadow:0 0 0 .3rem rgba(201,162,39,.3),0 2px 6px rgba(0,0,0,.35)
+}
+.marca-ier--azul .marca-ier__punto{
+  background:radial-gradient(circle at 34% 32%,#7ba4d4,#123a63);
+  box-shadow:0 0 0 .3rem rgba(18,58,99,.25),0 2px 6px rgba(0,0,0,.35)
+}
+.marca-ier__texto{
+  position:absolute;left:0;top:.6rem;transform:translateX(-50%);white-space:nowrap;
+  padding:.16rem .52rem;border-radius:999px;background:rgba(9,30,56,.93);color:#fff;
+  font-size:.68rem;font-weight:700;letter-spacing:.01em;box-shadow:0 2px 8px rgba(0,0,0,.3)
 }
 
 /* --- Quien pide menos movimiento, no lo recibe --- */
@@ -2150,7 +2188,6 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           <a href="#noticias">Noticias<svg class="icon menu__flecha" aria-hidden="true"><use href="#ico-abajo"></use></svg></a>
           <ul class="submenu">
             <li><a href="#noticias">Noticias y eventos</a></li>
-            <li><a href="#galeria">Galería de fotografías</a></li>
             <li><a href="#multimedia">Videos institucionales</a></li>
           </ul>
         </li>
@@ -2393,15 +2430,6 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
         <span class="enlace-card__texto">
           <b>Noticias y eventos</b>
           <span>Las actividades más recientes de la comunidad educativa.</span>
-        </span>
-        <svg class="icon enlace-card__flecha" aria-hidden="true"><use href="#ico-flecha"></use></svg>
-      </a>
-
-      <a class="enlace-card js-revelar" href="#galeria">
-        <span class="enlace-card__icono"><svg class="icon" aria-hidden="true"><use href="#ico-camara"></use></svg></span>
-        <span class="enlace-card__texto">
-          <b>Galería institucional</b>
-          <span>Fotografías de las actividades y la vida escolar.</span>
         </span>
         <svg class="icon enlace-card__flecha" aria-hidden="true"><use href="#ico-flecha"></use></svg>
       </a>
@@ -3478,96 +3506,6 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
 </section>
 
 <!-- =====================================================================
-     9. GALERÍA INSTITUCIONAL
-     ===================================================================== -->
-<section class="section section--azul" id="galeria" aria-labelledby="galeria-titulo">
-  <div class="wrap">
-    <div class="section__head js-revelar">
-      <span class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#ico-camara"></use></svg> Galería institucional</span>
-      <h2 id="galeria-titulo">Nuestro día a día</h2>
-      <p class="section__lead">
-        Galería adaptable con ampliación de imágenes. Selecciona una imagen para ampliarla, navega con
-        las flechas del teclado y cierra con la tecla <kbd>Esc</kbd>.
-      </p>
-    </div>
-
-    <div class="galeria js-revelar" id="galeriaGrid">
-      <figure class="galeria__item" role="group">
-        <button type="button" class="galeria__boton" data-galeria="0"
-                aria-label="Ampliar imagen: Actividades en el aula">
-          <img src="assets/img/aula-rural.svg" width="800" height="500" loading="lazy" decoding="async"
-               alt="Escena de una escuela rural con estudiantes">
-          <figcaption>Actividades en el aula&nbsp;</figcaption>
-          <span class="galeria__zoom" aria-hidden="true"><svg class="icon"><use href="#ico-zoom"></use></svg></span>
-        </button>
-      </figure>
-      <figure class="galeria__item" role="group">
-        <button type="button" class="galeria__boton" data-galeria="1"
-                aria-label="Ampliar imagen: Plan lector y biblioteca escolar">
-          <img src="assets/img/lectura.svg" width="800" height="500" loading="lazy" decoding="async"
-               alt="Escena de un libro abierto">
-          <figcaption>Plan lector y biblioteca&nbsp;</figcaption>
-          <span class="galeria__zoom" aria-hidden="true"><svg class="icon"><use href="#ico-zoom"></use></svg></span>
-        </button>
-      </figure>
-      <figure class="galeria__item" role="group">
-        <button type="button" class="galeria__boton" data-galeria="2"
-                aria-label="Ampliar imagen: Tecnología e informática">
-          <img src="assets/img/tecnologia.svg" width="800" height="500" loading="lazy" decoding="async"
-               alt="Escena de un computador portátil">
-          <figcaption>Tecnología e informática&nbsp;</figcaption>
-          <span class="galeria__zoom" aria-hidden="true"><svg class="icon"><use href="#ico-zoom"></use></svg></span>
-        </button>
-      </figure>
-      <figure class="galeria__item" role="group">
-        <button type="button" class="galeria__boton" data-galeria="3"
-                aria-label="Ampliar imagen: Proyecto ambiental y vivero">
-          <img src="assets/img/medioambiente.svg" width="800" height="500" loading="lazy" decoding="async"
-               alt="Escena de un río con árboles">
-          <figcaption>Proyecto ambiental y vivero&nbsp;</figcaption>
-          <span class="galeria__zoom" aria-hidden="true"><svg class="icon"><use href="#ico-zoom"></use></svg></span>
-        </button>
-      </figure>
-      <figure class="galeria__item" role="group">
-        <button type="button" class="galeria__boton" data-galeria="4"
-                aria-label="Ampliar imagen: Feria de ciencia y creatividad">
-          <img src="assets/img/ciencia.svg" width="800" height="500" loading="lazy" decoding="async"
-               alt="Escena de material de laboratorio">
-          <figcaption>Feria de ciencia y creatividad&nbsp;</figcaption>
-          <span class="galeria__zoom" aria-hidden="true"><svg class="icon"><use href="#ico-zoom"></use></svg></span>
-        </button>
-      </figure>
-      <figure class="galeria__item" role="group">
-        <button type="button" class="galeria__boton" data-galeria="5"
-                aria-label="Ampliar imagen: Comunidad educativa y familias">
-          <img src="assets/img/comunidad.svg" width="800" height="500" loading="lazy" decoding="async"
-               alt="Escena de la comunidad educativa">
-          <figcaption>Comunidad educativa y familias&nbsp;</figcaption>
-          <span class="galeria__zoom" aria-hidden="true"><svg class="icon"><use href="#ico-zoom"></use></svg></span>
-        </button>
-      </figure>
-      <figure class="galeria__item" role="group">
-        <button type="button" class="galeria__boton" data-galeria="6"
-                aria-label="Ampliar imagen: Actos culturales">
-          <img src="assets/img/cultura.svg" width="800" height="500" loading="lazy" decoding="async"
-               alt="Escena de un acto cultural">
-          <figcaption>Actos culturales&nbsp;</figcaption>
-          <span class="galeria__zoom" aria-hidden="true"><svg class="icon"><use href="#ico-zoom"></use></svg></span>
-        </button>
-      </figure>
-      <figure class="galeria__item" role="group">
-        <button type="button" class="galeria__boton" data-galeria="7"
-                aria-label="Ampliar imagen: Huerta escolar y seguridad alimentaria">
-          <img src="assets/img/huerta.svg" width="800" height="500" loading="lazy" decoding="async"
-               alt="Escena de una huerta escolar">
-          <figcaption>Huerta escolar&nbsp;</figcaption>
-          <span class="galeria__zoom" aria-hidden="true"><svg class="icon"><use href="#ico-zoom"></use></svg></span>
-        </button>
-      </figure>
-    </div>
-  </div>
-</section>
-<!-- =====================================================================
      10. DOCUMENTOS INSTITUCIONALES
      ===================================================================== -->
 <section class="section section--alt" id="documentos" aria-labelledby="documentos-titulo">
@@ -3777,7 +3715,7 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           <p>Celebraciones, muestras artísticas, música tradicional y expresiones culturales de la región
           amazónica.</p>
           <div class="card__pie">
-            <a class="btn btn--ghost btn--sm" href="#galeria">Ver galería <svg class="icon" aria-hidden="true"><use href="#ico-flecha"></use></svg></a>
+            <a class="btn btn--ghost btn--sm" href="#noticias">Ver actividades <svg class="icon" aria-hidden="true"><use href="#ico-flecha"></use></svg></a>
           </div>
         </div>
       </article>
@@ -3909,18 +3847,24 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
         </ul>
 
         <div class="mapa-caja" style="margin-top:1.2rem">
-          <img src="assets/img/mapa-zona.svg" width="900" height="480" loading="lazy" decoding="async"
-               alt="Croquis de la ubicación general de la vereda Puerto Rosario">
+          <!-- Mapa real de OpenStreetMap. Si el JavaScript está apagado o el
+               mapa no alcanza a cargar, se ve el croquis de respaldo que está
+               aquí dentro: la información nunca se pierde. -->
+          <div class="mapa-caja__lienzo" id="mapaEscuela" role="img"
+               aria-label="Mapa de la vereda Puerto Rosario y de la cabecera municipal de Puerto Guzmán, Putumayo">
+            <img src="assets/img/mapa-zona.svg" width="900" height="480" loading="lazy" decoding="async"
+                 alt="Croquis orientativo de la vereda Puerto Rosario y del municipio de Puerto Guzmán">
+          </div>
           <div class="mapa-caja__pie">
-            Croquis orientativo de la zona (<strong>no está a escala</strong>). Consulta la ubicación
-            exacta en el enlace.
+            <strong>Vereda Puerto Rosario</strong> (punto dorado) y la cabecera municipal de
+            Puerto Guzmán, a unos 20 km. Usa los botones + y − para acercar.
             <br>
-            <a href="https://www.openstreetmap.org/search?query=Puerto%20Guzm%C3%A1n%2C%20Putumayo%2C%20Colombia"
+            <a href="https://www.openstreetmap.org/?mlat=0.9667403&amp;mlon=-76.2662208#map=13/0.96674/-76.26622"
                target="_blank" rel="noopener noreferrer">
-              Consultar la zona en OpenStreetMap
+              Ver la ubicación en el mapa completo
               <svg class="icon" aria-hidden="true"><use href="#ico-externo"></use></svg>
             </a>
-            <span class="campo__ayuda">(enlace a un servicio externo gratuito)</span>
+            <span class="campo__ayuda">(Mapa: © OpenStreetMap · servicio externo gratuito)</span>
           </div>
         </div>
       </div>
@@ -4013,7 +3957,6 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           <li><a href="#oferta"><svg class="icon" aria-hidden="true"><use href="#ico-flecha"></use></svg> Oferta educativa</a></li>
           <li><a href="#proyectos"><svg class="icon" aria-hidden="true"><use href="#ico-flecha"></use></svg> Proyectos institucionales</a></li>
           <li><a href="#noticias"><svg class="icon" aria-hidden="true"><use href="#ico-flecha"></use></svg> Noticias y eventos</a></li>
-          <li><a href="#galeria"><svg class="icon" aria-hidden="true"><use href="#ico-flecha"></use></svg> Galería institucional</a></li>
           <li><a href="#comunidad"><svg class="icon" aria-hidden="true"><use href="#ico-flecha"></use></svg> Comunidad educativa</a></li>
         </ul>
       </nav>
@@ -4256,6 +4199,10 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
      página de Facebook de la institución. Este archivo lo genera solo el
      actualizador; no se edita a mano. Si no existe, el sitio funciona igual. -->
 <script src="datos/automatico.js"></script>
+<!-- Librería del mapa (Leaflet), guardada aquí mismo en assets/leaflet/:
+     el sitio NO depende de ningún CDN. Si el archivo faltara, la página
+     funciona igual y se sigue viendo el croquis de respaldo. -->
+<script src="assets/leaflet/leaflet.js"></script>
 <script>
 /* =====================================================================
    JAVASCRIPT DEL SITIO
@@ -5614,16 +5561,21 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       var visiblesN = C.noticias.filter(function (n) { return n && n.publicada !== false; })
         .slice()
         .sort(function (a, b) { return fechaNoticia(b.fecha) - fechaNoticia(a.fecha); });
-      /* Las publicaciones más recientes se muestran como tarjetas completas,
-         pero por partes: primero seis y, con el botón «Ver más noticias», van
-         apareciendo las demás. Así la página no queda tan larga en el celular.
-         Las más antiguas quedan solo como título con enlace a Facebook. */
-      var LIMITE_TARJETAS = 20;   // tarjetas completas que se preparan
-      var INICIO_TARJETAS = 6;    // las que se ven al abrir la página
-      var PASO_TARJETAS = 6;      // las que se suman con cada «Ver más»
-      var destacadasN = visiblesN.slice(0, LIMITE_TARJETAS);
-      var anterioresN = visiblesN.slice(LIMITE_TARJETAS);
-      var mostradasN = INICIO_TARJETAS;
+      /* TODAS las publicaciones del último año (365 días) se muestran como
+         tarjetas completas, sin omitir ninguna —incluidas las que la página
+         compartió—. La página crece hacia abajo y cada persona decide hasta
+         dónde baja. Solo lo anterior a ese año queda como título con enlace. */
+      var UN_ANIO = 365 * 24 * 60 * 60 * 1000;
+      var hoyN = new Date().getTime();
+      var esDelUltimoAnio = function (n) {
+        var t = fechaNoticia(n.fecha);
+        /* Si la fecha no se puede leer, no se esconde nada: se muestra igual. */
+        return !t || (hoyN - t) <= UN_ANIO;
+      };
+      var destacadasN = visiblesN.filter(esDelUltimoAnio);
+      var anterioresN = visiblesN.filter(function (n) { return !esDelUltimoAnio(n); });
+      var PASO_TARJETAS = 6;      // las que sumaría el botón «Ver más»
+      var mostradasN = destacadasN.length;   // todas a la vista desde el inicio
 
       function tarjetaNoticia(n) {
         var galeriaN = (Array.isArray(n.imagenes) ? n.imagenes.filter(function (s) { return hay(s); }) : []);
@@ -5843,14 +5795,40 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
     }
   }
 
-  /* ---------------- 9. Sello de actualización ---------------- */
+  /* ---------------- 9. Sello de actualización (fecha Y hora reales) ----------------
+     Se muestra el momento más reciente entre:
+       · la fecha y hora en que se publicó ESTA página (avanza cada vez que
+         subimos un cambio al sitio, a mano o con el publicador);
+       · la marca que escribe el actualizador cuando trae contenido nuevo
+         (la corrida de las 6 de la mañana).
+     Así la fecha solo avanza cuando el sitio cambió de verdad. */
   var sello = qs('#selloActualizacion');
-  if (sello && hay(C.actualizado)) {
-    var f = new Date(C.actualizado);
-    var texto = isNaN(f.getTime())
-      ? esc(C.actualizado)
-      : f.toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
-    sello.textContent = 'Contenido actualizado el ' + texto + '.';
+  if (sello) {
+    var MESES_LARGOS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    var fechasReales = [];
+    var sumarFecha = function (v) {
+      if (!v) return;
+      var d = (v instanceof Date) ? v : new Date(v);
+      if (d && !isNaN(d.getTime()) && d.getFullYear() > 2000) fechasReales.push(d.getTime());
+    };
+    sumarFecha(document.lastModified);
+    if (window.CONTENIDO_AUTO) {
+      sumarFecha(CONTENIDO_AUTO.generado); sumarFecha(CONTENIDO_AUTO.actualizado);
+    }
+    if (window.CONTENIDO_NOTICIAS_AUTO) {
+      sumarFecha(CONTENIDO_NOTICIAS_AUTO.generado); sumarFecha(CONTENIDO_NOTICIAS_AUTO.actualizado);
+    }
+    if (fechasReales.length) {
+      var dAct = new Date(Math.max.apply(null, fechasReales));
+      var hora = dAct.getHours(), min = dAct.getMinutes();
+      sello.textContent = 'Sitio actualizado el ' + dAct.getDate() + ' de ' +
+        MESES_LARGOS[dAct.getMonth()] + ' de ' + dAct.getFullYear() + ', ' +
+        (hora % 12 || 12) + ':' + (min < 10 ? '0' + min : min) +
+        (hora < 12 ? ' a. m.' : ' p. m.');
+    } else if (hay(C.actualizado)) {
+      sello.textContent = 'Contenido actualizado: ' + C.actualizado + '.';
+    }
   }
 
   /* ---------------- 10. Avisar a los buscadores ---------------- */
@@ -6115,7 +6093,6 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
     ['Horarios de clase', 'Horario por grados: sexto y séptimo, octavo y noveno, décimo y once', '#horarios', 'Sección', 'horario clases grados jornada descanso almuerzo'],
     ['Proyectos', 'InnovaTec, ferias de ciencia, medio ambiente y tecnología', '#proyectos', 'Sección', 'proyectos innovatec semillero investigacion ciencia tecnologia'],
     ['Noticias', 'Noticias, eventos y avisos de la institución', '#noticias', 'Sección', 'noticias eventos avisos'],
-    ['Galería de fotografías', 'Nuestro día a día en imágenes', '#galeria', 'Sección', 'galeria fotos imagenes'],
     ['Videos institucionales', 'Videos del Día de la IA, convivencia y más', '#multimedia', 'Sección', 'videos multimedia'],
     ['Documentos', 'PEI, SIEE, manual de convivencia, calendario y guías', '#documentos', 'Sección', 'documentos pei siee manual convivencia calendario guias pdf'],
     ['Comunidad y escuela de familias', 'Escuela de padres, plan lector y gobierno escolar', '#comunidad', 'Sección', 'comunidad familias escuela padres plan lector gobierno escolar'],
@@ -6336,6 +6313,81 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       abrir();
     }
   });
+}());
+</script>
+
+<!-- =====================================================================
+     MAPA DE UBICACIÓN (OpenStreetMap con la librería Leaflet, local)
+     El croquis de respaldo se cambia por un mapa real solo cuando la caja
+     se acerca a la pantalla: así no se gastan datos en los celulares con
+     internet lento. Si no hay JavaScript, el croquis sigue ahí.
+     ===================================================================== -->
+<script>
+(function () {
+  'use strict';
+  var caja = document.getElementById('mapaEscuela');
+  if (!caja || typeof L === 'undefined') return;
+
+  /* Coordenadas reales tomadas de OpenStreetMap (no son inventadas). */
+  var VEREDA = [0.9667403, -76.2662208];    /* Vereda Puerto Rosario */
+  var CABECERA = [0.9648984, -76.4078340];  /* Cabecera municipal de Puerto Guzmán */
+
+  function montar() {
+    if (caja.getAttribute('data-mapa') === 'listo') return;
+    try {
+      caja.setAttribute('data-mapa', 'listo');
+      caja.innerHTML = '';
+      var mapa = L.map(caja, {
+        dragging: !L.Browser.mobile,  /* en el celular el dedo sigue moviendo la página */
+        scrollWheelZoom: false,       /* la rueda del ratón no se roba la página */
+        keyboard: false,
+        minZoom: 9,
+        maxZoom: 13
+      });
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: 'Mapa: &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>'
+      }).addTo(mapa);
+
+      function ponerMarca(punto, clase, texto, titulo) {
+        return L.marker(punto, {
+          icon: L.divIcon({
+            className: 'marca-ier ' + clase,
+            html: '<span class="marca-ier__punto"></span><span class="marca-ier__texto">' + texto + '</span>',
+            iconSize: [0, 0],
+            iconAnchor: [0, 0]
+          }),
+          title: titulo,
+          alt: titulo
+        }).addTo(mapa);
+      }
+      ponerMarca(VEREDA, 'marca-ier--oro', 'Puerto Rosario', 'Vereda Puerto Rosario');
+      ponerMarca(CABECERA, 'marca-ier--azul', 'Puerto Guzmán', 'Cabecera municipal de Puerto Guzmán');
+
+      mapa.fitBounds([VEREDA, CABECERA], { padding: [42, 42] });
+      mapa.invalidateSize();
+    } catch (e) {
+      /* Si algo falla, se vuelve a dejar el croquis de respaldo. */
+      caja.removeAttribute('data-mapa');
+      caja.innerHTML = '<img src="assets/img/mapa-zona.svg" width="900" height="480" decoding="async" alt="Croquis orientativo de la vereda Puerto Rosario y del municipio de Puerto Guzmán">';
+    }
+  }
+
+  function cuandoSeVea() {
+    if (typeof IntersectionObserver !== 'function') { montar(); return; }
+    var observador = new IntersectionObserver(function (entradas) {
+      for (var i = 0; i < entradas.length; i++) {
+        if (entradas[i].isIntersecting) { observador.disconnect(); montar(); return; }
+      }
+    }, { rootMargin: '400px 0px' });
+    observador.observe(caja);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', cuandoSeVea);
+  } else {
+    cuandoSeVea();
+  }
 }());
 </script>
 </body>
