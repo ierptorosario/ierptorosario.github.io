@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subir documentos oficiales | I.E. Rural Puerto Rosario</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="assets/img/escudo.png">
+<style>
+  :root{
+    --azul:#0b2545; --azul-2:#123a67; --oro:#c9a227; --oro-claro:#e6cd7a; --oro-oscuro:#8a6d1f;
+    --texto:#12263a; --suave:#5a6b7e; --linea:#e3e3e9; --ok:#0f7b4f; --error:#a02020;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    line-height:1.55; color:var(--texto); background:#f4f7fb;
+  }
+  a{ color:var(--oro-oscuro); }
+  header{
+    background:linear-gradient(150deg,#061c33,#0b2545 52%,#0e3459); color:#fff;
+    padding:1.3rem 1rem;
+  }
+  header .caja{ max-width:900px; margin:0 auto; display:flex; align-items:center; gap:.9rem; }
+  header img{ width:52px; height:52px; border-radius:50%; background:#fff; padding:3px; }
+  header h1{ margin:0; font-size:1.15rem; line-height:1.25; }
+  header p{ margin:.15rem 0 0; font-size:.85rem; color:#c9d9ea; }
+  header a.volver{ margin-left:auto; color:var(--oro-claro); font-size:.85rem; text-decoration:none; white-space:nowrap; }
+  main{ max-width:900px; margin:0 auto; padding:1.4rem 1rem 3rem; }
+  .tarjeta{
+    background:#fff; border:1px solid var(--linea); border-radius:14px;
+    padding:1.2rem 1.2rem 1.4rem; box-shadow:0 6px 18px rgba(11,37,69,.06); margin-top:1.2rem;
+  }
+  .tarjeta h2{ margin:0 0 .3rem; font-size:1.05rem; color:var(--azul); }
+  .tarjeta h2 .paso{
+    display:inline-grid; place-items:center; width:1.5rem; height:1.5rem; margin-right:.45rem;
+    border-radius:50%; background:var(--azul); color:#fff; font-size:.8rem;
+  }
+  .ayuda{ font-size:.87rem; color:var(--suave); margin:.2rem 0 .9rem; }
+  label{ display:block; font-weight:700; font-size:.85rem; margin:.8rem 0 .25rem; }
+  input[type=text], input[type=password], input[type=number], select, textarea{
+    width:100%; padding:.6rem .7rem; font:inherit; font-size:.92rem;
+    border:1px solid #cbd6e2; border-radius:9px; background:#fff; color:inherit;
+  }
+  input:focus, select:focus, textarea:focus{ outline:2px solid rgba(201,162,39,.55); border-color:var(--oro); }
+  .fila{ display:grid; gap:.8rem; grid-template-columns:1fr 1fr; }
+  @media (max-width:620px){ .fila{ grid-template-columns:1fr; } }
+  .boton{
+    display:inline-flex; align-items:center; justify-content:center; gap:.4rem;
+    padding:.7rem 1.2rem; border:0; border-radius:999px; cursor:pointer;
+    font:inherit; font-weight:700; font-size:.92rem;
+    background:linear-gradient(135deg,#f6e6a8,#d8b64a 30%,#c9a227 60%,#a67c00); color:#241a00;
+  }
+  .boton:hover{ filter:brightness(1.04); }
+  .boton[disabled]{ background:#d8dee6; color:#7b8b99; cursor:not-allowed; filter:none; }
+  .boton--suave{ background:#eef2f7; color:var(--azul); border:1px solid #cbd6e2; }
+  .boton--peligro{ background:#fdecec; color:var(--error); border:1px solid #f2c9c9; }
+  .boton--sm{ padding:.4rem .85rem; font-size:.83rem; }
+  .aviso{ margin:.9rem 0 0; padding:.7rem .85rem; border-radius:9px; font-size:.88rem; }
+  .aviso--ok{ background:#e8f6ee; border:1px solid #b7e0c8; color:#0b5c3b; }
+  .aviso--error{ background:#fdecec; border:1px solid #f2c9c9; color:#8a1f1f; }
+  .aviso--info{ background:#eef4fb; border:1px solid #cbd9ea; color:#1d3d5c; }
+  .aviso[hidden]{ display:none; }
+  .lista-docs{ list-style:none; margin:.6rem 0 0; padding:0; }
+  .lista-docs li{
+    display:flex; flex-wrap:wrap; align-items:center; gap:.6rem;
+    padding:.65rem 0; border-bottom:1px dashed var(--linea); font-size:.9rem;
+  }
+  .lista-docs li b{ color:var(--azul); }
+  .lista-docs li .etiqueta{
+    font-size:.75rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700;
+    color:#8a6d1f; background:#f7efd6; border:1px solid rgba(201,162,39,.5); border-radius:999px; padding:.1rem .55rem;
+  }
+  .lista-docs li .der{ margin-left:auto; display:flex; gap:.45rem; }
+  ol.pasos{ margin:.4rem 0 0; padding-left:1.3rem; font-size:.9rem; }
+  ol.pasos li{ margin:.35rem 0; }
+  code{ background:#eef2f7; padding:.1rem .35rem; border-radius:5px; font-size:.85em; }
+  .barra{ height:6px; border-radius:999px; background:#e6ecf3; overflow:hidden; margin-top:.7rem; }
+  .barra i{ display:block; height:100%; width:0; background:linear-gradient(90deg,#c9a227,#e6cd7a); transition:width .2s ease; }
+  footer{ text-align:center; font-size:.82rem; color:var(--suave); padding:0 1rem 2.5rem; }
+  .oculto{ display:none !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="caja">
+    <img src="assets/img/escudo.png" alt="Escudo de la institución" width="52" height="52">
+    <div>
+      <h1>Subir documentos oficiales</h1>
+      <p>Institución Educativa Rural Puerto Rosario · rectoría</p>
+    </div>
+    <a class="volver" href="index.html">← Volver al sitio</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================ PASO 1: LA CLAVE ============================ -->
+  <section class="tarjeta" id="tarjetaClave">
+    <h2><span class="paso">1</span> Clave de publicación</h2>
+    <p class="ayuda">
+      Esta clave la crea la rectoría una sola vez en GitHub y se guarda <b>solo en este navegador</b>.
+      Con ella el documento sube al sitio sin necesidad de un técnico.
+    </p>
+
+    <div id="cajaClave">
+      <label for="clave">Clave de publicación</label>
+      <input id="clave" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_...">
+      <p class="ayuda">No se muestra ni se comparte: queda guardada en este equipo.</p>
+      <button class="boton" type="button" id="btnGuardarClave">Guardar y comprobar</button>
+    </div>
+
+    <div id="cajaClaveOk" class="oculto">
+      <div class="aviso aviso--ok" id="avisoClave"></div>
+      <div style="margin-top:.7rem;display:flex;gap:.5rem;flex-wrap:wrap">
+        <button class="boton boton--suave boton--sm" type="button" id="btnCambiarClave">Cambiar la clave</button>
+        <button class="boton boton--suave boton--sm" type="button" id="btnRecargarLista">Ver los documentos subidos</button>
+      </div>
+    </div>
+
+    <div class="aviso aviso--error" id="avisoClaveError" hidden></div>
+  </section>
+
+  <!-- ============================ PASO 2: SUBIR ============================ -->
+  <section class="tarjeta oculto" id="tarjetaSubir">
+    <h2><span class="paso">2</span> Subir un documento (PDF)</h2>
+    <p class="ayuda">
+      El documento aparece solo en la sección <b>Documentos</b> del sitio, organizado por año y por tipo.
+      Tarda uno o dos minutos en verse en internet.
+    </p>
+
+    <form id="formSubir">
+      <label for="titulo">Nombre del documento <span aria-hidden="true">*</span></label>
+      <input id="titulo" type="text" required maxlength="90" placeholder="Por ejemplo: PEI 2026">
+
+      <div class="fila">
+        <div>
+          <label for="anio">Año</label>
+          <input id="anio" type="number" min="2000" max="2100" step="1" inputmode="numeric">
+        </div>
+        <div>
+          <label for="tipo">Tipo de documento</label>
+          <select id="tipo">
+            <option value="institucional" selected>Documento institucional (PEI, SIEE, manual, etc.)</option>
+            <option value="plan">Plan de estudio de un área</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="descripcion">Descripción corta (opcional)</label>
+      <textarea id="descripcion" rows="2" maxlength="200" placeholder="Por ejemplo: Proyecto Educativo Institucional aprobado para el año 2026."></textarea>
+
+      <label for="archivo">Archivo PDF <span aria-hidden="true">*</span></label>
+      <input id="archivo" type="file" accept="application/pdf,.pdf" required>
+      <p class="ayuda">Solo archivos PDF, máximo 20 MB. Si el PDF pesa mucho, guárdelo con menos calidad antes de subirlo.</p>
+
+      <div style="margin-top:1rem">
+        <button class="boton" type="submit" id="btnSubir">Subir al sitio</button>
+      </div>
+
+      <div class="barra oculto" id="barra"><i id="barraRelleno"></i></div>
+      <div class="aviso aviso--info" id="avisoSubida" hidden></div>
+      <div class="aviso aviso--error" id="avisoError" hidden></div>
+      <div class="aviso aviso--ok" id="avisoListo" hidden></div>
+    </form>
+  </section>
+
+  <!-- ============================ PASO 3: LA LISTA ============================ -->
+  <section class="tarjeta oculto" id="tarjetaLista">
+    <h2><span class="paso">3</span> Documentos subidos desde esta página</h2>
+    <p class="ayuda">Puede quitar de la lista un documento que haya subido por equivocación.</p>
+    <p class="ayuda" id="sinDocumentos">Todavía no hay documentos subidos desde esta página.</p>
+    <ul class="lista-docs" id="listaDocs"></ul>
+  </section>
+
+  <!-- ============================ AYUDA: LA CLAVE ============================ -->
+  <section class="tarjeta">
+    <h2>¿Cómo se crea la clave? (una sola vez)</h2>
+    <ol class="pasos">
+      <li>Entre a <b>github.com</b> con la cuenta de la institución (<code>ierptorosario</code>).</li>
+      <li>Arriba a la derecha, haga clic en su foto de perfil y luego en <b>Settings</b> (Configuración).</li>
+      <li>Baje hasta el final de la columna izquierda y entre a <b>Developer settings</b>.</li>
+      <li>Elija <b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b>.</li>
+      <li>En <b>Token name</b> escriba, por ejemplo: <code>Subir documentos IER</code>.</li>
+      <li>En <b>Expiration</b> escoja cuánto dura la clave (por ejemplo, un año). Cuando venza, se crea otra.</li>
+      <li>En <b>Repository access</b> marque <b>Only select repositories</b> y escoja
+          <code>ierptorosario.github.io</code>.</li>
+      <li>En <b>Permissions</b> → <b>Repository permissions</b> busque <b>Contents</b> y póngalo en
+          <b>Read and write</b>. Los demás permisos se dejan como están.</li>
+      <li>Pulse <b>Generate token</b> y copie la clave que aparece (empieza con <code>github_pat_</code>).
+          Esa clave se muestra una sola vez.</li>
+      <li>Vuelva aquí, péguela en el paso 1 y pulse <b>Guardar y comprobar</b>.</li>
+    </ol>
+    <div class="aviso aviso--info">
+      <b>Consejo de seguridad:</b> esa clave vale como una llave del sitio. No la comparta, no la escriba en
+      documentos ni en mensajes. Si alguien más la llega a ver, entre a GitHub y borre el token
+      (<b>Revoke</b>) para crear uno nuevo. Aquí queda guardada únicamente en este navegador.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Institución Educativa Rural Puerto Rosario · ierpuertorosario@gmail.com
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------------
+     Datos del repositorio del sitio (GitHub Pages).
+     ------------------------------------------------------------------ */
+  var REPO = 'ierptorosario/ierptorosario.github.io';
+  var RAMA = 'main';
+  var API = 'https://api.github.com';
+  var CLAVE_LS = 'ierp-clave-subir';
+  var RUTA_INDICE = 'datos/documentos-automaticos.js';
+  var CARPETA_DOCS = 'documentos';
+  var PESO_MAX = 20 * 1024 * 1024;   // 20 MB
+
+  var $ = function (sel) { return document.querySelector(sel); };
+
+  var campos = {
+    clave: $('#clave'),
+    cajaClave: $('#cajaClave'),
+    cajaClaveOk: $('#cajaClaveOk'),
+    avisoClave: $('#avisoClave'),
+    avisoClaveError: $('#avisoClaveError'),
+    tarjetaSubir: $('#tarjetaSubir'),
+    tarjetaLista: $('#tarjetaLista'),
+    form: $('#formSubir'),
+    titulo: $('#titulo'),
+    anio: $('#anio'),
+    tipo: $('#tipo'),
+    descripcion: $('#descripcion'),
+    archivo: $('#archivo'),
+    barra: $('#barra'),
+    barraRelleno: $('#barraRelleno'),
+    avisoSubida: $('#avisoSubida'),
+    avisoError: $('#avisoError'),
+    avisoListo: $('#avisoListo'),
+    listaDocs: $('#listaDocs'),
+    sinDocumentos: $('#sinDocumentos')
+  };
+
+  /* ------------------------------------------------------------------
+     Utilidades.
+     ------------------------------------------------------------------ */
+  function mostrar(el, texto, tipo) {
+    if (!el) return;
+    el.hidden = false;
+    if (tipo) { el.className = 'aviso aviso--' + tipo; }
+    el.textContent = texto;
+  }
+  function esconder(el) { if (el) { el.hidden = true; el.textContent = ''; } }
+
+  /* Sin tildes, en minúsculas y con guiones: sirve para el nombre del archivo. */
+  function guion(texto) {
+    var s = String(texto || '').trim();
+    if (s.normalize) { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
+  }
+
+  function hoyTexto() {
+    var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio',
+      'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    var d = new Date();
+    return d.getDate() + ' de ' + meses[d.getMonth()] + ' de ' + d.getFullYear();
+  }
+
+  /* ------------------------------------------------------------------
+     Conversaciones con GitHub.
+     ------------------------------------------------------------------ */
+  var clave = '';
+
+  function api(ruta, opciones) {
+    var conf = opciones || {};
+    conf.headers = Object.assign({
+      'Authorization': 'Bearer ' + clave,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    }, conf.headers || {});
+    return fetch(API + ruta, conf).then(function (r) {
+      return r.text().then(function (texto) {
+        var datos = null;
+        try { datos = texto ? JSON.parse(texto) : null; } catch (e) { datos = null; }
+        if (!r.ok) {
+          var err = new Error((datos && datos.message) || ('Error ' + r.status));
+          err.estado = r.status;
+          throw err;
+        }
+        return datos;
+      });
+    });
+  }
+
+  function textoDeError(e) {
+    if (e && e.estado === 401) return 'La clave no es válida o ya venció. Cree una nueva y vuelva a guardarla.';
+    if (e && e.estado === 403) return 'La clave no tiene permiso para escribir en el sitio. Revise que Contents esté en «Read and write».';
+    if (e && e.estado === 404) return 'No se encontró el repositorio del sitio o la clave no tiene acceso a él.';
+    if (e && /Failed to fetch|NetworkError/i.test(String(e.message || ''))) {
+      return 'No hay conexión a internet o el navegador la bloqueó. Revise la conexión e intente otra vez.';
+    }
+    return 'No se pudo completar: ' + ((e && e.message) || 'error desconocido');
+  }
+
+  function comprobarClave() {
+    return api('/repos/' + REPO).then(function (d) { return d; });
+  }
+
+  /* Comprueba también que se pueda escribir (permiso Contents). */
+  function comprobarPermiso() {
+    return api('/repos/' + REPO + '/contents/' + RUTA_INDICE + '?ref=' + RAMA);
+  }
+
+  /* ------------------------------------------------------------------
+     El índice de documentos subidos (datos/documentos-automaticos.js).
+     ------------------------------------------------------------------ */
+  var shaIndice = null;
+
+  function base64ATexto(b64) {
+    var bytes = Uint8Array.from(atob(b64), function (c) { return c.charCodeAt(0); });
+    return new TextDecoder('utf-8').decode(bytes);
+  }
+
+  function textoABase64(txt) {
+    var bytes = new TextEncoder().encode(txt);
+    var bin = '';
+    for (var i = 0; i < bytes.length; i++) { bin += String.fromCharCode(bytes[i]); }
+    return btoa(bin);
+  }
+
+  function leerIndice() {
+    return api('/repos/' + REPO + '/contents/' + RUTA_INDICE + '?ref=' + RAMA)
+      .then(function (d) {
+        var contenido = '';
+        if (d && d.content) { contenido = base64ATexto(String(d.content).replace(/\s+/g, '')); }
+        var lista = [];
+        var m = /\[[\s\S]*\]/.exec(contenido);
+        if (m) { try { lista = JSON.parse(m[0]); } catch (e) { lista = []; } }
+        if (!Array.isArray(lista)) { lista = []; }
+        shaIndice = d ? d.sha : null;
+        return { sha: shaIndice, lista: lista };
+      })
+      .catch(function (e) {
+        if (e && e.estado === 404) { shaIndice = null; return { sha: null, lista: [] }; }
+        throw e;
+      });
+  }
+
+  function escribirIndice(lista, sha) {
+    var cuerpo = '/* =====================================================================\n' +
+      '   DOCUMENTOS SUBIDOS POR RECTORÍA\n' +
+      '   ---------------------------------------------------------------------\n' +
+      '   Este archivo lo escribe la página «subir.html» cada vez que rectoría\n' +
+      '   sube un documento (PEI, planes de estudio, calendario, etc.).\n' +
+      '   NO se edita a mano.\n' +
+      '   ===================================================================== */\n' +
+      'window.DOCUMENTOS_AUTO = ' + JSON.stringify(lista, null, 2) + ';\n';
+    var datos = {
+      message: 'Subir documentos: ' + (lista.length ? lista[lista.length - 1].titulo : 'sin documentos'),
+      content: textoABase64(cuerpo),
+      branch: RAMA
+    };
+    if (sha) { datos.sha = sha; }
+    return api('/repos/' + REPO + '/contents/' + RUTA_INDICE, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos)
+    }).then(function (r) {
+      if (r && r.content && r.content.sha) { shaIndice = r.content.sha; }
+      return r;
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     Subir un archivo a la carpeta documentos/ y borrarlo si hace falta.
+     ------------------------------------------------------------------ */
+  function subirArchivo(ruta, base64, mensaje) {
+    return api('/repos/' + REPO + '/contents/' + ruta + '?ref=' + RAMA)
+      .then(function (d) { return d.sha; })
+      .catch(function () { return null; })
+      .then(function (sha) {
+        var datos = { message: mensaje, content: base64, branch: RAMA };
+        if (sha) { datos.sha = sha; }
+        return api('/repos/' + REPO + '/contents/' + ruta, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(datos)
+        });
+      });
+  }
+
+  function borrarArchivo(ruta, mensaje) {
+    return api('/repos/' + REPO + '/contents/' + ruta + '?ref=' + RAMA)
+      .then(function (d) {
+        return api('/repos/' + REPO + '/contents/' + ruta, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: mensaje, sha: d.sha, branch: RAMA })
+        });
+      });
+  }
+
+  function leerArchivoComoBase64(archivo) {
+    return new Promise(function (resolver, rechazar) {
+      var lector = new FileReader();
+      lector.onload = function () {
+        var res = String(lector.result || '');
+        var coma = res.indexOf(',');
+        resolver(coma === -1 ? '' : res.slice(coma + 1));
+      };
+      lector.onerror = function () { rechazar(new Error('No se pudo leer el archivo elegido.')); };
+      lector.readAsDataURL(archivo);
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     Dibujar la lista de documentos subidos.
+     ------------------------------------------------------------------ */
+  var documentos = [];
+
+  function pintarLista() {
+    if (!campos.listaDocs) return;
+    campos.listaDocs.textContent = '';
+    campos.sinDocumentos.hidden = documentos.length > 0;
+    documentos.forEach(function (d, i) {
+      var li = document.createElement('li');
+      var b = document.createElement('b');
+      b.textContent = d.titulo || '(sin nombre)';
+      li.appendChild(b);
+
+      var etiqueta = document.createElement('span');
+      etiqueta.className = 'etiqueta';
+      etiqueta.textContent = (d.categoria === 'Planes de estudio por área') ? 'Plan de estudio' : 'Institucional';
+      li.appendChild(etiqueta);
+
+      var mini = document.createElement('span');
+      mini.style.fontSize = '.82rem';
+      mini.style.color = '#5a6b7e';
+      mini.textContent = (d.anio ? d.anio + ' · ' : '') + (d.archivo || '');
+      li.appendChild(mini);
+
+      var der = document.createElement('span');
+      der.className = 'der';
+      if (d.archivo) {
+        var ver = document.createElement('a');
+        ver.className = 'boton boton--suave boton--sm';
+        ver.href = d.archivo;
+        ver.target = '_blank';
+        ver.rel = 'noopener';
+        ver.textContent = 'Ver PDF';
+        der.appendChild(ver);
+      }
+      var quitar = document.createElement('button');
+      quitar.type = 'button';
+      quitar.className = 'boton boton--peligro boton--sm';
+      quitar.textContent = 'Quitar';
+      quitar.addEventListener('click', function () { quitarDocumento(i); });
+      der.appendChild(quitar);
+      li.appendChild(der);
+
+      campos.listaDocs.appendChild(li);
+    });
+  }
+
+  function refrescarLista() {
+    return leerIndice().then(function (r) {
+      documentos = r.lista.map(function (d) {
+        return {
+          titulo: d.titulo, anio: d.anio, archivo: d.archivo,
+          categoria: d.categoria, descripcion: d.descripcion, fecha: d.fecha
+        };
+      });
+      pintarLista();
+    });
+  }
+
+  function quitarDocumento(i) {
+    var d = documentos[i];
+    if (!d) return;
+    if (!confirm('¿Quitar «' + (d.titulo || '') + '» de la página?\n\nEl archivo PDF también se borra del sitio.')) return;
+    mostrar(campos.avisoSubida, 'Quitando el documento…', 'info');
+    var copia = documentos.slice();
+    copia.splice(i, 1);
+    escribirIndice(copia, shaIndice).then(function () { return refrescarLista(); })
+      .then(function () {
+        esconder(campos.avisoSubida);
+        if (d.archivo) { return borrarArchivo(d.archivo, 'Quitar documento: ' + (d.titulo || '')); }
+      })
+      .then(function () {
+        mostrar(campos.avisoListo, 'Documento quitado. En uno o dos minutos desaparece del sitio.', 'ok');
+        setTimeout(function () { esconder(campos.avisoListo); }, 6000);
+      })
+      .catch(function (e) {
+        esconder(campos.avisoSubida);
+        mostrar(campos.avisoError, textoDeError(e), 'error');
+      });
+  }
+
+  /* ------------------------------------------------------------------
+     Paso 1: guardar y comprobar la clave.
+     ------------------------------------------------------------------ */
+  function entrarConClave() {
+    campos.cajaClave.classList.add('oculto');
+    campos.cajaClaveOk.classList.remove('oculto');
+    campos.tarjetaSubir.classList.remove('oculto');
+    campos.tarjetaLista.classList.remove('oculto');
+    mostrar(campos.avisoClave, 'Clave correcta. Ya puede subir documentos.', 'ok');
+  }
+
+  function salirConClave() {
+    campos.cajaClave.classList.remove('oculto');
+    campos.cajaClaveOk.classList.add('oculto');
+    campos.tarjetaSubir.classList.add('oculto');
+    campos.tarjetaLista.classList.add('oculto');
+    esconder(campos.avisoClave);
+  }
+
+  function guardarClave() {
+    var valor = String(campos.clave.value || '').trim();
+    esconder(campos.avisoClaveError);
+    if (valor.length < 20) {
+      mostrar(campos.avisoClaveError, 'Pegue la clave completa (empieza con github_pat_).', 'error');
+      return;
+    }
+    clave = valor;
+    mostrar(campos.avisoClaveError, 'Comprobando la clave…', 'info');
+    comprobarClave()
+      .then(function () { return comprobarPermiso(); })
+      .then(function () {
+        try { localStorage.setItem(CLAVE_LS, clave); } catch (e) { /* sin permiso: no pasa nada */ }
+        esconder(campos.avisoClaveError);
+        campos.clave.value = '';
+        entrarConClave();
+        return refrescarLista();
+      })
+      .catch(function (e) {
+        clave = '';
+        esconder(campos.avisoClaveError);
+        mostrar(campos.avisoClaveError, textoDeError(e), 'error');
+      });
+  }
+
+  /* ------------------------------------------------------------------
+     Paso 2: subir el documento.
+     ------------------------------------------------------------------ */
+  function nombreArchivoDisponible(base, lista) {
+    var usado = {};
+    lista.forEach(function (d) { if (d && d.archivo) { usado[String(d.archivo)] = true; } });
+    var ruta = CARPETA_DOCS + '/' + base + '.pdf';
+    if (!usado[ruta]) return ruta;
+    var i = 2;
+    while (usado[CARPETA_DOCS + '/' + base + '-' + i + '.pdf']) { i++; }
+    return CARPETA_DOCS + '/' + base + '-' + i + '.pdf';
+  }
+
+  function subirDocumento(ev) {
+    if (ev) ev.preventDefault();
+    esconder(campos.avisoError);
+    esconder(campos.avisoListo);
+    esconder(campos.avisoSubida);
+
+    var titulo = String(campos.titulo.value || '').trim();
+    var anio = String(campos.anio.value || '').trim();
+    var tipo = campos.tipo.value === 'plan' ? 'Planes de estudio por área' : 'Institucional';
+    var descripcion = String(campos.descripcion.value || '').trim();
+    var archivo = campos.archivo.files && campos.archivo.files[0];
+
+    if (titulo.length < 3) { mostrar(campos.avisoError, 'Escriba el nombre del documento.', 'error'); return; }
+    if (!archivo) { mostrar(campos.avisoError, 'Elija el archivo PDF.', 'error'); return; }
+    var esPdf = /\.pdf$/i.test(archivo.name) || archivo.type === 'application/pdf';
+    if (!esPdf) { mostrar(campos.avisoError, 'El archivo debe ser un PDF.', 'error'); return; }
+    if (archivo.size > PESO_MAX) {
+      mostrar(campos.avisoError, 'El archivo pesa más de 20 MB. Guárdelo con menos calidad o divídalo.', 'error');
+      return;
+    }
+
+    var boton = $('#btnSubir');
+    boton.disabled = true;
+    campos.barra.classList.remove('oculto');
+    campos.barraRelleno.style.width = '15%';
+    mostrar(campos.avisoSubida, 'Preparando el archivo…', 'info');
+
+    var base = guion(titulo) + (anio ? '-' + guion(anio) : '');
+    if (!base) { base = 'documento-' + Date.now(); }
+
+    var indice = null;
+    var rutaFinal = '';
+
+    leerArchivoComoBase64(archivo)
+      .then(function (base64) {
+        campos.barraRelleno.style.width = '35%';
+        mostrar(campos.avisoSubida, 'Leyendo la lista de documentos del sitio…', 'info');
+        return leerIndice().then(function (r) { indice = r; return base64; });
+      })
+      .then(function (base64) {
+        rutaFinal = nombreArchivoDisponible(base, indice.lista);
+        campos.barraRelleno.style.width = '60%';
+        mostrar(campos.avisoSubida, 'Subiendo «' + archivo.name + '» (' +
+          (archivo.size / (1024 * 1024)).toFixed(1) + ' MB)…', 'info');
+        return subirArchivo(rutaFinal, base64, 'Subir documento: ' + titulo);
+      })
+      .then(function () {
+        campos.barraRelleno.style.width = '85%';
+        mostrar(campos.avisoSubida, 'Anotando el documento en el sitio…', 'info');
+        var lista = indice.lista.filter(function (d) {
+          return !d || guion(String(d.titulo || '')) !== guion(titulo);
+        });
+        lista.push({
+          titulo: titulo,
+          archivo: rutaFinal,
+          anio: anio || String(new Date().getFullYear()),
+          categoria: tipo,
+          descripcion: descripcion,
+          fecha: hoyTexto(),
+          publicado: true
+        });
+        return escribirIndice(lista, indice.sha);
+      })
+      .then(function () {
+        campos.barraRelleno.style.width = '100%';
+        esconder(campos.avisoSubida);
+        mostrar(campos.avisoListo, '¡Listo! «' + titulo + '» quedó publicado. En uno o dos minutos aparece ' +
+          'en la sección Documentos del sitio.', 'ok');
+        campos.form.reset();
+        campos.anio.value = new Date().getFullYear();
+        return refrescarLista();
+      })
+      .catch(function (e) {
+        esconder(campos.avisoSubida);
+        mostrar(campos.avisoError, textoDeError(e), 'error');
+      })
+      .then(function () {
+        boton.disabled = false;
+        setTimeout(function () { campos.barra.classList.add('oculto'); campos.barraRelleno.style.width = '0'; }, 1200);
+      });
+  }
+
+  /* ------------------------------------------------------------------
+     Arranque.
+     ------------------------------------------------------------------ */
+  campos.anio.value = new Date().getFullYear();
+  campos.form.addEventListener('submit', subirDocumento);
+  $('#btnGuardarClave').addEventListener('click', guardarClave);
+  campos.clave.addEventListener('keydown', function (e) { if (e.key === 'Enter') { guardarClave(); } });
+  $('#btnCambiarClave').addEventListener('click', function () {
+    try { localStorage.removeItem(CLAVE_LS); } catch (e) { /* nada */ }
+    clave = '';
+    salirConClave();
+  });
+  $('#btnRecargarLista').addEventListener('click', function () {
+    esconder(campos.avisoError);
+    refrescarLista().catch(function (e) { mostrar(campos.avisoError, textoDeError(e), 'error'); });
+  });
+
+  /* Si ya había una clave guardada, se comprueba sola al abrir la página. */
+  try {
+    var guardada = localStorage.getItem(CLAVE_LS);
+    if (guardada) {
+      clave = guardada;
+      mostrar(campos.avisoClaveError, 'Comprobando la clave guardada…', 'info');
+      comprobarClave()
+        .then(function () { return comprobarPermiso(); })
+        .then(function () {
+          esconder(campos.avisoClaveError);
+          entrarConClave();
+          return refrescarLista();
+        })
+        .catch(function () {
+          clave = '';
+          esconder(campos.avisoClaveError);
+        });
+    }
+  } catch (e) { /* sin localStorage: se pide la clave cada vez */ }
+}());
+</script>
+</body>
+</html>

@@ -1904,6 +1904,9 @@ table.horario--dia{min-width:0}
 .section__head--compacto h2{margin-bottom:.3rem}
 .noticias__vermas{margin:1.7rem 0 0;text-align:center}
 .noticias__vermas[hidden]{display:none}
+/* Enlace discreto del pie para que rectoría suba documentos oficiales */
+.enlace-subir{color:#c9d9ea;font-size:.85rem;opacity:.85}
+.enlace-subir:hover{opacity:1;color:#fff}
 </style>
 </head>
 <body>
@@ -3965,6 +3968,7 @@ table.horario--dia{min-width:0}
         &copy; <span id="anio">2026</span> Institución Educativa Rural Puerto Rosario.
         <br><span id="selloActualizacion">Contenido actualizado por la institución.</span>
         <br><a href="admin.html" id="enlaceAdmin" rel="nofollow" style="display:none">Acceso institucional (rectoría y administración)</a>
+        <br><a href="subir.html" rel="nofollow" class="enlace-subir">Subir documentos oficiales (rectoría)</a>
       </p>
       <p class="footer-extra">
         <span class="footer-contador" id="contadorVisitas" hidden>
@@ -4153,6 +4157,10 @@ table.horario--dia{min-width:0}
 <script src="datos/contenido.js"></script>
 <script src="datos/horarios.js"></script>
 <script src="datos/docentes.js"></script>
+<!-- Documentos que la rectoría sube desde la página «subir.html». Ese
+     archivo lo escribe esa página automáticamente (no se edita a mano).
+     Si no existe, el sitio funciona igual. -->
+<script src="datos/documentos-automaticos.js"></script>
 <!-- Noticias coleccionadas AUTOMÁTICAMENTE por el actualizador
      (actualizador/fallback-fb.js): nuevas publicaciones de la página de
      Facebook, con su texto completo y todas sus fotografías. Este archivo
@@ -5127,6 +5135,31 @@ table.horario--dia{min-width:0}
         } else {
           d.publicado = d.publicado !== false;
           d.automatico = true;
+          C.documentos.push(d);
+        }
+      });
+    }
+
+    /* Documentos que rectoría sube desde la página «Subir documentos»
+       (datos/documentos-automaticos.js). Se integran solos al sitio y
+       quedan en la sección de Documentos, por año y según su tipo. */
+    var SUBIDOS = window.DOCUMENTOS_AUTO;
+    if (Array.isArray(SUBIDOS) && SUBIDOS.length) {
+      if (!Array.isArray(C.documentos)) C.documentos = [];
+      SUBIDOS.forEach(function (d) {
+        if (!d || !hay(d.titulo)) return;
+        var claveS = claveTexto(d.titulo);
+        var yaS = C.documentos.filter(function (x) { return x && claveTexto(x.titulo) === claveS; })[0];
+        if (yaS) {
+          if (hay(d.archivo)) yaS.archivo = d.archivo;
+          if (hay(d.anio)) yaS.anio = d.anio;
+          if (hay(d.categoria)) yaS.categoria = d.categoria;
+          if (hay(d.descripcion) && !hay(yaS.descripcion)) yaS.descripcion = d.descripcion;
+          yaS.publicado = true;
+          yaS.subido = true;
+        } else {
+          d.publicado = d.publicado !== false;
+          d.subido = true;
           C.documentos.push(d);
         }
       });
