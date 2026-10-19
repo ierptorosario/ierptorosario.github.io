@@ -471,7 +471,8 @@
       documentos = r.lista.map(function (d) {
         return {
           titulo: d.titulo, anio: d.anio, archivo: d.archivo,
-          categoria: d.categoria, descripcion: d.descripcion, fecha: d.fecha
+          categoria: d.categoria, descripcion: d.descripcion, fecha: d.fecha,
+          publicado: d.publicado !== false
         };
       });
       pintarLista();
@@ -589,6 +590,9 @@
 
     var indice = null;
     var rutaFinal = '';
+    /* La lista sin el documento que se está subiendo: si ya existía con el
+       mismo nombre, se reemplaza (no queda una copia vieja en el sitio). */
+    var listaSinEse = null;
 
     leerArchivoComoBase64(archivo)
       .then(function (base64) {
@@ -597,7 +601,10 @@
         return leerIndice().then(function (r) { indice = r; return base64; });
       })
       .then(function (base64) {
-        rutaFinal = nombreArchivoDisponible(base, indice.lista);
+        listaSinEse = indice.lista.filter(function (d) {
+          return !d || guion(String(d.titulo || '')) !== guion(titulo);
+        });
+        rutaFinal = nombreArchivoDisponible(base, listaSinEse);
         campos.barraRelleno.style.width = '60%';
         mostrar(campos.avisoSubida, 'Subiendo «' + archivo.name + '» (' +
           (archivo.size / (1024 * 1024)).toFixed(1) + ' MB)…', 'info');
@@ -606,9 +613,7 @@
       .then(function () {
         campos.barraRelleno.style.width = '85%';
         mostrar(campos.avisoSubida, 'Anotando el documento en el sitio…', 'info');
-        var lista = indice.lista.filter(function (d) {
-          return !d || guion(String(d.titulo || '')) !== guion(titulo);
-        });
+        var lista = listaSinEse.slice();
         lista.push({
           titulo: titulo,
           archivo: rutaFinal,
