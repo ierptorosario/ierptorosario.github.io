@@ -2024,6 +2024,22 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
   font-size:.68rem;font-weight:700;letter-spacing:.01em;box-shadow:0 2px 8px rgba(0,0,0,.3)
 }
 
+/* --- Celular: la barra de arriba cabe en un solo renglón ---
+   Antes medía 159 px y, junto con la cabecera, gastaba 228 px de pantalla
+   antes de ver contenido. El correo y el Facebook no se pierden: siguen
+   como botones grandes en la sección «Hablemos» y en el pie de página. */
+@media (max-width:560px){
+  .topbar__inner{flex-wrap:nowrap;gap:.5rem;padding-block:.42rem}
+  .topbar__grupo{flex-wrap:nowrap;gap:.55rem;min-width:0}
+  #topCorreo,#topRedes{display:none}
+  .topbar__item{font-size:.8rem;white-space:nowrap}
+  .topbar__item a{padding-block:.35rem}
+  .buscar{margin-left:auto}
+  .buscar__abrir{min-width:2.2rem;min-height:2.2rem}
+  .buscar.is-abierto input[type=search],
+  .buscar:focus-within input[type=search]{width:min(40vw,170px)}
+}
+
 /* --- Quien pide menos movimiento, no lo recibe --- */
 @media (prefers-reduced-motion:reduce){
   .doc:hover,.enlace-card:hover,.docente:hover{transform:none}
@@ -2728,45 +2744,22 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
               <p class="campo__ayuda">Fuente: PEI 2025 y Resolución No. 0844 de 2015.</p>
             </div>
           </div>
+          <div class="acordeon__item">
+            <button class="acordeon__boton" type="button" aria-expanded="false" aria-controls="panel-modelo">
+              <svg class="icon" aria-hidden="true"><use href="#ico-libro"></use></svg>
+              Modelo pedagógico
+              <svg class="icon" aria-hidden="true"><use href="#ico-abajo"></use></svg>
+            </button>
+            <div class="acordeon__panel" id="panel-modelo" hidden>
+              <p>El PEI define un modelo activo de <strong>Escuela Nueva y ecléctica</strong>: el estudiante aprende
+              haciendo, el docente orienta y evalúa, y el conocimiento se construye a partir del contexto rural.</p>
+              <p class="campo__ayuda">Fuente: PEI, apartado «Modelo pedagógico (Escuela Nueva y ecléctica)».</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="iconboxes">
-      <article class="iconbox js-revelar">
-        <div class="iconbox__cabecera">
-          <svg class="icon" aria-hidden="true"><use href="#ico-graduacion"></use></svg>
-          <h3>Misión</h3>
-        </div>
-        <p>La IER Puerto Rosario garantiza el derecho a la educación desde el grado preescolar hasta el grado
-        once (educación media) a todos los estudiantes sin ninguna discriminación, mediante la orientación, el
-        fortalecimiento en valores, procesos sociales, culturales, científicos y tecnológicos; formándolo
-        integralmente en beneficio personal y social.</p>
-        <p class="campo__ayuda">Texto del PEI (numeral 2.2.1.1), actualizado con la oferta educativa vigente
-        (de preescolar a grado 11.º).</p>
-      </article>
-
-      <article class="iconbox js-revelar">
-        <div class="iconbox__cabecera">
-          <svg class="icon" aria-hidden="true"><use href="#ico-chispa"></use></svg>
-          <h3>Visión</h3>
-        </div>
-        <p>La Institución Educativa Rural Puerto Rosario pretende formar estudiantes críticos, autónomos,
-        dinámicos y creativos dentro de los mejores ambientes pedagógicos, permitiéndole ser competente en el
-        ámbito laboral y social.</p>
-        <p class="campo__ayuda">Texto transcrito del PEI (numeral 2.2.1.2).</p>
-      </article>
-
-      <article class="iconbox js-revelar">
-        <div class="iconbox__cabecera">
-          <svg class="icon" aria-hidden="true"><use href="#ico-libro"></use></svg>
-          <h3>Modelo pedagógico</h3>
-        </div>
-        <p>El PEI define un modelo activo de <strong>Escuela Nueva y ecléctica</strong>: el estudiante aprende
-        haciendo, el docente orienta y evalúa, y el conocimiento se construye a partir del contexto rural.</p>
-        <p class="campo__ayuda">Fuente: PEI, apartado «Modelo pedagógico (Escuela Nueva y ecléctica)».</p>
-      </article>
-    </div>
   </div>
 </section>
 <!-- =====================================================================

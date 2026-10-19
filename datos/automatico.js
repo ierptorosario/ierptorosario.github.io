@@ -10,4 +10,4 @@
    publica desde el panel (datos/contenido.js). No borra nada.
    ===================================================================== */
 
-window.CONTENIDO_AUTO = {"version":1,"actualizado":"2026-10-18","generado":"2026-10-18 08:21:11","documentos":[],"galeria":[],"noticias":[]};
+window.CONTENIDO_AUTO = {"version":1,"actualizado":"2026-10-19","generado":"2026-10-19 06:50:15","documentos":[],"galeria":[],"noticias":[]};
