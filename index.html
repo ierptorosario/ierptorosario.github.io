@@ -59,6 +59,10 @@
 <!-- Tipografía del sitio (Poppins + Montserrat) guardada AQUÍ MISMO en
      assets/fonts/. Se ve igual y NO depende de internet: ya no espera a Google. -->
 <link rel="stylesheet" href="assets/fonts/fuentes.css">
+<!-- Las dos tipografías que más se ven se piden de una vez, para que el
+     texto aparezca antes en los celulares con internet lento. -->
+<link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/montserrat-700.woff2" as="font" type="font/woff2" crossorigin>
 <noscript>
   <!-- Sin JavaScript el contenido debe seguir siendo visible y navegable -->
   <style>.js-revelar{opacity:1 !important;transform:none !important}
@@ -148,11 +152,11 @@
   --header-h:76px;
   --wrap:1200px;
 
-  /* Tipografía: Poppins para el texto y Montserrat para los títulos,
-     layout de la página puede implementarse igual en otro sitio. Si no hay internet, el navegador
-     usa las fuentes que ya vienen en Windows (Segoe UI). */
-  --fuente:Arial,"Helvetica Neue",Helvetica,"Segoe UI",sans-serif;
-  --fuente-titulo:Arial,"Helvetica Neue",Helvetica,"Segoe UI",sans-serif;
+  /* Tipografía: Montserrat para los títulos y Poppins para el texto.
+     Las dos están guardadas en assets/fonts, así que se ven igual aunque
+     no haya internet. Si algo fallara, el navegador usa las de Windows. */
+  --fuente:'Poppins',Arial,"Helvetica Neue",Helvetica,"Segoe UI",sans-serif;
+  --fuente-titulo:'Montserrat','Poppins',Arial,"Helvetica Neue",Helvetica,"Segoe UI",sans-serif;
 
   --transicion:.28s cubic-bezier(.4,.15,.2,1);
 }
@@ -173,6 +177,8 @@ body{
 }
 img,svg{max-width:100%}
 img{height:auto;display:block}
+/* Al seleccionar texto con el mouse o el dedo, se marca en dorado */
+::selection{background:var(--ierp-oro);color:#0b2545}
 h1,h2,h3,h4{font-family:var(--fuente-titulo);line-height:1.1;color:var(--verde-900);margin:0 0 .6em;font-weight:700;letter-spacing:-.01em}
 h1{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.4rem);line-height:1.05}
 h2{font-size:clamp(1.28rem,1rem + 1.02vw,1.92rem)}
@@ -405,22 +411,28 @@ body.nav-abierto .nav-toggle__cerrar{display:inline-flex}
 }
 .hero__ctrl{
   all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
-  width:2.5rem;height:2.5rem;border-radius:999px;cursor:pointer;
+  width:2.75rem;height:2.75rem;border-radius:999px;cursor:pointer;
   background:rgba(255,255,255,.17);border:1px solid rgba(255,255,255,.4);color:#fff;
 }
 .hero__ctrl:hover{background:rgba(255,255,255,.32)}
 .hero__ctrl:focus-visible{outline:3px solid var(--warm-400);outline-offset:2px}
-.hero__puntos{display:flex;gap:.45rem;align-items:center;padding-inline:.2rem}
+.hero__puntos{display:flex;gap:.2rem;align-items:center;padding-inline:.2rem}
 .hero__punto{
-  all:unset;box-sizing:border-box;width:.68rem;height:.68rem;border-radius:999px;cursor:pointer;
-  background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.62);
+  all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
+  width:1.5rem;height:1.5rem;border-radius:999px;cursor:pointer;
 }
-.hero__punto[aria-current="true"]{background:#fff}
+/* El punto se ve delgadito, pero la zona para tocarlo con el dedo mide 24x24 */
+.hero__punto::before{
+  content:"";width:.68rem;height:.68rem;border-radius:999px;
+  background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.62);
+  transition:background .2s ease,border-color .2s ease;
+}
+.hero__punto[aria-selected="true"]::before{background:#fff}
 .hero__punto:focus-visible{outline:3px solid var(--warm-400);outline-offset:3px}
 .hero__controles[hidden]{display:none}
 @media (max-width:640px){
   .hero__controles{right:.55rem;bottom:.55rem;gap:.35rem}
-  .hero__ctrl{width:2.25rem;height:2.25rem}
+  .hero__ctrl{width:2.75rem;height:2.75rem}
 }
 @media (prefers-reduced-motion:reduce){
   .hero__fondo{transition:none}
@@ -991,8 +1003,8 @@ a:hover{color:#6b5416}
 .hero__pie .icon{color:var(--oro)}
 .hero__ctrl{background:rgba(201,162,39,.2);border-color:rgba(201,162,39,.55)}
 .hero__ctrl:hover{background:rgba(201,162,39,.42)}
-.hero__punto{background:rgba(255,255,255,.4);border-color:rgba(201,162,39,.75)}
-.hero__punto[aria-current="true"]{background:var(--oro)}
+.hero__punto::before{background:rgba(255,255,255,.4);border-color:rgba(201,162,39,.75)}
+.hero__punto[aria-selected="true"]::before{background:var(--oro)}
 
 /* Secciones oscuras (azul) → negro metálico */
 .section--azul{background:linear-gradient(160deg,#101014,#1a1a20 55%,#0b0b0e);color:#e2e2e8}
@@ -1184,8 +1196,8 @@ a:hover{color:var(--ierp-azul-600)}
 .hero__pie .icon{color:var(--ierp-oro)}
 .hero__ctrl{background:rgba(201,162,39,.2);border-color:rgba(201,162,39,.55)}
 .hero__ctrl:hover{background:rgba(201,162,39,.42)}
-.hero__punto{background:rgba(255,255,255,.45);border-color:rgba(201,162,39,.75)}
-.hero__punto[aria-current="true"]{background:var(--ierp-oro)}
+.hero__punto::before{background:rgba(255,255,255,.45);border-color:rgba(201,162,39,.75)}
+.hero__punto[aria-selected="true"]::before{background:var(--ierp-oro)}
 
 /* Secciones oscuras */
 .section--azul{background:linear-gradient(160deg,var(--ierp-azul-900),var(--ierp-azul-800) 55%,#081b34);color:#e2eaf4}
@@ -1406,7 +1418,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 /* Audio de fondo: botón redondo, pequeño y discreto (abajo a la izquierda) */
 .audio-fondo{
   position:fixed;left:.6rem;bottom:.6rem;z-index:70;
-  width:2.35rem;height:2.35rem;border-radius:50%;
+  width:2.75rem;height:2.75rem;border-radius:50%;
   display:grid;place-items:center;cursor:pointer;
   color:#e8eefa;background:rgba(11,37,69,.66);
   border:1px solid rgba(201,162,39,.45);
@@ -1419,7 +1431,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
 .audio-fondo.is-sugerido{opacity:.95;animation:latidoAudio 2.6s ease-in-out infinite}
 @keyframes latidoAudio{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
 @media (prefers-reduced-motion:reduce){.audio-fondo.is-sugerido{animation:none}}
-@media (max-width:520px){.audio-fondo{left:.55rem;bottom:.55rem;width:2.4rem;height:2.4rem}}
+@media (max-width:520px){.audio-fondo{left:.55rem;bottom:.55rem;width:2.75rem;height:2.75rem}}
 .audio-fondo .icon{color:currentColor}
 .footer-contador{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;color:#c9d9ea}
 .footer-contador .icon{width:1.05rem;height:1.05rem;color:var(--ierp-oro)}
@@ -1602,6 +1614,7 @@ table.horario--dia{min-width:0}
 }
 .buscar__abrir{
   display:inline-flex;align-items:center;justify-content:center;flex:none;
+  min-width:2.5rem;min-height:2.5rem;
   background:transparent;border:0;padding:.15rem;cursor:pointer;border-radius:999px;
 }
 .buscar:hover .icon,.buscar.is-abierto .icon{color:#fff}
@@ -1683,7 +1696,7 @@ table.horario--dia{min-width:0}
   box-shadow:inset 0 0 0 1px rgba(201,162,39,.62);
 }
 @media (max-width:1279px){
-  .menu__item > a{display:flex;width:100%}
+  .menu__item > a{display:flex;width:100%;min-height:2.75rem;align-items:center}
   .menu__flecha{display:none}
   .submenu{
     position:static;min-width:0;opacity:1;visibility:visible;transform:none;
@@ -1692,7 +1705,7 @@ table.horario--dia{min-width:0}
     background:rgba(20,80,127,.05);
     -webkit-backdrop-filter:none;backdrop-filter:none;
   }
-  .submenu a{padding:.45rem .65rem;font-size:.8rem}
+  .submenu a{padding:.45rem .65rem;font-size:.8rem;min-height:2.5rem;display:flex;align-items:center}
 }
 
 /* --- Píldoras de innovación --------------------------------------- */
@@ -1907,6 +1920,20 @@ table.horario--dia{min-width:0}
 /* Enlace discreto del pie para que rectoría suba documentos oficiales */
 .enlace-subir{color:#c9d9ea;font-size:.85rem;opacity:.85}
 .enlace-subir:hover{opacity:1;color:#fff}
+
+/* Zonas para tocar con el dedo: ningún enlace quede por debajo de 24 px */
+.horarios__lista a{min-height:1.75rem}
+.noticias__anteriores-lista a{padding-block:.35rem}
+.mapa-caja__pie a{display:inline-block;padding-block:.2rem}
+
+/* En el celular, los enlaces pequeños se tocan más fácil: el dedo
+   necesita unos 44 px de alto, no 20 px. */
+@media (max-width:760px){
+  .footer-col a{min-height:2.75rem;align-items:center}
+  .footer-col li>.icon,.footer-col a .icon{margin-top:0}
+  .topbar__item a{padding-block:.15rem}
+  .footer-legal a{padding-block:.25rem;display:inline-block}
+}
 </style>
 </head>
 <body>
@@ -1991,7 +2018,7 @@ table.horario--dia{min-width:0}
       </button>
       <label class="sr-only" for="buscarCampo">Buscar en el sitio: horarios, documentos, noticias…</label>
       <input type="search" id="buscarCampo" name="q" placeholder="Escriba y pulse Enter…"
-             aria-controls="buscarResultados" aria-expanded="false" aria-describedby="buscarAyuda">
+             autocomplete="off" aria-controls="buscarResultados" aria-describedby="buscarAyuda">
       <button type="button" class="buscar__limpiar" id="buscarLimpiar" hidden aria-label="Borrar la búsqueda">
         <svg class="icon" aria-hidden="true"><use href="#ico-cerrar"></use></svg>
       </button>
@@ -5314,7 +5341,7 @@ table.horario--dia{min-width:0}
     if (fotos.length < 2 || !controles || !puntos) return;
 
     puntos.innerHTML = fotos.map(function (f, i) {
-      return '<button class="hero__punto" type="button" role="tab" aria-current="' + (i === 0) +
+      return '<button class="hero__punto" type="button" role="tab" aria-selected="' + (i === 0) +
         '" aria-label="Ver la fotografía ' + (i + 1) + ' de ' + fotos.length + '"></button>';
     }).join('');
     controles.hidden = false;
@@ -5340,7 +5367,7 @@ table.horario--dia{min-width:0}
       actual = (n + guion.length) % guion.length;
       var foto = guion[actual];
       imgs.forEach(function (im, i) { im.classList.toggle('is-activa', foto !== null && i === foto); });
-      dots.forEach(function (d, i) { d.setAttribute('aria-current', String(foto !== null && i === foto)); });
+      dots.forEach(function (d, i) { d.setAttribute('aria-selected', String(foto !== null && i === foto)); });
       if (credito) {
         credito.textContent = foto === null
           ? 'Video de la institución.'
@@ -6109,7 +6136,6 @@ table.horario--dia{min-width:0}
 
   function ocultar() {
     caja.hidden = true;
-    campo.setAttribute('aria-expanded', 'false');
     activo = -1;
   }
 
@@ -6139,7 +6165,6 @@ table.horario--dia{min-width:0}
       caja.innerHTML = html;
     }
     caja.hidden = false;
-    campo.setAttribute('aria-expanded', 'true');
     activo = -1;
   }
 
