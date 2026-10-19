@@ -10,8 +10,36 @@
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
  "actualizado": "2026-10-19",
- "generado": "2026-10-19 11:50:15",
+ "generado": "2026-10-19 18:56:27",
  "noticias": [
+  {
+   "titulo": "📚✨ Día del Idioma y Día del Libro – Ier Puerto Rosario ✨📚🎊🎉💥💥💥",
+   "fecha": "23 de abril de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-pfbid02YtEcaSG9JBd7yasLJdCdGTZjPr8AXYibHnnoAGScXkezYzq1YrWo5FmcBbx8w2Evl-foto-1.jpg",
+   "fotos": 5,
+   "video": false,
+   "resumen": "En nuestra Institución Educativa Rural Pto Rosario conmemoramos el Día del Idioma y el Día del Libro, una fecha especial para resaltar la importancia de la lectura, la escritura y el valor de nuestro idioma como herra…",
+   "detalle": "<p>📚✨ Día del Idioma y Día del Libro – Ier Puerto Rosario ✨📚🎊🎉💥💥💥</p><p>En nuestra Institución Educativa Rural Pto Rosario conmemoramos el Día del Idioma y el Día del Libro, una fecha especial para resaltar la importancia de la lectura, la escritura y el valor de nuestro idioma como herramienta para aprender, expresar ideas y construir conocimiento.🤓🧠👀.</p><p>Los libros nos permiten viajar a nuevos mundos, despertar la imaginación y fortalecer el pensamiento crítico de nuestros estudiantes.</p><p>📖 Desde nuestras aulas seguimos promoviendo el amor por la lectura y el respeto por nuestro idioma, formando estudiantes que descubren en los libros una puerta abierta al conocimiento.</p><p>Agradecemos a nuestra compañera Rosa Alba Pipicano Galindez por su liderazgo en esta área y a los compañeros docentes de la sede central por su apoyo y colaboración brindada.</p><p>✨ Leer es aprender, soñar y crecer.</p><p>#DíaDelIdioma #DíaDelLibro #IERPuertoRosario #AmorPorLaLectura #EducaciónConValores 📚</p>",
+   "enlace": "https://www.facebook.com/permalink.php?story_fbid=pfbid02YtEcaSG9JBd7yasLJdCdGTZjPr8AXYibHnnoAGScXkezYzq1YrWo5FmcBbx8w2Evl&id=61575830740720",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "👨‍👩‍👧‍👦💚 Escuela de Padres – Ier Puerto Rosario 💚👨‍👩‍👧‍👦🎯🧠👀",
+   "fecha": "25 de abril de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-pfbid0trxPbxu6jBYvmYFC4nYeFdDPY5a371HdbwzcUJR7ZsfUYLVFzanqprFj6ZMUtzLgl-foto-1.jpg",
+   "fotos": 5,
+   "video": false,
+   "resumen": "En la Institución Educativa Rural Pto Rosario llevamos a cabo nuestra Primera Escuela de Padres 2026, un valioso espacio de encuentro, diálogo y aprendizaje conjunto.",
+   "detalle": "<p>👨‍👩‍👧‍👦💚 Escuela de Padres – Ier Puerto Rosario 💚👨‍👩‍👧‍👦🎯🧠👀</p><p>En la Institución Educativa Rural Pto Rosario llevamos a cabo nuestra Primera Escuela de Padres 2026, un valioso espacio de encuentro, diálogo y aprendizaje conjunto.</p><p>Durante la jornada se promovieron buenos hábitos de crianza y se fortaleció la corresponsabilidad entre la familia y la institución educativa, reconociendo que el trabajo en equipo es fundamental para la formación integral de nuestros estudiantes.</p><p>✨ Estos espacios nos permiten reflexionar, compartir experiencias y seguir construyendo una comunidad basada en el respeto, el amor y el compromiso.</p><p>Agradecemos a los compañeros docentes de sección primaria y docente orientadora Martinez Andrea por líderar esta importante actividad pedagógica.</p><p>🤝 Familia y escuela: unidos por el bienestar de nuestros niños y jóvenes.</p><p>#IERPuertoRosario #EscuelaDePadres #Corresponsabilidad #CrianzaPositiva #ComunidadEducativa</p>",
+   "enlace": "https://www.facebook.com/permalink.php?story_fbid=pfbid0trxPbxu6jBYvmYFC4nYeFdDPY5a371HdbwzcUJR7ZsfUYLVFzanqprFj6ZMUtzLgl&id=61575830740720",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
   {
    "titulo": "👨‍👩‍👧‍👦📚 Segunda Escuela de Padres – Ier Puerto Rosario 🌱",
    "fecha": "24 de julio de 2026",

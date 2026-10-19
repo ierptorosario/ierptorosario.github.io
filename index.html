@@ -2040,6 +2040,35 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
   .buscar:focus-within input[type=search]{width:min(40vw,170px)}
 }
 
+/* --- Fotos de las noticias y de los proyectos: se ven completas y se pueden
+   ampliar con un toque. Antes se recortaban para llenar un marco de 16:10 y
+   los afiches con texto quedaban cortados o ilegibles. --- */
+.noticia .card__media{background:#0d1b26}
+.noticia .card__media img{object-fit:contain}
+.card__media img{cursor:zoom-in}
+.card__media img:focus-visible{outline:3px solid var(--oro-oscuro);outline-offset:-3px}
+.card__video{
+  position:absolute;left:.5rem;bottom:.5rem;z-index:3;
+  display:inline-flex;align-items:center;gap:.3rem;
+  background:rgba(8,14,22,.86);color:#fff;font-size:.75rem;font-weight:700;
+  letter-spacing:.04em;padding:.28rem .6rem;border-radius:999px;
+}
+.card__video .icon{width:.9rem;height:.9rem}
+.detalle__video{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;
+  margin:0 0 .9rem;padding:.7rem .9rem;border-radius:var(--radio-sm);
+  background:var(--verde-100);color:var(--verde-900);font-size:.92rem;
+}
+.detalle__video .icon{width:1.1rem;height:1.1rem;flex:none}
+.visor__figura figcaption{display:flex;flex-direction:column;gap:.45rem}
+.visor__abrir{
+  display:inline-flex;align-items:center;gap:.4rem;align-self:flex-start;
+  font-weight:700;color:var(--verde-700);text-decoration:underline;
+}
+.visor__abrir .icon{width:1rem;height:1rem}
+.visor__abrir[hidden]{display:none}
+@media (max-width:560px){ .detalle__video{font-size:.88rem} }
+
 /* --- Quien pide menos movimiento, no lo recibe --- */
 @media (prefers-reduced-motion:reduce){
   .doc:hover,.enlace-card:hover,.docente:hover{transform:none}
@@ -2093,6 +2122,7 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
   <symbol id="ico-mapa" viewBox="0 0 24 24"><path d="M9 4 3.5 6.5v13L9 17l6 2.5 5.5-2.5v-13L15 6.5z"/><path d="M9 4v13M15 6.5v13"/></symbol>
   <symbol id="ico-externo" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5.5a1 1 0 0 1-1 1H4.5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1H10"/></symbol>
   <symbol id="ico-zoom" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l4.5 4.5M8 10.5h5M10.5 8v5"/></symbol>
+  <symbol id="ico-video" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.6"/><path d="M10.4 9.3 15.2 12l-4.8 2.7z"/></symbol>
   <symbol id="ico-lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3 21 21"/></symbol>
   <symbol id="ico-pausa" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
   <symbol id="ico-reproducir" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></symbol>
@@ -4032,7 +4062,13 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
     </button>
     <figure class="visor__figura">
       <img id="visorImagen" src="assets/img/hero-paisaje.svg" alt="">
-      <figcaption id="visorTexto">Imagen de la galería</figcaption>
+      <figcaption>
+        <span id="visorTexto">Imagen de la galería</span>
+        <a class="visor__abrir" id="visorAbrir" href="#" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" aria-hidden="true"><use href="#ico-zoom"></use></svg>
+          Ver la imagen en grande
+        </a>
+      </figcaption>
     </figure>
     <div class="visor__controles">
       <button class="visor__nav" id="visorAnterior" type="button" aria-label="Imagen anterior">
@@ -4605,16 +4641,40 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
     var disparador = null;
     var imagenes = [];
 
+    var enlaceGrande = qs('#visorAbrir');
+    /* Todo lo que se puede ampliar con un toque: las fotos de la galería (si
+       la hay) y las fotografías de las noticias y los proyectos. Se recorren
+       en orden de aparición para que la numeración coincida siempre. */
+    var SEL_AMPLIABLE = '.galeria__boton, .card__media img';
+
+    /* Marca cada foto como «se puede ampliar», también para quien navega con
+       el teclado. Se repite al abrir el visor porque las noticias se dibujan
+       después de que la página termina de cargar. */
+    function marcarAmpliables() {
+      qsa(SEL_AMPLIABLE).forEach(function (el) {
+        if (el.tagName !== 'IMG') return;
+        if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+        if (!el.hasAttribute('role')) el.setAttribute('role', 'button');
+        if (!el.hasAttribute('title')) el.setAttribute('title', 'Ver la foto en grande');
+      });
+    }
+
     // Las imágenes se recogen en cada apertura: así el visor funciona también
     // con la galería que se reemplaza al cargar el contenido publicado.
     function recoger() {
-      imagenes = qsa('.galeria__boton').map(function (b) {
-        var img = qs('img', b);
-        var pie = qs('figcaption', b);
+      marcarAmpliables();
+      imagenes = qsa(SEL_AMPLIABLE).map(function (el) {
+        var esImg = el.tagName === 'IMG';
+        var img = esImg ? el : qs('img', el);
+        var pie = esImg ? null : qs('figcaption', el);
+        var tarjeta = el.closest ? el.closest('.card') : null;
+        var titulo = tarjeta ? qs('h3', tarjeta) : null;
+        var texto = pie ? pie.textContent.replace(/\s+/g, ' ').trim()
+          : (titulo ? titulo.textContent.replace(/\s+/g, ' ').trim() : '');
         return {
-          src: img ? img.getAttribute('src') : '',
+          src: img ? (img.getAttribute('src') || '') : '',
           alt: img ? (img.getAttribute('alt') || '') : '',
-          texto: pie ? pie.textContent.replace(/\s+/g, ' ').trim() : 'Imagen de la galería'
+          texto: texto || 'Imagen de la galería'
         };
       });
       return imagenes;
@@ -4626,6 +4686,12 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       imgVisor.setAttribute('src', actual.src);
       imgVisor.setAttribute('alt', actual.alt);
       textoVisor.textContent = actual.texto + '  \u00B7  Imagen ' + (indice + 1) + ' de ' + imagenes.length;
+      /* El enlace abre el archivo original en otra pestaña: ahí sí se puede
+         acercar con los dedos y leer los textos pequeños de los afiches. */
+      if (enlaceGrande) {
+        if (actual.src) { enlaceGrande.setAttribute('href', actual.src); enlaceGrande.hidden = false; }
+        else { enlaceGrande.hidden = true; }
+      }
     }
 
     function abrir(i, boton) {
@@ -4649,12 +4715,30 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       if (disparador) disparador.focus();
     }
 
-    // Delegación de eventos: funciona con galería estática o publicada
+    // Delegación de eventos: funciona con la galería estática, la publicada y
+    // las fotografías de las noticias (se amplían con un toque o con Enter).
+    function elementoAmpliable(e) {
+      return e.target && e.target.closest ? e.target.closest(SEL_AMPLIABLE) : null;
+    }
+
     document.addEventListener('click', function (e) {
-      var boton = e.target.closest ? e.target.closest('.galeria__boton') : null;
-      if (!boton) return;
-      abrir(qsa('.galeria__boton').indexOf(boton), boton);
+      var el = elementoAmpliable(e);
+      if (!el) return;
+      abrir(qsa(SEL_AMPLIABLE).indexOf(el), el);
     });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+      var el = elementoAmpliable(e);
+      if (!el) return;
+      e.preventDefault();
+      abrir(qsa(SEL_AMPLIABLE).indexOf(el), el);
+    });
+
+    // Las fotos que ya vienen en el HTML quedan listas desde el comienzo.
+    marcarAmpliables();
+    // Y las que dibujan otros bloques, cuando la página termina de cargar.
+    window.addEventListener('load', marcarAmpliables);
 
     if (btnCerrar) btnCerrar.addEventListener('click', cerrar);
     if (btnPrev) btnPrev.addEventListener('click', function () { mover(-1); });
@@ -5573,8 +5657,21 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       function tarjetaNoticia(n) {
         var galeriaN = (Array.isArray(n.imagenes) ? n.imagenes.filter(function (s) { return hay(s); }) : []);
         if (galeriaN.length < 2 && hay(n.imagen)) galeriaN = [n.imagen];
+        /* Publicación con video: no se incrusta (el sitio debe funcionar sin
+           internet), pero se avisa y se enlaza para verlo completo. */
+        var esVideo = n.video === true;
+        var urlVideo = esc(redSegura(n.enlace) || '');
+        var avisoVideo = esVideo && urlVideo
+          ? '<p class="detalle__video">' + ico('video') + ' Esta publicación es un <strong>video</strong>. ' +
+            '<a class="btn btn--sm" href="' + urlVideo + '" target="_blank" rel="noopener noreferrer">Ver el video ' +
+            ico('externo', 'icon icon--mini') + '</a></p>'
+          : '';
+        /* Atributos para que cada foto se pueda ampliar con un toque o con
+           el teclado (Enter), sin depender del ratón. */
+        var atrAmpliar = ' tabindex="0" role="button" title="Ver la foto en grande"';
         var tplId = crearPlantilla(
           '<span class="badge badge--ok">' + ico('ver') + ' Publicado</span>' +
+          avisoVideo +
           (hay(n.detalle) ? n.detalle : '<p>' + esc(n.resumen || '') + '</p>') +
           (hay(n.fotos) ? '<p class="detalle__fotos">' + ico('camara') + ' Esta publicación tiene ' + esc(n.fotos) + ' ' + (Number(n.fotos) === 1 ? 'fotografía' : 'fotografías') + ' en la página oficial de Facebook.</p>' : '') +
           (galeriaN.length > 1 ? '<div class="detalle__galeria">' + galeriaN.map(function (src, k) {
@@ -5582,18 +5679,19 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           }).join('') + '</div>' : '') +
           enlaceFuente(n.enlace, n.fuente)
         );
-        var marcaN = (hay(n.fotos) ? '<span class="card__fotos">' + ico('camara') + ' ' + esc(n.fotos) + '</span>' : '');
+        var marcaN = (hay(n.fotos) ? '<span class="card__fotos">' + ico('camara') + ' ' + esc(n.fotos) + '</span>' : '') +
+          (esVideo ? '<span class="card__video">' + ico('video') + ' Video</span>' : '');
         var mediaN;
         if (galeriaN.length > 1) {
           mediaN = '<div class="card__media noticia__carrusel" data-intervalo="2000">' + marcaN +
             galeriaN.map(function (src, k) {
-              return '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + (k === 0 ? '' : ' loading="lazy"') + ' decoding="async" alt="' + esc((n.titulo || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')') + '">';
+              return '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + (k === 0 ? '' : ' loading="lazy"') + ' decoding="async" alt="' + esc((n.titulo || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')') + '">';
             }).join('') +
             '<span class="carrusel__puntos" aria-hidden="true">' + galeriaN.map(function (_, k) { return '<i' + (k === 0 ? ' class="is-activo"' : '') + '></i>'; }).join('') + '</span>' +
           '</div>';
         } else {
           mediaN = '<div class="card__media">' + marcaN +
-            '<img src="' + img(galeriaN[0] || n.imagen, 'assets/img/hero-paisaje.svg') + '" width="800" height="500" loading="lazy" decoding="async" alt="' + esc(n.titulo || 'Noticia institucional') + '">' +
+            '<img src="' + img(galeriaN[0] || n.imagen, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + ' loading="lazy" decoding="async" alt="' + esc(n.titulo || 'Noticia institucional') + '">' +
           '</div>';
         }
         return '<article class="card noticia" data-cat="' + esc(n.categoria || '') + '">' +
@@ -5623,6 +5721,13 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       function pintarNoticias() {
         listaN.innerHTML = destacadasN.slice(0, mostradasN).map(tarjetaNoticia).join('');
         iniciarCarruseles(listaN);
+        /* Todas las fotos de las noticias se pueden ampliar con un toque o
+           con el teclado (Enter), sin depender del ratón. */
+        Array.prototype.forEach.call(listaN.querySelectorAll('.card__media img'), function (im) {
+          if (!im.hasAttribute('tabindex')) im.setAttribute('tabindex', '0');
+          if (!im.hasAttribute('role')) im.setAttribute('role', 'button');
+          if (!im.hasAttribute('title')) im.setAttribute('title', 'Ver la foto en grande');
+        });
         var cajaVerMas = qs('#noticiasVerMasCaja');
         var btnVerMas = qs('#noticiasVerMas');
         if (cajaVerMas && btnVerMas) {
