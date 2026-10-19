@@ -212,7 +212,7 @@ button{font:inherit}
 }
 .salto-a-contenido:focus{transform:translate(-50%,0);color:#fff}
 
-.section{padding:clamp(3rem,6vw,5.5rem) 0;scroll-margin-top:calc(var(--header-h) + 12px)}
+.section{padding:clamp(3.2rem,6.5vw,6.5rem) 0;scroll-margin-top:calc(var(--header-h) + 12px)}
 .section--alt{background:var(--verde-50)}
 .section--azul{background:linear-gradient(160deg,var(--azul-800),var(--azul-700) 60%,var(--verde-800));color:#e8f2ec}
 .section--azul h2,.section--azul h3{color:#fff}
@@ -1935,6 +1935,61 @@ table.horario--dia{min-width:0}
 .footer-legal a{padding-block:.3rem;display:inline-block}
 .topbar__item a{padding-block:.2rem}
 .red-enlace{padding-block:.15rem}
+
+/* =====================================================================
+   18. ACABADO FINO (nivel superior)
+   Detalles que hacen que el sitio se sienta cuidado y profesional:
+   las secciones respiran, las tarjetas son parejas, las tablas se leen
+   sin perderse y lo que se imprime sale bien.
+   ===================================================================== */
+
+/* --- Un solo sistema de tarjetas (radios y elevación parejos) --- */
+.video-card{border-radius:var(--radio-lg)}
+.rapido{border-radius:var(--radio)}
+.doc:hover,.enlace-card:hover,.docente:hover{transform:translateY(-4px)}
+
+/* --- Tablas: números siempre alineados, fila que se resalta y la
+       primera columna (la hora) fija cuando la tabla se corre de lado --- */
+table.horario{font-variant-numeric:tabular-nums}
+table.horario thead th{border-bottom:2px solid var(--ierp-oro)}
+table.horario tbody tr:hover td{background:#f2f7fd}
+table.horario tbody tr:hover th{background:#e2eefb}
+table.horario tr.es-pausa:hover th,table.horario tr.es-pausa:hover td{background:#fdf4dc}
+table.horario thead th:first-child,
+table.horario tbody th{position:sticky;left:0;z-index:2}
+table.horario thead th:first-child{z-index:4}
+.horarios__tabla-scroll,.tabla-scroll{scrollbar-width:thin;scrollbar-color:rgba(201,162,39,.9) #e6ecf3}
+.horarios__tabla-scroll::-webkit-scrollbar,.tabla-scroll::-webkit-scrollbar{height:.6rem}
+.horarios__tabla-scroll::-webkit-scrollbar-track,.tabla-scroll::-webkit-scrollbar-track{background:#e9eef4;border-radius:999px}
+.horarios__tabla-scroll::-webkit-scrollbar-thumb,.tabla-scroll::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#c9a227,#e2c15a);border-radius:999px}
+
+/* --- Controles del navegador y cifras con el sello de la casa --- */
+input,select,textarea,progress{accent-color:var(--ierp-oro)}
+.footer-contador b,.cifra,.cifras b{font-variant-numeric:tabular-nums}
+
+/* --- Al imprimir: títulos en negro (el dorado se perdería en el papel),
+       sin adornos y las tablas completas --- */
+@media print{
+  .section{padding:0 0 1rem}
+  .section__head{margin-bottom:.7rem}
+  .topbar,.main-header,.audio-panel,.volver-arriba,.footer,.buscador,.noticias__vermas,
+  .horarios__dias,.horarios__descargas{display:none !important}
+  .section--azul,.cifras{background:#fff !important;color:#000 !important}
+  .section__head h2,.section__head h3,h3{
+    background:none !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+    filter:none !important;animation:none !important;
+  }
+  .js-revelar{opacity:1 !important;transform:none !important}
+  .horarios__tabla-scroll,.tabla-scroll{overflow:visible !important;border:0;box-shadow:none}
+  table.horario{min-width:0;box-shadow:none}
+  .card,.doc,.docente,.espacio,.video-card,.nivel{box-shadow:none !important;break-inside:avoid}
+  video,iframe{display:none !important}
+}
+
+/* --- Quien pide menos movimiento, no lo recibe --- */
+@media (prefers-reduced-motion:reduce){
+  .doc:hover,.enlace-card:hover,.docente:hover{transform:none}
+}
 </style>
 </head>
 <body>
