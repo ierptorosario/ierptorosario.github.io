@@ -109,8 +109,8 @@ window.CONTENIDO_IERP = {
       ],
       "fotos": 1,
       "resumen": "Gracias a la Alcaldía de Puerto Guzmán por visitarnos y motivar la ciencia, la tecnología y la innovación en nuestros estudiantes.",
-      "detalle": "<p>Gracias <strong>Alcaldía de Puerto Guzmán</strong> por visitarnos y motivar la ciencia, la tecnología y la innovación en nuestros estudiantes de la IER Puerto Rosario.</p><p>«La ciencia también se vive y se construye desde nuestras aulas»: en el marco del Día de la Familia vivimos una jornada muy especial, en la que además disfrutamos de la Feria de la Ciencia, la Tecnología y la Innovación, y nuestros estudiantes demostraron todo su talento.</p><video controls preload=\"metadata\" playsinline width=\"960\" height=\"540\" poster=\"assets/img/noticias/feria-ciencia-2026.jpg\"><source src=\"assets/video/feria-ciencia-alcaldia-2026.mp4\" type=\"video/mp4\">Su navegador no puede reproducir este video; puede verlo en la publicación original de Facebook.</video><p class=\"campo__ayuda\">Publicación compartida de la Alcaldía de Puerto Guzmán en la página del rector, 23 de septiembre de 2026.</p>",
-      "enlace": "https://www.facebook.com/PuertoGuzman/videos/1776598933609065",
+      "detalle": "<p>Gracias <strong>Alcaldía de Puerto Guzmán</strong> por visitarnos y motivar la ciencia, la tecnología y la innovación en nuestros estudiantes de la IER Puerto Rosario.</p><p>«La ciencia también se vive y se construye desde nuestras aulas»: en el marco del Día de la Familia vivimos una jornada muy especial, en la que además disfrutamos de la Feria de la Ciencia, la Tecnología y la Innovación, y nuestros estudiantes demostraron todo su talento.</p>",
+      "enlace": "",
       "fuente": "Facebook",
       "demo": false,
       "publicada": true
@@ -585,12 +585,12 @@ window.CONTENIDO_IERP = {
       descripcion: 'Explica de forma sencilla qué es el manual de convivencia y su sentido formativo: las normas también educan en valores.',
       archivo: 'assets/video/manual-de-convivencia.mp4',
       poster: 'assets/video/manual-de-convivencia-portada.jpg' },
-    { id: 'feria-ciencia-alcaldia',
-      titulo: 'Feria de la Ciencia y visita de la Alcaldía de Puerto Guzmán',
-      fecha: '23 de septiembre de 2026',
-      descripcion: 'Feria de la Ciencia, la Tecnología y la Innovación en la institución, con la visita y el acompañamiento de la Alcaldía de Puerto Guzmán.',
-      archivo: 'assets/video/feria-ciencia-alcaldia-2026.mp4',
-      poster: 'assets/img/noticias/feria-ciencia-2026.jpg',
+    { id: 'fumigacion-puerto-guzman',
+      titulo: 'Puerto Guzmán dice No a la Fumigación',
+      fecha: '2026',
+      descripcion: 'Video de Puerto Guzmán: voces de la comunidad y del campo dicen no a la fumigación y muestran los cultivos lícitos de la región.',
+      archivo: 'assets/video/puerto-guzman-no-a-la-fumigacion-2026.mp4',
+      poster: 'assets/video/puerto-guzman-no-a-la-fumigacion-2026-portada.jpg',
       facebook: 'https://www.facebook.com/PuertoGuzman/videos/1776598933609065' }
   ]
 };

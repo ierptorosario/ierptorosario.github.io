@@ -4217,6 +4217,7 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
      archivo lo escribe esa página automáticamente (no se edita a mano).
      Si no existe, el sitio funciona igual. -->
 <script src="datos/documentos-automaticos.js"></script>
+<script src="datos/documentos-ocultos.js"></script>
 <!-- Noticias coleccionadas AUTOMÁTICAMENTE por el actualizador
      (actualizador/fallback-fb.js): nuevas publicaciones de la página de
      Facebook, con su texto completo y todas sus fotografías. Este archivo
@@ -5262,6 +5263,31 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           C.documentos.push(d);
         }
       });
+    }
+
+    /* Documentos que rectoría quitó desde «Subir documentos» (subir.html):
+       dejan de mostrarse en el sitio, pero el PDF sigue guardado y se puede
+       restaurar desde esa misma página. */
+    var OCULTOS = window.DOCUMENTOS_OCULTOS;
+    if (Array.isArray(OCULTOS) && OCULTOS.length && Array.isArray(C.documentos)) {
+      var rutasOcultas = {};
+      var titulosOcultos = {};
+      var hayOcultos = false;
+      OCULTOS.forEach(function (o) {
+        if (!o) return;
+        var ruta = String(o.archivo || o.ruta || '').trim();
+        var tit = claveTexto(o.titulo);
+        if (ruta) { rutasOcultas[ruta] = true; hayOcultos = true; }
+        if (tit) { titulosOcultos[tit] = true; hayOcultos = true; }
+      });
+      if (hayOcultos) {
+        C.documentos = C.documentos.filter(function (d) {
+          var ruta = String((d && d.archivo) || '').trim();
+          if (ruta && rutasOcultas[ruta]) return false;
+          var tit = claveTexto(d && d.titulo);
+          return !(tit && titulosOcultos[tit]);
+        });
+      }
     }
 
     /* Noticias de Facebook: se agregan al principio y sin repetir el enlace. */

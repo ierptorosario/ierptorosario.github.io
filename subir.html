@@ -116,7 +116,7 @@
       <div class="aviso aviso--ok" id="avisoClave"></div>
       <div style="margin-top:.7rem;display:flex;gap:.5rem;flex-wrap:wrap">
         <button class="boton boton--suave boton--sm" type="button" id="btnCambiarClave">Quitar la clave de este equipo</button>
-        <button class="boton boton--suave boton--sm" type="button" id="btnRecargarLista">Ver los documentos subidos</button>
+        <button class="boton boton--suave boton--sm" type="button" id="btnRecargarLista">Ver todos los documentos</button>
       </div>
     </div>
 
@@ -167,12 +167,39 @@
     </form>
   </section>
 
-  <!-- ============================ PASO 3: LA LISTA ============================ -->
+  <!-- ==================== PASO 3: TODOS LOS DOCUMENTOS ==================== -->
   <section class="tarjeta oculto" id="tarjetaLista">
-    <h2><span class="paso">3</span> Documentos subidos desde esta página</h2>
-    <p class="ayuda">Puede quitar de la lista un documento que haya subido por equivocación.</p>
-    <p class="ayuda" id="sinDocumentos">Todavía no hay documentos subidos desde esta página.</p>
+    <h2><span class="paso">3</span> Todos los documentos del sitio</h2>
+    <p class="ayuda">
+      Aquí está <b>todo</b> lo que hoy se ve en la sección <b>Documentos</b>, sea de esta página o
+      del sitio. Si un documento está desactualizado o se subió por equivocación, pulse
+      <b>Quitar de la web</b>: deja de verse en uno o dos minutos y <b>se puede restaurar</b>
+      desde aquí mismo. Quitar no borra el PDF; para borrarlo hay un botón aparte.
+    </p>
+
+    <div class="fila">
+      <div>
+        <label for="buscarDoc">Buscar por nombre</label>
+        <input id="buscarDoc" type="search" placeholder="Escriba una parte del nombre…" autocomplete="off">
+      </div>
+      <div style="display:flex;align-items:flex-end">
+        <button class="boton boton--suave boton--sm" type="button" id="btnRecargarTodo">Actualizar la lista</button>
+      </div>
+    </div>
+
+    <p class="ayuda" id="sinDocumentos">Cargando la lista de documentos…</p>
     <ul class="lista-docs" id="listaDocs"></ul>
+
+    <div id="cajaQuitados" class="oculto">
+      <h3 style="margin:1.7rem 0 .3rem;font-size:1.05rem;color:var(--azul)">Quitados de la web</h3>
+      <p class="ayuda">
+        Estos ya no se ven en el sitio. Pulse <b>Restaurar</b> si fue un error, o
+        <b>Borrar el PDF</b> si ya no se necesita (eso sí es definitivo).
+      </p>
+      <ul class="lista-docs" id="listaQuitados"></ul>
+    </div>
+
+    <div class="aviso aviso--info" id="avisoLista" hidden></div>
   </section>
 
   <!-- ============================ AYUDA: LA CLAVE ============================ -->
@@ -254,7 +281,11 @@
     avisoError: $('#avisoError'),
     avisoListo: $('#avisoListo'),
     listaDocs: $('#listaDocs'),
-    sinDocumentos: $('#sinDocumentos')
+    sinDocumentos: $('#sinDocumentos'),
+    listaQuitados: $('#listaQuitados'),
+    cajaQuitados: $('#cajaQuitados'),
+    buscarDoc: $('#buscarDoc'),
+    avisoLista: $('#avisoLista')
   };
 
   /* ------------------------------------------------------------------
@@ -430,87 +461,313 @@
   }
 
   /* ------------------------------------------------------------------
-     Dibujar la lista de documentos subidos.
+     Lista completa de documentos del sitio.
+       · datos/contenido.js              → documentos y planes del sitio
+       · datos/documentos-automaticos.js → los subidos desde esta página
+       · datos/documentos-ocultos.js     → los que rectoría quitó de la web
+
+     Quitar un documento solo lo esconde (se puede restaurar). Borrar el PDF
+     es una acción aparte y definitiva. Así nadie borra algo sin querer.
      ------------------------------------------------------------------ */
-  var documentos = [];
+  var RUTA_OCULTOS = 'datos/documentos-ocultos.js';
+  var RUTA_CONTENIDO = 'datos/contenido.js';
 
-  function pintarLista() {
-    if (!campos.listaDocs) return;
-    campos.listaDocs.textContent = '';
-    campos.sinDocumentos.hidden = documentos.length > 0;
-    documentos.forEach(function (d, i) {
-      var li = document.createElement('li');
-      var b = document.createElement('b');
-      b.textContent = d.titulo || '(sin nombre)';
-      li.appendChild(b);
+  var documentos = [];   // todos los documentos, con su estado
+  var ocultos = [];      // los quitados de la web
+  var shaOcultos = null;
 
-      var etiqueta = document.createElement('span');
-      etiqueta.className = 'etiqueta';
-      etiqueta.textContent = (d.categoria === 'Planes de estudio por área') ? 'Plan de estudio' : 'Institucional';
-      li.appendChild(etiqueta);
+  /* Misma regla que usa el sitio para comparar títulos. */
+  function claveTexto(t) {
+    var s = String(t || '').trim();
+    if (s.normalize) { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+    return s.toLowerCase().replace(/\s+/g, ' ');
+  }
 
-      var mini = document.createElement('span');
-      mini.style.fontSize = '.82rem';
-      mini.style.color = '#5a6b7e';
-      mini.textContent = (d.anio ? d.anio + ' · ' : '') + (d.archivo || '');
-      li.appendChild(mini);
+  function leerArchivoDeGit(ruta) {
+    return api('/repos/' + REPO + '/contents/' + ruta + '?ref=' + RAMA).then(function (d) {
+      var contenido = '';
+      if (d && d.content) { contenido = base64ATexto(String(d.content).replace(/\s+/g, '')); }
+      return { sha: (d && d.sha) || null, texto: contenido };
+    });
+  }
 
-      var der = document.createElement('span');
-      der.className = 'der';
+  /* Los documentos escritos en datos/contenido.js (los del propio sitio). */
+  function leerDocumentosDelSitio() {
+    return leerArchivoDeGit(RUTA_CONTENIDO).then(function (r) {
+      var contenido = null;
+      try {
+        /* El archivo define window.CONTENIDO_IERP: se lee igual que lo hace
+           el navegador, sin analizarlo a mano. */
+        contenido = new Function('window', r.texto + '\nreturn window.CONTENIDO_IERP;')({});
+      } catch (e) { contenido = null; }
+      var lista = (contenido && Array.isArray(contenido.documentos)) ? contenido.documentos : [];
+      return lista.map(function (d) {
+        return {
+          titulo: d.titulo, anio: d.anio, archivo: d.archivo, categoria: d.categoria,
+          descripcion: d.descripcion, fecha: d.fecha, origen: 'sitio'
+        };
+      });
+    });
+  }
+
+  function leerOcultos() {
+    return leerArchivoDeGit(RUTA_OCULTOS).then(function (r) {
+      var lista = [];
+      var m = /\[[\s\S]*\]/.exec(r.texto);
+      if (m) { try { lista = JSON.parse(m[0]); } catch (e) { lista = []; } }
+      if (!Array.isArray(lista)) { lista = []; }
+      shaOcultos = r.sha;
+      return lista;
+    }).catch(function (e) {
+      if (e && e.estado === 404) { shaOcultos = null; return []; }
+      throw e;
+    });
+  }
+
+  function escribirOcultos(lista, mensaje) {
+    var cuerpo = '/* =====================================================================\n' +
+      '   DOCUMENTOS QUITADOS DE LA WEB\n' +
+      '   ---------------------------------------------------------------------\n' +
+      '   Lo escribe la página «subir.html». Quitar un documento no borra el PDF:\n' +
+      '   solo deja de mostrarse en el sitio. Se puede restaurar desde esa página.\n' +
+      '   NO se edita a mano.\n' +
+      '   ===================================================================== */\n' +
+      'window.DOCUMENTOS_OCULTOS = ' + JSON.stringify(lista, null, 2) + ';\n';
+    var datos = { message: mensaje, content: textoABase64(cuerpo), branch: RAMA };
+    if (shaOcultos) { datos.sha = shaOcultos; }
+    return api('/repos/' + REPO + '/contents/' + RUTA_OCULTOS, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos)
+    }).then(function (r) {
+      if (r && r.content && r.content.sha) { shaOcultos = r.content.sha; }
+      return r;
+    });
+  }
+
+  /* Un documento se puede quitar por su archivo PDF o, si no tiene PDF,
+     por su título. Así también se pueden quitar los de solo texto. */
+  function estaOculto(d) {
+    if (!d) return false;
+    var ruta = String(d.archivo || '').trim();
+    var tit = claveTexto(d.titulo);
+    return ocultos.some(function (o) {
+      if (!o) return false;
+      var r = String(o.archivo || '').trim();
+      if (r && ruta && r === ruta) return true;
+      return !!tit && claveTexto(o.titulo) === tit;
+    });
+  }
+
+  /* Botones de un documento: quitar, o restaurar y borrar el PDF. */
+  function botonesDe(d, quitado) {
+    var der = document.createElement('span');
+    der.className = 'der';
+
+    if (d.archivo) {
+      var ver = document.createElement('a');
+      ver.className = 'boton boton--suave boton--sm';
+      ver.href = d.archivo;
+      ver.target = '_blank';
+      ver.rel = 'noopener';
+      ver.textContent = 'Ver PDF';
+      der.appendChild(ver);
+    }
+
+    if (quitado) {
+      var restaurar = document.createElement('button');
+      restaurar.type = 'button';
+      restaurar.className = 'boton boton--sm';
+      restaurar.textContent = 'Restaurar';
+      restaurar.addEventListener('click', function () { restaurarDocumento(d); });
+      der.appendChild(restaurar);
+
       if (d.archivo) {
-        var ver = document.createElement('a');
-        ver.className = 'boton boton--suave boton--sm';
-        ver.href = d.archivo;
-        ver.target = '_blank';
-        ver.rel = 'noopener';
-        ver.textContent = 'Ver PDF';
-        der.appendChild(ver);
+        var borrar = document.createElement('button');
+        borrar.type = 'button';
+        borrar.className = 'boton boton--peligro boton--sm';
+        borrar.textContent = 'Borrar el PDF';
+        borrar.addEventListener('click', function () { borrarPdf(d); });
+        der.appendChild(borrar);
       }
+    } else {
       var quitar = document.createElement('button');
       quitar.type = 'button';
       quitar.className = 'boton boton--peligro boton--sm';
-      quitar.textContent = 'Quitar';
-      quitar.addEventListener('click', function () { quitarDocumento(i); });
+      quitar.textContent = 'Quitar de la web';
+      quitar.addEventListener('click', function () { quitarDeLaWeb(d); });
       der.appendChild(quitar);
-      li.appendChild(der);
+    }
+    return der;
+  }
 
-      campos.listaDocs.appendChild(li);
+  function filaDocumento(d, quitado) {
+    var li = document.createElement('li');
+    if (quitado) { li.style.opacity = '.72'; }
+
+    var b = document.createElement('b');
+    b.textContent = d.titulo || '(sin nombre)';
+    li.appendChild(b);
+
+    var etiqueta = document.createElement('span');
+    etiqueta.className = 'etiqueta';
+    etiqueta.textContent = (d.categoria === 'Planes de estudio por área') ? 'Plan de estudio' : 'Institucional';
+    li.appendChild(etiqueta);
+
+    var mini = document.createElement('span');
+    mini.style.fontSize = '.82rem';
+    mini.style.color = '#5a6b7e';
+    mini.textContent = (d.anio ? d.anio + ' · ' : '') +
+      (d.origen === 'subido' ? 'subido desde esta página' : 'del sitio');
+    li.appendChild(mini);
+
+    li.appendChild(botonesDe(d, quitado));
+    return li;
+  }
+
+  function pintarLista() {
+    if (!campos.listaDocs) return;
+    var buscar = claveTexto(campos.buscarDoc ? campos.buscarDoc.value : '');
+    var coincide = function (d) {
+      if (!buscar) return true;
+      return claveTexto((d.titulo || '') + ' ' + (d.anio || '') + ' ' + (d.categoria || '')).indexOf(buscar) > -1;
+    };
+
+    var visibles = documentos.filter(function (d) { return !estaOculto(d); }).filter(coincide);
+    visibles.sort(function (a, b) {
+      return String(b.anio || '').localeCompare(String(a.anio || '')) ||
+             String(a.titulo || '').localeCompare(String(b.titulo || ''));
     });
+
+    campos.listaDocs.textContent = '';
+    visibles.forEach(function (d) { campos.listaDocs.appendChild(filaDocumento(d, false)); });
+
+    if (campos.sinDocumentos) {
+      campos.sinDocumentos.hidden = visibles.length > 0;
+      campos.sinDocumentos.textContent = documentos.length
+        ? 'Ningún documento coincide con esa búsqueda.'
+        : 'Todavía no hay documentos publicados.';
+    }
+
+    var quitados = documentos.filter(function (d) { return estaOculto(d); }).filter(coincide);
+    if (campos.listaQuitados) {
+      campos.listaQuitados.textContent = '';
+      quitados.forEach(function (d) { campos.listaQuitados.appendChild(filaDocumento(d, true)); });
+    }
+    if (campos.cajaQuitados) {
+      campos.cajaQuitados.classList.toggle('oculto', quitados.length === 0);
+    }
   }
 
   function refrescarLista() {
-    return leerIndice().then(function (r) {
-      documentos = r.lista.map(function (d) {
-        return {
-          titulo: d.titulo, anio: d.anio, archivo: d.archivo,
-          categoria: d.categoria, descripcion: d.descripcion, fecha: d.fecha,
-          publicado: d.publicado !== false
-        };
+    return Promise.all([leerIndice(), leerDocumentosDelSitio(), leerOcultos()])
+      .then(function (res) {
+        var subidos = res[0].lista.map(function (d) {
+          return {
+            titulo: d.titulo, anio: d.anio, archivo: d.archivo, categoria: d.categoria,
+            descripcion: d.descripcion, fecha: d.fecha, origen: 'subido'
+          };
+        });
+        var delSitio = res[1];
+        ocultos = res[2];
+
+        /* Se juntan sin repetir por título: si está en las dos partes, manda
+           la versión subida desde esta página (igual que hace el sitio). */
+        var finales = delSitio.slice();
+        subidos.forEach(function (s) {
+          var k = claveTexto(s.titulo);
+          var ya = finales.filter(function (x) { return claveTexto(x.titulo) === k; })[0];
+          if (ya) {
+            ya.archivo = s.archivo || ya.archivo;
+            ya.anio = s.anio || ya.anio;
+            ya.categoria = s.categoria || ya.categoria;
+            ya.origen = 'subido';
+          } else if (s.archivo) {
+            finales.push(s);
+          }
+        });
+        documentos = finales;
+        pintarLista();
       });
+  }
+
+  function avisoLista(texto, tipo) {
+    mostrar(campos.avisoLista, texto, tipo || 'info');
+  }
+
+  function guardarQuitados(lista, mensaje) {
+    return escribirOcultos(lista, mensaje).then(function () {
+      ocultos = lista;
       pintarLista();
+      return true;
+    }).catch(function (e) {
+      avisoLista(textoDeError(e), 'error');
+      return false;
     });
   }
 
-  function quitarDocumento(i) {
-    var d = documentos[i];
+  function quitarDeLaWeb(d) {
     if (!d) return;
-    if (!confirm('¿Quitar «' + (d.titulo || '') + '» de la página?\n\nEl archivo PDF también se borra del sitio.')) return;
-    mostrar(campos.avisoSubida, 'Quitando el documento…', 'info');
-    var copia = documentos.slice();
-    copia.splice(i, 1);
-    escribirIndice(copia, shaIndice).then(function () { return refrescarLista(); })
-      .then(function () {
-        esconder(campos.avisoSubida);
-        if (d.archivo) { return borrarArchivo(d.archivo, 'Quitar documento: ' + (d.titulo || '')); }
-      })
-      .then(function () {
-        mostrar(campos.avisoListo, 'Documento quitado. En uno o dos minutos desaparece del sitio.', 'ok');
-        setTimeout(function () { esconder(campos.avisoListo); }, 6000);
-      })
-      .catch(function (e) {
-        esconder(campos.avisoSubida);
-        mostrar(campos.avisoError, textoDeError(e), 'error');
-      });
+    var tienePdf = !!d.archivo;
+    if (!confirm('¿Quitar «' + (d.titulo || '') + '» de la sección Documentos?\n\n' +
+      'Deja de verse en la web en uno o dos minutos.\n' +
+      'Se puede restaurar desde esta misma página.\n' +
+      (tienePdf ? 'El archivo PDF NO se borra.' : 'Este documento no tiene archivo PDF.'))) return;
+    var lista = ocultos.slice();
+    if (!estaOculto(d)) {
+      lista.push({ archivo: d.archivo || '', titulo: d.titulo || '', fecha: hoyTexto() });
+    }
+    avisoLista('Quitando «' + (d.titulo || '') + '» de la web…');
+    guardarQuitados(lista, 'Quitar documento de la web: ' + (d.titulo || '')).then(function (ok) {
+      if (ok) {
+        avisoLista('«' + (d.titulo || '') + '» quedó quitado. En uno o dos minutos ' +
+          'desaparece del sitio. Si fue un error, búsquelo abajo y pulse Restaurar.', 'ok');
+      }
+    });
+  }
+
+  function restaurarDocumento(d) {
+    if (!d) return;
+    if (!confirm('¿Volver a mostrar «' + (d.titulo || '') + '» en la web?')) return;
+    var ruta = String(d.archivo || '').trim();
+    var tit = claveTexto(d.titulo);
+    var lista = ocultos.filter(function (o) {
+      if (!o) return false;
+      var r = String(o.archivo || '').trim();
+      if (r && ruta && r === ruta) return false;
+      return !(tit && claveTexto(o.titulo) === tit);
+    });
+    avisoLista('Restaurando «' + (d.titulo || '') + '»…');
+    guardarQuitados(lista, 'Restaurar documento: ' + (d.titulo || '')).then(function (ok) {
+      if (ok) {
+        avisoLista('«' + (d.titulo || '') + '» vuelve a verse en el sitio en uno o dos minutos.', 'ok');
+      }
+    });
+  }
+
+  function borrarPdf(d) {
+    if (!d || !d.archivo) {
+      avisoLista('Este documento no tiene archivo PDF para borrar.', 'info');
+      return;
+    }
+    if (!confirm('¿Borrar definitivamente el archivo PDF de «' + (d.titulo || '') + '»?\n\n' +
+      'Esto NO se puede deshacer desde esta página.\n' +
+      'Si el documento todavía se ve en la web, primero pulse «Quitar de la web».')) return;
+    if (!confirm('Última confirmación:\n\nSe va a borrar el archivo «' + d.archivo + '». ¿Seguir?')) return;
+
+    avisoLista('Borrando el archivo PDF…');
+    /* Si todavía se veía en la web, también se quita: así no queda un enlace
+       que no lleva a ninguna parte. */
+    borrarArchivo(d.archivo, 'Borrar PDF: ' + (d.titulo || '')).then(function () {
+      if (estaOculto(d)) return true;
+      var lista = ocultos.slice();
+      lista.push({ archivo: d.archivo, titulo: d.titulo || '', fecha: hoyTexto() });
+      return guardarQuitados(lista, 'Quitar documento sin PDF: ' + (d.titulo || ''));
+    }).then(function () {
+      avisoLista('Archivo PDF borrado. El documento ya no se puede abrir ni se muestra en el sitio.', 'ok');
+    }).catch(function (e) {
+      avisoLista(textoDeError(e), 'error');
+    });
   }
 
   /* ------------------------------------------------------------------
@@ -703,8 +960,20 @@
   });
   $('#btnRecargarLista').addEventListener('click', function () {
     esconder(campos.avisoError);
+    esconder(campos.avisoLista);
     refrescarLista().catch(function (e) { mostrar(campos.avisoError, textoDeError(e), 'error'); });
   });
+
+  /* Botones de la lista completa (paso 3). */
+  var btnRecargarTodo = document.getElementById('btnRecargarTodo');
+  if (btnRecargarTodo) {
+    btnRecargarTodo.addEventListener('click', function () {
+      avisoLista('Actualizando la lista de documentos…');
+      refrescarLista().then(function () { esconder(campos.avisoLista); })
+        .catch(function (e) { avisoLista(textoDeError(e), 'error'); });
+    });
+  }
+  if (campos.buscarDoc) { campos.buscarDoc.addEventListener('input', pintarLista); }
 
   /* Si ya había una clave guardada, se comprueba sola al abrir la página. */
   try {
