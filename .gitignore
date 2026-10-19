@@ -5,8 +5,12 @@
 #  se sube a la web. Es para proteger el panel y el trabajo interno.
 # =====================================================================
 
-# Panel privado (tiene la clave a la vista: no se publica)
-admin.html
+# Panel privado: ahora SÍ se publica (la clave del sitio se guarda en el
+# navegador, no en el archivo). Sus notas internas viven en
+# datos/notas-locales.json, que NO se publica.
+
+# Notas internas del panel (pendientes): solo viven en este computador
+datos/notas-locales.json
 
 # Carpetas de trabajo interno
 entrada/

@@ -1,0 +1,3327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel institucional · I.E. Rural Puerto Rosario</title>
+<meta name="description" content="Panel interno de administración de contenidos del sitio web de la Institución Educativa Rural Puerto Rosario.">
+<link rel="icon" href="assets/img/escudo.png" type="image/png">
+<style>
+/* =====================================================================
+   PANEL INSTITUCIONAL · Hoja de estilos
+   Institución Educativa Rural Puerto Rosario
+   ===================================================================== */
+:root{
+  --verde-900:#0f3d26; --verde-800:#14532d; --verde-700:#1e6b3f; --verde-600:#2f7d4f;
+  --verde-500:#4f9d63; --verde-300:#7cc98b; --verde-100:#dff2e3; --verde-50:#f1f9f3;
+  --azul-900:#08243f; --azul-800:#0b2a4a; --azul-700:#123a63; --azul-600:#1f5f8f; --azul-100:#dceaf6;
+  --warm-600:#b04f30; --warm-500:#e08a3c; --warm-100:#fdf0dd;
+  --blanco:#fff; --tinta:#16241d; --gris-700:#4a5d53; --gris-500:#5d6e65; --gris-400:#9aada2;
+  --gris-300:#c7d4cc; --gris-200:#dfe8e2; --gris-100:#f2f6f3; --fondo:#f7faf8;
+  --radio-sm:8px; --radio:14px; --radio-lg:22px;
+  --sombra-1:0 1px 2px rgba(16,45,32,.05), 0 2px 8px rgba(16,45,32,.05);
+  --sombra-2:0 6px 18px rgba(16,45,32,.08), 0 2px 6px rgba(16,45,32,.05);
+  --sombra-3:0 20px 44px rgba(11,42,74,.18);
+  --fuente:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --transicion:.24s cubic-bezier(.4,.15,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--fuente);color:var(--tinta);background:var(--fondo);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{margin:0;line-height:1.25;font-weight:650;letter-spacing:-.01em}
+p{margin:0}
+img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--azul-600)}
+:focus-visible{outline:3px solid var(--warm-500);outline-offset:2px;border-radius:6px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+[hidden]{display:none !important}
+
+/* ---------- Iconos ---------- */
+.icon{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- Botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.68rem 1.1rem;border-radius:999px;
+  border:1.5px solid transparent;background:var(--verde-700);color:#fff;font-weight:600;font-size:.94rem;cursor:pointer;
+  text-decoration:none;transition:transform var(--transicion),box-shadow var(--transicion),background var(--transicion),border-color var(--transicion);
+  box-shadow:0 1px 2px rgba(16,45,32,.12)}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--sombra-2);background:var(--verde-600)}
+.btn:active{transform:translateY(0)}
+.btn--sm{padding:.45rem .85rem;font-size:.86rem}
+.btn--block{width:100%}
+.btn--outline{background:#fff;color:var(--verde-800);border-color:var(--gris-300);box-shadow:none}
+.btn--outline:hover{background:var(--verde-50);border-color:var(--verde-500)}
+.btn--ghost{background:var(--gris-100);color:var(--verde-800);box-shadow:none}
+.btn--ghost:hover{background:var(--verde-100)}
+.btn--peligro{background:#fff;color:#a3341f;border-color:#ecc9c0;box-shadow:none}
+.btn--peligro:hover{background:#fdf1ee;border-color:#d99b8c}
+.btn--azul{background:var(--azul-700)}
+.btn--azul:hover{background:var(--azul-600)}
+
+/* ---------- Etiquetas ---------- */
+.tag{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .6rem;border-radius:999px;font-size:.75rem;font-weight:650;letter-spacing:.02em;white-space:nowrap}
+.tag--ok{background:var(--verde-100);color:var(--verde-800)}
+.tag--demo{background:var(--warm-100);color:#8a4a1c}
+.tag--pend{background:#eef1f0;color:var(--gris-700)}
+.tag--rojo{background:#fbe6e1;color:#9c3520}
+.tag--azul{background:var(--azul-100);color:var(--azul-700)}
+
+/* =====================================================================
+   ACCESO
+   ===================================================================== */
+.adm-login{min-height:100vh;display:grid;place-items:center;padding:1.5rem;
+  background:radial-gradient(1200px 600px at 20% -10%,rgba(79,157,99,.35),transparent 60%),
+             linear-gradient(160deg,var(--azul-900),var(--verde-900) 70%,#0b3520)}
+.adm-login__caja{width:100%;max-width:430px;background:#fff;border-radius:var(--radio-lg);padding:clamp(1.6rem,4vw,2.4rem);
+  box-shadow:var(--sombra-3)}
+.adm-login__marca{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
+.adm-login__marca img{width:52px;height:52px;background:var(--verde-50);border-radius:12px;padding:4px;border:1px solid var(--gris-200)}
+.adm-login__marca strong{display:block;font-size:.98rem;line-height:1.3}
+.adm-login__marca small{color:var(--gris-500);font-size:.8rem}
+.adm-login h1{font-size:1.5rem;margin-bottom:.35rem}
+.adm-login__sub{color:var(--gris-700);font-size:.95rem;margin-bottom:1.4rem}
+.adm-login label{display:block;font-weight:650;font-size:.9rem;margin-bottom:.4rem}
+.adm-login input{width:100%;padding:.8rem .95rem;border:1.5px solid var(--gris-300);border-radius:var(--radio-sm);background:#fff;
+  letter-spacing:.28em;font-size:1.05rem}
+.adm-login input:focus{border-color:var(--verde-500);outline:none;box-shadow:0 0 0 4px rgba(79,157,99,.16)}
+.adm-login .btn{margin-top:1rem}
+.adm-login__volver{display:inline-block;margin-top:1.3rem;font-size:.88rem;color:var(--gris-700);text-decoration:none}
+.adm-login__volver:hover{text-decoration:underline;color:var(--verde-800)}
+.adm-error{margin-top:.7rem;background:#fbe6e1;color:#8d2f1a;border:1px solid #ecc9c0;border-radius:var(--radio-sm);
+  padding:.6rem .8rem;font-size:.88rem;display:flex;gap:.5rem;align-items:flex-start}
+
+/* =====================================================================
+   ESTRUCTURA DEL PANEL
+   ===================================================================== */
+.adm-app{min-height:100vh;display:grid;grid-template-columns:268px 1fr}
+.adm-side{background:linear-gradient(180deg,var(--azul-900),var(--verde-900));color:#cfe3d7;display:flex;flex-direction:column;
+  position:sticky;top:0;height:100vh;overflow-y:auto}
+.adm-side__marca{display:flex;gap:.75rem;align-items:center;padding:1.15rem 1.15rem 1rem;border-bottom:1px solid rgba(255,255,255,.12)}
+.adm-side__marca img{width:44px;height:44px;background:rgba(255,255,255,.12);border-radius:11px;padding:3px}
+.adm-side__marca strong{color:#fff;font-size:.9rem;line-height:1.28;display:block}
+.adm-side__marca small{font-size:.72rem;color:#9fc0ae;letter-spacing:.06em;text-transform:uppercase}
+.adm-nav{display:flex;flex-direction:column;gap:.15rem;padding:.9rem .7rem;flex:1}
+.adm-nav__grupo{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#87ab97;padding:1rem .6rem .35rem}
+.adm-nav button{display:flex;align-items:center;gap:.7rem;width:100%;padding:.62rem .7rem;border:0;border-radius:10px;background:transparent;
+  color:#dcebe2;cursor:pointer;text-align:left;font-size:.92rem;font-weight:500;transition:background var(--transicion),color var(--transicion)}
+.adm-nav button:hover{background:rgba(255,255,255,.09);color:#fff}
+.adm-nav button.is-active{background:rgba(255,255,255,.16);color:#fff;font-weight:650;box-shadow:inset 3px 0 0 var(--verde-300)}
+.adm-nav button .icon{opacity:.85}
+.adm-nav__n{margin-left:auto;background:var(--warm-500);color:#3a2008;font-size:.72rem;font-weight:700;border-radius:999px;padding:.05rem .45rem}
+.adm-side__pie{padding:1rem 1.1rem 1.3rem;border-top:1px solid rgba(255,255,255,.12);font-size:.82rem}
+.adm-side__pie p{margin:0 0 .2rem;color:#a9c8b6}
+.adm-side__pie strong{color:#fff;display:block;font-size:.9rem}
+.adm-side__pie .btn{margin-top:.8rem;background:rgba(255,255,255,.12);box-shadow:none;color:#fff;font-size:.85rem}
+.adm-side__pie .btn:hover{background:rgba(255,255,255,.22)}
+
+.adm-main{min-width:0;display:flex;flex-direction:column}
+.adm-top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--gris-200);padding:.85rem clamp(1rem,3vw,2rem);display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.adm-top h1{font-size:1.22rem}
+.adm-top__sub{font-size:.82rem;color:var(--gris-500)}
+.adm-top__acciones{margin-left:auto;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.adm-menu-btn{display:none;border:1px solid var(--gris-300);background:#fff;border-radius:10px;padding:.4rem .6rem;cursor:pointer}
+.adm-vistas{padding:clamp(1rem,3vw,2rem);display:flex;flex-direction:column;gap:1.4rem;max-width:1180px;width:100%}
+
+/* ---------- Tarjetas ---------- */
+.caja{background:#fff;border:1px solid var(--gris-200);border-radius:var(--radio);box-shadow:var(--sombra-1)}
+.caja__cab{display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap;padding:1.1rem 1.2rem;border-bottom:1px solid var(--gris-200)}
+.caja__cab h2{font-size:1.05rem}
+.caja__cab p{font-size:.87rem;color:var(--gris-500);margin-top:.2rem;max-width:60ch}
+.caja__cuerpo{padding:1.2rem}
+.caja__pie{padding:1rem 1.2rem;border-top:1px solid var(--gris-200);display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.caja__acciones{margin-left:auto;display:flex;gap:.5rem;flex-wrap:wrap}
+
+.rejilla{display:grid;gap:1rem}
+.rejilla--2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.rejilla--3{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.rejilla--4{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+
+/* ---------- Indicadores ---------- */
+.kpi{background:#fff;border:1px solid var(--gris-200);border-radius:var(--radio);padding:1rem 1.1rem;box-shadow:var(--sombra-1)}
+.kpi__n{font-size:1.9rem;font-weight:700;line-height:1.1;letter-spacing:-.02em}
+.kpi__e{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gris-500);font-weight:650;margin-top:.2rem}
+.kpi__d{font-size:.83rem;color:var(--gris-700);margin-top:.45rem}
+.kpi--verde .kpi__n{color:var(--verde-700)}
+.kpi--warm .kpi__n{color:var(--warm-600)}
+.kpi--azul .kpi__n{color:var(--azul-700)}
+.kpi--rojo .kpi__n{color:#a3341f}
+
+/* ---------- Barra de progreso ---------- */
+.progreso{height:12px;border-radius:999px;background:var(--gris-200);overflow:hidden}
+.progreso__barra{height:100%;background:linear-gradient(90deg,var(--verde-600),var(--verde-400,#8fd0a5));border-radius:999px;transition:width .5s ease}
+.progreso__leyenda{display:flex;justify-content:space-between;font-size:.84rem;color:var(--gris-700);margin-top:.5rem;flex-wrap:wrap;gap:.4rem}
+
+/* ---------- Listas de edición ---------- */
+.lista{display:flex;flex-direction:column;gap:.6rem}
+.fila{display:flex;gap:.9rem;align-items:flex-start;padding:.85rem 1rem;border:1px solid var(--gris-200);border-radius:var(--radio-sm);
+  background:#fff;transition:border-color var(--transicion),box-shadow var(--transicion)}
+.fila:hover{border-color:var(--verde-300);box-shadow:var(--sombra-1)}
+.fila__icono{width:38px;height:38px;flex:none;border-radius:10px;background:var(--verde-50);color:var(--verde-700);
+  display:grid;place-items:center;border:1px solid var(--gris-200)}
+.fila__cuerpo{flex:1;min-width:0}
+.fila__cuerpo h3{font-size:.97rem;margin-bottom:.15rem}
+.fila__cuerpo p{font-size:.85rem;color:var(--gris-500);overflow-wrap:anywhere}
+.fila__meta{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.45rem}
+.fila__acciones{display:flex;gap:.35rem;flex:none}
+.icono-btn{border:1px solid var(--gris-300);background:#fff;border-radius:9px;width:34px;height:34px;display:grid;place-items:center;
+  cursor:pointer;color:var(--gris-700);transition:all var(--transicion)}
+.icono-btn:hover{border-color:var(--verde-500);color:var(--verde-700);background:var(--verde-50)}
+.icono-btn--rojo:hover{border-color:#d99b8c;color:#a3341f;background:#fdf1ee}
+.vacio{text-align:center;padding:2.4rem 1rem;color:var(--gris-500);border:1.5px dashed var(--gris-300);border-radius:var(--radio-sm)}
+
+/* ---------- Editor (panel lateral) ---------- */
+.editor{position:fixed;inset:0;z-index:80;display:grid;grid-template-columns:1fr min(560px,100%)}
+.editor__velo{background:rgba(8,36,63,.45);backdrop-filter:blur(2px)}
+.editor__caja{background:#fff;display:flex;flex-direction:column;height:100vh;box-shadow:var(--sombra-3);animation:entraEditor .28s ease}
+@keyframes entraEditor{from{transform:translateX(28px);opacity:.4}to{transform:none;opacity:1}}
+.editor__cab{display:flex;align-items:center;gap:1rem;padding:1.05rem 1.3rem;border-bottom:1px solid var(--gris-200)}
+.editor__cab h2{font-size:1.08rem;flex:1}
+.editor__cuerpo{padding:1.3rem;overflow-y:auto;flex:1;display:grid;gap:1rem;grid-template-columns:1fr 1fr}
+.editor__pie{padding:1rem 1.3rem;border-top:1px solid var(--gris-200);display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.editor__pie .btn--peligro{margin-right:auto}
+@media(max-width:760px){.editor{grid-template-columns:1fr}.editor__velo{display:none}}
+
+/* ---------- Campos de formulario ---------- */
+.campo{display:flex;flex-direction:column;gap:.35rem;grid-column:span 1}
+.campo--ancho{grid-column:1 / -1}
+.campo label{font-size:.86rem;font-weight:650}
+.campo .req{color:var(--warm-600)}
+.campo input[type=text],.campo input[type=date],.campo input[type=number],.campo select,.campo textarea{
+  width:100%;padding:.62rem .75rem;border:1.5px solid var(--gris-300);border-radius:var(--radio-sm);background:#fff;font-size:.92rem}
+.campo textarea{min-height:110px;resize:vertical;line-height:1.5}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--verde-500);outline:none;box-shadow:0 0 0 3px rgba(79,157,99,.15)}
+.campo__ayuda{font-size:.78rem;color:var(--gris-500)}
+.campo__error{font-size:.78rem;color:#a3341f;font-weight:600}
+.campo--error input,.campo--error select,.campo--error textarea{border-color:#d99b8c;background:#fffafa}
+.interruptor{display:flex;align-items:center;gap:.6rem;font-size:.9rem;font-weight:600}
+.interruptor input{width:18px;height:18px;accent-color:var(--verde-700)}
+.cargador{border:1.5px dashed var(--gris-300);border-radius:var(--radio-sm);padding:1rem;text-align:center;background:var(--gris-100)}
+.cargador img{max-height:120px;margin:0 auto .6rem;border-radius:8px;object-fit:contain}
+.cargador input[type=file]{font-size:.84rem;max-width:100%}
+
+/* ---------- Pendientes ---------- */
+.tarea{display:flex;gap:.85rem;align-items:flex-start;padding:.8rem 1rem;border:1px solid var(--gris-200);border-radius:var(--radio-sm);
+  background:#fff;border-left:5px solid var(--gris-300)}
+.tarea--alta{border-left-color:var(--warm-600)}
+.tarea--media{border-left-color:var(--warm-400,#f2a83b)}
+.tarea--baja{border-left-color:var(--verde-500)}
+.tarea--hecha{background:var(--verde-50);border-left-color:var(--verde-600)}
+.tarea--hecha h3{text-decoration:line-through;color:var(--gris-500)}
+.tarea input[type=checkbox]{width:20px;height:20px;margin-top:.15rem;accent-color:var(--verde-700);flex:none;cursor:pointer}
+.tarea__cuerpo{flex:1;min-width:0}
+.tarea__cuerpo h3{font-size:.96rem}
+.tarea__notas{font-size:.85rem;color:var(--gris-700);margin-top:.25rem}
+.filtros-barra{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem}
+.chip{border:1.5px solid var(--gris-300);background:#fff;border-radius:999px;padding:.4rem .85rem;font-size:.86rem;font-weight:600;
+  cursor:pointer;color:var(--gris-700);transition:all var(--transicion)}
+.chip:hover{border-color:var(--verde-500);color:var(--verde-800)}
+.chip[aria-pressed=true]{background:var(--verde-700);border-color:var(--verde-700);color:#fff}
+.chip__n{opacity:.75;font-size:.78rem;margin-left:.25rem}
+
+/* ---------- Buscador ---------- */
+.buscador{position:relative;flex:1;min-width:190px;max-width:340px}
+.buscador input{width:100%;padding:.6rem .8rem .6rem 2.3rem;border:1.5px solid var(--gris-300);border-radius:999px;background:#fff;font-size:.9rem}
+.buscador input:focus{border-color:var(--verde-500);outline:none;box-shadow:0 0 0 3px rgba(79,157,99,.15)}
+.buscador .icon{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:var(--gris-400);pointer-events:none}
+
+/* ---------- Avisos ---------- */
+.aviso{display:flex;gap:.75rem;align-items:flex-start;padding:.9rem 1.05rem;border-radius:var(--radio-sm);font-size:.89rem;border:1px solid}
+.aviso--info{background:var(--azul-100);border-color:#bcd8ef;color:#0d3a5e}
+.aviso--alerta{background:var(--warm-100);border-color:#f0d3a8;color:#7d431a}
+.aviso--riesgo{background:#fbe6e1;border-color:#ecc9c0;color:#8d2f1a}
+.aviso--ok{background:var(--verde-100);border-color:#bfe3c9;color:#175c33}
+.aviso strong{font-weight:700}
+.aviso .icon{margin-top:.15rem}
+
+/* ---------- Informe del asistente ---------- */
+.informe{display:flex;flex-direction:column;gap:.7rem}
+.informe__item{display:flex;gap:.8rem;align-items:flex-start;padding:.8rem .95rem;border-radius:var(--radio-sm);border:1px solid var(--gris-200);background:#fff}
+.informe__item--rojo{border-left:5px solid #c7603f;background:#fdf6f4}
+.informe__item--warm{border-left:5px solid var(--warm-500);background:#fffbf5}
+.informe__item--ok{border-left:5px solid var(--verde-600);background:var(--verde-50)}
+.informe__item h3{font-size:.94rem}
+.informe__item p{font-size:.85rem;color:var(--gris-700)}
+
+/* ---------- Código / publicación ---------- */
+.code{background:var(--azul-900);color:#c9e3f5;border-radius:var(--radio-sm);padding:.9rem 1rem;font-family:Consolas,"Courier New",monospace;
+  font-size:.82rem;overflow-x:auto;white-space:pre;line-height:1.5}
+.pasos{counter-reset:paso;display:flex;flex-direction:column;gap:.75rem;margin:0;padding:0;list-style:none}
+.pasos li{counter-increment:paso;display:flex;gap:.8rem;align-items:flex-start;font-size:.9rem}
+.pasos li::before{content:counter(paso);flex:none;width:26px;height:26px;border-radius:50%;background:var(--verde-700);color:#fff;
+  display:grid;place-items:center;font-size:.82rem;font-weight:700}
+.tabla{width:100%;border-collapse:collapse;font-size:.87rem}
+.tabla th,.tabla td{text-align:left;padding:.55rem .6rem;border-bottom:1px solid var(--gris-200)}
+.tabla th{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--gris-500)}
+.tabla td.num{text-align:right;font-variant-numeric:tabular-nums}
+.tabla-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+code{overflow-wrap:anywhere}
+@media (max-width:700px){.tabla-scroll .tabla--ancha{min-width:560px}}
+
+/* ---------- Varios ---------- */
+.tarea__ayuda{margin-top:.8rem;padding:.9rem 1.05rem;border-left:3px solid var(--verde-600);background:var(--gris-100);border-radius:var(--radio-sm)}
+.tarea__ayuda .pasos li{font-size:.86rem}
+.mini{font-size:.82rem;color:var(--gris-500)}
+.lista-simple{list-style:none;margin:0;padding:0;display:grid;gap:.4rem;font-size:.88rem}
+.lista-simple li{display:flex;gap:.5rem;align-items:flex-start}
+.lista-simple .icon{color:var(--verde-600);margin-top:.2rem}
+.oculto-movil{display:initial}
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+@media(max-width:980px){
+  .adm-app{grid-template-columns:1fr}
+  .adm-side{position:fixed;inset:0 auto 0 0;width:280px;z-index:60;transform:translateX(-100%);transition:transform var(--transicion);height:100vh}
+  .adm-side.is-abierto{transform:none;box-shadow:var(--sombra-3)}
+  .adm-menu-btn{display:inline-grid;place-items:center}
+  .adm-nav{flex-direction:column}
+  .adm-velo-nav{position:fixed;inset:0;background:rgba(8,36,63,.45);z-index:55;display:none}
+  .adm-velo-nav.is-visible{display:block}
+}
+@media(max-width:640px){
+  .editor__cuerpo{grid-template-columns:1fr}
+  .caja__cab{padding:.95rem 1rem}
+  .caja__cuerpo{padding:1rem}
+  .fila{flex-wrap:wrap}
+  .fila__acciones{width:100%;justify-content:flex-end}
+}
+@media print{
+  .adm-side,.adm-top,.editor,.adm-login{display:none !important}
+  .adm-app{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+
+<!-- =====================================================================
+     ICONOS (sprite SVG)
+     ===================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ico-escudo" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.6 8.4-8 10-4.4-1.6-8-5-8-10V6z"/></symbol>
+  <symbol id="ico-panel" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></symbol>
+  <symbol id="ico-lista" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></symbol>
+  <symbol id="ico-doc" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/></symbol>
+  <symbol id="ico-periodico" viewBox="0 0 24 24"><path d="M4 5h13v14H5.5A1.5 1.5 0 0 1 4 17.5z"/><path d="M17 8h3v9.5A1.5 1.5 0 0 1 18.5 19H17"/><path d="M7 8.5h7M7 12h7M7 15.5h4"/></symbol>
+  <symbol id="ico-chispa" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.4 6.4l2.8 2.8M14.8 14.8l2.8 2.8M17.6 6.4l-2.8 2.8M9.2 14.8l-2.8 2.8"/></symbol>
+  <symbol id="ico-camara" viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.2h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></symbol>
+  <symbol id="ico-edificio" viewBox="0 0 24 24"><path d="M4 21V4.5A1.5 1.5 0 0 1 5.5 3h7A1.5 1.5 0 0 1 14 4.5V21"/><path d="M14 9h4.5A1.5 1.5 0 0 1 20 10.5V21"/><path d="M3 21h18M7.5 7h3M7.5 11h3M7.5 15h3M17 13h.01M17 17h.01"/></symbol>
+  <symbol id="ico-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.2V12l3.3 2"/></symbol>
+  <symbol id="ico-actualizar" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4.5V11h-6.5"/></symbol>
+  <symbol id="ico-descarga" viewBox="0 0 24 24"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></symbol>
+  <symbol id="ico-subir" viewBox="0 0 24 24"><path d="M12 20V9M7.5 13 12 8.5 16.5 13M5 4h14"/></symbol>
+  <symbol id="ico-lapiz" viewBox="0 0 24 24"><path d="M4 20h4l10-10-4-4L4 16z"/><path d="M14.5 5.5 18.5 9.5"/></symbol>
+  <symbol id="ico-basura" viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V4.5h5V7M6 7l1 13h10l1-13"/><path d="M10.5 11v5.5M13.5 11v5.5"/></symbol>
+  <symbol id="ico-cerrar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="ico-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="ico-buscar" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+  <symbol id="ico-ver" viewBox="0 0 24 24"><path d="M5 12.5 10 17.5l9-10.5"/></symbol>
+  <symbol id="ico-alerta" viewBox="0 0 24 24"><path d="M12 3.5 21.5 20H2.5z"/><path d="M12 9.5v4.5M12 17h.01"/></symbol>
+  <symbol id="ico-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8h.01"/></symbol>
+  <symbol id="ico-candado" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="10.5" rx="2.4"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/></symbol>
+  <symbol id="ico-salir" viewBox="0 0 24 24"><path d="M14 4h4.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H14"/><path d="M10 8 6 12l4 4M6 12h9"/></symbol>
+  <symbol id="ico-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></symbol>
+  <symbol id="ico-facebook" viewBox="0 0 24 24"><path d="M15.5 6.5h-1.6a2.4 2.4 0 0 0-2.4 2.4V20"/><path d="M8.5 12.4h6"/></symbol>
+  <symbol id="ico-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="ico-telefono" viewBox="0 0 24 24"><path d="M6.2 3h3l1.9 4.8-2.4 1.5a12.4 12.4 0 0 0 6 6l1.5-2.4L21 14.8v3a3 3 0 0 1-3.2 3A16.8 16.8 0 0 1 3.2 6.2 3 3 0 0 1 6.2 3z"/></symbol>
+  <symbol id="ico-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7.5 12 13l8.5-5.5"/></symbol>
+  <symbol id="ico-calendario" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.4"/><path d="M8 3v4M16 3v4M3.5 10h17"/></symbol>
+  <symbol id="ico-persona" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></symbol>
+  <symbol id="ico-hoja" viewBox="0 0 24 24"><path d="M20 4c-8 0-14 4-14 11a5 5 0 0 0 5 5c7 0 9-6 9-16z"/><path d="M6 20 14 12"/></symbol>
+  <symbol id="ico-laboratorio" viewBox="0 0 24 24"><path d="M9.5 3h5M10.5 3v5.5l-5 8.3A2.4 2.4 0 0 0 7.6 20.5h8.8a2.4 2.4 0 0 0 2.1-3.7l-5-8.3V3"/><path d="M7.6 15h8.8"/></symbol>
+  <symbol id="ico-portatil" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10.5" rx="1.6"/><path d="M2.5 19h19"/></symbol>
+  <symbol id="ico-libro" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M20 18v3H6.5A2.5 2.5 0 0 1 4 18.5"/></symbol>
+  <symbol id="ico-personas" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.5a3 3 0 0 1 0 5.8M17.5 20c0-2.3-.8-4.3-2.1-5.7"/></symbol>
+  <symbol id="ico-graduacion" viewBox="0 0 24 24"><path d="M2.5 9 12 5l9.5 4L12 13z"/><path d="M6 11.2V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.8"/></symbol>
+  <symbol id="ico-corazon" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9.5A4 4 0 0 1 12 8a4 4 0 0 1 7 2.5C19 15.6 12 20 12 20z"/></symbol>
+  <symbol id="ico-nube" viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.4-8A5.5 5.5 0 0 1 17 10.5a3.8 3.8 0 0 1 .3 7.5z"/></symbol>
+  <symbol id="ico-imagen" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.4"/><circle cx="9" cy="10" r="1.8"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></symbol>
+  <symbol id="ico-llave" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M16 4l3 3M14.5 5.5 17 8"/></symbol>
+  <symbol id="ico-etiqueta" viewBox="0 0 24 24"><path d="M3.5 12.5V4.5a1 1 0 0 1 1-1h8l8 8-9 9z"/><circle cx="8" cy="8" r="1.4"/></symbol>
+  <symbol id="ico-externo" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5.5a1 1 0 0 1-1 1H4.5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1H10"/></symbol>
+  <symbol id="ico-flecha" viewBox="0 0 24 24"><path d="M4 12h15M13.5 6.5 20 12l-6.5 5.5"/></symbol>
+</svg>
+
+<!-- =====================================================================
+     PANTALLA DE ACCESO
+     ===================================================================== -->
+<main class="adm-login" id="pantallaLogin">
+  <div class="adm-login__caja">
+    <div class="adm-login__marca">
+      <img src="assets/img/escudo.png" alt="" width="52" height="52">
+      <span>
+        <strong>Institución Educativa Rural Puerto Rosario</strong>
+        <small>Puerto Guzmán &middot; Putumayo &middot; Colombia</small>
+      </span>
+    </div>
+
+    <h1>Panel institucional</h1>
+    <p class="adm-login__sub">Espacio de trabajo de rectoría y administración para actualizar el sitio web.</p>
+
+    <form id="formLogin" novalidate>
+      <label for="claveAdmin">Clave del sitio</label>
+      <input type="password" id="claveAdmin" autocomplete="current-password"
+             aria-describedby="ayudaClave" placeholder="Pegue aquí la clave">
+      <p class="campo__ayuda" id="ayudaClave">Es la <strong>misma clave</strong> que usa en «Subir documentos» (el token de GitHub).
+        No está escrita en esta página: se guarda solo en el navegador de cada persona.</p>
+      <p class="adm-error" id="loginError" role="alert" hidden>
+        <svg class="icon" aria-hidden="true"><use href="#ico-alerta"></use></svg>
+        <span id="loginErrorTexto">Clave incorrecta.</span>
+      </p>
+      <button class="btn btn--primary btn--block" type="submit">
+        <svg class="icon" aria-hidden="true"><use href="#ico-candado"></use></svg> Entrar al panel
+      </button>
+    </form>
+
+    <p class="campo__ayuda" style="margin-top:1rem">
+      <strong>Importante:</strong> sin la clave no se puede cambiar nada. Si no la tiene, pídala a quien
+      administra la cuenta de GitHub del sitio. No escriba aquí datos personales de menores de edad.
+      <a href="subir.html">¿Solo necesita subir un PDF? Use «Subir documentos»</a>.
+    </p>
+
+    <a class="adm-login__volver" href="index.html">&larr; Volver al sitio público</a>
+  </div>
+</main>
+
+<!-- =====================================================================
+     PANEL
+     ===================================================================== -->
+<div class="adm-app" id="appPanel" hidden>
+  <div class="adm-velo-nav" id="admVeloNav"></div>
+
+  <aside class="adm-side" id="admSide" aria-label="Menú del panel">
+    <div class="adm-side__marca">
+      <img src="assets/img/escudo.png" alt="" width="44" height="44">
+      <span>
+        <strong id="marcaPanel">I.E. Rural Puerto Rosario</strong>
+        <small>Panel institucional</small>
+      </span>
+    </div>
+
+    <nav class="adm-nav" id="admNav" aria-label="Secciones del panel"></nav>
+
+    <div class="adm-side__pie">
+      <strong id="admUsuario">Rectoría / Administración</strong>
+      <p id="admUltima">Sin contenido publicado</p>
+      <button class="btn btn--sm" type="button" id="btnSalir">
+        <svg class="icon" aria-hidden="true"><use href="#ico-salir"></use></svg> Cerrar sesión
+      </button>
+    </div>
+  </aside>
+
+  <main class="adm-main">
+    <header class="adm-top">
+      <button class="adm-menu-btn" type="button" id="admMenuBtn" aria-label="Abrir menú del panel" aria-expanded="false" aria-controls="admSide">
+        <svg class="icon" aria-hidden="true"><use href="#ico-menu"></use></svg>
+      </button>
+      <div>
+        <h1 id="admTitulo">Resumen</h1>
+        <p class="adm-top__sub" id="admSubtitulo">Estado general del sitio y de la información institucional.</p>
+      </div>
+      <div class="adm-top__acciones">
+        <span class="tag tag--pend" id="admChipPendientes">0 pendientes</span>
+        <button class="btn btn--outline btn--sm" type="button" id="btnActualizarAhora">
+          <svg class="icon" aria-hidden="true"><use href="#ico-actualizar"></use></svg> Revisar actualizaciones
+        </button>
+        <button class="btn btn--primary btn--sm" type="button" id="btnPublicarRapido">
+          <svg class="icon" aria-hidden="true"><use href="#ico-descarga"></use></svg> Descargar contenido.js
+        </button>
+      </div>
+    </header>
+
+    <div class="adm-vistas" id="admVistas"></div>
+  </main>
+</div>
+
+<!-- =====================================================================
+     EDITOR (panel lateral)
+     ===================================================================== -->
+<div class="editor" id="editor" hidden role="dialog" aria-modal="true" aria-labelledby="editorTitulo">
+  <div class="editor__velo" id="editorVelo"></div>
+  <div class="editor__caja">
+    <header class="editor__cab">
+      <h2 id="editorTitulo">Editar</h2>
+      <button class="icono-btn" type="button" id="editorCerrar" aria-label="Cerrar editor">
+        <svg class="icon" aria-hidden="true"><use href="#ico-cerrar"></use></svg>
+      </button>
+    </header>
+    <form class="editor__cuerpo" id="editorCuerpo" novalidate></form>
+    <footer class="editor__pie">
+      <button class="btn btn--peligro btn--sm" type="button" id="editorEliminar" hidden>
+        <svg class="icon" aria-hidden="true"><use href="#ico-basura"></use></svg> Eliminar
+      </button>
+      <button class="btn btn--outline btn--sm" type="button" id="editorCancelar">Cancelar</button>
+      <button class="btn btn--primary btn--sm" type="submit" form="editorCuerpo" id="editorGuardar">
+        <svg class="icon" aria-hidden="true"><use href="#ico-ver"></use></svg> Guardar
+      </button>
+    </footer>
+  </div>
+</div>
+
+<!-- Contenido REAL publicado en el sitio. Se carga para que el panel arranque
+     con lo que ya está en línea (y no con el contenido de ejemplo). -->
+<script src="datos/contenido.js"></script>
+
+<script>
+/* =====================================================================
+   PANEL INSTITUCIONAL · Lógica
+   Institución Educativa Rural Puerto Rosario
+   ---------------------------------------------------------------------
+   Funciona íntegramente en el navegador (sin servidor ni base de datos):
+     1. Los borradores se guardan en el almacenamiento local del navegador.
+     2. Al terminar, se descarga el archivo datos/contenido.js, que es el
+        que lee el sitio público (index.html).
+   ===================================================================== */
+(function () {
+  'use strict';
+
+  /* ===================================================================
+     1. UTILIDADES
+     =================================================================== */
+  function $(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
+  function ico(n) { return '<svg class="icon" aria-hidden="true"><use href="#ico-' + n + '"></use></svg>'; }
+  function esc(t) {
+    return (t == null ? '' : String(t)).replace(/[&<>"']/g, function (ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+    });
+  }
+  function hay(v) { return v !== undefined && v !== null && String(v).trim() !== ''; }
+  function clonar(o) { return JSON.parse(JSON.stringify(o)); }
+
+/* Toma el contenido REAL publicado (datos/contenido.js) para que el panel
+   arranque con lo que ya está en el sitio. Si ese archivo no existe o está
+   vacío, usa el contenido de ejemplo incluido en esta misma página. */
+function conIds(lista, prefijo) {
+  if (!Array.isArray(lista)) return lista;
+  return lista.map(function (x, i) {
+    var o = clonar(x);
+    if (!o.id) o.id = (prefijo || 'x') + (i + 1) + '-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+    return o;
+  });
+}
+function contenidoInicial() {
+  var base = (window.CONTENIDO_IERP && typeof window.CONTENIDO_IERP === 'object')
+    ? clonar(window.CONTENIDO_IERP)
+    : clonar(CONTENIDO_INICIAL);
+  base.documentos = conIds(base.documentos, 'd');
+  base.noticias = conIds(base.noticias, 'n');
+  base.proyectos = conIds(base.proyectos, 'p');
+  base.galeria = conIds(base.galeria, 'g');
+  if (!Array.isArray(base.areas)) base.areas = clonar(CONTENIDO_INICIAL.areas);
+  return base;
+}
+  function nuevoId(p) { return (p || 'x') + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+
+  function hoyISO() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function fechaLarga(iso) {
+    if (!hay(iso)) return '';
+    var d = new Date(iso.length <= 10 ? iso + 'T12:00:00' : iso);
+    if (isNaN(d.getTime())) return String(iso);
+    return d.toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  function diasHasta(iso) {
+    if (!hay(iso)) return null;
+    var d = new Date(iso.length <= 10 ? iso + 'T12:00:00' : iso);
+    if (isNaN(d.getTime())) return null;
+    return Math.round((d - new Date()) / 86400000);
+  }
+  function sumarAnio(iso) {
+    if (!hay(iso)) return '';
+    var d = new Date(iso.length <= 10 ? iso + 'T12:00:00' : iso);
+    if (isNaN(d.getTime())) return '';
+    d.setFullYear(d.getFullYear() + 1);
+    return d.toISOString().slice(0, 10);
+  }
+  function descargar(nombre, texto, tipo) {
+    var blob = new Blob([texto], { type: tipo || 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = nombre;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+  function avisar(mensaje, tipo) {
+    var caja = document.createElement('div');
+    caja.className = 'aviso aviso--' + (tipo || 'ok');
+    caja.setAttribute('role', 'status');
+    caja.style.cssText = 'position:fixed;left:50%;bottom:1.5rem;transform:translateX(-50%);z-index:200;max-width:min(92vw,520px);box-shadow:var(--sombra-3)';
+    caja.innerHTML = ico(tipo === 'riesgo' ? 'alerta' : 'ver') + '<span>' + esc(mensaje) + '</span>';
+    document.body.appendChild(caja);
+    setTimeout(function () { caja.remove(); }, 4200);
+  }
+
+  /* ===================================================================
+     2. LISTAS MAESTRAS
+     =================================================================== */
+  var CATEGORIAS_DOC = [
+    'Institucional: PEI, Manual, SIEE',
+    'Planes de estudio por área',
+    'Gestión directiva y administrativa',
+    'Convivencia y participación',
+    'Proyectos transversales',
+    'Transparencia y control social',
+    'Otros documentos'
+  ];
+  var PERIODICIDADES = ['anual', 'semestral', 'bienal', 'única', 'por demanda'];
+  var CATEGORIAS_NOTICIA = ['Institucional', 'Académico', 'Cultural', 'Deportivo', 'Medioambiente',
+    'Tecnología', 'Ciencia', 'Lectura', 'Comunidad', 'Convivencia'];
+  var ICONOS_DOC = ['doc', 'libro', 'calendario', 'hoja', 'laboratorio', 'personas', 'graduacion',
+    'corazon', 'escudo', 'nube', 'etiqueta', 'globe', 'portatil', 'periodico'];
+  var PRIORIDADES = ['alta', 'media', 'baja'];
+  var ESTADOS_TAREA = ['pendiente', 'en proceso', 'hecha'];
+
+  var AREAS_INICIALES = [
+    { slug: 'tecnologia', nombre: 'Tecnología e Informática' },
+    { slug: 'innovatec', nombre: 'Innovatec' },
+    { slug: 'ciencia', nombre: 'Ciencia, Tecnología e Innovación' },
+    { slug: 'medioambiente', nombre: 'Medioambiente' },
+    { slug: 'lectura', nombre: 'Lectura' },
+    { slug: 'comunidad', nombre: 'Comunidad' }
+  ];
+
+  /* ===================================================================
+     3. CONTENIDO INICIAL
+     -------------------------------------------------------------------
+     Es una copia del contenido demostrativo que hoy tiene el sitio.
+     La rectoría lo edita, lo reemplaza por información oficial y publica.
+     =================================================================== */
+  var CONTENIDO_INICIAL = {
+    version: 1,
+    esDemostracion: false,
+    actualizado: '',
+    institucion: {
+      nombre: 'Institución Educativa Rural Puerto Rosario',
+      lema: 'Ideal de Hombres Libres',
+      ubicacion: 'Vereda Puerto Rosario, inspección de Policía El Cedro Mangalpa, municipio de Puerto Guzmán, Putumayo, Colombia',
+      direccion: '',
+      telefono: '320 260 8167',
+      correo: 'ierptorosario@gmail.com',
+      horario: '',
+      redes: ['https://www.facebook.com/profile.php?id=61575609093627'],
+      rector: '',
+      resolucion: 'Resolución No. 0844 del 25 de febrero de 2015',
+      nit: '846.003.519-3',
+      dane: '286001003209',
+      escudo: 'assets/img/escudo.png',
+      historia: '<p>La Institución Educativa Rural Puerto Rosario presta el servicio educativo en la vereda Puerto Rosario, inspección de Policía El Cedro Mangalpa, municipio de Puerto Guzmán (Putumayo), con aprobación oficial mediante la <strong>Resolución No. 0844 del 25 de febrero de 2015</strong>. Funciona en jornada única (Decreto 2105) y su sede principal atiende desde el grado preescolar. Su código DANE es 286001003209 y su NIT, 846.003.519-3.</p><p>La reseña histórica completa —origen del nombre «Puerto Rosario», conformación de sedes y principales hitos de la comunidad educativa— está pendiente de ser entregada por la institución.</p>',
+      filosofia: '',
+      mision: 'La IER Puerto Rosario garantiza el derecho a la educación desde el grado preescolar hasta el grado once (educación media) a todos los estudiantes sin ninguna discriminación, mediante la orientación, el fortalecimiento en valores, procesos sociales, culturales, científicos y tecnológicos; formándolo integralmente en beneficio personal y social.',
+      vision: 'La Institución Educativa Rural Puerto Rosario pretende formar estudiantes críticos, autónomos, dinámicos y creativos dentro de los mejores ambientes pedagógicos, permitiéndole ser competente en el ámbito laboral y social.',
+      principios: '<p>El Proyecto Educativo Institucional define el perfil que la institución busca formar: un estudiante integral, con ideales, sueños y metas; comprometido con su entorno, dinámico, creativo y capaz de transformar el medio que lo rodea frente a los desafíos de la ciencia y la tecnología. Se caracteriza por:</p><ul><li>Capaz de plantear y resolver problemas de su cotidianidad.</li><li>Sentido de pertenencia por su comunidad local y con visión de desarrollo global.</li><li>Poseer y dominar conocimientos que le permitan vincularse al mercado regional y nacional.</li><li>Hábitos de sano esparcimiento y adecuada utilización del tiempo libre.</li><li>Responsable con el cuidado y la preservación del medio ambiente.</li><li>Ciudadano respetuoso de las normas y valores que le permitan vivir en sociedad.</li><li>Competente e investigador de su entorno para proponer alternativas de solución a la problemática ambiental, cultural y social del municipio.</li></ul>'
+    },
+    portada: {
+      titulo: 'Aprender, crear y transformar nuestro territorio',
+      texto: 'Formamos niñas, niños y jóvenes con pensamiento crítico, sentido de pertenencia y capacidad de innovar, para que el conocimiento se convierta en bienestar para sus familias y para el campo putumayense. Apostamos por la formación integral, la convivencia, la lectura, la ciencia, la tecnología y el compromiso con la comunidad.',
+      imagen: 'assets/img/portada-2026.jpg'
+    },
+    areas: AREAS_INICIALES,
+    galeria: [
+      { id: 'g9', titulo: 'Día del Estudiante 2026', src: 'assets/img/galeria/dia-del-estudiante-2026.jpg', alt: 'Fotografía de la comunidad educativa en la celebración del Día del Estudiante 2026', referencia: false, publicado: true },
+      { id: 'g10', titulo: 'Sextos Juegos Tradicionales', src: 'assets/img/galeria/juegos-tradicionales-2026.jpg', alt: 'Cartel de los Sextos Juegos Tradicionales de la institución, 6 de agosto de 2026', referencia: false, publicado: true },
+      { id: 'g1', titulo: 'Actividades en el aula', src: 'assets/img/aula-rural.svg', alt: 'Ilustración de referencia de una escuela rural con estudiantes', referencia: true, publicado: true },
+      { id: 'g2', titulo: 'Plan lector y biblioteca', src: 'assets/img/lectura.svg', alt: 'Ilustración de referencia de un libro abierto', referencia: true, publicado: true },
+      { id: 'g3', titulo: 'Tecnología e informática', src: 'assets/img/tecnologia.svg', alt: 'Ilustración de referencia de un computador portátil', referencia: true, publicado: true },
+      { id: 'g4', titulo: 'Proyecto ambiental y vivero', src: 'assets/img/medioambiente.svg', alt: 'Ilustración de referencia de un río con árboles', referencia: true, publicado: true },
+      { id: 'g5', titulo: 'Feria de ciencia y creatividad', src: 'assets/img/noticias/feria-ciencia-2026.jpg', alt: 'Cartel de la Feria Institucional de Ciencia, Tecnología y Emprendimiento de la institución', referencia: false, publicado: true },
+      { id: 'g6', titulo: 'Comunidad educativa y familias', src: 'assets/img/comunidad.svg', alt: 'Ilustración de referencia de la comunidad educativa', referencia: true, publicado: true },
+      { id: 'g7', titulo: 'Actos culturales', src: 'assets/img/cultura.svg', alt: 'Ilustración de referencia de un acto cultural', referencia: true, publicado: true },
+      { id: 'g8', titulo: 'Huerta escolar', src: 'assets/img/huerta.svg', alt: 'Ilustración de referencia de una huerta escolar', referencia: true, publicado: true }
+    ],
+    noticias: [
+      { id: 'n1', titulo: '¡La tecnología abre puertas al conocimiento y transforma vidas!', fecha: '16 de julio de 2026', categoria: 'Tecnología', imagen: 'assets/img/noticias/entrega-computadores-2026.jpg', resumen: 'La institución agradece al Ministerio TIC, al programa Computadores para Educar y a la estrategia Tecnologías para Aprender por la entrega de computadores portátiles de uso personal a los estudiantes de noveno y décimo grado.', detalle: '<p>Nuestra Institución Educativa Rural Puerto Rosario expresa su más sincero agradecimiento al Ministerio TIC, al programa Computadores para Educar y a la estrategia Tecnologías para Aprender, por hacer posible la entrega de computadores portátiles de uso personal a nuestros estudiantes de noveno y décimo grado.</p><p>De igual manera, extendemos un especial reconocimiento a la Secretaría de Educación Departamental del Putumayo y a las entidades que hicieron posible esta entrega.</p>', enlace: 'https://www.facebook.com/61575830740720/posts/122194474004861024/', fuente: 'Facebook', demo: false, publicada: true },
+      { id: 'n2', titulo: 'Segunda Escuela de Padres y rendición de cuentas del primer semestre', fecha: '24 de julio de 2026', categoria: 'Comunidad', imagen: 'assets/img/noticias/escuela-de-padres-2026.jpg', resumen: 'Espacio de encuentro, diálogo y participación que fortaleció los vínculos entre la familia y la escuela, con la articulación de la Biblioteca Pública Municipal de Puerto Guzmán para un proyecto de huertas escolares y familiares.', detalle: '<p>En nuestra Institución Educativa Rural Puerto Rosario llevamos a cabo con gran éxito la Segunda Escuela de Padres, un espacio de encuentro, diálogo y participación que fortaleció los vínculos entre la familia y la escuela.</p><p>Durante la jornada contamos con la valiosa articulación de la Biblioteca Pública Municipal de Puerto Guzmán y de la Alcaldía de Puerto Guzmán, con quienes vamos a desarrollar un excelente proyecto de huertas escolares y familiares, promoviendo la educación ambiental, la seguridad alimentaria y el trabajo en equipo como herramientas para el aprendizaje y el desarrollo de nuestras familias.</p><p>Asimismo, se realizó la Rendición de Cuentas del primer semestre de 2026, socializando a la comunidad educativa los avances, logros y acciones desarrolladas por nuestra institución, en un ejercicio de transparencia, participación y compromiso con la calidad educativa.</p><p>Finalmente, se hizo la entrega de los boletines correspondientes al segundo período académico, brindando a los padres de familia la oportunidad de conocer el desempeño de sus hijos y fortalecer el acompañamiento en su proceso formativo.</p><p>Agradecemos a todos los padres de familia por su asistencia y compromiso, a la Biblioteca Pública Municipal de Puerto Guzmán por su valioso apoyo y a nuestros docentes por su dedicación en la organización de esta importante jornada. Familia y escuela, trabajando de la mano para sembrar conocimientos, valores y un mejor futuro para nuestros estudiantes.</p>', enlace: 'https://www.facebook.com/61575830740720/posts/122195855432861024/', fuente: 'Facebook', demo: false, publicada: true },
+      { id: 'n3', titulo: 'Segunda Semana de la Ciencia, la Tecnología y la Innovación', fecha: '19 de septiembre de 2026', categoria: 'Ciencia', imagen: 'assets/img/noticias/feria-ciencia-2026.jpg', resumen: 'Estudiantes de primaria y secundaria demostraron su creatividad, curiosidad y capacidad para aprender a través de la experimentación.', detalle: '<p>En nuestra Institución Educativa Rural Puerto Rosario se vivió con gran entusiasmo la Segunda Semana de la Ciencia, la Tecnología y la Innovación, un espacio donde nuestros estudiantes de primaria y secundaria demostraron su creatividad, curiosidad y capacidad para aprender a través de la experimentación.</p><p>Durante la jornada se presentaron diversos experimentos y proyectos que permitieron fortalecer el pensamiento científico, la investigación, la observación y la búsqueda de soluciones a situaciones de la vida cotidiana. Esta actividad destacó el valor del trabajo en equipo, el aprendizaje colaborativo, la innovación y el compromiso de nuestros estudiantes con la construcción de nuevos conocimientos.</p><p>Agradecemos el valioso acompañamiento de los padres de familia y el compromiso de nuestros docentes.</p>', enlace: 'https://www.facebook.com/61575830740720/posts/122206276388861024/', fuente: 'Facebook', demo: false, publicada: true },
+      { id: 'n4', titulo: 'Izada de Bandera – Segundo Período Académico', fecha: '24 de julio de 2026', categoria: 'Institucional', imagen: 'assets/img/noticias/izada-de-bandera-2026.jpg', resumen: 'Acto cívico en el que se reconoció el compromiso, la dedicación y el esfuerzo de los estudiantes con excelente desempeño académico, convivencia, liderazgo y práctica de valores.', detalle: '<p>En nuestra Institución Educativa Rural Puerto Rosario llevamos a cabo la Izada de Bandera correspondiente al segundo período académico, un acto cívico en el que reconocimos el compromiso, la dedicación y el esfuerzo de nuestros estudiantes.</p><p>Durante esta ceremonia exaltamos a quienes, con su excelente desempeño académico, convivencia, liderazgo y práctica de valores, se hicieron merecedores de este reconocimiento.</p><p>Asimismo, destacamos el valioso acompañamiento de los padres de familia, cuyo apoyo y compromiso son fundamentales para el crecimiento personal y académico de sus hijos. Felicitamos a todos los estudiantes homenajeados y a sus familias por este importante logro. Que este reconocimiento sea una motivación para continuar esforzándose, superando retos y siendo ejemplo para toda la comunidad educativa.</p><p>En la Ier Puerto Rosario creemos que cada logro es el resultado del trabajo conjunto entre estudiantes, familias y docentes, unidos por un mismo propósito: formar ciudadanos íntegros, responsables y comprometidos con su futuro.</p><p>¡Sigamos construyendo juntos una educación basada en el esfuerzo, los valores y la excelencia!</p>', enlace: 'https://www.facebook.com/61575830740720/posts/122195853602861024/', fuente: 'Facebook', demo: false, publicada: true },
+      { id: 'n5', titulo: 'Celebrando nuestra historia y nuestras tradiciones', fecha: '12 de agosto de 2026', categoria: 'Cultural', imagen: 'assets/img/noticias/juegos-tradicionales-2026.jpg', resumen: 'La institución participó en la conmemoración de la Batalla de Boyacá: la Banda de Paz acompañó el desfile y los estudiantes disfrutaron de los VI Juegos Tradicionales Autóctonos.', detalle: '<p>La Ier Puerto Rosario participó activamente en la conmemoración de la Batalla de Boyacá, una fecha que nos invita a recordar nuestra historia y a fortalecer el amor y respeto por nuestros símbolos patrios.</p><p>Con mucho orgullo, nuestra Banda de Paz rindió homenaje a esta importante fecha y acompañó el desfile que recorrió las principales calles de Puerto Rosario, llevando música, alegría y sentido de pertenencia a nuestra comunidad.</p><p>Como parte de esta celebración también disfrutamos de los VI Juegos Tradicionales Autóctonos, donde nuestros estudiantes participaron en actividades como bolas, trompos y encostalados, entre otros juegos de nuestra región.</p><p>El cartel de los Sextos Juegos Tradicionales, del 6 de agosto de 2026, hace parte de esta misma jornada de tradición y encuentro comunitario.</p>', enlace: 'https://www.facebook.com/61575830740720/posts/122199607178861024/', fuente: 'Facebook', demo: false, publicada: true }
+    ],
+    proyectos: [
+      { id: 'p1', titulo: 'Sala de Tecnología e Informática', area: 'tecnologia', imagen: 'assets/img/tecnologia.svg', descripcion: 'Espacio de ejemplo para el uso responsable de herramientas digitales: ofimática, ciudadanía digital, mantenimiento básico de equipos y alfabetización digital de la comunidad.', detalle: '<p>Descripción demostrativa.</p>', demo: true, publicado: true },
+      { id: 'p2', titulo: 'Innovatec: ideas que resuelven problemas del campo', area: 'innovatec', imagen: 'assets/img/innovacion.svg', descripcion: 'Ejemplo de estrategia donde los estudiantes detectan una necesidad de la vereda y prototipan soluciones con materiales reutilizables, acompañados por sus docentes.', detalle: '<p>Descripción demostrativa.</p>', demo: true, publicado: true },
+      { id: 'p3', titulo: 'Semillero de indagación e investigación', area: 'ciencia', imagen: 'assets/img/ciencia.svg', descripcion: 'Ejemplo de semillero que formula preguntas sobre el agua, el suelo y la biodiversidad del Putumayo y las responde con observación y registro de datos en el propio entorno.', detalle: '<p>Descripción demostrativa.</p>', demo: true, publicado: true },
+      { id: 'p4', titulo: 'Vivero, huerta y manejo de residuos', area: 'medioambiente', imagen: 'assets/img/medioambiente.svg', descripcion: 'Ejemplo de proyecto ambiental escolar: propagación de especies nativas, compostaje, huerta de aprendizaje y clasificación de residuos en la sede.', detalle: '<p>Descripción demostrativa.</p>', demo: true, publicado: true },
+      { id: 'p5', titulo: 'Plan lector y tradición oral', area: 'lectura', imagen: 'assets/img/lectura.svg', descripcion: 'Ejemplo de plan lector que combina biblioteca escolar, lectura en voz alta, escritura creativa y recopilación de relatos y saberes de las familias de la vereda.', detalle: '<p>Descripción demostrativa.</p>', demo: true, publicado: true },
+      { id: 'p6', titulo: 'Escuela de familias y participación comunitaria', area: 'comunidad', imagen: 'assets/img/comunidad.svg', descripcion: 'Ejemplo de estrategia de participación: encuentros con las familias, apoyo a las actividades escolares y articulación con organizaciones de la vereda.', detalle: '<p>Descripción demostrativa.</p>', demo: true, publicado: true }
+    ],
+    documentos: [
+      { id: 'd1', titulo: 'Proyecto Educativo Institucional (PEI)', categoria: 'Institucional: PEI, Manual, SIEE', icono: 'libro', descripcion: 'Documento marco que define la identidad, el horizonte institucional, el componente pedagógico y el componente comunitario.', archivo: 'documentos/pei-2025.pdf', anio: '2025', periodicidad: 'anual', proximaActualizacion: '', publicado: true },
+      { id: 'd2', titulo: 'Manual de Convivencia', categoria: 'Convivencia y participación', icono: 'personas', descripcion: 'Normas de convivencia, derechos y deberes de la comunidad educativa y rutas de atención integral.', archivo: 'documentos/manual-convivencia-2025.pdf', anio: '2025', periodicidad: 'anual', proximaActualizacion: '', publicado: true },
+      { id: 'd3', titulo: 'SIEE: Sistema Institucional de Evaluación de Estudiantes', categoria: 'Institucional: PEI, Manual, SIEE', icono: 'graduacion', descripcion: 'Criterios, escalas y procedimientos de evaluación y promoción definidos por la institución.', archivo: 'documentos/siee-2025.pdf', anio: '2025', periodicidad: 'anual', proximaActualizacion: '', publicado: true },
+      { id: 'd4', titulo: 'Plan de Mejoramiento Institucional (PMI)', categoria: 'Gestión directiva y administrativa', icono: 'actualizar', descripcion: 'Metas, acciones y responsables para el mejoramiento continuo de la institución.', archivo: '', anio: '', periodicidad: 'anual', proximaActualizacion: '', publicado: true },
+      { id: 'd5', titulo: 'Calendario académico', categoria: 'Gestión directiva y administrativa', icono: 'calendario', descripcion: 'Fechas del año escolar vigente: periodos, actividades institucionales y periodos de receso.', archivo: 'documentos/calendario-academico-2026.pdf', anio: '2026', periodicidad: 'anual', proximaActualizacion: '', publicado: true },
+      { id: 'd6', titulo: 'Proyectos transversales', categoria: 'Proyectos transversales', icono: 'hoja', descripcion: 'Proyectos obligatorios y complementarios: ambiental, educación sexual, derechos humanos, movilidad y otros.', archivo: '', anio: '', periodicidad: 'anual', proximaActualizacion: '', publicado: true },
+      { id: 'd7', titulo: 'Informes y documentos públicos', categoria: 'Transparencia y control social', icono: 'doc', descripcion: 'Informes de gestión, actas e información de interés público que la institución decida divulgar.', archivo: '', anio: '', periodicidad: 'anual', proximaActualizacion: '', publicado: true }
+    ]
+  };
+
+  /* ===================================================================
+     4. LISTA DE PENDIENTES INICIAL (clasificada)
+     =================================================================== */
+  var PENDIENTES_INICIALES = [];
+
+  /* Las notas internas («Pendientes») no van dentro de esta pagina: viven en
+     datos/notas-locales.json, un archivo LOCAL que no se publica en internet.
+     Si ese archivo no existe (por ejemplo, al abrir el panel en otro equipo),
+     la lista empieza vacia. Las notas que se creen quedan en este navegador. */
+  function mapearPendientes(lista) {
+    return (lista || []).map(function (t, i) {
+      return {
+        id: 't' + (i + 1),
+        tarea: t.t,
+        categoria: t.c,
+        prioridad: t.p,
+        periodicidad: t.per,
+        estado: t.e || 'pendiente',
+        responsable: '',
+        fechaLimite: '',
+        notas: t.n || '',
+        origen: 'Lista inicial'
+      };
+    });
+  }
+
+  /* ===================================================================
+     5. ALMACENAMIENTO LOCAL
+     =================================================================== */
+  var K_CONTENIDO = 'ierp_contenido_v1';
+  var K_PENDIENTES = 'ierp_pendientes_v1';
+  var K_SESION = 'ierp_sesion_v1';
+  var K_AVISO = 'ierp_aviso_seguridad_v1';
+
+  /* --- Sitio publicado: GitHub Pages ---
+     La clave del panel es la misma de subir.html: un token de GitHub que se
+     guarda SOLO en el navegador de cada persona (nunca dentro de esta página). */
+  var REPO = 'ierptorosario/ierptorosario.github.io';
+  var RAMA = 'main';
+  var API_REPO = 'https://api.github.com/repos/' + REPO;
+  var API_CONTENIDO = API_REPO + '/contents/datos/contenido.js';
+  var CLAVE_LS = 'ierp-clave-subir';
+
+  function claveSitio() {
+    try { return (localStorage.getItem(CLAVE_LS) || '').trim(); } catch (e) { return ''; }
+  }
+  function guardarClaveSitio(clave) {
+    try { localStorage.setItem(CLAVE_LS, clave); return true; } catch (e) { return false; }
+  }
+  function olvidarClaveSitio() {
+    try { localStorage.removeItem(CLAVE_LS); } catch (e) {}
+  }
+
+  function leer(k, respaldo) {
+    try {
+      var raw = localStorage.getItem(k);
+      return raw === null ? respaldo : JSON.parse(raw);
+    } catch (e) { return respaldo; }
+  }
+  function guardar(k, valor) {
+    try { localStorage.setItem(k, JSON.stringify(valor)); return true; }
+    catch (e) {
+      avisar('No se pudo guardar en este navegador (almacenamiento lleno). Descargue un respaldo.', 'riesgo');
+      return false;
+    }
+  }
+
+  var estado = {
+    contenido: leer(K_CONTENIDO, null) || contenidoInicial(),
+    pendientes: leer(K_PENDIENTES, null) || clonar(PENDIENTES_INICIALES),
+    vista: 'resumen',
+    filtroPend: { categoria: 'todas', estado: 'todos', prioridad: 'todas' },
+    busqueda: {}
+  };
+
+  function guardarContenido() {
+    estado.contenido.actualizado = new Date().toISOString();
+    guardar(K_CONTENIDO, estado.contenido);
+    pintarSello();
+  }
+  function guardarPendientes() {
+    guardar(K_PENDIENTES, estado.pendientes);
+    pintarContadores();
+  }
+
+  /* Las notas internas («Pendientes») no van dentro de esta página: viven en
+     datos/notas-locales.json, un archivo LOCAL que no se publica y que se
+     puede restaurar con el botón «Restaurar respaldo de pendientes». */
+
+  /* ===================================================================
+     6. RUTAS EN OBJETOS  (permite editar "institucion.correo", etc.)
+     =================================================================== */
+  function leerRuta(obj, ruta) {
+    var partes = ruta.split('.');
+    var actual = obj;
+    for (var i = 0; i < partes.length; i++) {
+      if (actual == null) return '';
+      actual = actual[partes[i]];
+    }
+    return actual === undefined || actual === null ? '' : actual;
+  }
+  function fijarRuta(obj, ruta, valor) {
+    var partes = ruta.split('.');
+    var actual = obj;
+    for (var i = 0; i < partes.length - 1; i++) {
+      if (typeof actual[partes[i]] !== 'object' || actual[partes[i]] === null) actual[partes[i]] = {};
+      actual = actual[partes[i]];
+    }
+    actual[partes[partes.length - 1]] = valor;
+  }
+
+  /* ===================================================================
+     7. IMÁGENES: lectura, reducción y compresión
+     =================================================================== */
+  function procesarImagen(archivo, opciones, alTerminar) {
+    opciones = opciones || {};
+    var maxAncho = opciones.maxAncho || 1280;
+    var calidad = opciones.calidad || 0.75;
+    var conservarTransparencia = !!opciones.transparencia;
+
+    if (!archivo || !/^image\//.test(archivo.type)) { alTerminar(''); return; }
+    if (archivo.size > 12 * 1024 * 1024) {
+      avisar('La imagen es muy grande (más de 12 MB). Use una versión más liviana.', 'riesgo');
+      alTerminar('');
+      return;
+    }
+
+    var lector = new FileReader();
+    lector.onload = function () {
+      var img = new Image();
+      img.onload = function () {
+        var escala = Math.min(1, maxAncho / img.width);
+        var w = Math.max(1, Math.round(img.width * escala));
+        var h = Math.max(1, Math.round(img.height * escala));
+        var lienzo = document.createElement('canvas');
+        lienzo.width = w;
+        lienzo.height = h;
+        var ctx = lienzo.getContext('2d');
+        if (!conservarTransparencia) {
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, w, h);
+        }
+        ctx.drawImage(img, 0, 0, w, h);
+        var tipo = conservarTransparencia ? 'image/png' : 'image/jpeg';
+        try {
+          alTerminar(lienzo.toDataURL(tipo, calidad));
+        } catch (e) {
+          alTerminar(lector.result);
+        }
+      };
+      img.onerror = function () { avisar('No se pudo leer la imagen.', 'riesgo'); alTerminar(''); };
+      img.src = lector.result;
+    };
+    lector.onerror = function () { alTerminar(''); };
+    lector.readAsDataURL(archivo);
+  }
+
+  /* ===================================================================
+     7.b NOMBRES DE ARCHIVO Y AYUDAS PARA SUBIR PDF
+     =================================================================== */
+  function nombreDeRuta(ruta) {
+    return String(ruta || '').split(/[\\/]/).pop();
+  }
+
+  /* Convierte "Plan de Estudios de Matemáticas 2026.pdf" en
+     "plan-de-estudios-de-matematicas-2026.pdf" (sin tildes, sin espacios:
+     así el enlace funciona igual en cualquier computador y en internet). */
+  function nombreArchivoSeguro(nombre) {
+    var base = String(nombre || '').replace(/\.[^.]+$/, '');
+    var limpio = base.normalize ? base.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : base;
+    limpio = limpio.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
+    return (limpio || 'documento') + '.pdf';
+  }
+
+  function avisoInstruccionPDF(seguro, original, valorPrevio) {
+    var igual = !original || original === seguro;
+    return '<div class="aviso aviso--alerta" style="margin-top:.7rem">' + ico('alerta') +
+      '<div><strong>Ya casi: falta copiar el archivo.</strong>' +
+      '<ol class="pasos" style="margin-top:.7rem">' +
+        '<li>Abra la carpeta del sitio y cree (si no existe) una carpeta llamada <code>documentos</code>, ' +
+          'al mismo nivel que <code>index.html</code>.</li>' +
+        '<li>Copie ahí el archivo' + (igual ? '' : ' y <strong>cámbiele el nombre a</strong> <code>' + esc(seguro) + '</code>') +
+          (igual ? '' : '<br><span class="mini">Su archivo se llama «' + esc(original) + '». Se le quitan espacios y tildes para que el enlace funcione en internet.</span>') +
+          '</li>' +
+        '<li>Compruebe que la ruta registrada sea <code>documentos/' + esc(seguro) + '</code> y pulse <strong>Guardar</strong>.</li>' +
+      '</ol>' +
+      '<div style="margin-top:.6rem"><button class="btn btn--outline btn--sm" type="button" data-copiar-nombre="' + esc(seguro) + '">' +
+        ico('doc') + ' Copiar el nombre del archivo</button></div>' +
+      '</div></div>';
+  }
+
+  /* ===================================================================
+     8. CONSTRUCCIÓN DE CAMPOS
+     =================================================================== */
+  function opcionesDe(campo) {
+    var lista = typeof campo.opciones === 'function' ? campo.opciones() : (campo.opciones || []);
+    return lista.map(function (o) {
+      return typeof o === 'string' ? { v: o, l: o } : { v: o.v, l: o.l };
+    });
+  }
+
+  function campoHTML(campo, valor, prefijo) {
+    var idc = 'f_' + (prefijo || 'x') + '_' + campo.k.replace(/[.\-]/g, '_');
+    var ancho = campo.ancho === 2 ? ' campo--ancho' : '';
+    var etiqueta = '<label for="' + idc + '">' + esc(campo.e) +
+      (campo.req ? ' <span class="req" title="Obligatorio">*</span>' : '') + '</label>';
+    var ayuda = campo.ayuda ? '<p class="campo__ayuda">' + campo.ayuda + '</p>' : '';
+    var control = '';
+
+    if (campo.tipo === 'bool') {
+      return '<div class="campo campo--ancho" data-caja="' + campo.k + '">' +
+        '<label class="interruptor"><input type="checkbox" data-campo="' + campo.k + '"' +
+        (valor ? ' checked' : '') + '> ' + esc(campo.e) + '</label>' + ayuda + '</div>';
+    }
+
+    if (campo.tipo === 'imagen') {
+      return '<div class="campo campo--ancho" data-caja="' + campo.k + '">' + etiqueta +
+        '<div class="cargador">' +
+          (hay(valor)
+            ? '<img src="' + esc(valor) + '" alt="Vista previa de la imagen cargada">'
+            : '<p class="mini">' + ico('imagen') + ' Sin imagen cargada.</p>') +
+          '<input type="file" id="' + idc + '" accept="image/*" data-imagen="' + campo.k + '">' +
+          ayuda +
+          (hay(valor) ? '<div style="margin-top:.6rem"><button class="btn btn--peligro btn--sm" type="button" data-quitar-imagen="' + campo.k + '">' + ico('basura') + ' Quitar imagen</button></div>' : '') +
+        '</div>' +
+        '<input type="hidden" data-campo="' + campo.k + '" value="' + esc(valor) + '">' +
+      '</div>';
+    }
+
+    if (campo.tipo === 'ruta') {
+      var previo = hay(valor) ? nombreDeRuta(valor) : '';
+      return '<div class="campo campo--ancho" data-caja="' + campo.k + '">' + etiqueta +
+        '<input type="text" id="' + idc + '" data-campo="' + campo.k + '" value="' + esc(valor) + '"' +
+          (campo.marcador ? ' placeholder="' + esc(campo.marcador) + '"' : '') + '>' +
+        '<div class="cargador" style="margin-top:.6rem">' +
+          '<label class="btn btn--outline btn--sm" for="' + idc + '_pdf" style="cursor:pointer">' +
+            ico('subir') + ' Elegir el PDF en mi computador</label>' +
+          '<input type="file" id="' + idc + '_pdf" accept="application/pdf,.pdf" data-pdf="' + campo.k + '" hidden>' +
+          '<p class="campo__ayuda" style="margin-top:.6rem">Al elegir el archivo, el panel escribe la ruta y le indica ' +
+            'exactamente dónde guardarlo. El navegador no puede copiar el archivo por usted: ese paso es manual.</p>' +
+        '</div>' +
+        ayuda +
+        '<div data-instruccion-pdf>' + (previo ? avisoInstruccionPDF(previo, previo) : '') + '</div>' +
+      '</div>';
+    }
+
+    if (campo.tipo === 'select') {
+      control = '<select id="' + idc + '" data-campo="' + campo.k + '">' +
+        opcionesDe(campo).map(function (o) {
+          return '<option value="' + esc(o.v) + '"' + (String(valor) === String(o.v) ? ' selected' : '') + '>' + esc(o.l) + '</option>';
+        }).join('') + '</select>';
+    } else if (campo.tipo === 'area') {
+      control = '<textarea id="' + idc + '" data-campo="' + campo.k + '"' +
+        (campo.filas ? ' rows="' + campo.filas + '"' : '') +
+        (campo.marcador ? ' placeholder="' + esc(campo.marcador) + '"' : '') + '>' + esc(valor) + '</textarea>';
+    } else if (campo.tipo === 'fecha') {
+      control = '<input type="date" id="' + idc + '" data-campo="' + campo.k + '" value="' + esc(String(valor).slice(0, 10)) + '">';
+    } else if (campo.tipo === 'numero') {
+      control = '<input type="number" id="' + idc + '" data-campo="' + campo.k + '" value="' + esc(valor) + '" min="0">';
+    } else if (campo.tipo === 'lista') {
+      control = '<input type="text" id="' + idc + '" data-campo="' + campo.k + '" value="' + esc(valor) + '"' +
+        (campo.marcador ? ' placeholder="' + esc(campo.marcador) + '"' : '') + '>';
+      ayuda = (ayuda ? ayuda + ' ' : '') + '<p class="campo__ayuda">Separe varios valores con punto y coma ( ; ).</p>';
+    } else {
+      control = '<input type="text" id="' + idc + '" data-campo="' + campo.k + '" value="' + esc(valor) + '"' +
+        (campo.marcador ? ' placeholder="' + esc(campo.marcador) + '"' : '') + '>';
+    }
+
+    return '<div class="campo' + ancho + '" data-caja="' + campo.k + '">' + etiqueta + control + ayuda +
+      '<p class="campo__error" hidden></p></div>';
+  }
+
+  function recogerFormulario(form, campos, destino) {
+    campos.forEach(function (campo) {
+      var el = form.querySelector('[data-campo="' + campo.k + '"]');
+      if (!el) return;
+      var valor;
+      if (campo.tipo === 'bool') valor = !!el.checked;
+      else if (campo.tipo === 'lista') valor = el.value.split(';').map(function (s) { return s.trim(); }).filter(Boolean);
+      else valor = el.value;
+      fijarRuta(destino, campo.k, valor);
+    });
+    return destino;
+  }
+
+  function marcarError(form, campo, mensaje) {
+    var caja = form.querySelector('[data-caja="' + campo + '"]');
+    if (!caja) return;
+    caja.classList.add('campo--error');
+    var err = caja.querySelector('.campo__error');
+    if (err) { err.textContent = mensaje; err.hidden = false; }
+  }
+  function limpiarErrores(form) {
+    $$('.campo--error', form).forEach(function (c) {
+      c.classList.remove('campo--error');
+      var e = c.querySelector('.campo__error');
+      if (e) e.hidden = true;
+    });
+  }
+
+  /* ===================================================================
+     9. ESQUEMAS DE CONTENIDO
+     =================================================================== */
+  function areasDisponibles() {
+    return (estado.contenido.areas || []).map(function (a) { return { v: a.slug, l: a.nombre }; });
+  }
+
+  var ESQUEMAS = {
+    documentos: {
+      titulo: 'Documentos institucionales',
+      singular: 'documento',
+      icono: 'doc',
+      descripcion: 'Cargue aquí el nombre del archivo PDF, el año de la versión y cada cuánto se actualiza. ' +
+        'El PDF se guarda en la carpeta <strong>documentos/</strong> del sitio (vea «Publicar y respaldar»).',
+      campos: [
+        { k: 'titulo', e: 'Nombre del documento', tipo: 'texto', req: true, ancho: 2, marcador: 'Ejemplo: PEI 2026' },
+        { k: 'categoria', e: 'Categoría', tipo: 'select', opciones: CATEGORIAS_DOC },
+        { k: 'icono', e: 'Ícono', tipo: 'select', opciones: ICONOS_DOC },
+        { k: 'descripcion', e: 'Descripción breve', tipo: 'area', ancho: 2, filas: 3 },
+        { k: 'archivo', e: 'Archivo PDF del documento', tipo: 'ruta', ancho: 2, marcador: 'documentos/pei-2026.pdf',
+          ayuda: 'Si todavía no tiene el archivo, deje este campo vacío: el sitio mostrará «PDF no disponible» y no simulará ninguna descarga.' },
+        { k: 'anio', e: 'Año o versión', tipo: 'texto', marcador: '2026' },
+        { k: 'periodicidad', e: 'Cada cuánto se actualiza', tipo: 'select', opciones: PERIODICIDADES },
+        { k: 'proximaActualizacion', e: 'Próxima fecha de actualización', tipo: 'fecha' },
+        { k: 'publicado', e: 'Mostrar en el sitio público', tipo: 'bool' }
+      ],
+      nuevo: function () {
+        return { id: nuevoId('d'), titulo: '', categoria: CATEGORIAS_DOC[0], icono: 'doc', descripcion: '',
+          archivo: '', anio: String(new Date().getFullYear()), periodicidad: 'anual',
+          proximaActualizacion: '', publicado: true };
+      },
+      tituloItem: function (it) { return it.titulo || '(documento sin nombre)'; },
+      subItem: function (it) { return it.descripcion || 'Sin descripción.'; },
+      iconoItem: function (it) { return it.icono || 'doc'; },
+      metaItem: function (it) {
+        var meta = [{ texto: it.categoria || 'Sin categoría', clase: 'azul', icono: 'etiqueta' }];
+        meta.push(hay(it.archivo)
+          ? { texto: 'PDF cargado', clase: 'ok', icono: 'ver' }
+          : { texto: 'Falta el PDF', clase: 'pend', icono: 'reloj' });
+        if (hay(it.anio)) meta.push({ texto: 'Versión ' + it.anio, clase: 'pend', icono: 'calendario' });
+        var d = diasHasta(it.proximaActualizacion);
+        if (d !== null) {
+          if (d < 0) meta.push({ texto: 'Actualización vencida', clase: 'rojo', icono: 'alerta' });
+          else if (d <= 60) meta.push({ texto: 'Vence en ' + d + ' días', clase: 'demo', icono: 'reloj' });
+          else meta.push({ texto: 'Vence el ' + fechaLarga(it.proximaActualizacion), clase: 'pend', icono: 'calendario' });
+        }
+        return meta;
+      },
+      validar: function (it) {
+        var e = [];
+        if (!hay(it.titulo)) e.push(['titulo', 'Escriba el nombre del documento.']);
+        return e;
+      },
+      botonGuia: true,
+      accionesExtra: function (it) {
+        if (!hay(it.archivo)) return '';
+        return '<a class="icono-btn" href="' + esc(it.archivo) + '" target="_blank" rel="noopener" ' +
+          'title="Abrir el PDF para comprobar que está en su sitio" ' +
+          'aria-label="Comprobar el PDF de ' + esc(it.titulo) + '">' + ico('externo') + '</a>';
+      }
+    },
+
+    noticias: {
+      titulo: 'Noticias y eventos',
+      singular: 'noticia',
+      icono: 'periodico',
+      descripcion: 'Cree las noticias del año escolar. Mientras estén marcadas como demostrativas, ' +
+        'el sitio público mostrará la etiqueta «Ejemplo demostrativo».',
+      campos: [
+        { k: 'titulo', e: 'Titular', tipo: 'texto', req: true, ancho: 2 },
+        { k: 'fecha', e: 'Fecha visible', tipo: 'texto', marcador: 'Ejemplo: 12 de septiembre de 2026',
+          ayuda: 'Se muestra tal como se escribe. Ejemplo: 12 de septiembre de 2026.' },
+        { k: 'categoria', e: 'Categoría', tipo: 'select', opciones: CATEGORIAS_NOTICIA },
+        { k: 'imagen', e: 'Imagen de la noticia', tipo: 'imagen', ancho: 2 },
+        { k: 'fotos', e: 'Número de fotografías en Facebook (opcional)', tipo: 'numero', ancho: 2,
+          ayuda: 'Cuántas fotografías tiene la publicación original en Facebook. El sitio muestra «N fotografías». ' +
+            'Déjelo vacío o en 0 si no aplica.' },
+        { k: 'resumen', e: 'Resumen (aparece en la tarjeta)', tipo: 'area', ancho: 2, filas: 3 },
+        { k: 'detalle', e: 'Texto completo (se abre en la ventana «Leer más»)', tipo: 'area', ancho: 2, filas: 7,
+          ayuda: 'Admite etiquetas HTML sencillas: &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, &lt;a href="..."&gt;.' },
+        { k: 'enlace', e: 'Enlace a la publicación original (opcional)', tipo: 'texto', ancho: 2,
+          marcador: 'https://www.facebook.com/…',
+          ayuda: 'Si la noticia se publicó primero en Facebook, pegue aquí el enlace de ESA publicación. El sitio ' +
+            'mostrará el botón «Ver la publicación original» dentro de «Leer más». Déjelo vacío si no aplica.' },
+        { k: 'fuente', e: 'Nombre de la red o medio (opcional)', tipo: 'texto', marcador: 'Facebook' },
+        { k: 'demo', e: 'Marcar como contenido demostrativo', tipo: 'bool' },
+        { k: 'publicada', e: 'Publicar en el sitio', tipo: 'bool' }
+      ],
+      nuevo: function () {
+        return { id: nuevoId('n'), titulo: '', fecha: fechaLarga(hoyISO()), categoria: CATEGORIAS_NOTICIA[0],
+          imagen: '', fotos: '', resumen: '', detalle: '', enlace: '', fuente: '', demo: true, publicada: true };
+      },
+      tituloItem: function (it) { return it.titulo || '(noticia sin titular)'; },
+      subItem: function (it) { return it.resumen || 'Sin resumen.'; },
+      iconoItem: function () { return 'periodico'; },
+      metaItem: function (it) {
+        var meta = [{ texto: it.fecha || 'Sin fecha', clase: 'pend', icono: 'calendario' }];
+        if (hay(it.categoria)) meta.push({ texto: it.categoria, clase: 'azul', icono: 'etiqueta' });
+        meta.push(it.demo
+          ? { texto: 'Demostrativa', clase: 'demo', icono: 'chispa' }
+          : { texto: 'Oficial', clase: 'ok', icono: 'ver' });
+        meta.push(it.publicada
+          ? { texto: 'Publicada', clase: 'ok', icono: 'ver' }
+          : { texto: 'Oculta', clase: 'pend', icono: 'reloj' });
+        return meta;
+      },
+      validar: function (it) {
+        var e = [];
+        if (!hay(it.titulo)) e.push(['titulo', 'Escriba el titular de la noticia.']);
+        return e;
+      }
+    },
+
+    proyectos: {
+      titulo: 'Proyectos institucionales',
+      singular: 'proyecto',
+      icono: 'chispa',
+      descripcion: 'Registre los proyectos reales de la institución. El «área» es la etiqueta con la que ' +
+        'se podrá filtrar en el sitio público.',
+      campos: [
+        { k: 'titulo', e: 'Nombre del proyecto', tipo: 'texto', req: true, ancho: 2 },
+        { k: 'area', e: 'Área o línea de trabajo', tipo: 'select', opciones: areasDisponibles },
+        { k: 'imagen', e: 'Imagen del proyecto', tipo: 'imagen' },
+        { k: 'descripcion', e: 'Descripción (aparece en la tarjeta)', tipo: 'area', ancho: 2, filas: 3 },
+        { k: 'detalle', e: 'Información ampliada', tipo: 'area', ancho: 2, filas: 7,
+          ayuda: 'Admite etiquetas HTML sencillas: &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;.' },
+        { k: 'demo', e: 'Marcar como contenido demostrativo', tipo: 'bool' },
+        { k: 'publicado', e: 'Publicar en el sitio', tipo: 'bool' }
+      ],
+      nuevo: function () {
+        var primera = (estado.contenido.areas[0] || {}).slug || '';
+        return { id: nuevoId('p'), titulo: '', area: primera, imagen: '', descripcion: '', detalle: '',
+          demo: true, publicado: true };
+      },
+      tituloItem: function (it) { return it.titulo || '(proyecto sin nombre)'; },
+      subItem: function (it) { return it.descripcion || 'Sin descripción.'; },
+      iconoItem: function () { return 'chispa'; },
+      metaItem: function (it) {
+        var area = (estado.contenido.areas || []).filter(function (a) { return a.slug === it.area; })[0];
+        var meta = [{ texto: area ? area.nombre : 'Sin área', clase: 'azul', icono: 'etiqueta' }];
+        meta.push(it.demo
+          ? { texto: 'Demostrativo', clase: 'demo', icono: 'chispa' }
+          : { texto: 'Real', clase: 'ok', icono: 'ver' });
+        meta.push(it.publicado
+          ? { texto: 'Publicado', clase: 'ok', icono: 'ver' }
+          : { texto: 'Oculto', clase: 'pend', icono: 'reloj' });
+        return meta;
+      },
+      validar: function (it) {
+        var e = [];
+        if (!hay(it.titulo)) e.push(['titulo', 'Escriba el nombre del proyecto.']);
+        return e;
+      }
+    },
+
+    galeria: {
+      titulo: 'Galería de imágenes',
+      singular: 'imagen',
+      icono: 'imagen',
+      descripcion: 'Suba fotografías de la institución. <strong>No publique rostros de menores de edad ' +
+        'sin la autorización firmada de sus acudientes.</strong>',
+      campos: [
+        { k: 'titulo', e: 'Título o pie de foto', tipo: 'texto', req: true, ancho: 2 },
+        { k: 'src', e: 'Imagen', tipo: 'imagen', ancho: 2 },
+        { k: 'alt', e: 'Descripción para lectores de pantalla', tipo: 'texto', ancho: 2,
+          ayuda: 'Explique qué muestra la imagen. Es obligatorio para la accesibilidad del sitio.' },
+        { k: 'referencia', e: 'Es una imagen de referencia (no una foto real de la institución)', tipo: 'bool' },
+        { k: 'publicado', e: 'Mostrar en el sitio público', tipo: 'bool' }
+      ],
+      nuevo: function () {
+        return { id: nuevoId('g'), titulo: '', src: '', alt: '', referencia: false, publicado: true };
+      },
+      tituloItem: function (it) { return it.titulo || '(imagen sin título)'; },
+      subItem: function (it) { return it.alt || 'Falta la descripción para lectores de pantalla.'; },
+      iconoItem: function () { return 'imagen'; },
+      metaItem: function (it) {
+        var meta = [];
+        meta.push(hay(it.src)
+          ? { texto: 'Imagen cargada', clase: 'ok', icono: 'ver' }
+          : { texto: 'Falta la imagen', clase: 'pend', icono: 'reloj' });
+        if (it.referencia) meta.push({ texto: 'Ilustración de referencia', clase: 'demo', icono: 'chispa' });
+        meta.push(it.publicado
+          ? { texto: 'Visible', clase: 'ok', icono: 'ver' }
+          : { texto: 'Oculta', clase: 'pend', icono: 'reloj' });
+        return meta;
+      },
+      validar: function (it) {
+        var e = [];
+        if (!hay(it.titulo)) e.push(['titulo', 'Escriba un título o pie de foto.']);
+        if (!hay(it.src)) e.push(['src', 'Cargue una imagen.']);
+        return e;
+      }
+    },
+
+    areas: {
+      titulo: 'Áreas y líneas de trabajo',
+      singular: 'área',
+      icono: 'etiqueta',
+      descripcion: 'Estas áreas son las etiquetas con las que se filtran los proyectos en el sitio público.',
+      campos: [
+        { k: 'nombre', e: 'Nombre visible del área', tipo: 'texto', req: true, ancho: 2 },
+        { k: 'slug', e: 'Identificador interno', tipo: 'texto', ancho: 2,
+          ayuda: 'Solo minúsculas, sin tildes ni espacios. Ejemplo: medioambiente.' }
+      ],
+      nuevo: function () { return { slug: '', nombre: '' }; },
+      tituloItem: function (it) { return it.nombre || '(área sin nombre)'; },
+      subItem: function (it) { return 'Identificador: ' + (it.slug || '—'); },
+      iconoItem: function () { return 'etiqueta'; },
+      metaItem: function (it) {
+        var n = (estado.contenido.proyectos || []).filter(function (p) { return p.area === it.slug; }).length;
+        return [{ texto: n === 1 ? '1 proyecto' : n + ' proyectos', clase: 'azul', icono: 'chispa' }];
+      },
+      validar: function (it) {
+        var e = [];
+        if (!hay(it.nombre)) e.push(['nombre', 'Escriba el nombre del área.']);
+        if (!hay(it.slug)) e.push(['slug', 'Escriba el identificador interno.']);
+        else if (!/^[a-z0-9\-]+$/.test(it.slug)) e.push(['slug', 'Use solo minúsculas, números y guiones.']);
+        return e;
+      }
+    }
+  };
+
+  /* ===================================================================
+     10. VISTAS DE AJUSTES (identidad, textos institucionales, seguridad)
+     =================================================================== */
+  var AJUSTES = {
+    identidad: {
+      titulo: 'Identidad y datos institucionales',
+      descripcion: 'Estos datos aparecen en la barra superior, el encabezado, el pie de página y la sección de contacto.',
+      grupos: [
+        { titulo: 'Identificación', campos: [
+          { k: 'institucion.nombre', e: 'Nombre completo de la institución', tipo: 'texto', ancho: 2, req: true },
+          { k: 'institucion.lema', e: 'Lema o eslogan (si existe)', tipo: 'texto', ancho: 2,
+            ayuda: 'Se tomó del escudo oficial: «Ideal de Hombres Libres». Corríjalo si el lema vigente es otro.' },
+          { k: 'institucion.escudo', e: 'Escudo institucional', tipo: 'imagen', ancho: 2,
+            ayuda: 'YA ESTÁ CARGADO el escudo oficial (assets/img/escudo.png), tomado de la página de Facebook de la ' +
+              'institución. Si consigue el archivo original en máxima calidad (PNG con fondo transparente), súbalo ' +
+              'aquí para reemplazarlo.' },
+          { k: 'institucion.resolucion', e: 'Resolución de aprobación de estudios', tipo: 'texto' },
+          { k: 'institucion.nit', e: 'NIT', tipo: 'texto' },
+          { k: 'institucion.dane', e: 'Código DANE', tipo: 'texto' },
+          { k: 'institucion.rector', e: 'Rector(a)', tipo: 'texto' }
+        ] },
+        { titulo: 'Ubicación y contacto', campos: [
+          { k: 'institucion.ubicacion', e: 'Ubicación general (se muestra en la barra superior)', tipo: 'texto', ancho: 2 },
+          { k: 'institucion.direccion', e: 'Dirección precisa de la sede', tipo: 'texto', ancho: 2 },
+          { k: 'institucion.telefono', e: 'Teléfono institucional', tipo: 'texto' },
+          { k: 'institucion.correo', e: 'Correo electrónico institucional', tipo: 'texto' },
+          { k: 'institucion.horario', e: 'Horario de atención', tipo: 'texto', ancho: 2 },
+          { k: 'institucion.redes', e: 'Redes sociales oficiales (una dirección por canal)', tipo: 'lista', ancho: 2,
+            marcador: 'https://www.facebook.com/…',
+            ayuda: 'Escriba la dirección COMPLETA, empezando por https:// — el sitio la convierte en un enlace que abre ' +
+              'en una pestaña nueva y le pone el nombre de la red (Facebook, Instagram, YouTube…). Separe varias redes ' +
+              'con punto y coma ( ; ). Enlace únicamente perfiles oficiales verificados: no se aceptan direcciones ' +
+              'que no empiecen por http.' }
+        ] },
+        { titulo: 'Portada principal', campos: [
+          { k: 'portada.titulo', e: 'Título de la portada', tipo: 'texto', ancho: 2, req: true },
+          { k: 'portada.texto', e: 'Texto de presentación', tipo: 'area', ancho: 2, filas: 5 },
+          { k: 'portada.imagen', e: 'Imagen de fondo de la portada', tipo: 'imagen', ancho: 2,
+            ayuda: 'Se recomienda una fotografía horizontal de buena calidad (1600 × 900 píxeles).' }
+        ] }
+      ]
+    },
+
+    institucion: {
+      titulo: 'Textos institucionales',
+      descripcion: 'Misión, visión, principios y reseña histórica. Se publican en la sección «Nuestra institución».',
+      grupos: [
+        { titulo: 'Horizonte institucional', campos: [
+          { k: 'institucion.mision', e: 'Misión', tipo: 'area', ancho: 2, filas: 5,
+            ayuda: 'Admite etiquetas HTML sencillas.' },
+          { k: 'institucion.vision', e: 'Visión', tipo: 'area', ancho: 2, filas: 5 },
+          { k: 'institucion.principios', e: 'Principios y valores', tipo: 'area', ancho: 2, filas: 5 }
+        ] },
+        { titulo: 'Historia', campos: [
+          { k: 'institucion.historia', e: 'Reseña histórica', tipo: 'area', ancho: 2, filas: 7 },
+          { k: 'institucion.filosofia', e: 'Filosofía institucional', tipo: 'area', ancho: 2, filas: 7 }
+        ] },
+        { titulo: 'Estado del contenido', campos: [
+          { k: 'esDemostracion', e: 'El sitio todavía contiene contenido demostrativo', tipo: 'bool',
+            ayuda: 'Desmarque esta casilla ÚNICAMENTE cuando toda la información publicada sea oficial. ' +
+              'Al desmarcarla, el sitio oculta los avisos de «contenido demostrativo» y la leyenda de estado de la información.' }
+        ] }
+      ]
+    }
+  };
+
+  /* ===================================================================
+     11. DATOS POR COLECCIÓN (contenido + pendientes)
+     =================================================================== */
+  function datosDe(nombre) {
+    if (nombre === 'pendientes') return estado.pendientes;
+    if (!Array.isArray(estado.contenido[nombre])) estado.contenido[nombre] = [];
+    return estado.contenido[nombre];
+  }
+  function persistir(nombre) {
+    if (nombre === 'pendientes') guardarPendientes();
+    else guardarContenido();
+  }
+
+  ESQUEMAS.pendientes = {
+    titulo: 'Pendientes de información',
+    singular: 'pendiente',
+    icono: 'lista',
+    campos: [
+      { k: 'tarea', e: 'Qué falta hacer', tipo: 'texto', req: true, ancho: 2 },
+      { k: 'categoria', e: 'Categoría', tipo: 'select', opciones: function () {
+          var c = [];
+          estado.pendientes.forEach(function (t) { if (c.indexOf(t.categoria) === -1) c.push(t.categoria); });
+          return c.sort();
+        } },
+      { k: 'prioridad', e: 'Prioridad', tipo: 'select', opciones: PRIORIDADES },
+      { k: 'periodicidad', e: 'Cada cuánto se repite', tipo: 'select', opciones: PERIODICIDADES },
+      { k: 'estado', e: 'Estado', tipo: 'select', opciones: ESTADOS_TAREA },
+      { k: 'responsable', e: 'Responsable', tipo: 'texto', marcador: 'Ejemplo: Coordinación académica' },
+      { k: 'fechaLimite', e: 'Fecha límite', tipo: 'fecha' },
+      { k: 'notas', e: 'Notas u observaciones', tipo: 'area', ancho: 2, filas: 3 }
+    ],
+    nuevo: function () {
+      return { id: nuevoId('t'), tarea: '', categoria: 'Documentos institucionales', prioridad: 'media',
+        periodicidad: 'única', estado: 'pendiente', responsable: '', fechaLimite: '', notas: '', origen: 'Manual' };
+    },
+    tituloItem: function (it) { return it.tarea || '(pendiente sin descripción)'; },
+    subItem: function (it) { return it.notas || ''; },
+    iconoItem: function () { return 'lista'; },
+    metaItem: function () { return []; },
+    validar: function (it) {
+      var e = [];
+      if (!hay(it.tarea)) e.push(['tarea', 'Describa qué falta hacer.']);
+      return e;
+    }
+  };
+
+  /* ===================================================================
+     12. VISTAS
+     =================================================================== */
+  var VISTAS = [
+    { id: 'resumen', titulo: 'Resumen', grupo: 'General', icono: 'panel', tipo: 'custom',
+      sub: 'Estado general del sitio y de la información institucional.' },
+    { id: 'pendientes', titulo: 'Pendientes', grupo: 'General', icono: 'lista', tipo: 'custom', badge: true,
+      sub: 'Lista de todo lo que falta para alimentar el sitio, clasificada por categoría y prioridad.' },
+    { id: 'guia', titulo: 'Cómo cargar la información', grupo: 'General', icono: 'libro', tipo: 'custom',
+      sub: 'Guía paso a paso: qué hacer primero, cómo guardar un PDF y cómo publicarlo.' },
+
+    { id: 'identidad', titulo: 'Identidad y datos', grupo: 'Contenido del sitio', icono: 'escudo', tipo: 'ajustes',
+      sub: 'Nombre, escudo, contacto y portada.' },
+    { id: 'institucion', titulo: 'Textos institucionales', grupo: 'Contenido del sitio', icono: 'edificio', tipo: 'ajustes',
+      sub: 'Misión, visión, principios e historia.' },
+    { id: 'documentos', titulo: 'Documentos', grupo: 'Contenido del sitio', icono: 'doc', tipo: 'crud',
+      sub: 'PEI, Manual de convivencia, SIEE, planes de estudio y demás documentos en PDF.' },
+    { id: 'noticias', titulo: 'Noticias y eventos', grupo: 'Contenido del sitio', icono: 'periodico', tipo: 'crud',
+      sub: 'Noticias del año escolar en curso.' },
+    { id: 'proyectos', titulo: 'Proyectos', grupo: 'Contenido del sitio', icono: 'chispa', tipo: 'crud',
+      sub: 'Proyectos institucionales y sus líneas de trabajo.' },
+    { id: 'galeria', titulo: 'Galería', grupo: 'Contenido del sitio', icono: 'imagen', tipo: 'crud',
+      sub: 'Fotografías de la institución.' },
+    { id: 'areas', titulo: 'Áreas y categorías', grupo: 'Contenido del sitio', icono: 'etiqueta', tipo: 'crud',
+      sub: 'Etiquetas para clasificar los proyectos.' },
+
+    { id: 'actualizacion', titulo: 'Asistente de actualización', grupo: 'Mantenimiento', icono: 'actualizar', tipo: 'custom',
+      sub: 'Revisa qué información está vencida, incompleta o pendiente de actualizar.' },
+    { id: 'publicar', titulo: 'Publicar y respaldar', grupo: 'Mantenimiento', icono: 'descarga', tipo: 'custom',
+      sub: 'Genera el archivo que lee el sitio público y descargue copias de seguridad.' },
+    { id: 'seguridad', titulo: 'Seguridad y clave', grupo: 'Mantenimiento', icono: 'candado', tipo: 'custom',
+      sub: 'Clave de acceso y recomendaciones de seguridad.' }
+  ];
+
+  function vistaPorId(id) {
+    return VISTAS.filter(function (v) { return v.id === id; })[0];
+  }
+
+  function construirNavegacion() {
+    var nav = $('#admNav');
+    var grupos = [];
+    VISTAS.forEach(function (v) { if (grupos.indexOf(v.grupo) === -1) grupos.push(v.grupo); });
+    nav.innerHTML = grupos.map(function (g) {
+      return '<p class="adm-nav__grupo">' + esc(g) + '</p>' +
+        VISTAS.filter(function (v) { return v.grupo === g; }).map(function (v) {
+          return '<button type="button" data-vista="' + v.id + '"' + (v.id === estado.vista ? ' class="is-active"' : '') + '>' +
+            ico(v.icono) + '<span>' + esc(v.titulo) + '</span>' +
+            (v.badge ? '<span class="adm-nav__n" data-badge="' + v.id + '" hidden>0</span>' : '') +
+          '</button>';
+        }).join('');
+    }).join('');
+  }
+
+  function construirVistas() {
+    var cont = $('#admVistas');
+    cont.innerHTML = '';
+    VISTAS.forEach(function (v) {
+      var el;
+      if (v.tipo === 'crud') el = vistaCRUD(v.id);
+      else if (v.tipo === 'ajustes') el = vistaAjustes(v.id);
+      else el = vistaCustom(v.id);
+      el.hidden = true;
+      cont.appendChild(el);
+    });
+  }
+
+  function irA(id) {
+    var v = vistaPorId(id);
+    if (!v) return;
+    estado.vista = id;
+    $$('.adm-vistas > section').forEach(function (s) { s.hidden = s.id !== 'vista-' + id; });
+    $$('#admNav button').forEach(function (b) {
+      var activo = b.getAttribute('data-vista') === id;
+      b.classList.toggle('is-active', activo);
+      if (activo) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+    });
+    $('#admTitulo').textContent = v.titulo;
+    $('#admSubtitulo').textContent = v.sub;
+    if (v.tipo === 'crud') renderLista(id);
+    if (v.tipo === 'ajustes') pintarAjustes(id);
+    if (id === 'resumen') pintarResumen();
+    if (id === 'pendientes') pintarPendientes();
+    if (id === 'guia') pintarGuia();
+    if (id === 'publicar') pintarPublicar();
+    if (id === 'actualizacion') pintarAnalisis(null);
+    if (id === 'seguridad') pintarSeguridad();
+    cerrarMenuMovil();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* -------------------------------------------------------------------
+     Vista genérica de lista + editor
+     ------------------------------------------------------------------- */
+  function vistaCRUD(nombre) {
+    var esq = ESQUEMAS[nombre];
+    var sec = document.createElement('section');
+    sec.className = 'vista';
+    sec.id = 'vista-' + nombre;
+    sec.innerHTML =
+      '<div class="caja">' +
+        '<div class="caja__cab">' +
+          '<div style="flex:1;min-width:200px">' +
+            '<h2>' + esc(esq.titulo) + '</h2>' +
+            '<p>' + esq.descripcion + '</p>' +
+          '</div>' +
+          '<div class="buscador">' + ico('buscar') +
+            '<input type="search" id="buscar-' + nombre + '" data-buscar="' + nombre + '" ' +
+            'placeholder="Buscar…" aria-label="Buscar en ' + esc(esq.titulo) + '">' +
+          '</div>' +
+          '<button class="btn btn--primary btn--sm" type="button" data-nuevo="' + nombre + '">' +
+            ico('subir') + ' Añadir ' + esc(esq.singular) +
+          '</button>' +
+        '</div>' +
+        (esq.botonGuia
+          ? '<div class="aviso aviso--info" style="margin:0 0 1rem">' + ico('info') +
+              '<div><strong>¿No sabe por dónde empezar?</strong> Vea la guía <strong>«Cómo cargar la información»</strong>, ' +
+              'donde se explica paso a paso cómo guardar un PDF y cómo enlazarlo. ' +
+              '<div style="margin-top:.6rem"><button class="btn btn--outline btn--sm" type="button" data-vista="guia">' +
+              ico('libro') + ' Abrir la guía</button></div></div></div>'
+          : '') +
+        '<div class="caja__cuerpo"><div class="lista" id="lista-' + nombre + '"></div></div>' +
+        '<div class="caja__pie">' +
+          '<span class="mini" id="cuenta-' + nombre + '"></span>' +
+          '<div class="caja__acciones">' +
+            '<button class="btn btn--outline btn--sm" type="button" data-exportar="' + nombre + '">' + ico('descarga') + ' Exportar lista</button>' +
+            '<label class="btn btn--outline btn--sm" style="cursor:pointer">' + ico('subir') + ' Importar lista' +
+              '<input type="file" accept=".json,application/json" data-importar="' + nombre + '" hidden>' +
+            '</label>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    return sec;
+  }
+
+  function renderLista(nombre) {
+    var cont = $('#lista-' + nombre);
+    if (!cont) return;
+    var esq = ESQUEMAS[nombre];
+    var q = (estado.busqueda[nombre] || '').trim().toLowerCase();
+    var items = datosDe(nombre);
+    var filtrados = !q ? items : items.filter(function (it) {
+      return JSON.stringify(it).toLowerCase().indexOf(q) !== -1;
+    });
+
+    if (!filtrados.length) {
+      cont.innerHTML = '<div class="vacio">' +
+        (items.length
+          ? ico('buscar') + '<p>No se encontraron resultados para «' + esc(estado.busqueda[nombre]) + '».</p>'
+          : ico('info') + '<p>Todavía no hay registros en esta sección.</p>') +
+        '</div>';
+    } else {
+      cont.innerHTML = filtrados.map(function (it) {
+        var meta = (esq.metaItem(it) || []).map(function (m) {
+          return '<span class="tag tag--' + m.clase + '">' + ico(m.icono) + ' ' + esc(m.texto) + '</span>';
+        }).join('');
+        return '<article class="fila">' +
+          '<span class="fila__icono">' + ico(esq.iconoItem(it)) + '</span>' +
+          '<div class="fila__cuerpo">' +
+            '<h3>' + esc(esq.tituloItem(it)) + '</h3>' +
+            (hay(esq.subItem(it)) ? '<p>' + esc(esq.subItem(it)) + '</p>' : '') +
+            (meta ? '<div class="fila__meta">' + meta + '</div>' : '') +
+          '</div>' +
+          '<div class="fila__acciones">' +
+            (esq.accionesExtra ? esq.accionesExtra(it) : '') +
+            '<button class="icono-btn" type="button" data-editar="' + nombre + '" data-id="' + esc(it.id) + '" ' +
+              'aria-label="Editar ' + esc(esq.tituloItem(it)) + '">' + ico('lapiz') + '</button>' +
+            '<button class="icono-btn icono-btn--rojo" type="button" data-borrar="' + nombre + '" data-id="' + esc(it.id) + '" ' +
+              'aria-label="Eliminar ' + esc(esq.tituloItem(it)) + '">' + ico('basura') + '</button>' +
+          '</div>' +
+        '</article>';
+      }).join('');
+    }
+
+    var cuenta = $('#cuenta-' + nombre);
+    if (cuenta) {
+      cuenta.textContent = items.length === 1 ? '1 registro en total.'
+        : items.length + ' registros en total.';
+    }
+  }
+
+  /* -------------------------------------------------------------------
+     Editor lateral
+     ------------------------------------------------------------------- */
+  var editorActual = null;
+
+  function abrirEditor(nombre, id) {
+    var esq = ESQUEMAS[nombre];
+    var esNuevo = !id;
+    var item = esNuevo
+      ? esq.nuevo()
+      : datosDe(nombre).filter(function (x) { return x.id === id; })[0];
+    if (!item) return;
+
+    editorActual = { nombre: nombre, id: item.id, esNuevo: esNuevo };
+    $('#editorTitulo').textContent = (esNuevo ? 'Añadir ' : 'Editar ') + esq.singular;
+    $('#editorCuerpo').innerHTML = esq.campos.map(function (c) {
+      return campoHTML(c, leerRuta(item, c.k), nombre);
+    }).join('');
+    $('#editorEliminar').hidden = esNuevo;
+    $('#editor').hidden = false;
+    var primero = $('#editorCuerpo input, #editorCuerpo textarea, #editorCuerpo select');
+    if (primero) primero.focus();
+  }
+
+  function cerrarEditor() {
+    editorActual = null;
+    $('#editor').hidden = true;
+    $('#editorCuerpo').innerHTML = '';
+  }
+
+  function guardarEditor() {
+    if (!editorActual) return;
+    var nombre = editorActual.nombre;
+    var esq = ESQUEMAS[nombre];
+    var form = $('#editorCuerpo');
+    var lista = datosDe(nombre);
+    var item = editorActual.esNuevo
+      ? lista.filter(function (x) { return x.id === editorActual.id; })[0]
+      : lista.filter(function (x) { return x.id === editorActual.id; })[0];
+    if (!item) item = esq.nuevo();
+
+    limpiarErrores(form);
+    recogerFormulario(form, esq.campos, item);
+
+    var errores = esq.validar ? esq.validar(item) : [];
+    if (errores.length) {
+      errores.forEach(function (e) { marcarError(form, e[0], e[1]); });
+      avisar('Revise los campos marcados.', 'riesgo');
+      return;
+    }
+
+    if (editorActual.esNuevo) lista.push(item);
+    persistir(nombre);
+    renderLista(nombre);
+    if (nombre === 'pendientes') pintarPendientes();
+    pintarContadores();
+    cerrarEditor();
+    avisar(esActualizable(nombre) ? 'Guardado. Recuerde publicar el contenido.' : 'Guardado correctamente.');
+  }
+
+  function esActualizable(nombre) {
+    return ['documentos', 'noticias', 'proyectos', 'galeria', 'areas', 'identidad', 'institucion'].indexOf(nombre) !== -1;
+  }
+
+  /* -------------------------------------------------------------------
+     Vista de ajustes (formulario largo por grupos)
+     ------------------------------------------------------------------- */
+  function vistaAjustes(id) {
+    var cfg = AJUSTES[id];
+    var sec = document.createElement('section');
+    sec.className = 'vista';
+    sec.id = 'vista-' + id;
+    sec.innerHTML =
+      '<div class="aviso aviso--info" style="margin-bottom:1.2rem">' + ico('info') +
+        '<div><strong>' + esc(cfg.titulo) + '</strong><br>' + cfg.descripcion + '</div></div>' +
+      '<form id="form-' + id + '">' +
+        cfg.grupos.map(function (g, gi) {
+          return '<div class="caja" style="margin-bottom:1.2rem">' +
+            '<div class="caja__cab"><h2>' + esc(g.titulo) + '</h2></div>' +
+            '<div class="caja__cuerpo"><div class="rejilla rejilla--2" id="grupo-' + id + '-' + gi + '"></div></div>' +
+          '</div>';
+        }).join('') +
+        '<div class="caja__pie" style="border:1px solid var(--gris-200);border-radius:var(--radio);background:#fff">' +
+          '<span class="mini" id="estado-' + id + '"></span>' +
+          '<div class="caja__acciones">' +
+            '<button class="btn btn--outline btn--sm" type="button" data-revertir="' + id + '">Descartar cambios</button>' +
+            '<button class="btn btn--primary btn--sm" type="submit">' + ico('ver') + ' Guardar cambios</button>' +
+          '</div>' +
+        '</div>' +
+      '</form>';
+    return sec;
+  }
+
+  function pintarAjustes(id) {
+    var cfg = AJUSTES[id];
+    cfg.grupos.forEach(function (g, gi) {
+      var cont = $('#grupo-' + id + '-' + gi);
+      if (!cont) return;
+      cont.innerHTML = g.campos.map(function (c) {
+        return campoHTML(c, leerRuta(estado.contenido, c.k), id + '-' + gi);
+      }).join('');
+    });
+    var estado_ = $('#estado-' + id);
+    if (estado_) {
+      estado_.textContent = hay(estado.contenido.actualizado)
+        ? 'Última modificación: ' + fechaLarga(estado.contenido.actualizado)
+        : 'Aún no se ha guardado ninguna modificación.';
+    }
+  }
+
+  function guardarAjustes(id) {
+    var cfg = AJUSTES[id];
+    var form = $('#form-' + id);
+    limpiarErrores(form);
+    var campos = [];
+    cfg.grupos.forEach(function (g) { campos = campos.concat(g.campos); });
+    recogerFormulario(form, campos, estado.contenido);
+
+    var faltan = campos.filter(function (c) {
+      return c.req && !hay(leerRuta(estado.contenido, c.k));
+    });
+    if (faltan.length) {
+      faltan.forEach(function (c) { marcarError(form, c.k, 'Este campo es obligatorio.'); });
+      avisar('Complete los campos obligatorios.', 'riesgo');
+      return;
+    }
+    guardarContenido();
+    pintarAjustes(id);
+    pintarSello();
+    avisar('Cambios guardados. Recuerde publicar el contenido.');
+  }
+
+  /* ===================================================================
+     13. VISTAS PERSONALIZADAS
+     =================================================================== */
+  function vistaCustom(id) {
+    var sec = document.createElement('section');
+    sec.className = 'vista';
+    sec.id = 'vista-' + id;
+    sec.innerHTML = '<div id="cuerpo-' + id + '"></div>';
+    return sec;
+  }
+
+  function tarjeta(titulo, cuerpoHTML, pieHTML) {
+    return '<div class="caja">' +
+      (titulo ? '<div class="caja__cab"><h2>' + titulo + '</h2></div>' : '') +
+      '<div class="caja__cuerpo">' + cuerpoHTML + '</div>' +
+      (pieHTML ? '<div class="caja__pie">' + pieHTML + '</div>' : '') +
+      '</div>';
+  }
+
+  /* -------------------------------------------------------------------
+     13.1 Resumen
+     ------------------------------------------------------------------- */
+  function pintarResumen() {
+    var cont = $('#cuerpo-resumen');
+    if (!cont) return;
+    var pend = estado.pendientes;
+    var hechas = pend.filter(function (t) { return t.estado === 'hecha'; }).length;
+    var total = pend.length;
+    var pct = total ? Math.round((hechas / total) * 100) : 0;
+
+    var docs = estado.contenido.documentos || [];
+    var sinPdf = docs.filter(function (d) { return !hay(d.archivo); }).length;
+    var demos = (estado.contenido.noticias || []).filter(function (n) { return n.demo; }).length
+      + (estado.contenido.proyectos || []).filter(function (p) { return p.demo; }).length;
+    var hallazgos = analizar();
+    var criticos = hallazgos.filter(function (h) { return h.sev === 'rojo'; }).length;
+
+    var proximos = docs.filter(function (d) { return hay(d.proximaActualizacion); })
+      .map(function (d) { return { d: d, dias: diasHasta(d.proximaActualizacion) }; })
+      .sort(function (a, b) { return a.dias - b.dias; })
+      .slice(0, 6);
+
+    cont.innerHTML =
+      '<div class="rejilla rejilla--4" style="margin-bottom:1.2rem">' +
+        '<div class="kpi kpi--warm"><p class="kpi__n">' + (total - hechas) + '</p>' +
+          '<p class="kpi__e">Tareas pendientes</p><p class="kpi__d">de ' + total + ' en la lista</p></div>' +
+        '<div class="kpi kpi--rojo"><p class="kpi__n">' + criticos + '</p>' +
+          '<p class="kpi__e">Alertas críticas</p><p class="kpi__d">detectadas por el asistente</p></div>' +
+        '<div class="kpi kpi--azul"><p class="kpi__n">' + sinPdf + '</p>' +
+          '<p class="kpi__e">Documentos sin PDF</p><p class="kpi__d">de ' + docs.length + ' publicados</p></div>' +
+        '<div class="kpi kpi--verde"><p class="kpi__n">' + demos + '</p>' +
+          '<p class="kpi__e">Contenidos demostrativos</p><p class="kpi__d">noticias y proyectos por reemplazar</p></div>' +
+      '</div>' +
+
+      tarjeta('Avance de la información institucional',
+        '<div class="progreso"><div class="progreso__barra" style="width:' + pct + '%"></div></div>' +
+        '<div class="progreso__leyenda"><span><strong>' + pct + '%</strong> completado</span>' +
+        '<span>' + hechas + ' de ' + total + ' tareas hechas</span></div>',
+        '<span class="mini">' + (estado.contenido.esDemostracion
+          ? 'El sitio público todavía muestra la etiqueta de contenido demostrativo.'
+          : 'El sitio público está marcado como contenido oficial.') + '</span>' +
+        '<div class="caja__acciones">' +
+          '<button class="btn btn--outline btn--sm" type="button" data-vista="pendientes">' + ico('lista') + ' Ver pendientes</button>' +
+          '<button class="btn btn--primary btn--sm" type="button" data-vista="actualizacion">' + ico('actualizar') + ' Ejecutar revisión</button>' +
+        '</div>') +
+
+      '<div class="rejilla rejilla--2" style="margin-top:1.2rem">' +
+        tarjeta('Próximas actualizaciones',
+          proximos.length
+            ? '<table class="tabla"><thead><tr><th scope="col">Documento</th><th scope="col">Vence</th></tr></thead><tbody>' +
+              proximos.map(function (p) {
+                var txt = p.dias < 0 ? 'Vencido hace ' + Math.abs(p.dias) + ' días'
+                  : (p.dias === 0 ? 'Vence hoy' : 'En ' + p.dias + ' días');
+                return '<tr><td>' + esc(p.d.titulo) + '</td><td>' +
+                  '<span class="tag ' + (p.dias < 0 ? 'tag--rojo' : (p.dias <= 60 ? 'tag--demo' : 'tag--pend')) + '">' + esc(txt) + '</span></td></tr>';
+              }).join('') + '</tbody></table>'
+            : '<p class="mini">Ningún documento tiene programada una fecha de actualización. ' +
+              'Use el asistente para programarlas automáticamente.</p>',
+          '<button class="btn btn--outline btn--sm" type="button" data-vista="documentos">' + ico('doc') + ' Ir a documentos</button>') +
+        tarjeta('Accesos rápidos',
+          '<div class="lista">' +
+            [
+              ['identidad', 'escudo', 'Poner el escudo y los datos de contacto'],
+              ['institucion', 'edificio', 'Escribir misión, visión e historia'],
+              ['documentos', 'doc', 'Subir los PDF (PEI, SIEE, planes de estudio)'],
+              ['galeria', 'imagen', 'Subir fotografías autorizadas'],
+              ['publicar', 'descarga', 'Publicar los cambios en el sitio'],
+              ['seguridad', 'candado', 'Clave del sitio y seguridad']
+            ].map(function (a) {
+              return '<button class="fila" type="button" data-vista="' + a[0] + '" style="text-align:left;cursor:pointer;width:100%;font:inherit">' +
+                '<span class="fila__icono">' + ico(a[1]) + '</span>' +
+                '<div class="fila__cuerpo"><h3>' + esc(a[2]) + '</h3></div>' +
+                '</button>';
+            }).join('') +
+          '</div>') +
+      '</div>';
+  }
+
+  /* -------------------------------------------------------------------
+     13.1.b Guía: cómo cargar la información paso a paso
+     ------------------------------------------------------------------- */
+  function tieneDoc(c, texto) {
+    return (c.documentos || []).some(function (d) {
+      return String(d.titulo || '').toLowerCase().indexOf(texto.toLowerCase()) !== -1 && hay(d.archivo);
+    });
+  }
+
+  var ORDEN_CARGA = [
+    { t: 'Escudo institucional',
+      d: 'Aparece en el encabezado, en el pie de página y en la pestaña del navegador. Ya está cargado el escudo ' +
+        'oficial tomado de la página de Facebook; puede reemplazarlo por el archivo original en máxima calidad.',
+      donde: 'Identidad y datos', vista: 'identidad',
+      listo: function (c) { return hay(c.institucion.escudo); } },
+    { t: 'Datos de contacto oficiales',
+      d: 'Dirección exacta, teléfono, correo electrónico, horario de atención y redes sociales oficiales.',
+      donde: 'Identidad y datos', vista: 'identidad',
+      listo: function (c) {
+        return hay(c.institucion.direccion) && hay(c.institucion.telefono) &&
+               hay(c.institucion.correo) && hay(c.institucion.horario) &&
+               Array.isArray(c.institucion.redes) && c.institucion.redes.length > 0;
+      } },
+    { t: 'Misión, visión y principios',
+      d: 'Los textos que identifican a la institución y que hoy están vacíos.',
+      donde: 'Textos institucionales', vista: 'institucion',
+      listo: function (c) { return hay(c.institucion.mision) && hay(c.institucion.vision); } },
+    { t: 'PEI (Proyecto Educativo Institucional) en PDF',
+      d: 'El documento base de la institución. Se actualiza cada año.',
+      donde: 'Documentos', vista: 'documentos',
+      listo: function (c) { return tieneDoc(c, 'PEI'); } },
+    { t: 'Manual de Convivencia en PDF',
+      d: 'Se revisa y actualiza cada año.',
+      donde: 'Documentos', vista: 'documentos',
+      listo: function (c) { return tieneDoc(c, 'convivencia'); } },
+    { t: 'SIEE en PDF',
+      d: 'Sistema Institucional de Evaluación de Estudiantes.',
+      donde: 'Documentos', vista: 'documentos',
+      listo: function (c) { return tieneDoc(c, 'SIEE'); } },
+    { t: 'Calendario académico',
+      d: 'Fechas del año escolar en curso.',
+      donde: 'Documentos', vista: 'documentos',
+      listo: function (c) { return tieneDoc(c, 'calendario'); } },
+    { t: 'Planes de estudio por área',
+      d: 'Uno por cada área: Matemáticas, Lengua Castellana, Ciencias Naturales, Sociales, Inglés, ' +
+        'Educación Física, Artística, Tecnología, Ética y Religión.',
+      donde: 'Documentos', vista: 'documentos',
+      listo: function (c) {
+        return (c.documentos || []).some(function (d) {
+          return d.categoria === 'Planes de estudio por área' && hay(d.archivo);
+        });
+      } },
+    { t: 'Plan de Mejoramiento Institucional (PMI)',
+      d: 'Metas y acciones de mejoramiento. Se actualiza cada año.',
+      donde: 'Documentos', vista: 'documentos',
+      listo: function (c) { return tieneDoc(c, 'mejoramiento'); } },
+    { t: 'Fotografías reales de la sede y las actividades',
+      d: 'Solo con la autorización firmada de uso de imagen de los menores de edad.',
+      donde: 'Galería', vista: 'galeria',
+      listo: function (c) {
+        return (c.galeria || []).some(function (g) { return !g.referencia && hay(g.src); });
+      } },
+    { t: 'Noticias del año escolar en curso',
+      d: 'Al menos una noticia real, sin la marca de «demostrativa».',
+      donde: 'Noticias y eventos', vista: 'noticias',
+      listo: function (c) {
+        return (c.noticias || []).some(function (n) { return !n.demo && n.publicada !== false; });
+      } },
+    { t: 'Proyectos institucionales reales',
+      d: 'Con sus resultados y, si es posible, fotografías.',
+      donde: 'Proyectos', vista: 'proyectos',
+      listo: function (c) {
+        return (c.proyectos || []).some(function (p) { return !p.demo && p.publicado !== false; });
+      } },
+    { t: 'Política de tratamiento de datos personales',
+      d: 'Requisito legal (Ley 1581 de 2012) para poder publicar el sitio en internet.',
+      donde: 'Documentos', vista: 'documentos',
+      listo: function (c) {
+        return (c.documentos || []).some(function (d) {
+          return /tratamiento de datos|privacidad/i.test(d.titulo || '') && hay(d.archivo);
+        });
+      } },
+    { t: 'Publicar los cambios en el sitio',
+      d: 'Use «Publicar en el sitio». Los cambios aparecen en internet en un minuto, aproximadamente.',
+      donde: 'Publicar y respaldar', vista: 'publicar',
+      listo: function (c) { return c.esDemostracion === false; } }
+  ];
+
+  function pintarGuia() {
+    var cont = $('#cuerpo-guia');
+    if (!cont) return;
+    var c = estado.contenido;
+    var hechos = ORDEN_CARGA.filter(function (p) { return p.listo(c); }).length;
+    var pct = Math.round((hechos / ORDEN_CARGA.length) * 100);
+
+    var arbol =
+      'Sitio_Web_IER_Puerto_Rosario\\\n' +
+      '   index.html              <- el sitio que ve el publico\n' +
+      '   admin.html              <- este panel\n' +
+      '   datos\\\n' +
+      '      contenido.js         <- lo que genera el panel al publicar\n' +
+      '   documentos\\            <- CREELA y guarde aqui los PDF\n' +
+      '      pei-2026.pdf\n' +
+      '      manual-convivencia-2026.pdf\n' +
+      '      siee-2026.pdf\n' +
+      '      plan-matematicas-2026.pdf\n' +
+      '   assets\\img\\             <- el escudo y las imagenes';
+
+    cont.innerHTML =
+      '<div class="aviso aviso--info" style="margin-bottom:1.2rem">' + ico('info') +
+        '<div><strong>No hay que hacerlo todo hoy.</strong> Vaya en el orden de la tabla: cada paso depende del anterior. ' +
+        'Todo lo que guarde queda como borrador en este computador hasta que pulse «Publicar en el sitio» en ' +
+        '«Publicar y respaldar».' +
+        '<div style="margin-top:.6rem"><button class="btn btn--outline btn--sm" type="button" data-descargar-guia="1">' +
+          ico('descarga') + ' Descargar esta guía para imprimir</button></div>' +
+        '</div></div>' +
+
+      tarjeta('El orden recomendado',
+        '<div class="progreso" style="margin-bottom:1rem"><div class="progreso__barra" style="width:' + pct + '%"></div></div>' +
+        '<div class="progreso__leyenda" style="margin-bottom:1rem"><span><strong>' + hechos + ' de ' + ORDEN_CARGA.length +
+          '</strong> pasos listos</span><span>' + pct + '% completado</span></div>' +
+        '<div class="tabla-scroll"><table class="tabla tabla--ancha"><thead><tr><th scope="col" style="width:2.5rem">#</th><th scope="col">Qué cargar</th>' +
+        '<th scope="col">Dónde se hace</th><th scope="col">Estado</th><th scope="col"><span class="sr-only">Acciones</span></th></tr></thead><tbody>' +
+        ORDEN_CARGA.map(function (p, i) {
+          var ok = p.listo(c);
+          return '<tr>' +
+            '<td><strong>' + (i + 1) + '</strong></td>' +
+            '<td>' + esc(p.t) + '<br><span class="mini">' + esc(p.d) + '</span></td>' +
+            '<td><span class="tag tag--azul">' + esc(p.donde) + '</span></td>' +
+            '<td>' + (ok
+              ? '<span class="tag tag--ok">' + ico('ver') + ' Listo</span>'
+              : '<span class="tag tag--pend">' + ico('reloj') + ' Pendiente</span>') + '</td>' +
+            '<td><button class="btn btn--outline btn--sm" type="button" data-vista="' + p.vista + '">' +
+              (ok ? 'Revisar' : 'Ir ahora') + '</button></td>' +
+            '</tr>';
+        }).join('') +
+        '</tbody></table></div>') +
+
+      '<div style="height:1.2rem"></div>' +
+
+      tarjeta('Paso a paso: cómo poner un PDF (por ejemplo el PEI)',
+        '<ol class="pasos">' +
+          '<li><strong>Tenga el PDF a la mano</strong> en su computador (el PEI, el Manual, el SIEE, un plan de estudio...).</li>' +
+          '<li><strong>Cree la carpeta <code>documentos</code></strong> dentro de la carpeta del sitio, ' +
+            'al mismo nivel que <code>index.html</code>. Se crea una sola vez.</li>' +
+          '<li><strong>Copie el PDF ahí</strong> y póngale un nombre sencillo, sin espacios ni tildes: ' +
+            '<code>pei-2026.pdf</code>, <code>manual-convivencia-2026.pdf</code>. ' +
+            'Si el nombre lleva espacios o tildes, el enlace puede fallar en internet.</li>' +
+          '<li><strong>Regístrelo en el panel</strong>: vaya a «Documentos», abra el documento que corresponde ' +
+            '(o pulse «Añadir documento») y en el campo del archivo pulse ' +
+            '<strong>«Elegir el PDF en mi computador»</strong>. El panel escribe la ruta por usted.</li>' +
+          '<li><strong>Pulse «Guardar»</strong> y luego publique: «Publicar y respaldar» → ' +
+            '<strong>«Publicar en el sitio»</strong>. En un minuto, aproximadamente, se ve el cambio en internet.</li>' +
+        '</ol>' +
+        '<p class="mini" style="margin-top:1rem"><strong>Así se ve la carpeta:</strong></p>' +
+        '<div class="code">' + esc(arbol) + '</div>' +
+        '<p class="mini" style="margin-top:1rem">Para comprobar que quedó bien: en la lista de documentos, ' +
+        'cada registro con PDF tiene un botón para <strong>abrir el archivo</strong>. Si se abre, el enlace funciona.</p>',
+        '<div class="caja__acciones">' +
+          '<button class="btn btn--primary btn--sm" type="button" data-vista="documentos">' + ico('doc') + ' Ir a Documentos</button>' +
+          '<button class="btn btn--outline btn--sm" type="button" data-preparar-carpeta="1">' + ico('descarga') + ' Descargar la lista de PDF</button>' +
+        '</div>') +
+
+      '<div style="height:1.2rem"></div>' +
+
+      '<div class="rejilla rejilla--2">' +
+        tarjeta('Cómo poner una fotografía',
+          '<ol class="pasos">' +
+            '<li>Vaya a la sección <strong>«Galería»</strong> (o al campo de imagen dentro de Noticias y Proyectos).</li>' +
+            '<li>Pulse <strong>«Añadir imagen»</strong> y elija el archivo. El panel la reduce y la comprime solo, ' +
+              'así el sitio carga rápido.</li>' +
+            '<li>Escriba el <strong>título</strong> y la <strong>descripción para lectores de pantalla</strong> ' +
+              '(obligatoria para la accesibilidad).</li>' +
+            '<li>Si todavía no tiene fotos propias, deje la casilla «Es una imagen de referencia» marcada: ' +
+              'el sitio avisará de que es una ilustración.</li>' +
+          '</ol>' +
+          '<div class="aviso aviso--riesgo" style="margin-top:.8rem">' + ico('alerta') +
+            '<div>No publique rostros de menores de edad sin la <strong>autorización firmada</strong> de sus acudientes.</div>' +
+          '</div>') +
+        tarjeta('Cómo saber qué falta',
+          '<ul class="lista-simple">' +
+            '<li>' + ico('panel') + '<span><strong>Resumen</strong>: cuántas tareas faltan, cuántos documentos están sin PDF ' +
+              'y qué vence pronto.</span></li>' +
+            '<li>' + ico('lista') + '<span><strong>Pendientes</strong>: la lista completa, clasificada. Cada tarea trae un botón ' +
+              '«¿Cómo se hace?» con las instrucciones.</span></li>' +
+            '<li>' + ico('actualizar') + '<span><strong>Asistente de actualización</strong>: pulse «Ejecutar revisión» y le dirá ' +
+              'qué documentos están vencidos o por vencer y qué falta.</span></li>' +
+            '<li>' + ico('doc') + '<span><strong>Publicar y respaldar</strong>: la lista exacta de PDF que deben existir en la ' +
+              'carpeta <code>documentos\\</code>.</span></li>' +
+          '</ul>') +
+      '</div>' +
+      '<div style="height:1.2rem"></div>' +
+      tarjetaRedes();
+  }
+
+  /* Tarjeta de la guía dedicada a traer contenido de Facebook */
+  function tarjetaRedes() {
+    var redes = (estado.contenido.institucion && estado.contenido.institucion.redes) || [];
+    var fb = redes.filter(function (u) { return /facebook/i.test(String(u)); })[0] || '';
+    return tarjeta('Cómo traer al sitio lo que ya está en Facebook',
+      '<div class="aviso aviso--info" style="margin-bottom:1rem">' + ico('info') +
+        '<div><strong>Por qué esto se hace a mano.</strong> Facebook no permite que otro programa lea la página ' +
+        'automáticamente: exige iniciar sesión. Por eso el sitio no puede «importar» las publicaciones solo. ' +
+        'El trabajo es de unos minutos por cada publicación, y queda con enlace a la fuente original.</div></div>' +
+      '<ol class="pasos">' +
+        '<li>Abra la página de Facebook de la institución y busque la publicación.</li>' +
+        '<li>Seleccione el texto y cópielo. En «Noticias y eventos» → «Añadir noticia», pegue el titular en ' +
+          '<strong>Titular</strong> y el texto en <strong>Resumen</strong> y <strong>Texto completo</strong>.</li>' +
+        '<li>Descargue la imagen de la publicación y cárguela en el campo <strong>Imagen de la noticia</strong>. ' +
+          'El panel la reduce y la comprime solo.</li>' +
+        '<li>Pegue la dirección de esa publicación en <strong>Enlace a la publicación original</strong>. ' +
+          'El sitio mostrará el botón «Ver la publicación original».</li>' +
+        '<li>Escriba <strong>Facebook</strong> en el campo de la fuente, quite la marca de contenido demostrativo ' +
+          'y pulse «Guardar».</li>' +
+        '<li>Para las fotografías, repita el proceso en la sección <strong>Galería</strong>.</li>' +
+      '</ol>' +
+      '<div class="aviso aviso--riesgo" style="margin-top:1rem">' + ico('alerta') +
+        '<div><strong>Antes de publicar una fotografía:</strong> asegúrese de tener la autorización firmada de uso ' +
+        'de imagen de los menores de edad. Que la foto esté en Facebook no autoriza publicarla en otro sitio.</div></div>' +
+      '<p class="mini" style="margin-top:1rem">Dirección registrada como red social oficial: ' +
+        (fb ? '<code>' + esc(fb) + '</code>' : '<em>ninguna todavía</em>') +
+        '. Si hay más de una página de Facebook parecida, confirme cuál es la oficial antes de publicar el enlace.</p>',
+      '<div class="caja__acciones">' +
+        (fb ? '<a class="btn btn--outline btn--sm" href="' + esc(fb) + '" target="_blank" rel="noopener noreferrer">' +
+          ico('facebook') + ' Abrir la página de Facebook</a>' : '') +
+        '<button class="btn btn--outline btn--sm" type="button" data-vista="identidad">' + ico('globe') + ' Cambiar la red social</button>' +
+        '<button class="btn btn--primary btn--sm" type="button" data-vista="noticias">' + ico('periodico') + ' Ir a Noticias</button>' +
+      '</div>');
+  }
+
+  function textoGuia() {
+    var c = estado.contenido;
+    var lineas = [
+      'GUIA PARA CARGAR LA INFORMACION DEL SITIO WEB',
+      'Institucion Educativa Rural Puerto Rosario',
+      'Generada el ' + new Date().toLocaleString('es-CO'),
+      '================================================================',
+      '',
+      'ORDEN RECOMENDADO (haga los pasos en este orden)',
+      ''
+    ];
+    ORDEN_CARGA.forEach(function (p, i) {
+      lineas.push('  ' + (i + 1) + '. ' + (p.listo(c) ? '[LISTO]     ' : '[PENDIENTE] ') + p.t);
+      lineas.push('      Donde: ' + p.donde);
+    });
+    lineas = lineas.concat([
+      '',
+      '================================================================',
+      'COMO PONER UN PDF (por ejemplo el PEI)',
+      '================================================================',
+      '',
+      '  1. Tenga el PDF a la mano en su computador.',
+      '  2. Cree la carpeta  documentos  dentro de la carpeta del sitio,',
+      '     al mismo nivel que index.html.',
+      '  3. Copie el PDF ahi y pongale un nombre sin espacios ni tildes:',
+      '     pei-2026.pdf, manual-convivencia-2026.pdf, siee-2026.pdf...',
+      '  4. En el panel, vaya a Documentos, abra el registro que',
+      '     corresponde y pulse "Elegir el PDF en mi computador".',
+      '  5. Pulse Guardar.',
+      '  6. Publique: Publicar y respaldar -> Publicar en el sitio.',
+      '     En un minuto, aproximadamente, se ve el cambio en internet.',
+      '',
+      '  ASI SE VE LA CARPETA:',
+      '',
+      '     Sitio_Web_IER_Puerto_Rosario\\',
+      '        index.html',
+      '        admin.html',
+      '        datos\\',
+      '           contenido.js',
+      '        documentos\\        <- AQUI VAN LOS PDF',
+      '           pei-2026.pdf',
+      '           manual-convivencia-2026.pdf',
+      '           siee-2026.pdf',
+      '        assets\\img\\',
+      '',
+      '================================================================',
+      'COMO PONER UNA FOTOGRAFIA',
+      '================================================================',
+      '',
+      '  1. Vaya a la seccion Galeria.',
+      '  2. Pulse "Anadir imagen" y elija el archivo (se comprime solo).',
+      '  3. Escriba el titulo y la descripcion para lectores de pantalla.',
+      '  4. No publique rostros de menores sin autorizacion firmada.',
+      '',
+      '================================================================',
+      'COMO TRAER AL SITIO LO QUE YA ESTA EN FACEBOOK',
+      '================================================================',
+      '',
+      '  Facebook no permite que otro programa lea la pagina',
+      '  automaticamente: exige iniciar sesion. Se hace a mano.',
+      '',
+      '  1. Abra la pagina de Facebook de la institucion y busque',
+      '     la publicacion.',
+      '  2. Copie el texto. En Noticias y eventos -> Anadir noticia,',
+      '     pegue el titular y el texto.',
+      '  3. Descargue la imagen de la publicacion y carguela en el',
+      '     campo "Imagen de la noticia" (se comprime sola).',
+      '  4. Pegue la direccion de esa publicacion en el campo',
+      '     "Enlace a la publicacion original".',
+      '  5. Quite la marca de contenido demostrativo y pulse Guardar.',
+      '  6. Las fotografias se cargan igual, en la seccion Galeria.',
+      '',
+      '  IMPORTANTE: no publique rostros de menores de edad sin la',
+      '  autorizacion firmada de sus acudientes. Que la foto este en',
+      '  Facebook no autoriza publicarla en otro sitio.',
+      '',
+      '================================================================',
+      'COMO PUBLICAR LOS CAMBIOS',
+      '================================================================',
+      '',
+      '  1. Vaya a "Publicar y respaldar".',
+      '  2. Pulse "Publicar en el sitio".',
+      '  3. Espere un minuto, aproximadamente.',
+      '  4. Abra el sitio y recargue con F5 para comprobar.',
+      '',
+      '================================================================',
+      'PDF QUE DEBEN EXISTIR EN LA CARPETA documentos\\',
+      '================================================================',
+      ''
+    ]);
+    var docs = (c.documentos || []).filter(function (d) { return hay(d.archivo); });
+    if (!docs.length) {
+      lineas.push('  (Todavia no hay documentos con PDF asociado.)');
+    } else {
+      docs.forEach(function (d) {
+        lineas.push('  ' + d.archivo);
+        lineas.push('      Documento: ' + d.titulo);
+      });
+    }
+    lineas.push('');
+    lineas.push('  TOTAL: ' + docs.length + ' archivo(s).');
+    lineas.push('');
+    return lineas.join('\r\n');
+  }
+
+  /* -------------------------------------------------------------------
+     13.2 Asistente de actualización (el «bot» de revisión)
+     ------------------------------------------------------------------- */
+  function analizar() {
+    var r = [];
+    var inst = estado.contenido.institucion || {};
+    var docs = estado.contenido.documentos || [];
+    var noticias = estado.contenido.noticias || [];
+    var proyectos = estado.contenido.proyectos || [];
+    var galeria = estado.contenido.galeria || [];
+
+    function alerta(sev, titulo, detalle, tarea, arreglo) {
+      r.push({ sev: sev, titulo: titulo, detalle: detalle, tarea: tarea || null, arreglo: arreglo || null });
+    }
+
+    /* --- Documentos --- */
+    docs.filter(function (d) { return d.publicado !== false; }).forEach(function (d) {
+      var nombre = d.titulo || '(documento sin nombre)';
+      if (!hay(d.archivo)) {
+        alerta('rojo', 'Falta el PDF: ' + nombre,
+          'El documento está publicado pero no tiene archivo PDF. Copie el archivo en la carpeta <strong>documentos/</strong> y escriba su ruta.',
+          { tarea: 'Subir el PDF de ' + nombre, categoria: d.categoria || 'Documentos institucionales', prioridad: 'alta', periodicidad: d.periodicidad || 'anual' });
+      }
+      var dias = diasHasta(d.proximaActualizacion);
+      if (dias !== null && dias < 0) {
+        alerta('rojo', 'Actualización vencida: ' + nombre,
+          'La fecha programada (' + fechaLarga(d.proximaActualizacion) + ') ya pasó. Revise si hay una versión nueva.',
+          { tarea: 'Actualizar ' + nombre + ' con la versión del año en curso', categoria: d.categoria || 'Documentos institucionales', prioridad: 'alta', periodicidad: d.periodicidad || 'anual' },
+          { etiqueta: 'Programar próxima actualización', fn: function () {
+              d.proximaActualizacion = sumarAnio(hoyISO()); guardarContenido(); avisar('Próxima actualización programada.');
+            } });
+      } else if (dias !== null && dias <= 60) {
+        alerta('warm', 'Vence pronto: ' + nombre,
+          'Faltan ' + dias + ' días para la fecha de actualización (' + fechaLarga(d.proximaActualizacion) + ').',
+          { tarea: 'Preparar la actualización de ' + nombre, categoria: d.categoria || 'Documentos institucionales', prioridad: 'media', periodicidad: d.periodicidad || 'anual' });
+      } else if (dias === null && d.periodicidad === 'anual') {
+        alerta('warm', 'Sin fecha de actualización: ' + nombre,
+          'Se actualiza cada año pero no tiene programada la próxima fecha. Se sugiere ' + fechaLarga(sumarAnio(hoyISO())) + '.',
+          null,
+          { etiqueta: 'Programar para ' + new Date().getFullYear() + '–' + (new Date().getFullYear() + 1), fn: function () {
+              d.proximaActualizacion = sumarAnio(hoyISO()); guardarContenido(); avisar('Próxima actualización programada.');
+            } });
+      }
+    });
+
+    /* --- Planes de estudio --- */
+    var planes = docs.filter(function (d) { return d.categoria === 'Planes de estudio por área'; });
+    if (!planes.length) {
+      alerta('rojo', 'No hay planes de estudio por área',
+        'Todavía no se ha registrado ningún plan de estudio (Matemáticas, Lengua Castellana, Ciencias Naturales, Sociales, Inglés, etc.).',
+        { tarea: 'Registrar y subir los planes de estudio de todas las áreas', categoria: 'Planes de estudio por área', prioridad: 'alta', periodicidad: 'anual' });
+    }
+
+    /* --- Noticias --- */
+    var publicadas = noticias.filter(function (n) { return n.publicada !== false; });
+    if (!publicadas.length) {
+      alerta('rojo', 'No hay noticias publicadas', 'El sitio público no tiene noticias visibles.',
+        { tarea: 'Redactar la primera noticia institucional', categoria: 'Noticias y proyectos', prioridad: 'media', periodicidad: 'por demanda' });
+    } else if (publicadas.every(function (n) { return n.demo; })) {
+      alerta('warm', 'Todas las noticias son demostrativas',
+        'Las ' + publicadas.length + ' noticias publicadas siguen marcadas como ejemplos.',
+        { tarea: 'Reemplazar las noticias demostrativas por noticias reales', categoria: 'Noticias y proyectos', prioridad: 'media', periodicidad: 'por demanda' });
+    }
+
+    /* --- Proyectos --- */
+    var proyPub = proyectos.filter(function (p) { return p.publicado !== false; });
+    if (!proyPub.length) {
+      alerta('warm', 'No hay proyectos publicados', 'El sitio público no muestra proyectos institucionales.',
+        { tarea: 'Registrar los proyectos institucionales reales', categoria: 'Noticias y proyectos', prioridad: 'media', periodicidad: 'anual' });
+    } else if (proyPub.every(function (p) { return p.demo; })) {
+      alerta('warm', 'Todos los proyectos son demostrativos',
+        'Los ' + proyPub.length + ' proyectos publicados siguen marcados como ejemplos.',
+        { tarea: 'Registrar los proyectos institucionales reales con sus resultados', categoria: 'Noticias y proyectos', prioridad: 'media', periodicidad: 'anual' });
+    }
+
+    /* --- Galería --- */
+    var refs = galeria.filter(function (g) { return g.referencia; }).length;
+    if (refs) {
+      alerta('warm', refs + ' imágenes son ilustraciones de referencia',
+        'La galería debería mostrar fotografías reales de la institución, con autorización de uso de imagen.',
+        { tarea: 'Reemplazar las ilustraciones de referencia por fotografías autorizadas', categoria: 'Fotografías y galería', prioridad: 'media', periodicidad: 'anual' });
+    }
+
+    /* --- Identidad y contacto --- */
+    var faltantes = [
+      ['escudo', 'el escudo institucional'],
+      ['telefono', 'el teléfono institucional'],
+      ['correo', 'el correo electrónico institucional'],
+      ['direccion', 'la dirección exacta de la sede'],
+      ['horario', 'el horario de atención']
+    ].filter(function (f) { return !hay(inst[f[0]]); });
+    if (faltantes.length) {
+      alerta('rojo', 'Faltan datos de identidad y contacto',
+        'Hace falta ' + faltantes.map(function (f) { return f[1]; }).join(', ') + '.',
+        { tarea: 'Confirmar y registrar los datos de contacto oficiales', categoria: 'Datos de contacto', prioridad: 'alta', periodicidad: 'única' });
+    }
+    if (!hay(inst.mision) || !hay(inst.vision)) {
+      alerta('warm', 'Faltan la misión y la visión',
+        'La sección «Nuestra institución» sigue mostrando el texto de espera.',
+        { tarea: 'Definir misión, visión y principios institucionales', categoria: 'Identidad y símbolos', prioridad: 'alta', periodicidad: 'única' });
+    }
+
+    /* --- Pendientes vencidos --- */
+    var vencidos = estado.pendientes.filter(function (t) {
+      var d = diasHasta(t.fechaLimite);
+      return t.estado !== 'hecha' && d !== null && d < 0;
+    });
+    if (vencidos.length) {
+      alerta('rojo', vencidos.length + ' tareas con fecha límite vencida',
+        vencidos.slice(0, 5).map(function (t) { return esc(t.tarea); }).join('<br>') +
+        (vencidos.length > 5 ? '<br>…y ' + (vencidos.length - 5) + ' más.' : ''), null, null);
+    }
+
+    /* --- Estado de demostración --- */
+    if (estado.contenido.esDemostracion) {
+      alerta('warm', 'El sitio se anuncia como demostrativo',
+        'Mientras esté activa esta marca, el sitio muestra la leyenda de estado de la información. ' +
+        'Desactívela solo cuando todo el contenido sea oficial (sección «Textos institucionales»).', null, null);
+    }
+
+    if (!r.length) {
+      alerta('ok', 'Todo en orden', 'No se detectaron vencimientos, faltantes ni contenidos demostrativos.', null, null);
+    }
+    return r;
+  }
+
+  var ultimaRevision = '';
+
+  function pintarAnalisis(hallazgos) {
+    var cont = $('#cuerpo-actualizacion');
+    if (!cont) return;
+
+    var cabecera =
+      '<div class="caja" style="margin-bottom:1.2rem">' +
+        '<div class="caja__cab">' +
+          '<div style="flex:1;min-width:220px">' +
+            '<h2>' + ico('actualizar') + ' Asistente de actualización</h2>' +
+            '<p>Revisa los documentos cuya actualización anual está vencida o próxima, los PDF que faltan, ' +
+            'los datos institucionales incompletos y el contenido que todavía es demostrativo.</p>' +
+          '</div>' +
+          '<button class="btn btn--primary" type="button" data-revisar="1">' + ico('actualizar') + ' Ejecutar revisión</button>' +
+        '</div>' +
+        (ultimaRevision ? '<div class="caja__pie"><span class="mini">Última revisión: ' + esc(ultimaRevision) + '</span></div>' : '') +
+      '</div>';
+
+    if (!hallazgos) {
+      cont.innerHTML = cabecera +
+        tarjeta('', '<p class="mini">Pulse «Ejecutar revisión» para que el asistente analice el contenido y le diga exactamente qué falta.</p>');
+      return;
+    }
+
+    var rojos = hallazgos.filter(function (h) { return h.sev === 'rojo'; }).length;
+    var warm = hallazgos.filter(function (h) { return h.sev === 'warm'; }).length;
+
+    cont.innerHTML = cabecera +
+      '<div class="rejilla rejilla--3" style="margin-bottom:1.2rem">' +
+        '<div class="kpi kpi--rojo"><p class="kpi__n">' + rojos + '</p><p class="kpi__e">Crítico</p><p class="kpi__d">requiere acción inmediata</p></div>' +
+        '<div class="kpi kpi--warm"><p class="kpi__n">' + warm + '</p><p class="kpi__e">Aviso</p><p class="kpi__d">conviene atenderlo pronto</p></div>' +
+        '<div class="kpi kpi--verde"><p class="kpi__n">' + (hallazgos.length - rojos - warm) + '</p><p class="kpi__e">Correcto</p><p class="kpi__d">sin novedades</p></div>' +
+      '</div>' +
+      '<div class="caja">' +
+        '<div class="caja__cab"><h2>Resultado de la revisión</h2>' +
+          '<div class="caja__acciones">' +
+            '<button class="btn btn--outline btn--sm" type="button" data-tareas-de-analisis="1">' + ico('lista') + ' Convertir avisos en pendientes</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="caja__cuerpo"><div class="informe">' +
+          hallazgos.map(function (h, i) {
+            return '<article class="informe__item informe__item--' + h.sev + '">' +
+              ico(h.sev === 'rojo' ? 'alerta' : (h.sev === 'ok' ? 'ver' : 'reloj')) +
+              '<div style="flex:1;min-width:0">' +
+                '<h3>' + esc(h.titulo) + '</h3>' +
+                '<p>' + h.detalle + '</p>' +
+                '<div class="fila__meta" style="margin-top:.55rem">' +
+                  (h.arreglo ? '<button class="btn btn--outline btn--sm" type="button" data-arreglo="' + i + '">' + ico('actualizar') + ' ' + esc(h.arreglo.etiqueta) + '</button>' : '') +
+                  (h.tarea ? '<button class="btn btn--ghost btn--sm" type="button" data-tarea-de="' + i + '">' + ico('lista') + ' Añadir a pendientes</button>' : '') +
+                '</div>' +
+              '</div>' +
+            '</article>';
+          }).join('') +
+        '</div></div>' +
+      '</div>';
+
+    cont.__hallazgos = hallazgos;
+  }
+
+  function ejecutarRevision() {
+    ultimaRevision = fechaLarga(hoyISO()) + ' a las ' +
+      new Date().toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+    pintarAnalisis(analizar());
+    avisar('Revisión completada.');
+  }
+
+  /* -------------------------------------------------------------------
+     13.3 Pendientes
+     ------------------------------------------------------------------- */
+  function pintarPendientes() {
+    var cont = $('#cuerpo-pendientes');
+    if (!cont) return;
+    var t = estado.pendientes;
+    var f = estado.filtroPend;
+
+    var categorias = [];
+    t.forEach(function (x) { if (categorias.indexOf(x.categoria) === -1) categorias.push(x.categoria); });
+    categorias.sort();
+
+    var q = (estado.busqueda.pendientes || '').trim().toLowerCase();
+    var visibles = t.filter(function (x) {
+      if (f.categoria !== 'todas' && x.categoria !== f.categoria) return false;
+      if (f.estado !== 'todos' && x.estado !== f.estado) return false;
+      if (f.prioridad !== 'todas' && x.prioridad !== f.prioridad) return false;
+      if (q && (x.tarea + ' ' + x.categoria + ' ' + (x.notas || '')).toLowerCase().indexOf(q) === -1) return false;
+      return true;
+    });
+
+    var hechas = t.filter(function (x) { return x.estado === 'hecha'; }).length;
+    var pct = t.length ? Math.round((hechas / t.length) * 100) : 0;
+
+    cont.innerHTML =
+      '<div class="caja" style="margin-bottom:1.2rem">' +
+        '<div class="caja__cab">' +
+          '<div style="flex:1;min-width:220px">' +
+            '<h2>' + ico('lista') + ' Pendientes de información</h2>' +
+            '<p>Todo lo que hace falta para alimentar el sitio, clasificado por categoría y prioridad. ' +
+            'Marque las tareas a medida que las complete.</p>' +
+          '</div>' +
+          '<button class="btn btn--primary btn--sm" type="button" data-nuevo="pendientes">' + ico('subir') + ' Añadir pendiente</button>' +
+        '</div>' +
+        '<div class="caja__cuerpo">' +
+          '<div class="progreso"><div class="progreso__barra" style="width:' + pct + '%"></div></div>' +
+          '<div class="progreso__leyenda"><span><strong>' + pct + '%</strong> completado</span>' +
+          '<span>' + hechas + ' hechas · ' + (t.length - hechas) + ' pendientes · ' + t.length + ' en total</span></div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="filtros-barra">' +
+        '<div class="buscador">' + ico('buscar') +
+          '<input type="search" data-buscar="pendientes" placeholder="Buscar pendiente…" aria-label="Buscar pendiente" value="' + esc(estado.busqueda.pendientes || '') + '">' +
+        '</div>' +
+        '<select class="chip" data-filtro-cat aria-label="Filtrar por categoría" style="padding:.42rem .8rem">' +
+          '<option value="todas">Todas las categorías</option>' +
+          categorias.map(function (c) {
+            return '<option value="' + esc(c) + '"' + (f.categoria === c ? ' selected' : '') + '>' + esc(c) + '</option>';
+          }).join('') +
+        '</select>' +
+        ['todos', 'pendiente', 'en proceso', 'hecha'].map(function (e) {
+          return '<button class="chip" type="button" data-filtro-estado="' + e + '" aria-pressed="' + (f.estado === e) + '">' +
+            (e === 'todos' ? 'Todos los estados' : e.charAt(0).toUpperCase() + e.slice(1)) + '</button>';
+        }).join('') +
+        ['todas', 'alta', 'media', 'baja'].map(function (p) {
+          return '<button class="chip" type="button" data-filtro-prio="' + p + '" aria-pressed="' + (f.prioridad === p) + '">' +
+            (p === 'todas' ? 'Toda prioridad' : 'Prioridad ' + p) + '</button>';
+        }).join('') +
+      '</div>' +
+
+      '<div class="caja">' +
+        '<div class="caja__cuerpo">' +
+          (visibles.length
+            ? '<div class="lista">' + visibles.map(filaTarea).join('') + '</div>'
+            : '<div class="vacio">' + ico('buscar') + '<p>No hay pendientes que coincidan con el filtro.</p></div>') +
+        '</div>' +
+        '<div class="caja__pie">' +
+          '<span class="mini">Mostrando ' + visibles.length + ' de ' + t.length + ' pendientes.</span>' +
+          '<div class="caja__acciones">' +
+            '<button class="btn btn--outline btn--sm" type="button" data-exportar="pendientes">' + ico('descarga') + ' Descargar respaldo</button>' +
+            '<label class="btn btn--outline btn--sm" style="cursor:pointer">' + ico('subir') + ' Restaurar respaldo' +
+              '<input type="file" accept=".json,application/json" data-importar="pendientes" hidden></label>' +
+            '<button class="btn btn--peligro btn--sm" type="button" data-reiniciar-pendientes="1">' + ico('actualizar') + ' Volver a la lista inicial</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  /* -------------------------------------------------------------------
+     Instrucciones concretas por categoría de pendiente
+     ------------------------------------------------------------------- */
+  var COMO_HACER = {
+    'Documentos institucionales': {
+      donde: 'Documentos', vista: 'documentos',
+      resumen: 'El PDF se guarda en la carpeta del sitio y luego se enlaza desde el panel.',
+      pasos: [
+        'Cree la carpeta <code>documentos</code> dentro de la carpeta del sitio, al mismo nivel que <code>index.html</code>.',
+        'Copie ahí el PDF y póngale un nombre sin espacios ni tildes: <code>pei-2026.pdf</code>, <code>manual-convivencia-2026.pdf</code>.',
+        'En «Documentos», abra el registro que corresponde (o pulse «Añadir documento»).',
+        'En el campo del archivo pulse <strong>«Elegir el PDF en mi computador»</strong>: el panel escribe la ruta por usted.',
+        'Pulse «Guardar» y después publique en «Publicar y respaldar».'
+      ]
+    },
+    'Planes de estudio por área': {
+      donde: 'Documentos', vista: 'documentos',
+      resumen: 'Un registro por cada área. La categoría debe ser «Planes de estudio por área».',
+      pasos: [
+        'Guarde cada plan como PDF en la carpeta <code>documentos</code> con un nombre claro: <code>plan-matematicas-2026.pdf</code>.',
+        'En «Documentos» pulse «Añadir documento» una vez por cada área.',
+        'Escriba el nombre, por ejemplo «Plan de estudios de Matemáticas 2026».',
+        'Elija la categoría «Planes de estudio por área» y el ícono que prefiera.',
+        'Pulse «Elegir el PDF en mi computador», escriba el año y la fecha de la próxima actualización.',
+        'Pulse «Guardar» y publique.'
+      ]
+    },
+    'Identidad y símbolos': {
+      donde: 'Identidad y datos', vista: 'identidad',
+      resumen: 'El escudo y los símbolos se cargan como imagen, no como PDF. El escudo YA ESTÁ PUESTO.',
+      pasos: [
+        'El escudo oficial ya está cargado (assets/img/escudo.png), tomado de la página de Facebook. ' +
+          'No hay que hacer nada para que aparezca.',
+        'Para mejorarlo: pida a rectoría el archivo original en máxima calidad (PNG con fondo transparente o SVG).',
+        'Vaya a «Identidad y datos» → campo «Escudo institucional» y elija ese archivo.',
+        'El panel lo reduce a un tamaño adecuado automáticamente.',
+        'El lema «Ideal de Hombres Libres» también se tomó del escudo oficial: corríjalo si no es el vigente.',
+        'Pulse «Guardar cambios» y publique.',
+        'Para la misión, la visión y la reseña histórica use «Textos institucionales».'
+      ]
+    },
+    'Datos de contacto': {
+      donde: 'Identidad y datos', vista: 'identidad',
+      resumen: 'Son campos de texto: se escriben directamente, no se sube ningún archivo. Las redes sociales se ' +
+        'escriben como dirección completa (https://…) y el sitio las convierte en enlaces.',
+      pasos: [
+        'Confirme con rectoría los datos oficiales (no los invente).',
+        'Vaya a «Identidad y datos» → grupo «Ubicación y contacto».',
+        'Escriba dirección, teléfono, correo, horario y las redes sociales oficiales.',
+        'En «Redes sociales oficiales» escriba la dirección completa, empezando por <code>https://</code>. ' +
+          'El sitio le pondrá el nombre de la red y un botón que abre en una pestaña nueva.',
+        'Enlace únicamente perfiles verificados. Si hay dos páginas parecidas, confirme cuál es la oficial.',
+        'Pulse «Guardar cambios» y publique.'
+      ]
+    },
+    'Fotografías y galería': {
+      donde: 'Galería', vista: 'galeria',
+      resumen: 'Las fotos se cargan como imagen. Requieren autorización de uso de imagen.',
+      pasos: [
+        'Reúna las fotografías y las autorizaciones firmadas de los acudientes.',
+        'Vaya a «Galería» y pulse «Añadir imagen».',
+        'Elija el archivo: el panel lo comprime para que el sitio cargue rápido.',
+        'Escriba el título y la descripción para lectores de pantalla.',
+        'Desmarque «Es una imagen de referencia» cuando ya sea una foto real.',
+        'Pulse «Guardar» y publique.'
+      ]
+    },
+    'Noticias y proyectos': {
+      donde: 'Noticias y eventos', vista: 'noticias',
+      resumen: 'Son textos con imagen opcional. Se escriben directamente en el panel.',
+      pasos: [
+        'Vaya a «Noticias y eventos» (o «Proyectos») y pulse «Añadir».',
+        'Escriba el titular, la fecha, la categoría y el resumen.',
+        'Opcionalmente cargue una fotografía.',
+        'Desmarque «Marcar como contenido demostrativo» cuando el texto ya sea real.',
+        'Pulse «Guardar» y publique.'
+      ]
+    },
+    'Legal y transparencia': {
+      donde: 'Documentos', vista: 'documentos',
+      resumen: 'Se publica como documento PDF con la categoría de transparencia.',
+      pasos: [
+        'Solicite a la institución la política de tratamiento de datos personales (Ley 1581 de 2012).',
+        'Guarde el PDF en la carpeta <code>documentos</code>.',
+        'En «Documentos» pulse «Añadir documento» y elija la categoría «Transparencia y control social».',
+        'Enlace el PDF y pulse «Guardar».',
+        'Publique los cambios.'
+      ]
+    },
+    'Configuración del panel': {
+      donde: 'Seguridad y clave', vista: 'seguridad',
+      resumen: 'Son ajustes del propio panel, no contenido del sitio.',
+      pasos: [
+        'La clave del panel es la misma de «Subir documentos»: el token de GitHub del sitio.',
+        'Se guarda solo en el navegador; no está escrita en la página.',
+        'Si se olvida o se sospecha que alguien la conoce, se revoca en GitHub y se crea otra.',
+        'Cada persona que administre el sitio debe entrar con esa clave en su propio equipo.'
+      ]
+    }
+  };
+
+  function ayudaTarea(x) {
+    var a = COMO_HACER[x.categoria];
+    if (!a) {
+      return '<p class="mini">Use el botón del lápiz para añadir notas, responsable y fecha límite a esta tarea.</p>';
+    }
+    return '<p class="mini" style="margin-bottom:.6rem">' + a.resumen + '</p>' +
+      '<ol class="pasos">' + a.pasos.map(function (p) { return '<li>' + p + '</li>'; }).join('') + '</ol>' +
+      (a.vista
+        ? '<div style="margin-top:.8rem"><button class="btn btn--outline btn--sm" type="button" data-vista="' + a.vista + '">' +
+          ico('flecha') + ' Ir a ' + esc(a.donde) + '</button></div>'
+        : '');
+  }
+
+  function filaTarea(x) {
+    var dias = diasHasta(x.fechaLimite);
+    var vencida = dias !== null && dias < 0 && x.estado !== 'hecha';
+    var meta = '<span class="tag tag--azul">' + ico('etiqueta') + ' ' + esc(x.categoria) + '</span>' +
+      '<span class="tag ' + (x.prioridad === 'alta' ? 'tag--rojo' : (x.prioridad === 'media' ? 'tag--demo' : 'tag--ok')) + '">' +
+        ico('alerta') + ' Prioridad ' + esc(x.prioridad) + '</span>';
+    if (x.periodicidad && x.periodicidad !== 'única') {
+      meta += '<span class="tag tag--pend">' + ico('actualizar') + ' ' + esc(x.periodicidad) + '</span>';
+    }
+    if (x.estado === 'en proceso') meta += '<span class="tag tag--demo">' + ico('reloj') + ' En proceso</span>';
+    if (hay(x.responsable)) meta += '<span class="tag tag--pend">' + ico('persona') + ' ' + esc(x.responsable) + '</span>';
+    if (hay(x.fechaLimite)) {
+      meta += '<span class="tag ' + (vencida ? 'tag--rojo' : 'tag--pend') + '">' + ico('calendario') + ' ' +
+        (vencida ? 'Vencida el ' : 'Límite: ') + esc(fechaLarga(x.fechaLimite)) + '</span>';
+    }
+
+    return '<div class="tarea tarea--' + esc(x.prioridad) + (x.estado === 'hecha' ? ' tarea--hecha' : '') + '">' +
+      '<input type="checkbox" data-tarea-check="' + esc(x.id) + '"' + (x.estado === 'hecha' ? ' checked' : '') +
+        ' aria-label="Marcar como hecha: ' + esc(x.tarea) + '">' +
+      '<div class="tarea__cuerpo">' +
+        '<h3>' + esc(x.tarea) + '</h3>' +
+        (hay(x.notas) ? '<p class="tarea__notas">' + esc(x.notas) + '</p>' : '') +
+        '<div class="fila__meta">' + meta + '</div>' +
+        '<div style="margin-top:.7rem">' +
+          '<button class="btn btn--ghost btn--sm" type="button" data-ayuda-tarea="1" aria-expanded="false">' +
+            ico('info') + ' ¿Cómo se hace?</button>' +
+        '</div>' +
+        '<div class="tarea__ayuda" hidden>' + ayudaTarea(x) + '</div>' +
+      '</div>' +
+      '<div class="fila__acciones">' +
+        '<button class="icono-btn" type="button" data-editar="pendientes" data-id="' + esc(x.id) + '" aria-label="Editar pendiente">' + ico('lapiz') + '</button>' +
+        '<button class="icono-btn icono-btn--rojo" type="button" data-borrar="pendientes" data-id="' + esc(x.id) + '" aria-label="Eliminar pendiente">' + ico('basura') + '</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  /* -------------------------------------------------------------------
+     13.4 Publicar y respaldar
+     ------------------------------------------------------------------- */
+  function contenidoJS() {
+    return '/* =====================================================================\n' +
+      '   CONTENIDO PUBLICADO DEL SITIO\n' +
+      '   Institución Educativa Rural Puerto Rosario\n' +
+      '   ---------------------------------------------------------------------\n' +
+      '   Archivo generado automáticamente por el panel institucional (admin.html).\n' +
+      '   NO lo edite a mano: vuelva a generarlo desde el panel.\n' +
+      '   Última generación: ' + new Date().toLocaleString('es-CO') + '\n' +
+      '   ===================================================================== */\n\n' +
+      'window.CONTENIDO_IERP = ' + JSON.stringify(estado.contenido, null, 2) + ';\n';
+  }
+
+  function pintarPublicar() {
+    var cont = $('#cuerpo-publicar');
+    if (!cont) return;
+    var docs = estado.contenido.documentos || [];
+    var conArchivo = docs.filter(function (d) { return hay(d.archivo); });
+    var sinArchivo = docs.filter(function (d) { return !hay(d.archivo); });
+    var texto = contenidoJS();
+    var kb = Math.round(new Blob([texto]).size / 1024);
+
+    cont.innerHTML =
+      '<div class="aviso aviso--info" style="margin-bottom:1.2rem">' + ico('info') +
+        '<div><strong>Así se publica.</strong> Con el botón <strong>«Publicar en el sitio»</strong> los cambios ' +
+        'se suben a internet de una vez. También puede descargar el archivo <code>datos/contenido.js</code> como respaldo.</div></div>' +
+
+      '<div class="rejilla rejilla--2">' +
+        tarjeta('Publicar los cambios',
+          '<ol class="pasos">' +
+            '<li>Pulse <strong>«Publicar en el sitio»</strong>.</li>' +
+            '<li>Espere un minuto, aproximadamente.</li>' +
+            '<li>Abra el sitio y recargue la página para ver los cambios.</li>' +
+          '</ol>' +
+          '<p class="mini" style="margin-top:1rem">Tamaño estimado del archivo: <strong>' + kb + ' KB</strong>.</p>' +
+          '<p class="mini">Si prefiere guardarlo en su computador, use «Descargar contenido.js».</p>',
+          '<div class="caja__acciones">' +
+            '<button class="btn btn--primary" type="button" data-publicar-sitio="1">' + ico('nube') + ' Publicar en el sitio</button>' +
+            '<button class="btn btn--outline btn--sm" type="button" data-traer-contenido="1">' + ico('actualizar') + ' Traer la versión publicada</button>' +
+            '<button class="btn btn--outline btn--sm" type="button" data-exportar-contenido="1">' + ico('descarga') + ' Descargar contenido.js</button>' +
+            '<button class="btn btn--ghost btn--sm" type="button" data-copiar-contenido="1">' + ico('doc') + ' Copiar al portapapeles</button>' +
+          '</div>') +
+
+        tarjeta('Archivos PDF que deben existir',
+          conArchivo.length
+            ? '<table class="tabla"><thead><tr><th scope="col">Documento</th><th scope="col">Archivo</th></tr></thead><tbody>' +
+              conArchivo.map(function (d) {
+                return '<tr><td>' + esc(d.titulo) + '</td><td><code>' + esc(d.archivo) + '</code></td></tr>';
+              }).join('') + '</tbody></table>'
+            : '<p class="mini">Todavía no ha asociado ningún PDF. Cuando lo haga, aquí aparecerá la lista exacta de archivos que debe copiar en la carpeta <code>documentos/</code>.</p>' +
+              (sinArchivo.length ? '<p class="mini" style="margin-top:.8rem">Documentos aún sin PDF: ' +
+                esc(sinArchivo.map(function (d) { return d.titulo; }).join(', ')) + '.</p>' : ''),
+          '<div class="caja__acciones">' +
+            '<button class="btn btn--outline btn--sm" type="button" data-lista-archivos="1">' + ico('descarga') + ' Descargar lista de archivos</button>' +
+          '</div>') +
+      '</div>' +
+
+      '<div class="caja" style="margin-top:1.2rem">' +
+        '<div class="caja__cab"><h2>' + ico('nube') + ' Copias de seguridad</h2>' +
+          '<p>Guarde estos archivos en un lugar seguro. Permiten recuperar el trabajo si se cambia de computador.</p>' +
+        '</div>' +
+        '<div class="caja__cuerpo">' +
+          '<div class="caja__acciones" style="margin:0">' +
+            '<button class="btn btn--outline btn--sm" type="button" data-exportar-contenido-json="1">' + ico('descarga') + ' Respaldo del contenido (JSON)</button>' +
+            '<button class="btn btn--outline btn--sm" type="button" data-exportar="pendientes">' + ico('descarga') + ' Respaldo de pendientes (JSON)</button>' +
+            '<label class="btn btn--outline btn--sm" style="cursor:pointer">' + ico('subir') + ' Restaurar respaldo de pendientes' +
+              '<input type="file" accept=".json,application/json" data-importar-pendientes="1" hidden></label>' +
+            '<label class="btn btn--outline btn--sm" style="cursor:pointer">' + ico('subir') + ' Restaurar respaldo de contenido' +
+              '<input type="file" accept=".json,.js,application/json,text/javascript" data-importar-contenido="1" hidden></label>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="caja" style="margin-top:1.2rem">' +
+        '<div class="caja__cab"><h2>Vista previa del archivo generado</h2></div>' +
+        '<div class="caja__cuerpo">' +
+          '<div class="code">' + esc(texto.slice(0, 1400)) + (texto.length > 1400 ? '\n…\n(archivo completo: ' + kb + ' KB)' : '') + '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function exportarContenido() {
+    estado.contenido.actualizado = new Date().toISOString();
+    guardar(K_CONTENIDO, estado.contenido);
+    descargar('contenido.js', contenidoJS(), 'text/javascript;charset=utf-8');
+    pintarSello();
+    avisar('Se descargó contenido.js. Reemplácelo en la carpeta datos/ del sitio.');
+  }
+
+  /* El contenido publicado es un archivo JavaScript (window.CONTENIDO_IERP).
+     Esta función lo lee sin depender de que sea JSON puro. */
+  function leerContenidoJS(texto) {
+    var caja = {};
+    try {
+      new Function('window', texto + '\n;return window.CONTENIDO_IERP;')(caja);
+      if (caja.CONTENIDO_IERP && typeof caja.CONTENIDO_IERP === 'object') return caja.CONTENIDO_IERP;
+    } catch (e) { /* sigue abajo */ }
+    try {
+      var i1 = texto.indexOf('{');
+      var i2 = texto.lastIndexOf('}');
+      return JSON.parse(texto.slice(i1, i2 + 1));
+    } catch (e2) { return null; }
+  }
+
+  /* Trae el contenido que está publicado en el sitio y lo usa como base.
+     Es importante: si el panel trabajara con una copia vieja, al publicar
+     borraría los cambios hechos por fuera (documentos nuevos, videos...). */
+  async function traerContenidoPublicado(silencioso) {
+    try {
+      var r = await fetch('datos/contenido.js?t=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return;
+      var texto = await r.text();
+      var publicado = leerContenidoJS(texto);
+      if (!publicado || typeof publicado !== 'object') return;
+
+      var fPub = Date.parse(publicado.actualizado || '') || 0;
+      var fLoc = Date.parse((estado.contenido && estado.contenido.actualizado) || '') || 0;
+      if (fLoc > fPub && !silencioso) {
+        if (!window.confirm('En este navegador hay cambios guardados (' + fechaLarga(estado.contenido.actualizado) +
+          ') que no están en el sitio.\n\n¿Cargar de todos modos la versión publicada? Se perderán esos cambios locales.')) return;
+      }
+      if (fLoc > fPub && silencioso) return; /* hay borradores locales: no se pisan solos */
+
+      estado.contenido = publicado;
+      guardar(K_CONTENIDO, publicado);
+      pintarSello();
+      pintarContadores();
+      irA(estado.vista);
+      if (!silencioso) avisar('Se cargó la versión publicada del contenido.');
+    } catch (e) { /* sin conexión: se sigue con lo que hay */ }
+  }
+
+  /* -------------------------------------------------------------------
+     13.5 Seguridad
+     ------------------------------------------------------------------- */
+  function pintarSeguridad() {
+    var cont = $('#cuerpo-seguridad');
+    if (!cont) return;
+    var tiene = !!claveSitio();
+    cont.innerHTML =
+      '<div class="aviso aviso--info" style="margin-bottom:1.2rem">' + ico('candado') +
+        '<div><strong>Así se protege el panel.</strong> Para entrar se usa la <strong>clave del sitio</strong>: ' +
+        'el mismo token de GitHub que sirve para subir documentos en «subir.html». Esa clave <strong>no está ' +
+        'escrita en esta página</strong>: se guarda solo en el navegador de cada persona. Sin ella nadie puede ' +
+        'publicar cambios, porque GitHub los rechaza.</div></div>' +
+
+      '<div class="rejilla rejilla--2">' +
+        tarjeta('Clave de este navegador',
+          '<p class="mini"><strong>' + (tiene ? 'Este navegador tiene la clave guardada.' : 'Este navegador no tiene la clave guardada.') + '</strong></p>' +
+          '<p class="mini">Se guarda en el almacenamiento de este navegador, no en la página. Si presta el ' +
+          'computador o el celular, bórrela al terminar usándolo.</p>',
+          '<div class="caja__acciones">' +
+            '<button class="btn btn--outline btn--sm" type="button" data-olvidar-clave="1">' + ico('candado') + ' Olvidar la clave en este navegador</button>' +
+            '<a class="btn btn--ghost btn--sm" href="subir.html">' + ico('subir') + ' Subir documentos</a>' +
+          '</div>') +
+
+        tarjeta('Buenas prácticas',
+          '<ul class="lista-simple">' +
+            '<li>' + ico('ver') + '<span>La clave debe estar solo en manos del rector y de la persona administradora.</span></li>' +
+            '<li>' + ico('ver') + '<span>Si se sospecha que alguien la conoce, se revoca en GitHub (Settings &rarr; Developer settings &rarr; Personal access tokens) y se crea otra.</span></li>' +
+            '<li>' + ico('ver') + '<span>No escriba en las notas datos personales de menores, contraseñas ni información reservada.</span></li>' +
+            '<li>' + ico('ver') + '<span>Esta página tiene «noindex»: no aparece en Google.</span></li>' +
+          '</ul>') +
+      '</div>' +
+
+      '<div class="caja" style="margin-top:1.2rem">' +
+        '<div class="caja__cab"><h2>' + ico('actualizar') + ' Mantenimiento de este navegador</h2>' +
+          '<p>Los borradores se guardan únicamente en este equipo. Descargue respaldos antes de borrar nada.</p>' +
+        '</div>' +
+        '<div class="caja__cuerpo"><div class="caja__acciones" style="margin:0">' +
+          '<button class="btn btn--outline btn--sm" type="button" data-exportar="pendientes">' + ico('descarga') + ' Respaldo de pendientes</button>' +
+          '<button class="btn btn--outline btn--sm" type="button" data-exportar-contenido-json="1">' + ico('descarga') + ' Respaldo de contenido</button>' +
+          '<button class="btn btn--peligro btn--sm" type="button" data-borrar-todo="1">' + ico('basura') + ' Borrar todos los borradores de este navegador</button>' +
+        '</div></div>' +
+      '</div>';
+  }
+
+  /* ===================================================================
+     14. ACCIONES
+     =================================================================== */
+  function errorLogin(mensaje) {
+    $('#loginErrorTexto').textContent = mensaje;
+    $('#loginError').hidden = false;
+    $('#claveAdmin').select();
+  }
+
+  /* Entra verificando la clave contra GitHub. Solo si GitHub la acepta se abre
+     el panel: así una clave inventada no sirve de nada. */
+  async function entrarConClave() {
+    var boton = $('#formLogin').querySelector('button[type="submit"]');
+    var clave = ($('#claveAdmin').value || '').trim();
+    if (!clave) { errorLogin('Escriba la clave del sitio.'); return; }
+    if (boton.disabled) return;
+    var textoBoton = boton.innerHTML;
+    boton.disabled = true;
+    boton.textContent = 'Verificando…';
+    try {
+      var r = await fetch(API_REPO, {
+        headers: { 'Authorization': 'Bearer ' + clave, 'Accept': 'application/vnd.github+json' },
+        cache: 'no-store'
+      });
+      if (r.ok) {
+        guardarClaveSitio(clave);
+        $('#loginError').hidden = true;
+        $('#claveAdmin').value = '';
+        entrar();
+        return;
+      }
+      if (r.status === 401) errorLogin('Esa clave no es correcta. Revise que esté completa y sin espacios de más.');
+      else if (r.status === 403) errorLogin('GitHub rechazó la clave o hubo demasiados intentos. Espere un momento e intente otra vez.');
+      else if (r.status === 404) errorLogin('La clave no tiene permiso sobre el sitio, o la dirección del sitio cambió.');
+      else errorLogin('No se pudo verificar la clave (error ' + r.status + ').');
+    } catch (e) {
+      errorLogin('No hay conexión a internet. Para entrar hay que verificar la clave con GitHub.');
+    } finally {
+      boton.disabled = false;
+      boton.innerHTML = textoBoton;
+    }
+  }
+
+  /* Convierte texto (con acentos y ñ) a base64, que es lo que pide GitHub.
+     Se hace por trozos para no reventar con archivos grandes. */
+  function textoABase64(texto) {
+    var bytes = new TextEncoder().encode(texto);
+    var binario = '';
+    for (var i = 0; i < bytes.length; i += 0x8000) {
+      binario += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    }
+    return btoa(binario);
+  }
+
+  /* Publica datos/contenido.js directamente en GitHub. En un minuto,
+     aproximadamente, el sitio de internet muestra los cambios. */
+  async function publicarEnElSitio() {
+    var clave = claveSitio();
+    if (!clave) {
+      avisar('Primero entre con la clave del sitio.', 'riesgo');
+      return;
+    }
+    if (!window.confirm('¿Publicar los cambios en el sitio?\n\nLa página de internet se actualizará en un minuto, aproximadamente, y cualquier persona podrá verlos.')) return;
+
+    var boton = $('[data-publicar-sitio]');
+    if (boton && boton.disabled) return;
+    var textoBoton = boton ? boton.innerHTML : '';
+    if (boton) { boton.disabled = true; boton.textContent = 'Publicando…'; }
+
+    try {
+      estado.contenido.actualizado = new Date().toISOString();
+      guardar(K_CONTENIDO, estado.contenido);
+      var texto = contenidoJS();
+      var cabeceras = {
+        'Authorization': 'Bearer ' + clave,
+        'Accept': 'application/vnd.github+json'
+      };
+
+      var consulta = await fetch(API_CONTENIDO + '?ref=' + encodeURIComponent(RAMA), { headers: cabeceras, cache: 'no-store' });
+      if (consulta.status === 401) throw new Error('La clave guardada ya no sirve. Salga y vuelva a entrar.');
+      if (consulta.status === 403) throw new Error('GitHub no permitió cambiar el archivo: la clave no tiene permiso de escritura.');
+      if (!consulta.ok && consulta.status !== 404) throw new Error('No se pudo leer el archivo del sitio (error ' + consulta.status + ').');
+
+      var cuerpo = {
+        message: 'Actualizar contenido desde el panel (' + new Date().toLocaleString('es-CO') + ')',
+        content: textoABase64(texto),
+        branch: RAMA
+      };
+      if (consulta.ok) {
+        var info = await consulta.json();
+        if (info && info.sha) cuerpo.sha = info.sha;
+
+        /* Red de seguridad: si el sitio tiene una versión más reciente que la
+           de este panel, avisar antes de reemplazarla. */
+        try {
+          var b64 = String(info.content || '').replace(/\s/g, '');
+          if (b64) {
+            var bytesPub = Uint8Array.from(atob(b64), function (c) { return c.charCodeAt(0); });
+            var textoPub = new TextDecoder().decode(bytesPub);
+            var publicado = leerContenidoJS(textoPub);
+            if (!publicado) throw new Error('sin contenido');
+            var fPub = Date.parse(publicado.actualizado || '') || 0;
+            var fLoc = Date.parse(estado.contenido.actualizado || '') || 0;
+            if (fPub > fLoc + 60000) {
+              if (!window.confirm('El sitio tiene una versión más reciente (' + fechaLarga(publicado.actualizado) +
+                ') que la de este panel.\n\nSi publica ahora, la reemplazará. Se recomienda cancelar, usar ' +
+                '«Traer la versión publicada» y luego publicar.\n\n¿Publicar de todos modos?')) return;
+            }
+          }
+        } catch (e) { /* si no se puede comparar, se sigue */ }
+      }
+
+      var envio = await fetch(API_CONTENIDO, {
+        method: 'PUT',
+        headers: Object.assign({ 'Content-Type': 'application/json' }, cabeceras),
+        body: JSON.stringify(cuerpo)
+      });
+
+      if (envio.ok) {
+        pintarSello();
+        pintarPublicar();
+        avisar('¡Publicado! Espere un minuto y recargue el sitio para ver los cambios.');
+        return;
+      }
+      if (envio.status === 409 || envio.status === 422) {
+        throw new Error('El sitio cambió mientras usted editaba. Recargue este panel, vuelva a hacer el cambio y publique otra vez.');
+      }
+      if (envio.status === 401) throw new Error('La clave guardada ya no sirve. Salga y vuelva a entrar.');
+      if (envio.status === 403) throw new Error('GitHub no permitió publicar: la clave no tiene permiso de escritura.');
+      throw new Error('No se pudo publicar (error ' + envio.status + '). Intente de nuevo en un momento.');
+    } catch (e) {
+      window.alert('No se pudo publicar.\n\n' + (e && e.message ? e.message : 'Revise la conexión a internet.'));
+    } finally {
+      if (boton) { boton.disabled = false; boton.innerHTML = textoBoton; }
+    }
+  }
+
+  function entrar() {
+    $('#pantallaLogin').hidden = true;
+    $('#appPanel').hidden = false;
+    try { sessionStorage.setItem(K_SESION, '1'); } catch (e) {}
+    $('#marcaPanel').textContent = (estado.contenido.institucion.nombre || 'I.E. Rural Puerto Rosario')
+      .replace('Institución Educativa Rural', 'I.E. Rural');
+    pintarContadores();
+    pintarSello();
+    irA(estado.vista);
+    traerContenidoPublicado(true);
+  }
+
+  function salir() {
+    try { sessionStorage.removeItem(K_SESION); } catch (e) {}
+    cerrarEditor();
+    $('#appPanel').hidden = true;
+    $('#pantallaLogin').hidden = false;
+    $('#claveAdmin').value = '';
+    $('#claveAdmin').focus();
+  }
+
+  function borrarItem(nombre, id) {
+    var esq = ESQUEMAS[nombre];
+    var lista = datosDe(nombre);
+    var item = lista.filter(function (x) { return x.id === id; })[0];
+    if (!item) return;
+    if (!window.confirm('¿Eliminar «' + esq.tituloItem(item) + '»?\n\nEsta acción no se puede deshacer.')) return;
+    lista.splice(lista.indexOf(item), 1);
+    persistir(nombre);
+    renderLista(nombre);
+    pintarContadores();
+    if (nombre === 'pendientes') pintarPendientes();
+    avisar('Registro eliminado.');
+  }
+
+  function quitarImagen(form, ruta) {
+    var oculto = form.querySelector('[data-campo="' + ruta + '"]');
+    if (oculto) oculto.value = '';
+    var caja = form.querySelector('[data-caja="' + ruta + '"]');
+    if (!caja) return;
+    var img = caja.querySelector('.cargador img');
+    if (img) img.remove();
+    var boton = caja.querySelector('[data-quitar-imagen]');
+    if (boton) boton.parentElement.remove();
+    var cargador = caja.querySelector('.cargador');
+    if (cargador && !cargador.querySelector('.mini')) {
+      var p = document.createElement('p');
+      p.className = 'mini';
+      p.innerHTML = ico('imagen') + ' Sin imagen cargada.';
+      cargador.insertBefore(p, cargador.firstChild);
+    }
+    var file = caja.querySelector('input[type=file]');
+    if (file) file.value = '';
+    avisar('Imagen retirada. Recuerde guardar los cambios.');
+  }
+
+  function exportarLista(nombre) {
+    var datos = datosDe(nombre);
+    descargar(nombre + '.json', JSON.stringify(datos, null, 2), 'application/json');
+    avisar('Respaldo de ' + nombre + ' descargado.');
+  }
+
+  function importarLista(nombre, archivo) {
+    leerArchivoJSON(archivo, function (datos) {
+      if (!Array.isArray(datos)) { avisar('El archivo no tiene el formato esperado.', 'riesgo'); return; }
+      if (!window.confirm('Se reemplazarán los ' + datosDe(nombre).length + ' registros actuales por los ' +
+        datos.length + ' del archivo. ¿Continuar?')) return;
+      if (nombre === 'pendientes') {
+        var hayCortos = datos.some(function (x) { return x && x.t && !x.tarea; });
+        estado.pendientes = hayCortos ? mapearPendientes(datos) : datos;
+      }
+      else estado.contenido[nombre] = datos;
+      persistir(nombre);
+      renderLista(nombre);
+      pintarContadores();
+      if (nombre === 'pendientes') pintarPendientes();
+      avisar('Respaldo restaurado.');
+    });
+  }
+
+  function leerArchivoJSON(archivo, cb) {
+    var lector = new FileReader();
+    lector.onload = function () {
+      var texto = String(lector.result);
+      var i1 = texto.indexOf('{');
+      var i2 = texto.indexOf('[');
+      var inicio = (i1 === -1) ? i2 : (i2 === -1 ? i1 : Math.min(i1, i2));
+      var fin = Math.max(texto.lastIndexOf('}'), texto.lastIndexOf(']'));
+      if (inicio === -1 || fin === -1 || fin < inicio) { cb(null); return; }
+      try { cb(JSON.parse(texto.slice(inicio, fin + 1))); } catch (e) { cb(null); }
+    };
+    lector.onerror = function () { cb(null); };
+    lector.readAsText(archivo);
+  }
+
+  function exportarListaArchivos() {
+    var docs = (estado.contenido.documentos || []).filter(function (d) { return hay(d.archivo); });
+    var texto = 'ARCHIVOS PDF QUE DEBEN ESTAR EN LA CARPETA «documentos/»\r\n' +
+      'Institución Educativa Rural Puerto Rosario\r\n' +
+      'Generado el ' + new Date().toLocaleString('es-CO') + '\r\n' +
+      '================================================================\r\n\r\n' +
+      (docs.length
+        ? docs.map(function (d) { return d.archivo + '\r\n    Documento: ' + d.titulo + '\r\n'; }).join('\r\n')
+        : 'Todavía no hay documentos con archivo asociado.\r\n') +
+      '\r\nTOTAL: ' + docs.length + ' archivo(s).\r\n';
+    descargar('lista-de-archivos-pdf.txt', texto);
+    avisar('Lista descargada.');
+  }
+
+  /* Genera un archivo «LEEME» pensado para guardarlo DENTRO de la carpeta
+     documentos/, de modo que quien la abra sepa qué va ahí. */
+  function exportarLeemeCarpeta() {
+    var docs = (estado.contenido.documentos || []).filter(function (d) { return hay(d.archivo); });
+    var sinPdf = (estado.contenido.documentos || []).filter(function (d) { return !hay(d.archivo); });
+    var t = [
+      'LEEME - CARPETA «documentos»',
+      'Institución Educativa Rural Puerto Rosario',
+      'Generado el ' + new Date().toLocaleString('es-CO'),
+      '================================================================',
+      '',
+      '¿QUÉ VA EN ESTA CARPETA?',
+      '',
+      '  Aquí se guardan todos los PDF que el sitio web ofrece para',
+      '  descargar: el PEI, el Manual de Convivencia, el SIEE, los planes',
+      '  de estudio, el calendario académico, los informes públicos, etc.',
+      '',
+      '  El sitio web NO sube los archivos solo. El panel escribe la ruta',
+      '  del archivo; el archivo lo copia usted a esta carpeta.',
+      '',
+      'REGLAS PARA LOS NOMBRES DE ARCHIVO',
+      '',
+      '  - Todo en minúsculas, sin tildes y sin espacios.',
+      '  - Use guiones en lugar de espacios.',
+      '  - Termine siempre en .pdf',
+      '',
+      '  Bien:  pei-2026.pdf   manual-convivencia-2026.pdf',
+      '  Mal:   PEI 2026 (final).pdf   Plan de estudios de Matemáticas.pdf',
+      '',
+      'CÓMO ENLAZAR UN PDF EN EL PANEL',
+      '',
+      '  1. Copie el archivo a esta carpeta con el nombre correcto.',
+      '  2. Abra admin.html y vaya a la sección «Documentos».',
+      '  3. Abra el documento que corresponde (o pulse «Añadir documento»).',
+      '  4. Pulse «Elegir el PDF en mi computador»: el panel escribe la ruta.',
+      '  5. Pulse «Guardar» y después publique en «Publicar y respaldar».',
+      '',
+      '================================================================',
+      'ARCHIVOS QUE EL SITIO ESTÁ ESPERANDO (' + docs.length + ')',
+      '================================================================',
+      ''
+    ];
+    if (docs.length) {
+      docs.forEach(function (d) {
+        t.push('  ' + d.archivo);
+        t.push('      -> ' + d.titulo);
+        t.push('');
+      });
+    } else {
+      t.push('  (Todavía no hay documentos con archivo asociado.)');
+      t.push('');
+    }
+    t.push('================================================================');
+    t.push('DOCUMENTOS SIN PDF TODAVÍA (' + sinPdf.length + ')');
+    t.push('================================================================');
+    t.push('');
+    if (sinPdf.length) {
+      sinPdf.forEach(function (d) { t.push('  - ' + d.titulo + '  [' + (d.categoria || 'sin categoría') + ']'); });
+    } else {
+      t.push('  (Todos los documentos tienen su PDF asociado.)');
+    }
+    t.push('');
+    t.push('  TOTAL: ' + docs.length + ' archivo(s) enlazado(s), ' + sinPdf.length + ' pendiente(s).');
+    t.push('');
+    descargar('LEEME-de-la-carpeta-documentos.txt', t.join('\r\n'));
+    avisar('Descargado. Guárdelo dentro de la carpeta documentos\\.');
+  }
+
+  function agregarTareasDeAnalisis(indices) {
+    var hallazgos = $('#cuerpo-actualizacion').__hallazgos || [];
+    var agregadas = 0;
+    indices.forEach(function (i) {
+      var h = hallazgos[i];
+      if (!h || !h.tarea) return;
+      var repetida = estado.pendientes.some(function (t) { return t.tarea === h.tarea.tarea && t.estado !== 'hecha'; });
+      if (repetida) return;
+      estado.pendientes.push({
+        id: nuevoId('t'), tarea: h.tarea.tarea, categoria: h.tarea.categoria,
+        prioridad: h.tarea.prioridad, periodicidad: h.tarea.periodicidad || 'única',
+        estado: 'pendiente', responsable: '', fechaLimite: '', notas: 'Generado por el asistente de actualización.',
+        origen: 'Asistente'
+      });
+      agregadas++;
+    });
+    guardarPendientes();
+    pintarContadores();
+    avisar(agregadas ? agregadas + ' tarea(s) añadida(s) a pendientes.' : 'Las tareas ya estaban en la lista.');
+  }
+
+  function olvidarClave() {
+    if (!window.confirm('¿Olvidar la clave del sitio en este navegador?\n\nTendrá que escribirla otra vez para entrar o para publicar.')) return;
+    olvidarClaveSitio();
+    try { sessionStorage.removeItem(K_SESION); } catch (e) {}
+    pintarSeguridad();
+    avisar('Clave olvidada en este navegador.');
+  }
+
+  function borrarTodo() {
+    if (!window.confirm('Se borrarán TODOS los borradores guardados en este navegador.\n\n' +
+      'Los archivos que ya descargó no se ven afectados. ¿Continuar?')) return;
+    if (!window.confirm('Confirme otra vez: esta acción no se puede deshacer.')) return;
+    [K_CONTENIDO, K_PENDIENTES].forEach(function (k) {
+      try { localStorage.removeItem(k); } catch (e) {}
+    });
+    estado.contenido = clonar(CONTENIDO_INICIAL);
+    estado.pendientes = clonar(PENDIENTES_INICIALES);
+    pintarContadores();
+    pintarSello();
+    irA(estado.vista);
+    avisar('Borradores borrados. Se restauró el contenido inicial.');
+  }
+
+  function pintarContadores() {
+    var pendientes = estado.pendientes.filter(function (t) { return t.estado !== 'hecha'; }).length;
+    var chip = $('#admChipPendientes');
+    if (chip) {
+      chip.textContent = pendientes === 1 ? '1 pendiente' : pendientes + ' pendientes';
+      chip.className = 'tag ' + (pendientes ? 'tag--demo' : 'tag--ok');
+    }
+    var badge = $('[data-badge="pendientes"]');
+    if (badge) { badge.textContent = pendientes; badge.hidden = pendientes === 0; }
+  }
+
+  function pintarSello() {
+    var el = $('#admUltima');
+    if (!el) return;
+    el.textContent = hay(estado.contenido.actualizado)
+      ? 'Guardado el ' + fechaLarga(estado.contenido.actualizado)
+      : 'Sin cambios guardados';
+  }
+
+  function cerrarMenuMovil() {
+    $('#admSide').classList.remove('is-abierto');
+    $('#admVeloNav').classList.remove('is-visible');
+    $('#admMenuBtn').setAttribute('aria-expanded', 'false');
+  }
+
+  function filtrarPendientesDOM(q) {
+    q = (q || '').trim().toLowerCase();
+    $$('#cuerpo-pendientes .tarea').forEach(function (el) {
+      el.hidden = !!q && el.textContent.toLowerCase().indexOf(q) === -1;
+    });
+  }
+
+  /* ===================================================================
+     15. EVENTOS
+     =================================================================== */
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var el;
+
+    if ((el = t.closest('[data-vista]'))) { irA(el.getAttribute('data-vista')); return; }
+    if ((el = t.closest('[data-nuevo]'))) { abrirEditor(el.getAttribute('data-nuevo'), null); return; }
+    if ((el = t.closest('[data-editar]'))) { abrirEditor(el.getAttribute('data-editar'), el.getAttribute('data-id')); return; }
+    if ((el = t.closest('[data-borrar]'))) { borrarItem(el.getAttribute('data-borrar'), el.getAttribute('data-id')); return; }
+    if ((el = t.closest('[data-quitar-imagen]'))) {
+      var formQ = el.closest('form') || document;
+      quitarImagen(formQ, el.getAttribute('data-quitar-imagen'));
+      return;
+    }
+    if ((el = t.closest('[data-exportar]'))) { exportarLista(el.getAttribute('data-exportar')); return; }
+    if ((el = t.closest('[data-exportar-contenido]'))) { exportarContenido(); return; }
+    if ((el = t.closest('[data-exportar-contenido-json]'))) {
+      descargar('contenido-respaldo.json', JSON.stringify(estado.contenido, null, 2), 'application/json');
+      avisar('Respaldo del contenido descargado.');
+      return;
+    }
+    if ((el = t.closest('[data-copiar-contenido]'))) {
+      var texto = contenidoJS();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(function () {
+          avisar('Archivo copiado al portapapeles.');
+        }, function () { avisar('El navegador no permitió copiar. Use la descarga.', 'riesgo'); });
+      } else {
+        avisar('El navegador no permite copiar. Use la descarga.', 'riesgo');
+      }
+      return;
+    }
+    if ((el = t.closest('[data-lista-archivos]'))) { exportarListaArchivos(); return; }
+    if ((el = t.closest('[data-revisar]'))) { ejecutarRevision(); return; }
+    if ((el = t.closest('[data-arreglo]'))) {
+      var hs = $('#cuerpo-actualizacion').__hallazgos || [];
+      var h = hs[Number(el.getAttribute('data-arreglo'))];
+      if (h && h.arreglo && h.arreglo.fn) { h.arreglo.fn(); ejecutarRevision(); }
+      return;
+    }
+    if ((el = t.closest('[data-tarea-de]'))) { agregarTareasDeAnalisis([Number(el.getAttribute('data-tarea-de'))]); return; }
+    if ((el = t.closest('[data-tareas-de-analisis]'))) {
+      var todos = ($('#cuerpo-actualizacion').__hallazgos || [])
+        .map(function (h, i) { return h.tarea ? i : -1; })
+        .filter(function (i) { return i !== -1; });
+      agregarTareasDeAnalisis(todos);
+      return;
+    }
+    if ((el = t.closest('[data-filtro-estado]'))) { estado.filtroPend.estado = el.getAttribute('data-filtro-estado'); pintarPendientes(); return; }
+    if ((el = t.closest('[data-filtro-prio]'))) { estado.filtroPend.prioridad = el.getAttribute('data-filtro-prio'); pintarPendientes(); return; }
+    if ((el = t.closest('[data-reiniciar-pendientes]'))) {
+      if (window.confirm('Se restaurará la lista de pendientes inicial y se perderán los cambios hechos en ella. ¿Continuar?')) {
+        estado.pendientes = clonar(PENDIENTES_INICIALES);
+        guardarPendientes();
+        pintarPendientes();
+        avisar('Lista de pendientes restaurada.');
+      }
+      return;
+    }
+    if ((el = t.closest('[data-publicar-sitio]'))) { publicarEnElSitio(); return; }
+    if ((el = t.closest('[data-traer-contenido]'))) { traerContenidoPublicado(false); return; }
+    if ((el = t.closest('[data-olvidar-clave]'))) { olvidarClave(); return; }
+    if ((el = t.closest('[data-borrar-todo]'))) { borrarTodo(); return; }
+    if ((el = t.closest('[data-revertir]'))) {
+      var idRev = el.getAttribute('data-revertir');
+      if (window.confirm('¿Descartar los cambios no guardados de esta sección?')) pintarAjustes(idRev);
+      return;
+    }
+    if ((el = t.closest('[data-ayuda-tarea]'))) {
+      var cajaAyuda = el.closest('.tarea__cuerpo');
+      var bloqueAyuda = cajaAyuda ? cajaAyuda.querySelector('.tarea__ayuda') : null;
+      if (bloqueAyuda) {
+        var estabaAbierto = !bloqueAyuda.hidden;
+        bloqueAyuda.hidden = estabaAbierto;
+        el.setAttribute('aria-expanded', estabaAbierto ? 'false' : 'true');
+        el.innerHTML = estabaAbierto
+          ? ico('info') + ' ¿Cómo se hace?'
+          : ico('cerrar') + ' Ocultar las instrucciones';
+      }
+      return;
+    }
+    if ((el = t.closest('[data-copiar-nombre]'))) {
+      var nomArch = el.getAttribute('data-copiar-nombre');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(nomArch).then(function () {
+          avisar('Nombre copiado. Úselo al renombrar el archivo.');
+        }, function () { avisar('El navegador no permitió copiar. Selecciónelo a mano.', 'riesgo'); });
+      } else {
+        avisar('Copie el nombre a mano: ' + nomArch, 'riesgo');
+      }
+      return;
+    }
+    if ((el = t.closest('[data-descargar-guia]'))) {
+      descargar('guia-para-cargar-la-informacion.txt', textoGuia());
+      avisar('Guía descargada. Puede imprimirla y tenerla al lado del computador.');
+      return;
+    }
+    if ((el = t.closest('[data-preparar-carpeta]'))) { exportarLeemeCarpeta(); return; }
+    if ((el = t.closest('#editorCerrar')) || (el = t.closest('#editorCancelar')) || t === $('#editorVelo')) {
+      cerrarEditor();
+      return;
+    }
+  });
+
+  document.addEventListener('change', function (e) {
+    var t = e.target;
+    if (!t || !t.matches) return;
+
+    if (t.matches('[data-tarea-check]')) {
+      var id = t.getAttribute('data-tarea-check');
+      var tarea = estado.pendientes.filter(function (x) { return x.id === id; })[0];
+      if (tarea) {
+        tarea.estado = t.checked ? 'hecha' : 'pendiente';
+        guardarPendientes();
+        pintarPendientes();
+      }
+      return;
+    }
+
+    if (t.matches('[data-filtro-cat]')) {
+      estado.filtroPend.categoria = t.value;
+      pintarPendientes();
+      return;
+    }
+
+    if (t.matches('[data-pdf]')) {
+      var rutaPdf = t.getAttribute('data-pdf');
+      var archPdf = t.files && t.files[0];
+      if (!archPdf) return;
+      var seguro = nombreArchivoSeguro(archPdf.name);
+      var formPdf = t.closest('form') || document;
+      var campoPdf = formPdf.querySelector('[data-campo="' + rutaPdf + '"]');
+      if (campoPdf) campoPdf.value = 'documentos/' + seguro;
+      var zonaPdf = formPdf.querySelector('[data-instruccion-pdf]');
+      if (zonaPdf) zonaPdf.innerHTML = avisoInstruccionPDF(seguro, archPdf.name);
+      avisar('Ruta escrita. Falta copiar el archivo a la carpeta documentos\\.');
+      return;
+    }
+
+    if (t.matches('[data-imagen]')) {
+      var ruta = t.getAttribute('data-imagen');
+      var archivo = t.files && t.files[0];
+      if (!archivo) return;
+      var esEscudo = /escudo/i.test(ruta);
+      var form = t.closest('form') || document;
+      procesarImagen(archivo, { maxAncho: esEscudo ? 320 : 1280, calidad: 0.78, transparencia: esEscudo },
+        function (dataUrl) {
+          if (!dataUrl) return;
+          var oculto = form.querySelector('[data-campo="' + ruta + '"]');
+          if (oculto) oculto.value = dataUrl;
+          var caja = form.querySelector('[data-caja="' + ruta + '"]');
+          if (caja) {
+            var cargador = caja.querySelector('.cargador');
+            var img = cargador.querySelector('img');
+            if (!img) {
+              img = document.createElement('img');
+              img.alt = 'Vista previa de la imagen cargada';
+              cargador.insertBefore(img, cargador.firstChild);
+            }
+            img.src = dataUrl;
+            var p = cargador.querySelector('.mini');
+            if (p) p.remove();
+            if (!cargador.querySelector('[data-quitar-imagen]')) {
+              var cont = document.createElement('div');
+              cont.style.marginTop = '.6rem';
+              cont.innerHTML = '<button class="btn btn--peligro btn--sm" type="button" data-quitar-imagen="' +
+                ruta + '">' + ico('basura') + ' Quitar imagen</button>';
+              cargador.appendChild(cont);
+            }
+          }
+          avisar('Imagen cargada. Recuerde pulsar «Guardar».');
+        });
+      return;
+    }
+
+    if (t.matches('[data-importar]')) {
+      var nombre = t.getAttribute('data-importar');
+      if (t.files && t.files[0]) importarLista(nombre, t.files[0]);
+      t.value = '';
+      return;
+    }
+
+    if (t.matches('[data-importar-pendientes]')) {
+      if (!t.files || !t.files[0]) return;
+      importarLista('pendientes', t.files[0]);
+      t.value = '';
+      return;
+    }
+
+    if (t.matches('[data-importar-contenido]')) {
+      if (!t.files || !t.files[0]) return;
+      leerArchivoJSON(t.files[0], function (datos) {
+        if (!datos || typeof datos !== 'object') { avisar('El archivo no es un respaldo válido.', 'riesgo'); return; }
+        if (!window.confirm('Se reemplazará todo el contenido actual por el del archivo. ¿Continuar?')) return;
+        estado.contenido = datos;
+        guardarContenido();
+        pintarContadores();
+        irA(estado.vista);
+        avisar('Respaldo de contenido restaurado.');
+      });
+      t.value = '';
+      return;
+    }
+  });
+
+  document.addEventListener('input', function (e) {
+    var t = e.target;
+    if (!t || !t.matches) return;
+    if (t.matches('[data-buscar]')) {
+      var nombre = t.getAttribute('data-buscar');
+      estado.busqueda[nombre] = t.value;
+      if (nombre === 'pendientes') filtrarPendientesDOM(t.value);
+      else renderLista(nombre);
+      return;
+    }
+    if (t.matches('[data-campo="archivo"]')) {
+      var cajaRuta = t.closest('[data-caja="archivo"]');
+      if (cajaRuta) {
+        var zonaRuta = cajaRuta.querySelector('[data-instruccion-pdf]');
+        var valRuta = t.value.trim();
+        if (zonaRuta) {
+          zonaRuta.innerHTML = valRuta ? avisoInstruccionPDF(nombreDeRuta(valRuta), nombreDeRuta(valRuta)) : '';
+        }
+      }
+      return;
+    }
+  });
+
+  document.addEventListener('submit', function (e) {
+    var f = e.target;
+    if (!f || !f.id) return;
+    if (f.id === 'editorCuerpo') { e.preventDefault(); guardarEditor(); return; }
+    if (f.id === 'formLogin') {
+      e.preventDefault();
+      entrarConClave();
+      return;
+    }
+    if (f.id.indexOf('form-') === 0) {
+      var id = f.id.slice(5);
+      if (AJUSTES[id]) { e.preventDefault(); guardarAjustes(id); }
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !$('#editor').hidden) { cerrarEditor(); return; }
+    if (e.key === 'Escape') cerrarMenuMovil();
+  });
+
+  $('#btnSalir').addEventListener('click', salir);
+  $('#btnPublicarRapido').addEventListener('click', function () { irA('publicar'); });
+  $('#btnActualizarAhora').addEventListener('click', function () { irA('actualizacion'); ejecutarRevision(); });
+  $('#admChipPendientes').addEventListener('click', function () { irA('pendientes'); });
+  $('#admMenuBtn').addEventListener('click', function () {
+    var abierto = $('#admSide').classList.toggle('is-abierto');
+    $('#admVeloNav').classList.toggle('is-visible', abierto);
+    this.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+  });
+  $('#admVeloNav').addEventListener('click', cerrarMenuMovil);
+
+  /* ===================================================================
+     16. ARRANQUE
+     =================================================================== */
+  function iniciar() {
+    construirNavegacion();
+    construirVistas();
+    pintarContadores();
+    pintarSello();
+
+    var sesion = false;
+    try { sesion = sessionStorage.getItem(K_SESION) === '1' && !!claveSitio(); } catch (e) {}
+    if (sesion) {
+      entrar();
+    } else {
+      $('#pantallaLogin').hidden = false;
+      $('#appPanel').hidden = true;
+      setTimeout(function () { $('#claveAdmin').focus(); }, 60);
+    }
+
+    /* Las notas internas viven en un archivo local que no se publica:
+       se restauran desde «Publicar y respaldar». */
+  }
+
+  iniciar();
+}());
+</script>
+</body>
+</html>

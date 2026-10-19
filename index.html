@@ -5976,19 +5976,14 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
 </script>
 <script>
 /* ---------------------------------------------------------------------
-   El panel admin.html existe SOLO en el equipo local (no se publica en
-   internet, para proteger la clave de rectoría). Este bloque muestra el
-   enlace "Acceso institucional" únicamente cuando el sitio se abre de
-   forma local (archivo en el PC o servidor local); en la web pública
-   el enlace queda oculto y así nunca aparece roto.
+   Acceso al panel institucional (admin.html). Se muestra siempre: el panel
+   se publica en internet y se entra con la clave del sitio (token de GitHub),
+   que no está escrita en la página. El panel tiene «noindex»: no aparece en
+   los buscadores.
    --------------------------------------------------------------------- */
 (function () {
-  var h = (location.hostname || '').toLowerCase();
-  var esLocal = location.protocol === 'file:' || h === '' || h === 'localhost' || h === '127.0.0.1' || h === '[::1]';
-  if (esLocal) {
-    var a = document.getElementById('enlaceAdmin');
-    if (a) { a.style.display = 'inline'; }
-  }
+  var a = document.getElementById('enlaceAdmin');
+  if (a) { a.style.display = 'inline'; }
 }());
 </script>
 <script>
