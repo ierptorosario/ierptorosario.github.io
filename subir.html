@@ -115,7 +115,7 @@
     <div id="cajaClaveOk" class="oculto">
       <div class="aviso aviso--ok" id="avisoClave"></div>
       <div style="margin-top:.7rem;display:flex;gap:.5rem;flex-wrap:wrap">
-        <button class="boton boton--suave boton--sm" type="button" id="btnCambiarClave">Cambiar la clave</button>
+        <button class="boton boton--suave boton--sm" type="button" id="btnCambiarClave">Quitar la clave de este equipo</button>
         <button class="boton boton--suave boton--sm" type="button" id="btnRecargarLista">Ver los documentos subidos</button>
       </div>
     </div>
@@ -205,6 +205,9 @@
       <b>Consejo de seguridad:</b> esa clave vale como una llave del sitio. No la comparta, no la escriba en
       documentos ni en mensajes. Si alguien más la llega a ver, entre a GitHub y borre el token
       (<b>Revoke</b>) para crear uno nuevo. Aquí queda guardada únicamente en este navegador.
+      <br><b>Si usa un computador compartido</b> (sala de profesores, otro escritorio), pulse
+      <b>«Quitar la clave de este equipo»</b> al terminar: se borra de ese navegador y nadie más puede
+      subir documentos desde ahí.
     </div>
   </section>
 
@@ -691,9 +694,12 @@
   }
   campos.clave.addEventListener('keydown', function (e) { if (e.key === 'Enter') { guardarClave(); } });
   $('#btnCambiarClave').addEventListener('click', function () {
+    if (!confirm('¿Quitar la clave de este equipo?\n\nSe borra de este navegador. El sitio y los ' +
+      'documentos quedan igual; solo tendrá que pegar la clave otra vez para volver a subir.')) { return; }
     try { localStorage.removeItem(CLAVE_LS); } catch (e) { /* nada */ }
     clave = '';
     salirConClave();
+    mostrar(campos.avisoClaveError, 'Clave quitada de este equipo. El sitio y los documentos siguen igual.', 'info');
   });
   $('#btnRecargarLista').addEventListener('click', function () {
     esconder(campos.avisoError);
