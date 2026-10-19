@@ -1841,6 +1841,14 @@ table.horario td .vacio{color:#c3ceda}
 @media (prefers-reduced-motion:reduce){
   .texto-plegable__boton:hover{transform:none}
 }
+
+/* --- Página más corta: accesos unidos y noticias por partes --- */
+.rapidos{padding-bottom:2rem}
+.section--pegada{padding-top:1.2rem}
+.section__head--compacto{margin-bottom:1rem}
+.section__head--compacto h2{margin-bottom:.3rem}
+.noticias__vermas{margin:1.7rem 0 0;text-align:center}
+.noticias__vermas[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -2193,14 +2201,12 @@ table.horario td .vacio{color:#c3ceda}
      Grilla de accesos con icono: cada tarjeta lleva a un documento real
      (los cuatro PDF oficiales) o a una sección del sitio.
      ===================================================================== -->
-<section class="section" id="accesos" aria-labelledby="accesos-titulo">
+<section class="section section--pegada" id="accesos" aria-labelledby="accesos-titulo">
   <div class="wrap">
-    <div class="section__head js-revelar">
-      <span class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#ico-chispa"></use></svg> Enlaces de interés</span>
-      <h2 id="accesos-titulo">Ubica fácilmente la información que necesitas</h2>
+    <div class="section__head section__head--compacto js-revelar">
+      <h2 id="accesos-titulo">Enlaces de interés</h2>
       <p class="section__lead">
-        Documentos oficiales, noticias, galería, proyectos y canales de atención de la institución,
-        a un solo clic de distancia.
+        Documentos oficiales, noticias, galería, proyectos y canales de atención, a un solo clic.
       </p>
     </div>
 
@@ -2811,7 +2817,7 @@ table.horario td .vacio{color:#c3ceda}
       <ul class="docentes__grid">
         <li class="docente"><b>Oliverio Barrera Sanchez</b><span class="docente__cargo">Rector</span></li>
       </ul>
-      <h3 class="docentes__titulo">Sede central<span class="docentes__n">10</span></h3>
+      <h3 class="docentes__titulo">Sede central<span class="docentes__n">11</span></h3>
       <ul class="docentes__grid">
         <li class="docente"><b>Andrea Martinez Martinez</b><span class="docente__cargo">Docente de aula</span></li>
         <li class="docente"><b>Carlos Johan Paz Duarte</b><span class="docente__cargo">Docente de aula</span><span class="docente__area">Área: Educación Física</span></li>
@@ -2822,6 +2828,7 @@ table.horario td .vacio{color:#c3ceda}
         <li class="docente"><b>Maria Yasmin Ceron</b><span class="docente__cargo">Docente de aula</span></li>
         <li class="docente"><b>Melva Yaqueline Diaz Mejia</b><span class="docente__cargo">Docente de aula</span></li>
         <li class="docente"><b>Rosa Alba Pipicano Galindez</b><span class="docente__cargo">Docente de aula</span></li>
+        <li class="docente"><b>Chavigné Mena</b><span class="docente__cargo">Docente de aula</span><span class="docente__area">Área: Ciencias Naturales</span></li>
         <li class="docente"><b>Sully Evelin Rosero Sacanambuy</b><span class="docente__cargo">Docente PTA</span></li>
       </ul>
       <h3 class="docentes__titulo">Sede Bombón<span class="docentes__n">1</span></h3>
@@ -3283,6 +3290,10 @@ table.horario td .vacio{color:#c3ceda}
         </div>
       </article>
     </div>
+
+    <p class="noticias__vermas js-revelar" id="noticiasVerMasCaja" hidden>
+      <button class="btn btn--outline" type="button" id="noticiasVerMas">Ver más noticias</button>
+    </p>
 
     <div class="sin-resultados" id="sinNoticias" hidden>
       <svg class="icon" aria-hidden="true"><use href="#ico-buscar"></use></svg>
@@ -3903,7 +3914,7 @@ table.horario td .vacio{color:#c3ceda}
       <p class="footer-extra">
         <span class="footer-contador" id="contadorVisitas" hidden>
           <svg class="icon" aria-hidden="true"><use href="#ico-personas"></use></svg>
-          Visitas: <b id="contadorNumero">401</b>
+          Visitas: <b id="contadorNumero">—</b>
         </span>
       </p>
     </div>
@@ -3929,7 +3940,7 @@ table.horario td .vacio{color:#c3ceda}
            aria-label="Subir o bajar el volumen de la música de fondo" title="Volumen de la música">
   </label>
 </div>
-<audio id="audioFondo" src="assets/audio/musica-de-fondo.mp3" loop preload="auto"></audio>
+<audio id="audioFondo" src="assets/audio/musica-de-fondo.mp3" loop preload="none"></audio>
 
 <!-- =====================================================================
      VISOR DE IMÁGENES (ampliación de la galería)
@@ -4396,11 +4407,13 @@ table.horario td .vacio{color:#c3ceda}
       var cajaAnt = qs('#noticiasAnteriores');
       if (cajaAnt) cajaAnt.hidden = antiguas.length === 0 || (!!q && antiguasVisibles === 0);
       if (contador) {
-        var totalN = tarjetas.length + antiguas.length;
         var halladas = visibles + antiguasVisibles;
-        contador.textContent = q
-          ? (halladas === 1 ? '1 noticia encontrada' : halladas + ' noticias encontradas')
-          : (totalN === 1 ? '1 noticia publicada' : totalN + ' noticias publicadas');
+        if (q) {
+          contador.textContent = halladas === 1 ? '1 noticia encontrada' : halladas + ' noticias encontradas';
+        } else if (typeof window.IERP_CUENTA_NOTICIAS === 'function') {
+          /* Sin búsqueda, la cuenta la lleva el listado por partes. */
+          window.IERP_CUENTA_NOTICIAS();
+        }
       }
       if (sinResultados) sinResultados.hidden = visibles !== 0;
       if (limpiar) limpiar.hidden = !q;
@@ -4752,16 +4765,19 @@ table.horario td .vacio{color:#c3ceda}
     var num = qs('#contadorNumero');
     if (!caja || !num) return;
     var BASE = 400;
-    caja.hidden = false;
 
+    /* Si el servicio de conteo no responde, se muestra una raya (—) en vez
+       de un número equivocado. */
     fetch('https://abacus.jasoncameron.dev/hit/ier-puerto-rosario-sitio/visitas')
       .then(function (r) { return r.json(); })
       .then(function (d) {
         var total = BASE + (d && typeof d.value === 'number' ? d.value : 0);
         num.textContent = total.toLocaleString('es-CO');
+        caja.hidden = false;
       })
       .catch(function () {
-        num.textContent = (BASE + 1).toLocaleString('es-CO');
+        num.textContent = '—';
+        caja.hidden = false;
       });
   }());
 
@@ -4840,7 +4856,8 @@ table.horario td .vacio{color:#c3ceda}
     }
 
     pintar(false);
-    arrancar(); // intenta sonar sola, siempre en tono bajo
+    /* La música ya no se descarga al abrir la página: así quien no la oye no
+       gasta datos. Se carga y suena en el primer toque, clic o tecla. */
 
     // Los navegadores suelen pedir un primer gesto de la persona:
     // al primer toque, tecla o desplazamiento, la música arranca.
@@ -4928,6 +4945,32 @@ table.horario td .vacio{color:#c3ceda}
   var sinTildes = function (t) {
     return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   };
+
+  /* Textos largos dentro de una tarjeta: se muestran en cuatro líneas y
+     aparece el botón «Ver más». Si el texto cabe completo, no se pone botón.
+     Sin JavaScript el texto se ve completo (nada se pierde). */
+  function plegarCajas(raiz) {
+    qsa('.texto-plegable', raiz || document).forEach(function (caja) {
+      if (caja.getAttribute('data-plegado') === 'listo') return;
+      var cuerpo = qs('.texto-plegable__cuerpo', caja);
+      var boton = qs('.texto-plegable__boton', caja);
+      if (!cuerpo || !boton) return;
+      caja.setAttribute('data-plegado', 'listo');
+      caja.classList.add('texto-plegable--cortado');
+      if (cuerpo.scrollHeight <= cuerpo.clientHeight + 4) {   // cabe completo
+        caja.classList.remove('texto-plegable--cortado');
+        boton.hidden = true;
+        return;
+      }
+      boton.hidden = false;
+      boton.addEventListener('click', function () {
+        var cortado = caja.classList.toggle('texto-plegable--cortado');
+        boton.setAttribute('aria-expanded', cortado ? 'false' : 'true');
+        var txt = qs('.texto-plegable__txt', boton);
+        if (txt) txt.textContent = cortado ? 'Ver más' : 'Ver menos';
+      });
+    });
+  }
 
   var prefiereMenosMovimiento =
     window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -5408,13 +5451,18 @@ table.horario td .vacio{color:#c3ceda}
       var visiblesN = C.noticias.filter(function (n) { return n && n.publicada !== false; })
         .slice()
         .sort(function (a, b) { return fechaNoticia(b.fecha) - fechaNoticia(a.fecha); });
-      /* Las publicaciones más recientes se muestran como tarjetas completas.
-         Las anteriores se listan solo con el título y el enlace a la página
-         oficial de Facebook, para que la página siga siendo liviana. */
-      var LIMITE_TARJETAS = 20;
+      /* Las publicaciones más recientes se muestran como tarjetas completas,
+         pero por partes: primero seis y, con el botón «Ver más noticias», van
+         apareciendo las demás. Así la página no queda tan larga en el celular.
+         Las más antiguas quedan solo como título con enlace a Facebook. */
+      var LIMITE_TARJETAS = 20;   // tarjetas completas que se preparan
+      var INICIO_TARJETAS = 6;    // las que se ven al abrir la página
+      var PASO_TARJETAS = 6;      // las que se suman con cada «Ver más»
       var destacadasN = visiblesN.slice(0, LIMITE_TARJETAS);
       var anterioresN = visiblesN.slice(LIMITE_TARJETAS);
-      listaN.innerHTML = destacadasN.map(function (n) {
+      var mostradasN = INICIO_TARJETAS;
+
+      function tarjetaNoticia(n) {
         var galeriaN = (Array.isArray(n.imagenes) ? n.imagenes.filter(function (s) { return hay(s); }) : []);
         if (galeriaN.length < 2 && hay(n.imagen)) galeriaN = [n.imagen];
         var tplId = crearPlantilla(
@@ -5452,8 +5500,44 @@ table.horario td .vacio{color:#c3ceda}
               '<button class="btn btn--ghost btn--sm" type="button" data-modal="' + tplId + '">Leer más ' + ico('flecha') + '</button>' +
             '</div>' +
           '</div></article>';
-      }).join('');
-      iniciarCarruseles(listaN);
+      }
+
+      /* La cuenta de noticias la comparte el buscador de noticias. */
+      window.IERP_CUENTA_NOTICIAS = function () {
+        var cont = qs('#contadorNoticias');
+        if (!cont) return;
+        var total = visiblesN.length;
+        cont.textContent = mostradasN >= total
+          ? (total === 1 ? '1 noticia publicada' : total + ' noticias publicadas')
+          : 'Mostrando ' + mostradasN + ' de ' + total + ' noticias';
+      };
+
+      function pintarNoticias() {
+        listaN.innerHTML = destacadasN.slice(0, mostradasN).map(tarjetaNoticia).join('');
+        iniciarCarruseles(listaN);
+        var cajaVerMas = qs('#noticiasVerMasCaja');
+        var btnVerMas = qs('#noticiasVerMas');
+        if (cajaVerMas && btnVerMas) {
+          var quedan = destacadasN.length - mostradasN;
+          cajaVerMas.hidden = quedan <= 0;
+          if (quedan > 0) btnVerMas.innerHTML = 'Ver más noticias (' + quedan + ') ' + ico('abajo');
+        }
+        window.IERP_CUENTA_NOTICIAS();
+      }
+
+      pintarNoticias();
+
+      (function botonVerMasNoticias() {
+        var btnVerMas = qs('#noticiasVerMas');
+        if (!btnVerMas) return;
+        btnVerMas.addEventListener('click', function () {
+          mostradasN = Math.min(destacadasN.length, mostradasN + PASO_TARJETAS);
+          pintarNoticias();
+          /* Si hay una búsqueda escrita, se vuelve a aplicar sobre las nuevas. */
+          var campoN = qs('#buscarNoticias');
+          if (campoN && campoN.value.trim() !== '') campoN.dispatchEvent(new Event('input'));
+        });
+      }());
 
       /* Publicaciones anteriores: solo título + enlace a Facebook. */
       var cajaAnt = qs('#noticiasAnteriores');
@@ -5505,12 +5589,20 @@ table.horario td .vacio{color:#c3ceda}
           '<div class="card__body">' +
             '<p class="noticia__etiqueta">' + esc(nombreArea(p.area)) + '</p>' +
             '<h3>' + esc(p.titulo || '') + '</h3>' +
-            '<p>' + esc(p.descripcion || '') + '</p>' +
+            '<div class="texto-plegable"><div class="texto-plegable__cuerpo">' +
+              '<p>' + esc(p.descripcion || '') + '</p>' +
+            '</div>' +
+            '<button class="texto-plegable__boton" type="button" aria-expanded="false" hidden>' +
+              '<span class="texto-plegable__txt">Ver más</span>' + ico('abajo') +
+            '</button></div>' +
             '<div class="card__pie">' +
               '<button class="btn btn--ghost btn--sm" type="button" data-modal="' + tplId + '">Ver información ' + ico('info') + '</button>' +
             '</div>' +
           '</div></article>';
       }).join('');
+      /* Los textos largos de cada tarjeta se ven en cuatro líneas, con el
+         botón «Ver más» para leerlos completos. */
+      plegarCajas(listaP);
     }
 
     var filtros = qs('#filtrosProyectos');

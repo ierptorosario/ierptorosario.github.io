@@ -18,6 +18,9 @@ window.DOCENTES_IERP = {
     { nombre: 'Carlos Mario Vargas Pinzon', cargo: 'Docente de aula', sede: 'Sede central' },
     { nombre: 'Dora Angela Romo Garcia', cargo: 'Docente de aula', sede: 'Sede central' },
     { nombre: 'Jhon Jairo Nupan Gonzales', cargo: 'Docente de aula', sede: 'Sede central' },
+    /* Docente de aula de Ciencias Naturales (nueva). La sede está POR CONFIRMAR:
+       se ubica en la sede central porque allí está la básica secundaria. */
+    { nombre: 'Chavigné Mena', cargo: 'Docente de aula', area: 'Ciencias Naturales', sede: 'Sede central' },
     { nombre: 'Jimmy Fernando Cortes Rivera', cargo: 'Docente de aula · Representante ASEP', sede: 'Sede central' },
     { nombre: 'Maria Yasmin Ceron', cargo: 'Docente de aula', sede: 'Sede central' },
     { nombre: 'Melva Yaqueline Diaz Mejia', cargo: 'Docente de aula', sede: 'Sede central' },
