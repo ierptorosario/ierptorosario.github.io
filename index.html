@@ -10,9 +10,14 @@
 <meta property="og:site_name" content="Institución Educativa Rural Puerto Rosario">
 <meta property="og:title" content="Institución Educativa Rural Puerto Rosario | Puerto Guzmán, Putumayo">
 <meta property="og:description" content="Noticias, documentos oficiales, proyectos, galería y contacto de la Institución Educativa Rural Puerto Rosario.">
-<meta property="og:image" content="assets/img/portada-2026.jpg">
+<meta property="og:url" content="https://ierptorosario.github.io/">
+<!-- Las redes sociales necesitan la dirección completa de la imagen -->
+<meta property="og:image" content="https://ierptorosario.github.io/assets/img/portada-2026.jpg">
+<meta property="og:image:alt" content="Comunidad educativa de la Institución Educativa Rural Puerto Rosario">
 <meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ierptorosario.github.io/">
 <link rel="icon" type="image/png" href="assets/img/escudo.png">
 <!-- Tipografía del sitio (Poppins + Montserrat) guardada AQUÍ MISMO en
      assets/fonts/. Se ve igual y NO depende de internet: ya no espera a Google. -->
@@ -876,6 +881,7 @@ html{scroll-behavior:smooth}
 
 @media print{
   .cifras,.enlaces,.niveles,.iconboxes{display:none !important}
+  .audio-panel,.volver-arriba,.main-header{display:none !important}
 }
 
 </style>
@@ -1771,6 +1777,70 @@ table.horario td .vacio{color:#c3ceda}
   width:auto;max-width:100%;max-height:70vh;height:auto;
   box-shadow:0 10px 24px rgba(4,16,33,.25);
 }
+
+/* --- 6. Audio de fondo: botón + barra de volumen, discretos --- */
+.audio-panel{
+  position:fixed;left:.6rem;bottom:.6rem;z-index:70;
+  display:flex;align-items:center;gap:.35rem;
+  padding:.28rem .55rem .28rem .28rem;border-radius:999px;
+  background:rgba(11,37,69,.72);border:1px solid rgba(201,162,39,.45);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  opacity:.5;transition:opacity .25s ease;
+}
+.audio-panel:hover,.audio-panel:focus-within{opacity:1}
+.audio-panel .audio-fondo{
+  position:static;left:auto;bottom:auto;width:2.05rem;height:2.05rem;
+  background:transparent;border:0;opacity:1;
+}
+.audio-panel .audio-fondo:hover,.audio-panel .audio-fondo:focus-visible{
+  background:rgba(255,255,255,.14);transform:none;opacity:1;
+}
+.audio-panel__vol{display:flex;align-items:center;margin:0}
+.audio-panel__vol input{
+  -webkit-appearance:none;appearance:none;margin:0;width:4.6rem;height:1.2rem;
+  background:transparent;cursor:pointer;
+}
+.audio-panel__vol input::-webkit-slider-runnable-track{
+  height:.3rem;border-radius:999px;
+  background:linear-gradient(90deg,var(--ierp-oro) var(--nivel,15%),rgba(255,255,255,.28) var(--nivel,15%));
+}
+.audio-panel__vol input::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:.95rem;height:.95rem;margin-top:-.32rem;
+  border-radius:50%;background:#f7e7b8;border:1px solid rgba(11,37,69,.7);
+  box-shadow:0 2px 6px rgba(0,0,0,.45);
+}
+.audio-panel__vol input::-moz-range-track{height:.3rem;border-radius:999px;background:rgba(255,255,255,.28)}
+.audio-panel__vol input::-moz-range-progress{height:.3rem;border-radius:999px;background:var(--ierp-oro)}
+.audio-panel__vol input::-moz-range-thumb{
+  width:.95rem;height:.95rem;border-radius:50%;background:#f7e7b8;border:1px solid rgba(11,37,69,.7);
+}
+.audio-panel__vol input:focus-visible{outline:3px solid var(--warm-400);outline-offset:2px}
+@media (max-width:520px){
+  .audio-panel{padding:.24rem .45rem .24rem .24rem}
+  .audio-panel__vol input{width:3.6rem}
+}
+
+/* --- 7. Textos largos plegados a cuatro líneas --- */
+.texto-plegable__cuerpo{position:relative}
+.texto-plegable--cortado .texto-plegable__cuerpo{
+  max-height:5.9em;overflow:hidden;
+  -webkit-mask-image:linear-gradient(#000 60%,transparent 100%);
+  mask-image:linear-gradient(#000 60%,transparent 100%);
+}
+.texto-plegable__boton{
+  margin-top:.55rem;display:inline-flex;align-items:center;gap:.35rem;
+  padding:.42rem .95rem;border-radius:999px;cursor:pointer;
+  font:inherit;font-size:.84rem;font-weight:700;
+  color:#0b2545;background:#f6eccf;border:1px solid rgba(201,162,39,.65);
+  transition:background .25s ease,transform .25s ease;
+}
+.texto-plegable__boton[hidden]{display:none}
+.texto-plegable__boton:hover{background:#f0dfae;transform:translateY(-1px)}
+.texto-plegable__boton .icon{width:.9rem;height:.9rem;transition:transform .25s ease}
+.texto-plegable__boton[aria-expanded="true"] .icon{transform:rotate(180deg)}
+@media (prefers-reduced-motion:reduce){
+  .texto-plegable__boton:hover{transform:none}
+}
 </style>
 </head>
 <body>
@@ -2266,18 +2336,36 @@ table.horario td .vacio{color:#c3ceda}
     <div class="panel-doble">
       <div class="panel-doble__texto js-revelar">
         <h3>Reseña histórica</h3>
-        <p class="pendiente" id="textoHistoria">
-          <span class="editable">[Marcador editable &mdash; reseña histórica]</span>
-          Aquí se publicará la historia de la institución: año y acto administrativo de creación, proceso de
-          conformación de sedes, origen del nombre «Puerto Rosario», hitos de la comunidad educativa y
-          reconocimientos obtenidos. La institución debe entregar este texto.
-        </p>
+        <div class="texto-plegable" id="cajaHistoria">
+          <div class="texto-plegable__cuerpo" id="textoHistoria">
+            <p class="pendiente">
+              <span class="editable">[Marcador editable &mdash; reseña histórica]</span>
+              Aquí se publicará la historia de la institución: año y acto administrativo de creación, proceso de
+              conformación de sedes, origen del nombre «Puerto Rosario», hitos de la comunidad educativa y
+              reconocimientos obtenidos. La institución debe entregar este texto.
+            </p>
+          </div>
+          <button class="texto-plegable__boton" type="button" aria-expanded="false"
+                  aria-controls="textoHistoria" hidden>
+            <span class="texto-plegable__txt">Ver más</span>
+            <svg class="icon" aria-hidden="true"><use href="#ico-abajo"></use></svg>
+          </button>
+        </div>
         <h3>Filosofía institucional</h3>
-        <p class="pendiente" id="textoFilosofia">
-          <span class="editable">[Marcador editable &mdash; filosofía institucional]</span>
-          Espacio reservado para la declaración de principios que orientan la formación en la institución y su
-          relación con la comunidad rural y el territorio amazónico.
-        </p>
+        <div class="texto-plegable" id="cajaFilosofia">
+          <div class="texto-plegable__cuerpo" id="textoFilosofia">
+            <p class="pendiente">
+              <span class="editable">[Marcador editable &mdash; filosofía institucional]</span>
+              Espacio reservado para la declaración de principios que orientan la formación en la institución y su
+              relación con la comunidad rural y el territorio amazónico.
+            </p>
+          </div>
+          <button class="texto-plegable__boton" type="button" aria-expanded="false"
+                  aria-controls="textoFilosofia" hidden>
+            <span class="texto-plegable__txt">Ver más</span>
+            <svg class="icon" aria-hidden="true"><use href="#ico-abajo"></use></svg>
+          </button>
+        </div>
         <h3>Identidad y contexto</h3>
         <ul class="ficha">
           <li>
@@ -3828,11 +3916,19 @@ table.horario td .vacio{color:#c3ceda}
   <span>Inicio</span>
 </button>
 
-<!-- Audio de fondo: suena muy bajo y se puede detener en cualquier momento -->
-<button class="audio-fondo" id="btnAudioFondo" type="button" aria-pressed="false"
-        aria-label="Activar o detener la música de fondo" title="Música de fondo">
-  <svg class="icon" aria-hidden="true"><use href="#ico-silencio"></use></svg>
-</button>
+<!-- Audio de fondo: empieza MUY bajo (15 %) y cada persona decide si lo sube.
+     El botón lo detiene o lo vuelve a activar; la barra regula el volumen. -->
+<div class="audio-panel" id="audioPanel">
+  <button class="audio-fondo" id="btnAudioFondo" type="button" aria-pressed="false"
+          aria-label="Activar o detener la música de fondo" title="Detener o activar la música">
+    <svg class="icon" aria-hidden="true"><use href="#ico-silencio"></use></svg>
+  </button>
+  <label class="audio-panel__vol">
+    <span class="sr-only">Volumen de la música de fondo</span>
+    <input type="range" id="audioVolumen" min="0" max="100" step="5" value="15"
+           aria-label="Subir o bajar el volumen de la música de fondo" title="Volumen de la música">
+  </label>
+</div>
 <audio id="audioFondo" src="assets/audio/musica-de-fondo.mp3" loop preload="auto"></audio>
 
 <!-- =====================================================================
@@ -4676,10 +4772,30 @@ table.horario td .vacio{color:#c3ceda}
   (function audioDeFondo() {
     var btn = qs('#btnAudioFondo');
     var audio = qs('#audioFondo');
+    var barra = qs('#audioVolumen');
     if (!btn || !audio) return;
 
-    audio.volume = 0.16; // volumen muy bajo: acompaña, no protagoniza
+    var CLAVE = 'ierp-volumen-musica';
+    var VOLUMEN_BAJO = 0.15; // empieza muy bajo: acompaña, no protagoniza
     var intervenido = false;
+
+    // Se recuerda el volumen elegido para las próximas visitas
+    function leerGuardado() {
+      var v = NaN;
+      try { v = parseFloat(window.localStorage.getItem(CLAVE)); } catch (e) {}
+      return (isFinite(v) && v >= 0 && v <= 1) ? v : VOLUMEN_BAJO;
+    }
+    function guardar(v) {
+      try { window.localStorage.setItem(CLAVE, String(v)); } catch (e) {}
+    }
+    function pintarBarra(n) {
+      if (!barra) return;
+      barra.style.setProperty('--nivel', n + '%');
+      barra.setAttribute('aria-valuetext', n + ' por ciento');
+    }
+
+    audio.volume = leerGuardado();
+    if (barra) { barra.value = Math.round(audio.volume * 100); pintarBarra(barra.value); }
 
     function pintar(activo) {
       btn.setAttribute('aria-pressed', activo ? 'true' : 'false');
@@ -4707,6 +4823,21 @@ table.horario td .vacio{color:#c3ceda}
       btn.classList.remove('is-sugerido');
       if (audio.paused) { arrancar(); } else { audio.pause(); pintar(false); }
     });
+
+    /* La barra de volumen: quien la mueve quiere oír la música. */
+    if (barra) {
+      barra.addEventListener('input', function () {
+        var v = Math.max(0, Math.min(1, parseFloat(barra.value) / 100));
+        audio.volume = v;
+        pintarBarra(barra.value);
+        guardar(v);
+      });
+      barra.addEventListener('change', function () {
+        intervenido = true;
+        btn.classList.remove('is-sugerido');
+        if (audio.paused && parseFloat(barra.value) > 0) arrancar();
+      });
+    }
 
     pintar(false);
     arrancar(); // intenta sonar sola, siempre en tono bajo
@@ -5155,6 +5286,34 @@ table.horario td .vacio{color:#c3ceda}
   if (hay(inst.vision)) pintarPanel('#panel-vision', inst.vision);
   if (hay(inst.principios)) pintarPanel('#panel-principios', inst.principios);
   if (hay(inst.perfil)) pintarPanel('#panel-perfil', inst.perfil);
+
+  /* ---------------- 3.2 Textos largos: 4 líneas y «Ver más» ----------------
+     La reseña histórica y la filosofía son textos extensos: en el sitio se
+     muestran en cuatro líneas y quien quiera sigue leyendo. Si el texto es
+     corto, no aparece el botón. Sin JavaScript se ve completo (nada se pierde). */
+  function plegarTexto(idCaja) {
+    var caja = qs('#' + idCaja);
+    if (!caja) return;
+    var cuerpo = qs('.texto-plegable__cuerpo', caja);
+    var boton = qs('.texto-plegable__boton', caja);
+    if (!cuerpo || !boton) return;
+
+    caja.classList.add('texto-plegable--cortado');
+    if (cuerpo.scrollHeight <= cuerpo.clientHeight + 4) {   // cabe completo
+      caja.classList.remove('texto-plegable--cortado');
+      boton.hidden = true;
+      return;
+    }
+    boton.hidden = false;
+    boton.addEventListener('click', function () {
+      var cortado = caja.classList.toggle('texto-plegable--cortado');
+      boton.setAttribute('aria-expanded', cortado ? 'false' : 'true');
+      var txt = qs('.texto-plegable__txt', boton);
+      if (txt) txt.textContent = cortado ? 'Ver más' : 'Ver menos';
+    });
+  }
+  plegarTexto('cajaHistoria');
+  plegarTexto('cajaFilosofia');
 
   /* Datos institucionales verificados en la lista «Identidad y contexto» */
   function pintarDato(id, valor) {
