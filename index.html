@@ -1311,9 +1311,10 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     background-repeat:no-repeat;
     -webkit-background-clip:text;background-clip:text;
     color:transparent;-webkit-text-fill-color:transparent;
-    animation:brilloOro 5.5s linear infinite;
-    /* Letras con volumen (relieve 3D) y brillo de oro pulido */
-    filter:drop-shadow(0 1px 0 #453508) drop-shadow(0 2px 3px rgba(30,22,2,.5)) drop-shadow(0 0 12px rgba(255,222,126,.35));
+    animation:brilloOro 6.5s linear infinite;
+    /* Oro pulido: un solo borde fino abajo, para que la letra se vea NÍTIDA.
+       (Antes tenía tres sombras encima y por eso se veía un halo borroso.) */
+    filter:drop-shadow(0 .5px 0 rgba(74,56,9,.55));
   }
   /* En las secciones de fondo oscuro el oro se aclara para que se lea bien */
   .cifras .section__head h2,
@@ -1322,6 +1323,8 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       #a8871f 0%,#c9a227 10%,#d9bd62 20%,#f0d98a 29%,#f6e6a8 33%,#e0c46a 38%,#c9a227 48%,
       #a8871f 60%,#b8912a 70%,#e8cf7a 80%,#f0d98a 85%,#d9bd62 90%,#c9a227 100%);
     background-color:#c9a227;
+    /* Sobre fondo oscuro el oro sí lleva un brillo suave alrededor */
+    filter:drop-shadow(0 .5px 0 rgba(48,32,4,.6)) drop-shadow(0 0 9px rgba(255,222,126,.22));
   }
   /* Subtítulos (h3): PLATEADO tipo diamante, con relieve y destello */
   .section h3, .section__head h3, .iconbox h3, .card h3, .proyecto h3, .noticia h3{
@@ -1333,8 +1336,8 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
     background-repeat:no-repeat;
     -webkit-background-clip:text;background-clip:text;
     -webkit-text-fill-color:transparent;color:transparent;
-    animation:brilloPlata 8s linear infinite;
-    filter:drop-shadow(0 1px 0 rgba(9,22,38,.5)) drop-shadow(0 1px 3px rgba(130,180,235,.22));
+    animation:brilloPlata 9s linear infinite;
+    filter:drop-shadow(0 .5px 0 rgba(9,22,38,.42));
   }
   /* En fondos oscuros, la plata se aclara */
   .cifras h3, .section--azul h3, .hero h3, .nivel__capa h3{
@@ -1343,6 +1346,7 @@ table.tabla thead th{background:var(--ierp-azul-50);color:var(--ierp-azul-900)}
       #93a9be 36%,#dbe6f1 46%,#f4f8fc 52%,#c3d3e2 58%,#9db4ca 66%,
       #8ea5bb 74%,#dfe9f3 86%,#f4f8fc 94%,#a9bccd 100%);
     background-color:#b9c9d8;
+    filter:drop-shadow(0 .5px .5px rgba(4,16,33,.45)) drop-shadow(0 0 7px rgba(190,220,255,.16));
   }
 }
 @media (prefers-reduced-motion:reduce){
