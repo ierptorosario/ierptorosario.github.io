@@ -109,8 +109,8 @@ window.CONTENIDO_IERP = {
       ],
       "fotos": 1,
       "resumen": "Gracias a la Alcaldía de Puerto Guzmán por visitarnos y motivar la ciencia, la tecnología y la innovación en nuestros estudiantes.",
-      "detalle": "<p>Gracias <strong>Alcaldía de Puerto Guzmán</strong> por visitarnos y motivar la ciencia, la tecnología y la innovación en nuestros estudiantes de la IER Puerto Rosario.</p><p>«La ciencia también se vive y se construye desde nuestras aulas»: en el marco del Día de la Familia vivimos una jornada muy especial, en la que además disfrutamos de la Feria de la Ciencia, la Tecnología y la Innovación, y nuestros estudiantes demostraron todo su talento.</p>",
-      "enlace": "",
+      "detalle": "<p>Gracias <strong>Alcaldía de Puerto Guzmán</strong> por visitarnos y motivar la ciencia, la tecnología y la innovación en nuestros estudiantes de la IER Puerto Rosario.</p><p>«La ciencia también se vive y se construye desde nuestras aulas»: en el marco del Día de la Familia vivimos una jornada muy especial, en la que además disfrutamos de la Feria de la Ciencia, la Tecnología y la Innovación, y nuestros estudiantes demostraron todo su talento.</p><video controls preload=\"none\" playsinline width=\"360\" height=\"640\" poster=\"assets/video/feria-ciencia-2026-portada.jpg\"><source src=\"assets/video/feria-ciencia-2026.mp4\" type=\"video/mp4\">Su navegador no puede reproducir este video; puede verlo en la publicación original de Facebook.</video><p class=\"campo__ayuda\">Video de la feria publicado por la Alcaldía de Puerto Guzmán, 23 de septiembre de 2026.</p>",
+      "enlace": "https://www.facebook.com/reel/1426232862785078",
       "fuente": "Facebook",
       "demo": false,
       "publicada": true
@@ -591,6 +591,13 @@ window.CONTENIDO_IERP = {
       descripcion: 'Video de Puerto Guzmán: voces de la comunidad y del campo dicen no a la fumigación y muestran los cultivos lícitos de la región.',
       archivo: 'assets/video/puerto-guzman-no-a-la-fumigacion-2026.mp4',
       poster: 'assets/video/puerto-guzman-no-a-la-fumigacion-2026-portada.jpg',
-      facebook: 'https://www.facebook.com/PuertoGuzman/videos/1776598933609065' }
+      facebook: 'https://www.facebook.com/PuertoGuzman/videos/1776598933609065' },
+    { id: 'feria-ciencia-2026',
+      titulo: 'Feria de la Ciencia, la Tecnología y la Innovación',
+      fecha: '23 de septiembre de 2026',
+      descripcion: 'Recorrido por la feria: los proyectos de los estudiantes y la visita del secretario de Planeación, David Urbano, en el marco del Día de la Familia.',
+      archivo: 'assets/video/feria-ciencia-2026.mp4',
+      poster: 'assets/video/feria-ciencia-2026-portada.jpg',
+      facebook: 'https://www.facebook.com/reel/1426232862785078' }
   ]
 };
