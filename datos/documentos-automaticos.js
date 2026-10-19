@@ -23,5 +23,14 @@ window.DOCUMENTOS_AUTO = [
     "descripcion": "",
     "fecha": "19 de octubre de 2026",
     "publicado": true
+  },
+  {
+    "titulo": "Guias Pedagogicas Tecnologia 6",
+    "archivo": "documentos/guias-pedagogicas-tecnologia-6-2026.pdf",
+    "anio": "2026",
+    "categoria": "Institucional",
+    "descripcion": "Guías y planeadores del área de Tecnología e Informática para el grado 6.º, año 2026",
+    "fecha": "19 de octubre de 2026",
+    "publicado": true
   }
 ];
