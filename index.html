@@ -1870,7 +1870,7 @@ table.horario--dia{min-width:0}
 }
 .audio-panel__vol input::-webkit-slider-runnable-track{
   height:.3rem;border-radius:999px;
-  background:linear-gradient(90deg,var(--ierp-oro) var(--nivel,15%),rgba(255,255,255,.28) var(--nivel,15%));
+  background:linear-gradient(90deg,var(--ierp-oro) var(--nivel,5%),rgba(255,255,255,.28) var(--nivel,5%));
 }
 .audio-panel__vol input::-webkit-slider-thumb{
   -webkit-appearance:none;appearance:none;width:.95rem;height:.95rem;margin-top:-.32rem;
@@ -4010,8 +4010,9 @@ table.horario--dia{min-width:0}
   <span>Inicio</span>
 </button>
 
-<!-- Audio de fondo: empieza MUY bajo (15 %) y cada persona decide si lo sube.
-     El botón lo detiene o lo vuelve a activar; la barra regula el volumen. -->
+<!-- Audio de fondo: SIEMPRE entra con el volumen mínimo (5 %) y cada persona
+     decide si lo sube. El botón lo detiene o lo vuelve a activar; la barra
+     regula el volumen. -->
 <div class="audio-panel" id="audioPanel">
   <button class="audio-fondo" id="btnAudioFondo" type="button" aria-pressed="false"
           aria-label="Activar o detener la música de fondo" title="Detener o activar la música">
@@ -4019,7 +4020,7 @@ table.horario--dia{min-width:0}
   </button>
   <label class="audio-panel__vol">
     <span class="sr-only">Volumen de la música de fondo</span>
-    <input type="range" id="audioVolumen" min="0" max="100" step="5" value="15"
+    <input type="range" id="audioVolumen" min="0" max="100" step="5" value="5"
            aria-label="Subir o bajar el volumen de la música de fondo" title="Volumen de la música">
   </label>
 </div>
@@ -4878,27 +4879,19 @@ table.horario--dia{min-width:0}
     var barra = qs('#audioVolumen');
     if (!btn || !audio) return;
 
-    var CLAVE = 'ierp-volumen-musica';
-    var VOLUMEN_BAJO = 0.15; // empieza muy bajo: acompaña, no protagoniza
+    var VOLUMEN_BAJO = 0.05; // al abrir la página SIEMPRE entra con el volumen mínimo
     var intervenido = false;
 
-    // Se recuerda el volumen elegido para las próximas visitas
-    function leerGuardado() {
-      var v = NaN;
-      try { v = parseFloat(window.localStorage.getItem(CLAVE)); } catch (e) {}
-      return (isFinite(v) && v >= 0 && v <= 1) ? v : VOLUMEN_BAJO;
-    }
-    function guardar(v) {
-      try { window.localStorage.setItem(CLAVE, String(v)); } catch (e) {}
-    }
     function pintarBarra(n) {
       if (!barra) return;
       barra.style.setProperty('--nivel', n + '%');
       barra.setAttribute('aria-valuetext', n + ' por ciento');
     }
 
-    audio.volume = leerGuardado();
-    if (barra) { barra.value = Math.round(audio.volume * 100); pintarBarra(barra.value); }
+    /* Al entrar a la página el volumen arranca en el mínimo. Cada persona lo
+       sube si quiere: así nadie recibe la música fuerte al abrir. */
+    audio.volume = VOLUMEN_BAJO;
+    if (barra) { barra.value = Math.round(VOLUMEN_BAJO * 100); pintarBarra(barra.value); }
 
     function pintar(activo) {
       btn.setAttribute('aria-pressed', activo ? 'true' : 'false');
@@ -4933,7 +4926,6 @@ table.horario--dia{min-width:0}
         var v = Math.max(0, Math.min(1, parseFloat(barra.value) / 100));
         audio.volume = v;
         pintarBarra(barra.value);
-        guardar(v);
       });
       barra.addEventListener('change', function () {
         intervenido = true;
