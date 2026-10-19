@@ -106,7 +106,7 @@
 
     <div id="cajaClave">
       <label for="clave">Clave de publicación</label>
-      <input id="clave" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_...">
+      <input id="clave" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_... (o github_pat_...)">
       <p class="ayuda">No se muestra ni se comparte: queda guardada en este equipo.</p>
       <button class="boton" type="button" id="btnGuardarClave">Guardar y comprobar</button>
     </div>
@@ -177,21 +177,29 @@
   <!-- ============================ AYUDA: LA CLAVE ============================ -->
   <section class="tarjeta">
     <h2>¿Cómo se crea la clave? (una sola vez)</h2>
+    <p class="ayuda"><b>Forma corta (la que recomendamos):</b></p>
     <ol class="pasos">
       <li>Entre a <b>github.com</b> con la cuenta de la institución (<code>ierptorosario</code>).</li>
       <li>Arriba a la derecha, haga clic en su foto de perfil y luego en <b>Settings</b> (Configuración).</li>
       <li>Baje hasta el final de la columna izquierda y entre a <b>Developer settings</b>.</li>
-      <li>Elija <b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b>.</li>
-      <li>En <b>Token name</b> escriba, por ejemplo: <code>Subir documentos IER</code>.</li>
-      <li>En <b>Expiration</b> escoja cuánto dura la clave (por ejemplo, un año). Cuando venza, se crea otra.</li>
-      <li>En <b>Repository access</b> marque <b>Only select repositories</b> y escoja
-          <code>ierptorosario.github.io</code>.</li>
-      <li>En <b>Permissions</b> → <b>Repository permissions</b> busque <b>Contents</b> y póngalo en
-          <b>Read and write</b>. Los demás permisos se dejan como están.</li>
-      <li>Pulse <b>Generate token</b> y copie la clave que aparece (empieza con <code>github_pat_</code>).
-          Esa clave se muestra una sola vez.</li>
+      <li>Elija <b>Personal access tokens</b> → <b>Tokens (classic)</b> →
+          <b>Generate new token</b> → <b>Generate new token (classic)</b>.</li>
+      <li>En <b>Note</b> escriba, por ejemplo: <code>Subir documentos IER</code>.</li>
+      <li>En <b>Expiration</b> escoja cuánto dura la clave. Cuando venza, se crea otra clave igual a esta.</li>
+      <li>En <b>Select scopes</b> marque <u>solo</u> <b>public_repo</b> (Access public repositories).
+          Ningún otro. Los demás se dejan sin marcar.</li>
+      <li>Baje y pulse <b>Generate token</b>. Aparece la clave (empieza con <code>ghp_</code>);
+          se muestra una sola vez, cópiela.</li>
       <li>Vuelva aquí, péguela en el paso 1 y pulse <b>Guardar y comprobar</b>.</li>
     </ol>
+    <p class="ayuda">
+      <b>La otra forma (más fina, si GitHub se lo permite):</b> en el paso 4 escoja
+      <b>Fine-grained tokens</b> → <b>Generate new token</b>; en <b>Repository access</b> marque
+      <b>Only select repositories</b> y escoja <code>ierptorosario.github.io</code>; y en
+      <b>Permissions</b> → <b>Repository permissions</b> ponga <b>Contents</b> en
+      <b>Read and write</b>. Si GitHub responde «You can’t perform that action at this time»,
+      use la forma corta de arriba: la cuenta tiene una política que bloquea esas claves.
+    </p>
     <div class="aviso aviso--info">
       <b>Consejo de seguridad:</b> esa clave vale como una llave del sitio. No la comparta, no la escriba en
       documentos ni en mensajes. Si alguien más la llega a ver, entre a GitHub y borre el token
@@ -524,7 +532,7 @@
     var valor = String(campos.clave.value || '').trim();
     esconder(campos.avisoClaveError);
     if (valor.length < 20) {
-      mostrar(campos.avisoClaveError, 'Pegue la clave completa (empieza con github_pat_).', 'error');
+      mostrar(campos.avisoClaveError, 'Pegue la clave completa (empieza con ghp_ o con github_pat_).', 'error');
       return;
     }
     clave = valor;
