@@ -179,11 +179,11 @@ img,svg{max-width:100%}
 img{height:auto;display:block}
 /* Al seleccionar texto con el mouse o el dedo, se marca en dorado */
 ::selection{background:var(--ierp-oro);color:#0b2545}
-h1,h2,h3,h4{font-family:var(--fuente-titulo);line-height:1.1;color:var(--verde-900);margin:0 0 .6em;font-weight:700;letter-spacing:-.01em}
+h1,h2,h3,h4{font-family:var(--fuente-titulo);line-height:1.1;color:var(--verde-900);margin:0 0 .6em;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
 h1{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.4rem);line-height:1.05}
 h2{font-size:clamp(1.28rem,1rem + 1.02vw,1.92rem)}
 h3{font-size:clamp(1.1rem,1rem + .5vw,1.4rem)}
-p{margin:0 0 1em}
+p{margin:0 0 1em;text-wrap:pretty}
 a{color:var(--verde-700);text-decoration-thickness:2px;text-underline-offset:3px}
 a:hover{color:var(--verde-800)}
 ul,ol{margin:0 0 1em;padding-left:1.15em}
@@ -419,7 +419,7 @@ body.nav-abierto .nav-toggle__cerrar{display:inline-flex}
 .hero__puntos{display:flex;gap:.2rem;align-items:center;padding-inline:.2rem}
 .hero__punto{
   all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
-  width:1.5rem;height:1.5rem;border-radius:999px;cursor:pointer;
+  width:1.6rem;height:1.6rem;border-radius:999px;cursor:pointer;
 }
 /* El punto se ve delgadito, pero la zona para tocarlo con el dedo mide 24x24 */
 .hero__punto::before{
@@ -1865,7 +1865,7 @@ table.horario--dia{min-width:0}
 }
 .audio-panel__vol{display:flex;align-items:center;margin:0}
 .audio-panel__vol input{
-  -webkit-appearance:none;appearance:none;margin:0;width:4.6rem;height:1.2rem;
+  -webkit-appearance:none;appearance:none;margin:0;width:4.6rem;height:1.5rem;
   background:transparent;cursor:pointer;
 }
 .audio-panel__vol input::-webkit-slider-runnable-track{
@@ -1921,19 +1921,16 @@ table.horario--dia{min-width:0}
 .enlace-subir{color:#c9d9ea;font-size:.85rem;opacity:.85}
 .enlace-subir:hover{opacity:1;color:#fff}
 
-/* Zonas para tocar con el dedo: ningún enlace quede por debajo de 24 px */
+/* Zonas para tocar con el dedo: ningún enlace queda por debajo de 24 px,
+   ni en el computador ni en el celular. */
 .horarios__lista a{min-height:1.75rem}
 .noticias__anteriores-lista a{padding-block:.35rem}
 .mapa-caja__pie a{display:inline-block;padding-block:.2rem}
-
-/* En el celular, los enlaces pequeños se tocan más fácil: el dedo
-   necesita unos 44 px de alto, no 20 px. */
-@media (max-width:760px){
-  .footer-col a{min-height:2.75rem;align-items:center}
-  .footer-col li>.icon,.footer-col a .icon{margin-top:0}
-  .topbar__item a{padding-block:.15rem}
-  .footer-legal a{padding-block:.25rem;display:inline-block}
-}
+.footer-col a{min-height:1.75rem;align-items:center}
+.footer-col li>.icon,.footer-col a .icon{margin-top:0}
+.footer-legal a{padding-block:.3rem;display:inline-block}
+.topbar__item a{padding-block:.2rem}
+.red-enlace{padding-block:.15rem}
 </style>
 </head>
 <body>
