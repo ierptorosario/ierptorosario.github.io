@@ -9,8 +9,8 @@
    ===================================================================== */
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
- "actualizado": "2026-10-19",
- "generado": "2026-10-19 18:56:27",
+ "actualizado": "2026-10-20",
+ "generado": "2026-10-20 11:00:40",
  "noticias": [
   {
    "titulo": "📚✨ Día del Idioma y Día del Libro – Ier Puerto Rosario ✨📚🎊🎉💥💥💥",
