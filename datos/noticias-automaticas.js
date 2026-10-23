@@ -24,7 +24,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122212338932861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122212338932861024-foto-1.jpg",
+    "assets/img/facebook/auto-122212338932861024-foto-2.jpg",
+    "assets/img/facebook/auto-122212338932861024-foto-3.jpg",
+    "assets/img/facebook/auto-122212338932861024-foto-4.jpg",
+    "assets/img/facebook/auto-122212338932861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "📚🌱 ¡Fortaleciendo nuestra educación desde el contexto y la realidad de nuestra región! 🌱📚💯",
@@ -38,7 +45,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122212345178861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122212345178861024-foto-1.jpg",
+    "assets/img/facebook/auto-122212345178861024-foto-2.jpg",
+    "assets/img/facebook/auto-122212345178861024-foto-3.jpg",
+    "assets/img/facebook/auto-122212345178861024-foto-4.jpg",
+    "assets/img/facebook/auto-122212345178861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🤖💡 ¡En nuestra Ier Puerto Rosario , la inteligencia artificial también inspira, crea y transforma!",
@@ -52,7 +66,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122212349504861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122212349504861024-foto-1.jpg",
+    "assets/img/facebook/auto-122212349504861024-foto-2.jpg",
+    "assets/img/facebook/auto-122212349504861024-foto-3.jpg",
+    "assets/img/facebook/auto-122212349504861024-foto-4.jpg",
+    "assets/img/facebook/auto-122212349504861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🚨🧯 ¡En nuestra Ier Puerto Rosario nos preparamos para cuidar y proteger la vida! 🩹🚒🎯💯",
@@ -66,7 +87,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122212351340861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122212351340861024-foto-1.jpg",
+    "assets/img/facebook/auto-122212351340861024-foto-2.jpg",
+    "assets/img/facebook/auto-122212351340861024-foto-3.jpg",
+    "assets/img/facebook/auto-122212351340861024-foto-4.jpg",
+    "assets/img/facebook/auto-122212351340861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "📚🌿 ¡Leer, crear y soñar al aire libre en nuestra Ier Puerto Rosario ! 🌿📚🎯🎯🤗",
@@ -80,7 +108,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122212354082861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122212354082861024-foto-1.jpg",
+    "assets/img/facebook/auto-122212354082861024-foto-2.jpg",
+    "assets/img/facebook/auto-122212354082861024-foto-3.jpg",
+    "assets/img/facebook/auto-122212354082861024-foto-4.jpg",
+    "assets/img/facebook/auto-122212354082861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "Día del Idioma y Día del Libro",
@@ -93,7 +128,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122179744838861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122179744838861024-foto-1.jpg",
+    "assets/img/facebook/auto-122179744838861024-foto-2.jpg",
+    "assets/img/facebook/auto-122179744838861024-foto-3.jpg",
+    "assets/img/facebook/auto-122179744838861024-foto-4.jpg",
+    "assets/img/facebook/auto-122179744838861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🇨🇴✨ Izada de Bandera – Primer Periodo Académico ✨🇨🇴 Ier Puerto Rosario 💯",
@@ -106,7 +148,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122179748090861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122179748090861024-foto-1.jpg",
+    "assets/img/facebook/auto-122179748090861024-foto-2.jpg",
+    "assets/img/facebook/auto-122179748090861024-foto-3.jpg",
+    "assets/img/facebook/auto-122179748090861024-foto-4.jpg",
+    "assets/img/facebook/auto-122179748090861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "Primera Escuela de Padres",
@@ -119,7 +168,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122179951646861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122179951646861024-foto-1.jpg",
+    "assets/img/facebook/auto-122179951646861024-foto-2.jpg",
+    "assets/img/facebook/auto-122179951646861024-foto-3.jpg",
+    "assets/img/facebook/auto-122179951646861024-foto-4.jpg",
+    "assets/img/facebook/auto-122179951646861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🌳💚 Día del Árbol – Ier Puerto Rosario 💚🌳",
@@ -132,7 +188,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122180707010861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122180707010861024-foto-1.jpg",
+    "assets/img/facebook/auto-122180707010861024-foto-2.jpg",
+    "assets/img/facebook/auto-122180707010861024-foto-3.jpg",
+    "assets/img/facebook/auto-122180707010861024-foto-4.jpg",
+    "assets/img/facebook/auto-122180707010861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🏫🤝 Participación estudiantil y liderazgo – Ier Puerto Rosario 🤝🏫.",
@@ -145,7 +208,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122181923636861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122181923636861024-foto-1.jpg",
+    "assets/img/facebook/auto-122181923636861024-foto-2.jpg",
+    "assets/img/facebook/auto-122181923636861024-foto-3.jpg",
+    "assets/img/facebook/auto-122181923636861024-foto-4.jpg",
+    "assets/img/facebook/auto-122181923636861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🖤💛❤️ Día de la Afrocolombianidad – Ier Puerto Rosario ❤️💛🖤💯🎯",
@@ -158,7 +228,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122184776090861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122184776090861024-foto-1.jpg",
+    "assets/img/facebook/auto-122184776090861024-foto-2.jpg",
+    "assets/img/facebook/auto-122184776090861024-foto-3.jpg",
+    "assets/img/facebook/auto-122184776090861024-foto-4.jpg",
+    "assets/img/facebook/auto-122184776090861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "Día de la Afrocolombianidad en nuestra Ier Puerto Rosario",
@@ -184,7 +261,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122187885302861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122187885302861024-foto-1.jpg",
+    "assets/img/facebook/auto-122187885302861024-foto-2.jpg",
+    "assets/img/facebook/auto-122187885302861024-foto-3.jpg",
+    "assets/img/facebook/auto-122187885302861024-foto-4.jpg",
+    "assets/img/facebook/auto-122187885302861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🎉👧🧒 Celebración del Día del Estudiante – Sección Primaria Sedes Multigrado Ier Puerto Rosario",
@@ -197,7 +281,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122190035810861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122190035810861024-foto-1.jpg",
+    "assets/img/facebook/auto-122190035810861024-foto-2.jpg",
+    "assets/img/facebook/auto-122190035810861024-foto-3.jpg",
+    "assets/img/facebook/auto-122190035810861024-foto-4.jpg",
+    "assets/img/facebook/auto-122190035810861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "💻🎓 ¡La tecnología abre puertas al conocimiento y transforma vidas! 🎓💻",
@@ -210,7 +301,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122194474004861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122194474004861024-foto-1.jpg",
+    "assets/img/facebook/auto-122194474004861024-foto-2.jpg",
+    "assets/img/facebook/auto-122194474004861024-foto-3.jpg",
+    "assets/img/facebook/auto-122194474004861024-foto-4.jpg",
+    "assets/img/facebook/auto-122194474004861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🇨🇴✨ Izada de Bandera – Segundo Período Académico ✨🇨🇴🎯💯",
@@ -223,7 +321,13 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122195853632861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122195853632861024-foto-1.jpg",
+    "assets/img/facebook/auto-122195853632861024-foto-2.jpg",
+    "assets/img/facebook/auto-122195853632861024-foto-3.jpg",
+    "assets/img/facebook/auto-122195853632861024-foto-4.jpg"
+   ]
   },
   {
    "titulo": "Segunda Escuela de Padres",
@@ -236,7 +340,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122195855432861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122195855432861024-foto-1.jpg",
+    "assets/img/facebook/auto-122195855432861024-foto-2.jpg",
+    "assets/img/facebook/auto-122195855432861024-foto-3.jpg",
+    "assets/img/facebook/auto-122195855432861024-foto-4.jpg",
+    "assets/img/facebook/auto-122195855432861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🇨🇴🎺 Institución Educativa Rural Pto Rosario : celebrando nuestra historia y nuestras tradiciones",
@@ -249,7 +360,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122199609044861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122199609044861024-foto-1.jpg",
+    "assets/img/facebook/auto-122199609044861024-foto-2.jpg",
+    "assets/img/facebook/auto-122199609044861024-foto-3.jpg",
+    "assets/img/facebook/auto-122199609044861024-foto-4.jpg",
+    "assets/img/facebook/auto-122199609044861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🪁🌈 Festival del Viento 2026 – Ier Puerto Rosario 🌈🪁",
@@ -262,7 +380,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122203599122861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122203599122861024-foto-1.jpg",
+    "assets/img/facebook/auto-122203599122861024-foto-2.jpg",
+    "assets/img/facebook/auto-122203599122861024-foto-3.jpg",
+    "assets/img/facebook/auto-122203599122861024-foto-4.jpg",
+    "assets/img/facebook/auto-122203599122861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "Compartimos directorio actualizado en el marco del plan de acción de nuestro PGIRE.",
@@ -288,7 +413,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122206267508861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122206267508861024-foto-1.jpg",
+    "assets/img/facebook/auto-122206267508861024-foto-2.jpg",
+    "assets/img/facebook/auto-122206267508861024-foto-3.jpg",
+    "assets/img/facebook/auto-122206267508861024-foto-4.jpg",
+    "assets/img/facebook/auto-122206267508861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🔬🚀 Segunda Semana de la Ciencia, la Tecnología y la Innovación – Ier Puerto Rosario 🚀🔬",
@@ -301,7 +433,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122206276388861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122206276388861024-foto-1.jpg",
+    "assets/img/facebook/auto-122206276388861024-foto-2.jpg",
+    "assets/img/facebook/auto-122206276388861024-foto-3.jpg",
+    "assets/img/facebook/auto-122206276388861024-foto-4.jpg",
+    "assets/img/facebook/auto-122206276388861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🎓💙 Primera Celebración del Día del Egresado – Ier Puerto Rosario 💙🎓💥🎊🎉💯",
@@ -314,7 +453,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122206283174861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122206283174861024-foto-1.jpg",
+    "assets/img/facebook/auto-122206283174861024-foto-2.jpg",
+    "assets/img/facebook/auto-122206283174861024-foto-3.jpg",
+    "assets/img/facebook/auto-122206283174861024-foto-4.jpg",
+    "assets/img/facebook/auto-122206283174861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "Tercera Escuela de Padres",
@@ -327,7 +473,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122208533696861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122208533696861024-foto-1.jpg",
+    "assets/img/facebook/auto-122208533696861024-foto-2.jpg",
+    "assets/img/facebook/auto-122208533696861024-foto-3.jpg",
+    "assets/img/facebook/auto-122208533696861024-foto-4.jpg",
+    "assets/img/facebook/auto-122208533696861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "🇨🇴🌟 Tercera Izada de Bandera – Ier Puerto Rosario 🌟🇨🇴",
@@ -340,7 +493,14 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "enlace": "https://www.facebook.com/61575830740720/posts/122208536294861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122208536294861024-foto-1.jpg",
+    "assets/img/facebook/auto-122208536294861024-foto-2.jpg",
+    "assets/img/facebook/auto-122208536294861024-foto-3.jpg",
+    "assets/img/facebook/auto-122208536294861024-foto-4.jpg",
+    "assets/img/facebook/auto-122208536294861024-foto-5.jpg"
+   ]
   },
   {
    "titulo": "Los esperamos en nuestra Ier Puerto Rosario",
