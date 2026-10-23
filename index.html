@@ -4511,10 +4511,20 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
     var sinResultados = qs('#sinNoticias');
     if (!campo) return;
 
+    var habiaBusqueda = false;
     function filtrar() {
+      var q = normalizar(campo.value);
+      /* Con una búsqueda activa se muestran todas las publicaciones, para que
+         ninguna quede fuera por estar detrás del botón «Ver más». Al borrar
+         la búsqueda, la lista vuelve a las 10 iniciales. */
+      if (q && typeof window.IERP_MOSTRAR_TODAS_NOTICIAS === 'function') {
+        window.IERP_MOSTRAR_TODAS_NOTICIAS();
+      } else if (!q && habiaBusqueda && typeof window.IERP_PLEGAR_NOTICIAS === 'function') {
+        window.IERP_PLEGAR_NOTICIAS();
+      }
+      habiaBusqueda = !!q;
       var tarjetas = qsa('#listaNoticias .noticia'); // se consulta cada vez
       var antiguas = qsa('#listaNoticiasAnteriores li');
-      var q = normalizar(campo.value);
       var visibles = 0;
       tarjetas.forEach(function (t) {
         var coincide = !q || normalizar(t.textContent).indexOf(q) !== -1;
@@ -5677,8 +5687,12 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       };
       var destacadasN = visiblesN.filter(esDelUltimoAnio);
       var anterioresN = visiblesN.filter(function (n) { return !esDelUltimoAnio(n); });
-      var PASO_TARJETAS = 6;      // las que sumaría el botón «Ver más»
-      var mostradasN = destacadasN.length;   // todas a la vista desde el inicio
+      var PASO_TARJETAS = 10;      // las que sumaría el botón «Ver más»
+      var PRIMERAS_TARJETAS = 10;  // las que se muestran al abrir la página
+      /* Se abre con las 10 más recientes para no cargar todo de golpe
+         (menos memoria y más rápido en celulares). Las demás aparecen con
+         el botón «Ver más», sin perder ninguna publicación. */
+      var mostradasN = Math.min(PRIMERAS_TARJETAS, destacadasN.length);
 
       function tarjetaNoticia(n) {
         var galeriaN = (Array.isArray(n.imagenes) ? n.imagenes.filter(function (s) { return hay(s); }) : []);
@@ -5777,6 +5791,23 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           if (campoN && campoN.value.trim() !== '') campoN.dispatchEvent(new Event('input'));
         });
       }());
+
+      /* El buscador revisa TODAS las publicaciones: si se escribe una palabra,
+         se muestran todas las tarjetas para que ninguna quede fuera; al borrar
+         la búsqueda se vuelve a las 10 iniciales. */
+      window.IERP_MOSTRAR_TODAS_NOTICIAS = function () {
+        if (mostradasN < destacadasN.length) {
+          mostradasN = destacadasN.length;
+          pintarNoticias();
+        }
+      };
+      window.IERP_PLEGAR_NOTICIAS = function () {
+        var inicial = Math.min(PRIMERAS_TARJETAS, destacadasN.length);
+        if (mostradasN !== inicial) {
+          mostradasN = inicial;
+          pintarNoticias();
+        }
+      };
 
       /* Publicaciones anteriores: solo título + enlace a Facebook. */
       var cajaAnt = qs('#noticiasAnteriores');
