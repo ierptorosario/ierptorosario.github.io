@@ -5697,6 +5697,11 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       function tarjetaNoticia(n) {
         var galeriaN = (Array.isArray(n.imagenes) ? n.imagenes.filter(function (s) { return hay(s); }) : []);
         if (galeriaN.length < 2 && hay(n.imagen)) galeriaN = [n.imagen];
+        /* La tarjeta rota como máximo 3 fotos (las primeras); en «Leer más»
+           se ven TODAS las de la publicación. Así la portada no muestra
+           cualquier foto del álbum y se ahorra memoria. */
+        var MAX_ROTACION = 3;
+        var rotacionN = galeriaN.slice(0, MAX_ROTACION);
         /* Publicación con video: no se incrusta (el sitio debe funcionar sin
            internet), pero se avisa y se enlaza para verlo completo. */
         var esVideo = n.video === true;
@@ -5722,16 +5727,16 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
         var marcaN = (hay(n.fotos) ? '<span class="card__fotos">' + ico('camara') + ' ' + esc(n.fotos) + '</span>' : '') +
           (esVideo ? '<span class="card__video">' + ico('video') + ' Video</span>' : '');
         var mediaN;
-        if (galeriaN.length > 1) {
+        if (rotacionN.length > 1) {
           mediaN = '<div class="card__media noticia__carrusel" data-intervalo="2000">' + marcaN +
-            galeriaN.map(function (src, k) {
-              return '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + (k === 0 ? '' : ' loading="lazy"') + ' decoding="async" alt="' + esc((n.titulo || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')') + '">';
+            rotacionN.map(function (src, k) {
+              return '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + (k === 0 ? '' : ' loading="lazy"') + ' decoding="async" alt="' + esc((n.titulo || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + rotacionN.length + ')') + '">';
             }).join('') +
-            '<span class="carrusel__puntos" aria-hidden="true">' + galeriaN.map(function (_, k) { return '<i' + (k === 0 ? ' class="is-activo"' : '') + '></i>'; }).join('') + '</span>' +
+            '<span class="carrusel__puntos" aria-hidden="true">' + rotacionN.map(function (_, k) { return '<i' + (k === 0 ? ' class="is-activo"' : '') + '></i>'; }).join('') + '</span>' +
           '</div>';
         } else {
           mediaN = '<div class="card__media">' + marcaN +
-            '<img src="' + img(galeriaN[0] || n.imagen, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + ' loading="lazy" decoding="async" alt="' + esc(n.titulo || 'Noticia institucional') + '">' +
+            '<img src="' + img(rotacionN[0] || n.imagen, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + ' loading="lazy" decoding="async" alt="' + esc(n.titulo || 'Noticia institucional') + '">' +
           '</div>';
         }
         return '<article class="card noticia" data-cat="' + esc(n.categoria || '') + '">' +
