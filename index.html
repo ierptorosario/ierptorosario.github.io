@@ -569,6 +569,9 @@ table.tabla tbody tr:last-child th,table.tabla tbody tr:last-child td{border-bot
 .carrusel__puntos i.is-activo{background:#fff;transform:scale(1.25)}
 .detalle__galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.5rem;margin-top:.9rem}
 .detalle__galeria img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radio-sm);border:1px solid var(--gris-200)}
+/* Carrusel de la ventana «Leer más»: muestra todas las fotos de la publicación. */
+.detalle__carrusel{position:relative;margin-top:.9rem;aspect-ratio:4/3;border-radius:var(--radio-sm);overflow:hidden;background:var(--gris-100);border:1px solid var(--gris-200)}
+.detalle__carrusel .carrusel__puntos{bottom:.65rem}
 
 /* --- 9.6 Publicaciones anteriores de Facebook (solo título + enlace) --- */
 .noticias__anteriores{
@@ -4775,6 +4778,8 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
     function abrir(datos) {
       titulo.textContent = datos.titulo;
       cuerpo.innerHTML = datos.html;
+      /* Si el detalle trae el carrusel con todas las fotos, se pone a girar. */
+      if (typeof window.IERP_INICIAR_CARRUSELES === 'function') window.IERP_INICIAR_CARRUSELES(cuerpo);
       abrirCapa(modal, function () { if (btnCerrar) btnCerrar.focus(); });
       capaActiva = { elemento: modal, cerrar: cerrar };
     }
@@ -5173,7 +5178,10 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
         p.src = im.getAttribute('src');
       };
       precargar(imgs[1]); /* adelanta la siguiente foto para que no parpadee */
-      window.setInterval(function () {
+      var temporizador = window.setInterval(function () {
+        /* Si la ventana se cerró o la tarjeta se volvió a dibujar, se detiene
+           el temporizador para no acumular trabajo ni memoria. */
+        if (!c.isConnected) { window.clearInterval(temporizador); return; }
         if (pausado || document.hidden) return;
         imgs[i].classList.remove('is-activa');
         if (puntos[i]) puntos[i].classList.remove('is-activo');
@@ -5184,6 +5192,9 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       }, intervalo);
     });
   }
+  /* La ventana «Leer más» está en otro bloque de la página: se comparte la
+     función para que también haga girar el carrusel con todas las fotos. */
+  window.IERP_INICIAR_CARRUSELES = iniciarCarruseles;
 
   /* --------- Contenido automático (lo genera el actualizador) ---------
      window.CONTENIDO_AUTO trae lo que el actualizador agregó por sí solo:
@@ -5719,9 +5730,12 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           avisoVideo +
           (hay(n.detalle) ? n.detalle : '<p>' + esc(n.resumen || '') + '</p>') +
           (hay(n.fotos) ? '<p class="detalle__fotos">' + ico('camara') + ' Esta publicación tiene ' + esc(n.fotos) + ' ' + (Number(n.fotos) === 1 ? 'fotografía' : 'fotografías') + ' en la página oficial de Facebook.</p>' : '') +
-          (galeriaN.length > 1 ? '<div class="detalle__galeria">' + galeriaN.map(function (src, k) {
-            return '<img src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="400" height="300" loading="lazy" decoding="async" alt="' + esc((n.titulo || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')') + '">';
-          }).join('') + '</div>' : '') +
+          (galeriaN.length > 1 ? '<div class="detalle__carrusel noticia__carrusel" data-intervalo="2500" role="group" aria-roledescription="carrusel" aria-label="Todas las fotografías de esta publicación">' +
+            galeriaN.map(function (src, k) {
+              return '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="600" loading="lazy" decoding="async" alt="' + esc((n.titulo || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')') + '">';
+            }).join('') +
+            '<span class="carrusel__puntos" aria-hidden="true">' + galeriaN.map(function (_, k) { return '<i' + (k === 0 ? ' class="is-activo"' : '') + '></i>'; }).join('') + '</span>' +
+          '</div>' : '') +
           enlaceFuente(n.enlace, n.fuente)
         );
         var marcaN = (hay(n.fotos) ? '<span class="card__fotos">' + ico('camara') + ' ' + esc(n.fotos) + '</span>' : '') +
