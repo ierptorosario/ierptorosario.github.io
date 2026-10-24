@@ -9,9 +9,51 @@
    ===================================================================== */
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
- "actualizado": "2026-10-23",
- "generado": "2026-10-23 11:43:42",
+ "actualizado": "2026-10-24",
+ "generado": "2026-10-24 11:31:38",
  "noticias": [
+  {
+   "titulo": "👨‍👩‍👧‍👦📚 Segunda Escuela de Padres – Ier Puerto Rosario 🌱",
+   "fecha": "24 de julio de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-pfbid0HptPEofRGiTxmNDQsEvDNbMdcgCYRDxY6SgzkVJgXZg6gx8qHNF9Wn4BHXqHhGyPl-foto-1.jpg",
+   "imagenes": [
+    "assets/img/facebook/auto-pfbid0HptPEofRGiTxmNDQsEvDNbMdcgCYRDxY6SgzkVJgXZg6gx8qHNF9Wn4BHXqHhGyPl-foto-1.jpg",
+    "assets/img/facebook/auto-pfbid0HptPEofRGiTxmNDQsEvDNbMdcgCYRDxY6SgzkVJgXZg6gx8qHNF9Wn4BHXqHhGyPl-foto-2.jpg",
+    "assets/img/facebook/auto-pfbid0HptPEofRGiTxmNDQsEvDNbMdcgCYRDxY6SgzkVJgXZg6gx8qHNF9Wn4BHXqHhGyPl-foto-3.jpg",
+    "assets/img/facebook/auto-pfbid0HptPEofRGiTxmNDQsEvDNbMdcgCYRDxY6SgzkVJgXZg6gx8qHNF9Wn4BHXqHhGyPl-foto-4.jpg",
+    "assets/img/facebook/auto-pfbid0HptPEofRGiTxmNDQsEvDNbMdcgCYRDxY6SgzkVJgXZg6gx8qHNF9Wn4BHXqHhGyPl-foto-5.jpg"
+   ],
+   "fotos": 5,
+   "video": false,
+   "resumen": "En nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario llevamos a cabo con gran éxito la Segunda Escuela de Padres, un espacio de encuentro, diálogo y participación que fortaleció los ví…",
+   "detalle": "<p>👨‍👩‍👧‍👦📚 Segunda Escuela de Padres – Ier Puerto Rosario 🌱</p><p>En nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario llevamos a cabo con gran éxito la Segunda Escuela de Padres, un espacio de encuentro, diálogo y participación que fortaleció los vínculos entre la familia y la escuela.💯🎯🎊🆗🤩</p><p>Durante la jornada contamos con la valiosa articulación de la Biblioteca Pública Municipal de Puerto Guzmán Alcaldía Puerto Guzman - Putumayo con quienes vamos a desarrollar un excelente proyecto de huertas escolares y familiares, promoviendo la educación ambiental, la seguridad alimentaria y el trabajo en equipo como herramientas para el aprendizaje y el desarrollo de nuestras familias.</p><p>Asimismo, se realizó la Rendición de Cuentas del primer semestre de 2026, socializando a la comunidad educativa los avances, logros y acciones desarrolladas por nuestra institución, en un ejercicio de transparencia, participación y compromiso con la calidad educativa💯💥⚡.</p><p>Finalmente, se hizo la entrega de los boletines correspondientes al segundo período académico, brindando a los padres de familia la oportunidad de conocer el desempeño de sus hijos y fortalecer el acompañamiento en su proceso formativo.🎯🥉🏅🎖️🏆</p><p>🤝 Agradecemos a todos los padres de familia por su asistencia y compromiso, a la Biblioteca Pública Municipal de Puerto Guzmán por su valioso apoyo y a nuestros docentes por su dedicación en la organización de esta importante jornada.🎯</p><p>Familia y escuela, trabajando de la mano para sembrar conocimientos, valores y un mejor futuro para nuestros estudiantes. 💙🌱📚</p><p>#IERPuertoRosario #EscuelaDePadres #TrabajoEnEquipo #RendiciónDeCuentas #ProyectoDeHuertas #BibliotecaPública #EducaciónConValores #ComunidadEducativa</p>",
+   "enlace": "https://www.facebook.com/permalink.php?story_fbid=pfbid0HptPEofRGiTxmNDQsEvDNbMdcgCYRDxY6SgzkVJgXZg6gx8qHNF9Wn4BHXqHhGyPl&id=61575830740720",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
+  {
+   "titulo": "👨‍👩‍👧‍👦💙 Tercera Escuela de Padres – Ier Puerto Rosario 💙👨‍👩‍👧‍👦",
+   "fecha": "1 de octubre de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-pfbid023Ld7uVUNohzHXpaFDgWeLXddhPbkmwYQLUffW48Dit6pys7HK8Z42rZejkU9SJNsl-foto-1.jpg",
+   "imagenes": [
+    "assets/img/facebook/auto-pfbid023Ld7uVUNohzHXpaFDgWeLXddhPbkmwYQLUffW48Dit6pys7HK8Z42rZejkU9SJNsl-foto-1.jpg",
+    "assets/img/facebook/auto-pfbid023Ld7uVUNohzHXpaFDgWeLXddhPbkmwYQLUffW48Dit6pys7HK8Z42rZejkU9SJNsl-foto-2.jpg",
+    "assets/img/facebook/auto-pfbid023Ld7uVUNohzHXpaFDgWeLXddhPbkmwYQLUffW48Dit6pys7HK8Z42rZejkU9SJNsl-foto-3.jpg",
+    "assets/img/facebook/auto-pfbid023Ld7uVUNohzHXpaFDgWeLXddhPbkmwYQLUffW48Dit6pys7HK8Z42rZejkU9SJNsl-foto-4.jpg",
+    "assets/img/facebook/auto-pfbid023Ld7uVUNohzHXpaFDgWeLXddhPbkmwYQLUffW48Dit6pys7HK8Z42rZejkU9SJNsl-foto-5.jpg"
+   ],
+   "fotos": 5,
+   "video": false,
+   "resumen": "En nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario llevamos a cabo nuestra Tercera Escuela de Padres, un espacio para encontrarnos, dialogar y reflexionar sobre el importante papel q…",
+   "detalle": "<p>👨‍👩‍👧‍👦💙 Tercera Escuela de Padres – Ier Puerto Rosario 💙👨‍👩‍👧‍👦</p><p>En nuestra Institución Educativa Rural Puerto Institución Educativa Rural Pto Rosario llevamos a cabo nuestra Tercera Escuela de Padres, un espacio para encontrarnos, dialogar y reflexionar sobre el importante papel que tenemos como familias en la formación de nuestros niños, niñas y jóvenes.🙏🏼🎊🎉❤️</p><p>Durante la jornada conversamos sobre nuestros compromisos como padres y acudientes, la importancia de acompañar a nuestros hijos en cada etapa de su vida y, especialmente, sobre la necesidad de inculcar buenos valores desde el hogar, de igual forma se inició el proyecto Latidos del Corazón, por parte de la Alcaldía Puerto Guzman - Putumayo</p><p>❤️ El respeto, la responsabilidad, la honestidad, la solidaridad y el amor son semillas que se cultivan cada día y que, con el ejemplo, ayudan a nuestros hijos a crecer como mejores personas.❤️</p><p>🤝 Familia y escuela somos un equipo. Cuando caminamos juntos, acompañamos mejor a nuestros estudiantes y contribuimos a construir sus sueños y proyectos de vida.</p><p>🙏 Agradecemos a las familias por su participación y disposición para seguir aprendiendo y fortaleciendo juntos nuestra comunidad educativa y a todos nuestros compañeros docentes.</p><p>¡Educar es una tarea compartida y los valores comienzan en casa! 🌱📚</p><p>#IERPuertoRosario #EscuelaDePadres #FamiliaYEscuela #EducaciónConValores #CompromisoFamiliar #ComunidadEducativa</p>",
+   "enlace": "https://www.facebook.com/permalink.php?story_fbid=pfbid023Ld7uVUNohzHXpaFDgWeLXddhPbkmwYQLUffW48Dit6pys7HK8Z42rZejkU9SJNsl&id=61575830740720",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
   {
    "titulo": "🚨🏫 ¡En nuestra Ier Puerto Rosario nos preparamos para proteger la vida! 🏫🚨",
    "fecha": "22 de octubre de 2026",
