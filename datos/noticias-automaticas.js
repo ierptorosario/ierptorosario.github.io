@@ -9,8 +9,8 @@
    ===================================================================== */
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
- "actualizado": "2026-10-25",
- "generado": "2026-10-25 13:43:24",
+ "actualizado": "2026-10-26",
+ "generado": "2026-10-26 11:36:01",
  "noticias": [
   {
    "titulo": "👨‍👩‍👧‍👦📚 Segunda Escuela de Padres – Ier Puerto Rosario 🌱",
