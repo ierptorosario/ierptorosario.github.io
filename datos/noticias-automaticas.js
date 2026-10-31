@@ -9,9 +9,24 @@
    ===================================================================== */
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
- "actualizado": "2026-10-30",
- "generado": "2026-10-30 11:23:20",
+ "actualizado": "2026-10-31",
+ "generado": "2026-10-31 17:54:47",
  "noticias": [
+  {
+   "titulo": "🌱📚 ¡De las palabras a la tierra: sembrando conocimientos, cultivando futuro!",
+   "fecha": "30 de octubre de 2026",
+   "categoria": "Facebook",
+   "imagen": "",
+   "imagenes": [],
+   "fotos": 0,
+   "video": true,
+   "resumen": "Desde julio de 2026, el proyecto De las Palabras a la Tierra ha promovido espacios de aprendizaje, participación y conexión con la naturaleza junto a las instituciones educativas de las veredas San Luis y Puerto Rosar…",
+   "detalle": "<p>🌱📚 ¡De las palabras a la tierra: sembrando conocimientos, cultivando futuro!</p><p>Desde julio de 2026, el proyecto De las Palabras a la Tierra ha promovido espacios de aprendizaje, participación y conexión con la naturaleza junto a las instituciones educativas de las veredas San Luis y Puerto Rosario, en nuestro municipio de Puerto Guzmán.</p><p>Esta iniciativa es fruto de la articulación entre la Unidad Móvil N.° 3 del ICBF Regional Putumayo, el Colectivo Social Awantai y la Administración Municipal, a través de la Biblioteca Pública Los Fundadores, uniendo esfuerzos para fomentar el cuidado del medio ambiente, reconocer los saberes del territorio y fortalecer las huertas escolares. 🌿🌎</p><p>Como cierre de este proceso, se realizó la entrega de kits de siembra para continuar fortaleciendo las huertas escolares y brindar a niños, niñas y comunidades educativas herramientas para cultivar sus propios alimentos, aprender de la naturaleza y promover prácticas sostenibles.</p><p>💚 Porque cada semilla representa una oportunidad para aprender, fortalecer los lazos comunitarios y sembrar esperanza para las nuevas generaciones.</p><p>¡En Puerto Guzmán cultivamos conocimiento y cosechamos futuro! 🌱🤝</p><p>#AlcaldiaDePuertoGuzmán #DeLasPalabrasALaTierra #HuertasEscolares #EducaciónAmbiental #ICBF #BibliotecaPúblicaLosFundadores</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122213814896861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
   {
    "titulo": "👨‍👩‍👧‍👦📚 Segunda Escuela de Padres – Ier Puerto Rosario 🌱",
    "fecha": "24 de julio de 2026",
