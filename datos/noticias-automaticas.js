@@ -9,8 +9,8 @@
    ===================================================================== */
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
- "actualizado": "2026-10-31",
- "generado": "2026-10-31 17:54:47",
+ "actualizado": "2026-11-01",
+ "generado": "2026-11-01 14:35:42",
  "noticias": [
   {
    "titulo": "🌱📚 ¡De las palabras a la tierra: sembrando conocimientos, cultivando futuro!",
