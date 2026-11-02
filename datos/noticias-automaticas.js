@@ -300,14 +300,17 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "titulo": "Día de la Afrocolombianidad en nuestra Ier Puerto Rosario",
    "fecha": "23 de mayo de 2026",
    "categoria": "Facebook",
-   "imagen": "",
-   "fotos": 0,
+   "imagen": "assets/img/facebook/auto-122184777140861024-foto-1.jpg",
+   "fotos": 1,
    "resumen": "Día de la Afrocolombianidad en nuestra Ier Puerto Rosario",
    "detalle": "<p>Día de la Afrocolombianidad en nuestra Ier Puerto Rosario</p>",
    "enlace": "https://www.facebook.com/61575830740720/posts/122184777140861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122184777140861024-foto-1.jpg"
+   ]
   },
   {
    "titulo": "Conmemoración del Día Mundial del Medio Ambiente en nuestra Institución Educativa Rural Pto Rosario",
@@ -452,14 +455,17 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "titulo": "Compartimos directorio actualizado en el marco del plan de acción de nuestro PGIRE.",
    "fecha": "9 de septiembre de 2026",
    "categoria": "Facebook",
-   "imagen": "",
-   "fotos": 0,
+   "imagen": "assets/img/facebook/auto-122204545850861024-foto-1.jpg",
+   "fotos": 1,
    "resumen": "Compartimos directorio actualizado en el marco del plan de acción de nuestro PGIRE.",
    "detalle": "<p>Compartimos directorio actualizado en el marco del plan de acción de nuestro PGIRE.</p>",
    "enlace": "https://www.facebook.com/61575830740720/posts/122204545850861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122204545850861024-foto-1.jpg"
+   ]
   },
   {
    "titulo": "👨‍👩‍👧‍👦❤️ Día de la Familia – Ier Puerto Rosario ❤️👨‍👩‍👧‍👦",
@@ -565,14 +571,17 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "titulo": "Los esperamos en nuestra Ier Puerto Rosario",
    "fecha": "15 de octubre de 2026",
    "categoria": "Facebook",
-   "imagen": "",
-   "fotos": 0,
+   "imagen": "assets/img/facebook/auto-122211002024861024-foto-1.jpg",
+   "fotos": 1,
    "resumen": "Los esperamos en nuestra Ier Puerto Rosario",
    "detalle": "<p>Los esperamos en nuestra Ier Puerto Rosario</p>",
    "enlace": "https://www.facebook.com/61575830740720/posts/122211002024861024/",
    "fuente": "Facebook",
    "demo": false,
-   "publicada": true
+   "publicada": true,
+   "imagenes": [
+    "assets/img/facebook/auto-122211002024861024-foto-1.jpg"
+   ]
   }
  ]
 };
