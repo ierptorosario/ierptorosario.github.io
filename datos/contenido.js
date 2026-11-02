@@ -119,9 +119,9 @@ window.CONTENIDO_IERP = {
       "titulo": "Los esperamos en nuestra IER Puerto Rosario",
       "fecha": "15 de octubre de 2026",
       "categoria": "Institucional",
-      "imagen": "assets/img/facebook/invitacion-matriculas-2026-1.jpg",
+      "imagen": "assets/img/facebook/auto-122211002024861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/invitacion-matriculas-2026-1.jpg"
+        "assets/img/facebook/auto-122211002024861024-foto-1.jpg"
       ],
       "fotos": 1,
       "resumen": "Los esperamos en nuestra Ier Puerto Rosario",
@@ -235,9 +235,9 @@ window.CONTENIDO_IERP = {
       "titulo": "Directorio institucional actualizado (PGIRE)",
       "fecha": "9 de septiembre de 2026",
       "categoria": "Transparencia",
-      "imagen": "assets/img/facebook/directorio-pgire-1.jpg",
+      "imagen": "assets/img/facebook/auto-122204545850861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/directorio-pgire-1.jpg"
+        "assets/img/facebook/auto-122204545850861024-foto-1.jpg"
       ],
       "fotos": 1,
       "resumen": "Compartimos directorio actualizado en el marco del plan de acción de nuestro PGIRE.",
@@ -432,9 +432,9 @@ window.CONTENIDO_IERP = {
       "titulo": "Día de la Afrocolombianidad (2.ª publicación)",
       "fecha": "23 de mayo de 2026",
       "categoria": "Cultural",
-      "imagen": "assets/img/facebook/auto-122184776090861024-foto-1.jpg",
+      "imagen": "assets/img/facebook/auto-122184777140861024-foto-1.jpg",
       "imagenes": [
-        "assets/img/facebook/auto-122184776090861024-foto-1.jpg"
+        "assets/img/facebook/auto-122184777140861024-foto-1.jpg"
       ],
       "fotos": 1,
       "resumen": "Día de la Afrocolombianidad en nuestra Ier Puerto Rosario",
