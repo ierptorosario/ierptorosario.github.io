@@ -5729,7 +5729,7 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           '<span class="badge badge--ok">' + ico('ver') + ' Publicado</span>' +
           avisoVideo +
           (hay(n.detalle) ? n.detalle : '<p>' + esc(n.resumen || '') + '</p>') +
-          (hay(n.fotos) ? '<p class="detalle__fotos">' + ico('camara') + ' Esta publicación tiene ' + esc(n.fotos) + ' ' + (Number(n.fotos) === 1 ? 'fotografía' : 'fotografías') + ' en la página oficial de Facebook.</p>' : '') +
+          (hay(n.fotos) ? '<p class="detalle__fotos">' + ico('camara') + ' Esta publicación tiene ' + esc(n.fotos) + ' ' + (Number(n.fotos) === 1 ? 'fotografía' : 'fotografías') + ' en la página oficial de Facebook.' + (Number(n.fotos_descargadas) > 0 && Number(n.fotos_descargadas) < Number(n.fotos) ? ' Aquí se muestran ' + esc(n.fotos_descargadas) + '; para verlas todas, abra la publicación en Facebook.' : '') + '</p>' : '') +
           (galeriaN.length > 1 ? '<div class="detalle__carrusel noticia__carrusel" data-intervalo="2500" role="group" aria-roledescription="carrusel" aria-label="Todas las fotografías de esta publicación">' +
             galeriaN.map(function (src, k) {
               return '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="600" loading="lazy" decoding="async" alt="' + esc((n.titulo || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')') + '">';
