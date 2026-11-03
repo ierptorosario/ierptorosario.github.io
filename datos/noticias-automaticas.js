@@ -9,9 +9,25 @@
    ===================================================================== */
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
- "actualizado": "2026-11-02",
- "generado": "2026-11-02 11:16:07",
+ "actualizado": "2026-11-03",
+ "generado": "2026-11-03 21:35:39",
  "noticias": [
+  {
+   "titulo": "Estamos en modo matriculas Ier Puerto Rosario en nuestra Institución Educativa Rural Pto Rosario.",
+   "fecha": "3 de noviembre de 2026",
+   "categoria": "Facebook",
+   "imagen": "",
+   "imagenes": [],
+   "fotos": 0,
+   "fotos_descargadas": 0,
+   "video": false,
+   "resumen": "Estamos en modo matriculas Ier Puerto Rosario en nuestra Institución Educativa Rural Pto Rosario.",
+   "detalle": "<p>Estamos en modo matriculas Ier Puerto Rosario en nuestra Institución Educativa Rural Pto Rosario.</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122214688310861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
   {
    "titulo": "🌱📚 ¡De las palabras a la tierra: sembrando conocimientos, cultivando futuro!",
    "fecha": "30 de octubre de 2026",
