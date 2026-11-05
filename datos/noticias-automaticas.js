@@ -9,8 +9,8 @@
    ===================================================================== */
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
- "actualizado": "2026-11-04",
- "generado": "2026-11-04 11:00:41",
+ "actualizado": "2026-11-05",
+ "generado": "2026-11-05 13:12:56",
  "noticias": [
   {
    "titulo": "Estamos en modo matriculas Ier Puerto Rosario en nuestra Institución Educativa Rural Pto Rosario.",
