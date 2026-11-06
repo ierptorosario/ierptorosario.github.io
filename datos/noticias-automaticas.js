@@ -16,10 +16,12 @@ window.CONTENIDO_NOTICIAS_AUTO = {
    "titulo": "Estamos en modo matriculas Ier Puerto Rosario en nuestra Institución Educativa Rural Pto Rosario.",
    "fecha": "3 de noviembre de 2026",
    "categoria": "Facebook",
-   "imagen": "",
-   "imagenes": [],
-   "fotos": 0,
-   "fotos_descargadas": 0,
+   "imagen": "assets/img/facebook/auto-122214688310861024-foto-1.jpg",
+   "imagenes": [
+    "assets/img/facebook/auto-122214688310861024-foto-1.jpg"
+   ],
+   "fotos": 1,
+   "fotos_descargadas": 1,
    "video": false,
    "resumen": "Estamos en modo matriculas Ier Puerto Rosario en nuestra Institución Educativa Rural Pto Rosario.",
    "detalle": "<p>Estamos en modo matriculas Ier Puerto Rosario en nuestra Institución Educativa Rural Pto Rosario.</p>",
