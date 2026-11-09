@@ -9,9 +9,31 @@
    ===================================================================== */
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
- "actualizado": "2026-11-07",
- "generado": "2026-11-07 11:27:10",
+ "actualizado": "2026-11-09",
+ "generado": "2026-11-09 00:10:13",
  "noticias": [
+  {
+   "titulo": "🎭⚽ ¡La cultura, el deporte y la amistad nos unen! ⚽🎭",
+   "fecha": "7 de noviembre de 2026",
+   "categoria": "Facebook",
+   "imagen": "assets/img/facebook/auto-122215497086861024-foto-1.jpg",
+   "imagenes": [
+    "assets/img/facebook/auto-122215497086861024-foto-1.jpg",
+    "assets/img/facebook/auto-122215497086861024-foto-2.jpg",
+    "assets/img/facebook/auto-122215497086861024-foto-3.jpg",
+    "assets/img/facebook/auto-122215497086861024-foto-4.jpg",
+    "assets/img/facebook/auto-122215497086861024-foto-5.jpg"
+   ],
+   "fotos": 5,
+   "fotos_descargadas": 5,
+   "video": false,
+   "resumen": "Niestra Institución Educativa Rural Pto Rosario aceptó con mucha alegría la honrosa invitación de nuestra institución amiga IER El Cedro, para participar en un hermoso encuentro cultural y deportivo, un espacio de int…",
+   "detalle": "<p>🎭⚽ ¡La cultura, el deporte y la amistad nos unen! ⚽🎭</p><p>Niestra Institución Educativa Rural Pto Rosario aceptó con mucha alegría la honrosa invitación de nuestra institución amiga IER El Cedro, para participar en un hermoso encuentro cultural y deportivo, un espacio de integración que nos permitió compartir experiencias, fortalecer valores y estrechar los lazos de amistad entre nuestras comunidades educativas.🎯💯🎊🎉</p><p>Durante la jornada disfrutamos de presentaciones de danzas por parte de las dos instituciones y emocionantes encuentros deportivos de futsala, en los que nuestros estudiantes demostraron sus talentos, habilidades, entusiasmo y espíritu de compañerismo. 💃🕺🏆</p><p>Estos encuentros van más allá de una actividad cultural o deportiva; son oportunidades para promover el respeto, la convivencia, la identidad cultural, el trabajo en equipo y el fortalecimiento del tejido social en nuestras comunidades rurales.🎯👌🏼</p><p>Queremos expresar un agradecimiento especial a la IER El Cedro por su excelente recibimiento y hospitalidad. Felicitamos a sus estudiantes, docentes y directivos por ser grandes anfitriones y hacer posible este significativo encuentro.</p><p>De igual manera, felicitamos a nuestros estudiantes de la Ier Puerto Rosario por su excelente comportamiento, compromiso y destacada participación en las presentaciones de danzas y los encuentros de futsala. Nos sentimos orgullosos de su representación. 👏💙🎯🔥🙏🏼</p><p>Agradecemos también a los padres de familia por su acompañamiento y confianza, y a nuestros docentes por su compromiso, apoyo y dedicación para hacer posible esta experiencia🙏🏼.</p><p>¡Cuando las instituciones educativas se unen, la cultura florece, el deporte integra y los valores construyen comunidad!🔥🎯</p><p>¡Gracias, IER El Cedro, por abrirnos sus puertas y permitirnos vivir este maravilloso encuentro! 🤝🌿</p><p>#IERPuertoRosario #IERElCedro #EncuentroCulturalYDeportivo #EducaciónRural #CulturaYDeporte #ConvivenciaEscolar #TrabajoEnEquipo #TejidoSocial #OrgulloInstitucional</p>",
+   "enlace": "https://www.facebook.com/61575830740720/posts/122215497086861024/",
+   "fuente": "Facebook",
+   "demo": false,
+   "publicada": true
+  },
   {
    "titulo": "Estamos en modo matriculas Ier Puerto Rosario en nuestra Institución Educativa Rural Pto Rosario.",
    "fecha": "3 de noviembre de 2026",
