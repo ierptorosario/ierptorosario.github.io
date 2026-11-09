@@ -10,7 +10,7 @@
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
  "actualizado": "2026-11-09",
- "generado": "2026-11-09 00:10:13",
+ "generado": "2026-11-09 13:58:51",
  "noticias": [
   {
    "titulo": "🎭⚽ ¡La cultura, el deporte y la amistad nos unen! ⚽🎭",
