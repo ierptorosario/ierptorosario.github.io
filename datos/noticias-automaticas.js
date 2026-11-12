@@ -9,8 +9,8 @@
    ===================================================================== */
 window.CONTENIDO_NOTICIAS_AUTO = {
  "version": 1,
- "actualizado": "2026-11-11",
- "generado": "2026-11-11 13:59:19",
+ "actualizado": "2026-11-12",
+ "generado": "2026-11-12 12:43:59",
  "noticias": [
   {
    "titulo": "🎭⚽ ¡La cultura, el deporte y la amistad nos unen! ⚽🎭",
