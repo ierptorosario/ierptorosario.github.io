@@ -1,13 +1,14 @@
 /* =====================================================================
    DOCUMENTOS QUITADOS DE LA WEB
    ---------------------------------------------------------------------
-   Este archivo lo escribe la página «subir.html» cuando rectoría quita un
-   documento desactualizado o subido por equivocación.
-
-   Quitar un documento NO borra el PDF: solo hace que deje de mostrarse en
-   la sección «Documentos» del sitio. Se puede restaurar desde la misma
-   página, y el PDF se puede borrar aparte cuando ya no se necesite.
-
+   Lo escribe la página «subir.html». Quitar un documento no borra el PDF:
+   solo deja de mostrarse en el sitio. Se puede restaurar desde esa página.
    NO se edita a mano.
    ===================================================================== */
-window.DOCUMENTOS_OCULTOS = [];
+window.DOCUMENTOS_OCULTOS = [
+  {
+    "archivo": "documentos/plan-ciencias-sociales.pdf",
+    "titulo": "Plan de estudio de Ciencias Sociales",
+    "fecha": "24 de noviembre de 2026"
+  }
+];
