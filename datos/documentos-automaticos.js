@@ -32,5 +32,14 @@ window.DOCUMENTOS_AUTO = [
     "descripcion": "Guías y planeadores del área de Tecnología e Informática para el grado 6.º, año 2026",
     "fecha": "19 de octubre de 2026",
     "publicado": true
+  },
+  {
+    "titulo": "Plan de Area Ciencias Sociales 2026",
+    "archivo": "documentos/plan-de-area-ciencias-sociales-2026-2026.pdf",
+    "anio": "2026",
+    "categoria": "Planes de estudio por área",
+    "descripcion": "Plan de Area Ciencias Sociales 2026",
+    "fecha": "24 de noviembre de 2026",
+    "publicado": true
   }
 ];
