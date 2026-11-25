@@ -3542,7 +3542,7 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       <p class="section__lead">
         Consulte y descargue los documentos oficiales de la institución, <strong>organizados por año</strong>.
         Elija el año que le interese y se desplegará la lista con cada documento listo para consultar o
-        descargar en PDF.
+        descargar en PDF o Word.
       </p>
     </div>
 
@@ -5913,10 +5913,12 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
 
     function tarjetaDoc(d) {
       var conArchivo = hay(d.archivo);
+      var esWord = /\.docx?$/i.test(String(d.archivo || ''));
+      var etiqueta = esWord ? 'Descargar documento Word' : 'Descargar / consultar PDF';
       var accion = conArchivo
-        ? '<a class="btn btn--primary btn--sm" href="' + esc(d.archivo) + '" download>' + ico('descarga') + ' Descargar / consultar PDF</a>' +
+        ? '<a class="btn btn--primary btn--sm" href="' + esc(d.archivo) + '" download>' + ico('descarga') + ' ' + etiqueta + '</a>' +
           '<span class="badge badge--ok">' + ico('ver') + ' Publicado' + (hay(d.anio) ? ' ' + esc(d.anio) : '') + '</span>'
-        : '<span class="btn btn--sm is-disabled" aria-disabled="true">' + ico('descarga') + ' PDF no disponible</span>' +
+        : '<span class="btn btn--sm is-disabled" aria-disabled="true">' + ico('descarga') + ' Documento no disponible</span>' +
           '<span class="badge badge--pendiente">' + ico('reloj') + ' Pendiente de publicación</span>';
       return '<article class="doc" data-anio="' + esc(d.anio || '') + '">' +
         '<span class="doc__icono" aria-hidden="true">' + ico(d.icono || 'doc') + '</span>' +

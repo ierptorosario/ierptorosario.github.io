@@ -528,7 +528,7 @@
     var cuerpo = '/* =====================================================================\n' +
       '   DOCUMENTOS QUITADOS DE LA WEB\n' +
       '   ---------------------------------------------------------------------\n' +
-      '   Lo escribe la página «subir.html». Quitar un documento no borra el PDF:\n' +
+      '   Lo escribe la página «subir.html». Quitar un documento no borra el archivo:\n' +
       '   solo deja de mostrarse en el sitio. Se puede restaurar desde esa página.\n' +
       '   NO se edita a mano.\n' +
       '   ===================================================================== */\n' +
@@ -747,24 +747,24 @@
 
   function borrarPdf(d) {
     if (!d || !d.archivo) {
-      avisoLista('Este documento no tiene archivo PDF para borrar.', 'info');
+      avisoLista('Este documento no tiene archivo para borrar.', 'info');
       return;
     }
-    if (!confirm('¿Borrar definitivamente el archivo PDF de «' + (d.titulo || '') + '»?\n\n' +
+    if (!confirm('¿Borrar definitivamente el archivo de «' + (d.titulo || '') + '»?\n\n' +
       'Esto NO se puede deshacer desde esta página.\n' +
       'Si el documento todavía se ve en la web, primero pulse «Quitar de la web».')) return;
     if (!confirm('Última confirmación:\n\nSe va a borrar el archivo «' + d.archivo + '». ¿Seguir?')) return;
 
-    avisoLista('Borrando el archivo PDF…');
+    avisoLista('Borrando el archivo…');
     /* Si todavía se veía en la web, también se quita: así no queda un enlace
        que no lleva a ninguna parte. */
-    borrarArchivo(d.archivo, 'Borrar PDF: ' + (d.titulo || '')).then(function () {
+    borrarArchivo(d.archivo, 'Borrar archivo: ' + (d.titulo || '')).then(function () {
       if (estaOculto(d)) return true;
       var lista = ocultos.slice();
       lista.push({ archivo: d.archivo, titulo: d.titulo || '', fecha: hoyTexto() });
-      return guardarQuitados(lista, 'Quitar documento sin PDF: ' + (d.titulo || ''));
+      return guardarQuitados(lista, 'Quitar documento sin archivo: ' + (d.titulo || ''));
     }).then(function () {
-      avisoLista('Archivo PDF borrado. El documento ya no se puede abrir ni se muestra en el sitio.', 'ok');
+      avisoLista('Archivo borrado. El documento ya no se puede abrir ni se muestra en el sitio.', 'ok');
     }).catch(function (e) {
       avisoLista(textoDeError(e), 'error');
     });
@@ -817,14 +817,29 @@
   /* ------------------------------------------------------------------
      Paso 2: subir el documento.
      ------------------------------------------------------------------ */
-  function nombreArchivoDisponible(base, lista) {
+  /* Devuelve la extensión real del archivo: .pdf, .doc o .docx.
+     Si no es una de las permitidas, devuelve '' y no se sube. */
+  function extensionDeArchivo(archivo) {
+    var nombre = String((archivo && archivo.name) || '').toLowerCase();
+    var m = /\.([a-z0-9]+)$/.exec(nombre);
+    var ext = m ? '.' + m[1] : '';
+    if (ext === '.pdf' || ext === '.doc' || ext === '.docx') return ext;
+    var tipo = String((archivo && archivo.type) || '').toLowerCase();
+    if (tipo === 'application/pdf') return '.pdf';
+    if (tipo === 'application/msword') return '.doc';
+    if (tipo === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') return '.docx';
+    return '';
+  }
+
+  function nombreArchivoDisponible(base, lista, extension) {
+    var ext = extension || '.pdf';
     var usado = {};
     lista.forEach(function (d) { if (d && d.archivo) { usado[String(d.archivo)] = true; } });
-    var ruta = CARPETA_DOCS + '/' + base + '.pdf';
+    var ruta = CARPETA_DOCS + '/' + base + ext;
     if (!usado[ruta]) return ruta;
     var i = 2;
-    while (usado[CARPETA_DOCS + '/' + base + '-' + i + '.pdf']) { i++; }
-    return CARPETA_DOCS + '/' + base + '-' + i + '.pdf';
+    while (usado[CARPETA_DOCS + '/' + base + '-' + i + ext]) { i++; }
+    return CARPETA_DOCS + '/' + base + '-' + i + ext;
   }
 
   function subirDocumento(ev) {
@@ -840,9 +855,9 @@
     var archivo = campos.archivo.files && campos.archivo.files[0];
 
     if (titulo.length < 3) { mostrar(campos.avisoError, 'Escriba el nombre del documento.', 'error'); return; }
-    if (!archivo) { mostrar(campos.avisoError, 'Elija el archivo PDF.', 'error'); return; }
-    var esPdf = /\.pdf$/i.test(archivo.name) || archivo.type === 'application/pdf';
-    if (!esPdf) { mostrar(campos.avisoError, 'El archivo debe ser un PDF.', 'error'); return; }
+    if (!archivo) { mostrar(campos.avisoError, 'Elija el archivo (PDF o Word).', 'error'); return; }
+    var extension = extensionDeArchivo(archivo);
+    if (!extension) { mostrar(campos.avisoError, 'El archivo debe ser PDF o Word (.doc o .docx).', 'error'); return; }
     if (archivo.size > PESO_MAX) {
       mostrar(campos.avisoError, 'El archivo pesa más de 20 MB. Guárdelo con menos calidad o divídalo.', 'error');
       return;
@@ -873,7 +888,7 @@
         listaSinEse = indice.lista.filter(function (d) {
           return !d || guion(String(d.titulo || '')) !== guion(titulo);
         });
-        rutaFinal = nombreArchivoDisponible(base, listaSinEse);
+        rutaFinal = nombreArchivoDisponible(base, listaSinEse, extension);
         campos.barraRelleno.style.width = '60%';
         mostrar(campos.avisoSubida, 'Subiendo «' + archivo.name + '» (' +
           (archivo.size / (1024 * 1024)).toFixed(1) + ' MB)…', 'info');

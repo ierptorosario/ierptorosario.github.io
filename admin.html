@@ -380,7 +380,7 @@ code{overflow-wrap:anywhere}
     <p class="campo__ayuda" style="margin-top:1rem">
       <strong>Importante:</strong> sin la clave no se puede cambiar nada. Si no la tiene, pídala a quien
       administra la cuenta de GitHub del sitio. No escriba aquí datos personales de menores de edad.
-      <a href="subir.html">¿Solo necesita subir un PDF? Use «Subir documentos»</a>.
+      <a href="subir.html">¿Solo necesita subir un documento (PDF o Word)? Use «Subir documentos»</a>.
     </p>
 
     <a class="adm-login__volver" href="index.html">&larr; Volver al sitio público</a>
@@ -822,20 +822,25 @@ function contenidoInicial() {
   }
 
   /* ===================================================================
-     7.b NOMBRES DE ARCHIVO Y AYUDAS PARA SUBIR PDF
+     7.b NOMBRES DE ARCHIVO Y AYUDAS PARA SUBIR ARCHIVOS
      =================================================================== */
   function nombreDeRuta(ruta) {
     return String(ruta || '').split(/[\\/]/).pop();
   }
 
-  /* Convierte "Plan de Estudios de Matemáticas 2026.pdf" en
-     "plan-de-estudios-de-matematicas-2026.pdf" (sin tildes, sin espacios:
-     así el enlace funciona igual en cualquier computador y en internet). */
+  /* Convierte "Plan de Estudios de Matemáticas 2026.docx" en
+     "plan-de-estudios-de-matematicas-2026.docx" (sin tildes, sin espacios:
+     así el enlace funciona igual en cualquier computador y en internet).
+     Conserva la extensión .pdf, .doc o .docx. */
   function nombreArchivoSeguro(nombre) {
-    var base = String(nombre || '').replace(/\.[^.]+$/, '');
+    var original = String(nombre || '');
+    var m = /\.([a-z0-9]+)$/i.exec(original);
+    var ext = m ? '.' + m[1].toLowerCase() : '.pdf';
+    if (['.pdf', '.doc', '.docx'].indexOf(ext) === -1) { ext = '.pdf'; }
+    var base = original.replace(/\.[^.]+$/, '');
     var limpio = base.normalize ? base.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : base;
     limpio = limpio.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
-    return (limpio || 'documento') + '.pdf';
+    return (limpio || 'documento') + ext;
   }
 
   function avisoInstruccionPDF(seguro, original, valorPrevio) {
@@ -900,8 +905,8 @@ function contenidoInicial() {
           (campo.marcador ? ' placeholder="' + esc(campo.marcador) + '"' : '') + '>' +
         '<div class="cargador" style="margin-top:.6rem">' +
           '<label class="btn btn--outline btn--sm" for="' + idc + '_pdf" style="cursor:pointer">' +
-            ico('subir') + ' Elegir el PDF en mi computador</label>' +
-          '<input type="file" id="' + idc + '_pdf" accept="application/pdf,.pdf" data-pdf="' + campo.k + '" hidden>' +
+            ico('subir') + ' Elegir el PDF o Word en mi computador</label>' +
+          '<input type="file" id="' + idc + '_pdf" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-pdf="' + campo.k + '" hidden>' +
           '<p class="campo__ayuda" style="margin-top:.6rem">Al elegir el archivo, el panel escribe la ruta y le indica ' +
             'exactamente dónde guardarlo. El navegador no puede copiar el archivo por usted: ese paso es manual.</p>' +
         '</div>' +
@@ -976,15 +981,15 @@ function contenidoInicial() {
       titulo: 'Documentos institucionales',
       singular: 'documento',
       icono: 'doc',
-      descripcion: 'Cargue aquí el nombre del archivo PDF, el año de la versión y cada cuánto se actualiza. ' +
-        'El PDF se guarda en la carpeta <strong>documentos/</strong> del sitio (vea «Publicar y respaldar»).',
+      descripcion: 'Cargue aquí el nombre del archivo (PDF o Word), el año de la versión y cada cuánto se actualiza. ' +
+        'El archivo se guarda en la carpeta <strong>documentos/</strong> del sitio (vea «Publicar y respaldar»).',
       campos: [
         { k: 'titulo', e: 'Nombre del documento', tipo: 'texto', req: true, ancho: 2, marcador: 'Ejemplo: PEI 2026' },
         { k: 'categoria', e: 'Categoría', tipo: 'select', opciones: CATEGORIAS_DOC },
         { k: 'icono', e: 'Ícono', tipo: 'select', opciones: ICONOS_DOC },
         { k: 'descripcion', e: 'Descripción breve', tipo: 'area', ancho: 2, filas: 3 },
-        { k: 'archivo', e: 'Archivo PDF del documento', tipo: 'ruta', ancho: 2, marcador: 'documentos/pei-2026.pdf',
-          ayuda: 'Si todavía no tiene el archivo, deje este campo vacío: el sitio mostrará «PDF no disponible» y no simulará ninguna descarga.' },
+        { k: 'archivo', e: 'Archivo del documento (PDF o Word)', tipo: 'ruta', ancho: 2, marcador: 'documentos/pei-2026.pdf',
+          ayuda: 'Si todavía no tiene el archivo, deje este campo vacío: el sitio mostrará «Documento no disponible» y no simulará ninguna descarga.' },
         { k: 'anio', e: 'Año o versión', tipo: 'texto', marcador: '2026' },
         { k: 'periodicidad', e: 'Cada cuánto se actualiza', tipo: 'select', opciones: PERIODICIDADES },
         { k: 'proximaActualizacion', e: 'Próxima fecha de actualización', tipo: 'fecha' },
@@ -1001,8 +1006,8 @@ function contenidoInicial() {
       metaItem: function (it) {
         var meta = [{ texto: it.categoria || 'Sin categoría', clase: 'azul', icono: 'etiqueta' }];
         meta.push(hay(it.archivo)
-          ? { texto: 'PDF cargado', clase: 'ok', icono: 'ver' }
-          : { texto: 'Falta el PDF', clase: 'pend', icono: 'reloj' });
+          ? { texto: 'Archivo cargado', clase: 'ok', icono: 'ver' }
+          : { texto: 'Falta el archivo', clase: 'pend', icono: 'reloj' });
         if (hay(it.anio)) meta.push({ texto: 'Versión ' + it.anio, clase: 'pend', icono: 'calendario' });
         var d = diasHasta(it.proximaActualizacion);
         if (d !== null) {
@@ -1021,8 +1026,8 @@ function contenidoInicial() {
       accionesExtra: function (it) {
         if (!hay(it.archivo)) return '';
         return '<a class="icono-btn" href="' + esc(it.archivo) + '" target="_blank" rel="noopener" ' +
-          'title="Abrir el PDF para comprobar que está en su sitio" ' +
-          'aria-label="Comprobar el PDF de ' + esc(it.titulo) + '">' + ico('externo') + '</a>';
+          'title="Abrir el archivo para comprobar que está en su sitio" ' +
+          'aria-label="Comprobar el archivo de ' + esc(it.titulo) + '">' + ico('externo') + '</a>';
       }
     },
 
@@ -1858,7 +1863,7 @@ function contenidoInicial() {
             'Si el nombre lleva espacios o tildes, el enlace puede fallar en internet.</li>' +
           '<li><strong>Regístrelo en el panel</strong>: vaya a «Documentos», abra el documento que corresponde ' +
             '(o pulse «Añadir documento») y en el campo del archivo pulse ' +
-            '<strong>«Elegir el PDF en mi computador»</strong>. El panel escribe la ruta por usted.</li>' +
+            '<strong>«Elegir el PDF o Word en mi computador»</strong>. El panel escribe la ruta por usted.</li>' +
           '<li><strong>Pulse «Guardar»</strong> y luego publique: «Publicar y respaldar» → ' +
             '<strong>«Publicar en el sitio»</strong>. En un minuto, aproximadamente, se ve el cambio en internet.</li>' +
         '</ol>' +
@@ -1962,10 +1967,10 @@ function contenidoInicial() {
       '  1. Tenga el PDF a la mano en su computador.',
       '  2. Cree la carpeta  documentos  dentro de la carpeta del sitio,',
       '     al mismo nivel que index.html.',
-      '  3. Copie el PDF ahi y pongale un nombre sin espacios ni tildes:',
+      '  3. Copie el archivo (PDF o Word) ahi y pongale un nombre sin espacios ni tildes:',
       '     pei-2026.pdf, manual-convivencia-2026.pdf, siee-2026.pdf...',
       '  4. En el panel, vaya a Documentos, abra el registro que',
-      '     corresponde y pulse "Elegir el PDF en mi computador".',
+      '     corresponde y pulse "Elegir el PDF o Word en mi computador".',
       '  5. Pulse Guardar.',
       '  6. Publique: Publicar y respaldar -> Publicar en el sitio.',
       '     En un minuto, aproximadamente, se ve el cambio en internet.',
@@ -2062,9 +2067,9 @@ function contenidoInicial() {
     docs.filter(function (d) { return d.publicado !== false; }).forEach(function (d) {
       var nombre = d.titulo || '(documento sin nombre)';
       if (!hay(d.archivo)) {
-        alerta('rojo', 'Falta el PDF: ' + nombre,
-          'El documento está publicado pero no tiene archivo PDF. Copie el archivo en la carpeta <strong>documentos/</strong> y escriba su ruta.',
-          { tarea: 'Subir el PDF de ' + nombre, categoria: d.categoria || 'Documentos institucionales', prioridad: 'alta', periodicidad: d.periodicidad || 'anual' });
+        alerta('rojo', 'Falta el archivo: ' + nombre,
+          'El documento está publicado pero no tiene archivo. Copie el archivo (PDF o Word) en la carpeta <strong>documentos/</strong> y escriba su ruta.',
+          { tarea: 'Subir el archivo de ' + nombre, categoria: d.categoria || 'Documentos institucionales', prioridad: 'alta', periodicidad: d.periodicidad || 'anual' });
       }
       var dias = diasHasta(d.proximaActualizacion);
       if (dias !== null && dias < 0) {
@@ -2322,12 +2327,12 @@ function contenidoInicial() {
   var COMO_HACER = {
     'Documentos institucionales': {
       donde: 'Documentos', vista: 'documentos',
-      resumen: 'El PDF se guarda en la carpeta del sitio y luego se enlaza desde el panel.',
+      resumen: 'El archivo (PDF o Word) se guarda en la carpeta del sitio y luego se enlaza desde el panel.',
       pasos: [
         'Cree la carpeta <code>documentos</code> dentro de la carpeta del sitio, al mismo nivel que <code>index.html</code>.',
-        'Copie ahí el PDF y póngale un nombre sin espacios ni tildes: <code>pei-2026.pdf</code>, <code>manual-convivencia-2026.pdf</code>.',
+        'Copie ahí el archivo (PDF o Word) y póngale un nombre sin espacios ni tildes: <code>pei-2026.pdf</code>, <code>manual-convivencia-2026.docx</code>.',
         'En «Documentos», abra el registro que corresponde (o pulse «Añadir documento»).',
-        'En el campo del archivo pulse <strong>«Elegir el PDF en mi computador»</strong>: el panel escribe la ruta por usted.',
+        'En el campo del archivo pulse <strong>«Elegir el PDF o Word en mi computador»</strong>: el panel escribe la ruta por usted.',
         'Pulse «Guardar» y después publique en «Publicar y respaldar».'
       ]
     },
@@ -2335,11 +2340,11 @@ function contenidoInicial() {
       donde: 'Documentos', vista: 'documentos',
       resumen: 'Un registro por cada área. La categoría debe ser «Planes de estudio por área».',
       pasos: [
-        'Guarde cada plan como PDF en la carpeta <code>documentos</code> con un nombre claro: <code>plan-matematicas-2026.pdf</code>.',
+        'Guarde cada plan como PDF o Word en la carpeta <code>documentos</code> con un nombre claro: <code>plan-matematicas-2026.pdf</code>.',
         'En «Documentos» pulse «Añadir documento» una vez por cada área.',
         'Escriba el nombre, por ejemplo «Plan de estudios de Matemáticas 2026».',
         'Elija la categoría «Planes de estudio por área» y el ícono que prefiera.',
-        'Pulse «Elegir el PDF en mi computador», escriba el año y la fecha de la próxima actualización.',
+        'Pulse «Elegir el PDF o Word en mi computador», escriba el año y la fecha de la próxima actualización.',
         'Pulse «Guardar» y publique.'
       ]
     },
@@ -2904,7 +2909,7 @@ function contenidoInicial() {
       '',
       '¿QUÉ VA EN ESTA CARPETA?',
       '',
-      '  Aquí se guardan todos los PDF que el sitio web ofrece para',
+      '  Aquí se guardan todos los archivos (PDF o Word) que el sitio web ofrece para',
       '  descargar: el PEI, el Manual de Convivencia, el SIEE, los planes',
       '  de estudio, el calendario académico, los informes públicos, etc.',
       '',
@@ -2915,7 +2920,7 @@ function contenidoInicial() {
       '',
       '  - Todo en minúsculas, sin tildes y sin espacios.',
       '  - Use guiones en lugar de espacios.',
-      '  - Termine siempre en .pdf',
+      '  - Termine siempre en .pdf, .doc o .docx',
       '',
       '  Bien:  pei-2026.pdf   manual-convivencia-2026.pdf',
       '  Mal:   PEI 2026 (final).pdf   Plan de estudios de Matemáticas.pdf',
@@ -2925,7 +2930,7 @@ function contenidoInicial() {
       '  1. Copie el archivo a esta carpeta con el nombre correcto.',
       '  2. Abra admin.html y vaya a la sección «Documentos».',
       '  3. Abra el documento que corresponde (o pulse «Añadir documento»).',
-      '  4. Pulse «Elegir el PDF en mi computador»: el panel escribe la ruta.',
+      '  4. Pulse «Elegir el PDF o Word en mi computador»: el panel escribe la ruta.',
       '  5. Pulse «Guardar» y después publique en «Publicar y respaldar».',
       '',
       '================================================================',
