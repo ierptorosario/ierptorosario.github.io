@@ -41,5 +41,14 @@ window.DOCUMENTOS_AUTO = [
     "descripcion": "Plan de Area Ciencias Sociales 2026",
     "fecha": "25 de noviembre de 2026",
     "publicado": true
+  },
+  {
+    "titulo": "SIEE 2026",
+    "archivo": "documentos/siee-2026-2026.pdf",
+    "anio": "2026",
+    "categoria": "Institucional",
+    "descripcion": "SIEE 2026 (ultimo)",
+    "fecha": "25 de noviembre de 2026",
+    "publicado": true
   }
 ];
