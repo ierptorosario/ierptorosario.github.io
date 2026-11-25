@@ -35,11 +35,11 @@ window.DOCUMENTOS_AUTO = [
   },
   {
     "titulo": "Plan de Area Ciencias Sociales 2026",
-    "archivo": "documentos/plan-de-area-ciencias-sociales-2026-2026.pdf",
+    "archivo": "documentos/plan-de-area-ciencias-sociales-2026-2026.docx",
     "anio": "2026",
     "categoria": "Planes de estudio por área",
     "descripcion": "Plan de Area Ciencias Sociales 2026",
-    "fecha": "24 de noviembre de 2026",
+    "fecha": "25 de noviembre de 2026",
     "publicado": true
   }
 ];
