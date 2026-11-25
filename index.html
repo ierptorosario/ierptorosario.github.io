@@ -215,7 +215,7 @@ button{font:inherit}
 }
 .salto-a-contenido:focus{transform:translate(-50%,0);color:#fff}
 
-.section{padding:clamp(3.2rem,6.5vw,6.5rem) 0;scroll-margin-top:calc(var(--header-h) + 12px)}
+.section{padding:clamp(3.2rem,6.5vw,6.5rem) 0;scroll-margin-top:calc(var(--header-h) + 28px)}
 .section--alt{background:var(--verde-50)}
 .section--azul{background:linear-gradient(160deg,var(--azul-800),var(--azul-700) 60%,var(--verde-800));color:#e8f2ec}
 .section--azul h2,.section--azul h3{color:#fff}
@@ -803,7 +803,7 @@ table.tabla tbody tr:last-child th,table.tabla tbody tr:last-child td{border-bot
   .js-revelar{opacity:1;transform:none}
 }
 html{scroll-behavior:smooth}
-:target{scroll-margin-top:calc(var(--header-h) + 16px)}
+:target{scroll-margin-top:calc(var(--header-h) + 28px)}
 
 /* =====================================================================
    16. ESTILO INSTITUCIONAL NOVEDOSO
@@ -2077,6 +2077,53 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
   .doc:hover,.enlace-card:hover,.docente:hover{transform:none}
 }
 </style>
+<style>
+/* Ajustes finales 26/11/2026: controles discretos y botones sobrios */
+@media (max-width:520px){
+  .audio-panel{left:.45rem;bottom:.45rem;padding:.2rem;gap:.15rem;opacity:.78}
+  .audio-panel .audio-fondo{width:2.2rem;height:2.2rem}
+  .audio-panel__vol input{width:3rem}
+  .audio-panel:hover,.audio-panel:focus-within{opacity:1}
+  .volver-arriba{right:.45rem;bottom:.45rem;padding:.3rem .6rem .3rem .3rem;font-size:.72rem}
+  .volver-arriba img{width:26px;height:26px}
+  .section{padding:2.4rem 0}
+  .rapidos__grid{gap:.55rem}
+  .rapido{padding:.8rem .55rem}
+}
+.audio-panel.control-oculto,.volver-arriba.control-oculto{
+  opacity:0!important;transform:translateY(12px);pointer-events:none
+}
+
+/* Botones: sin relieves, sin degradados vistosos, líneas limpias */
+.btn{
+  --btn-bg:var(--ierp-azul-700);--btn-fg:#fff;--btn-bd:var(--ierp-azul-700);
+  border-width:1px;border-radius:.6rem;font-weight:600;letter-spacing:.01em;
+  box-shadow:none;
+}
+.btn:hover{transform:none;box-shadow:0 2px 7px rgba(11,37,69,.18);filter:brightness(.96)}
+.btn:active{transform:none;box-shadow:none}
+.btn--secondary{--btn-bg:#fff;--btn-fg:var(--ierp-azul-800);--btn-bd:var(--gris-300)}
+.btn--outline{--btn-bg:transparent;--btn-fg:var(--ierp-azul-700);--btn-bd:var(--ierp-azul-600)}
+.btn--ghost{--btn-bg:transparent;--btn-fg:var(--gris-700);--btn-bd:var(--gris-300)}
+.btn--sm{border-width:1px}
+
+/* Accesos rápidos: tarjetas planas, mismos iconos sobrios */
+.rapido{
+  padding:1.05rem .7rem;border-radius:.7rem;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);
+  transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.rapido:hover,.rapido:focus-visible{
+  transform:translateY(-2px);background:rgba(255,255,255,.1);
+  border-color:rgba(255,255,255,.32);box-shadow:0 6px 14px rgba(2,12,26,.22);
+}
+.rapido__icono,.rapido:nth-child(n) .rapido__icono{
+  width:2.8rem;height:2.8rem;border-radius:.65rem;
+  background:rgba(255,255,255,.1);color:#f2e2ad;box-shadow:none;
+}
+.rapido b{font-size:.92rem;font-weight:600;color:#fff}
+.rapido span{font-size:.76rem;color:#c0d2e4}
+</style>
 </head>
 <body>
 <a class="salto-a-contenido" href="#contenido">Saltar al contenido principal</a>
@@ -2364,6 +2411,10 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
       <a class="rapido" href="#horarios">
         <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-reloj"></use></svg></span>
         <b>Horarios de clase</b><span>Por grados, de 6.º a 11.º</span>
+      </a>
+      <a class="rapido" href="#contacto">
+        <span class="rapido__icono"><svg class="icon" aria-hidden="true"><use href="#ico-telefono"></use></svg></span>
+        <b>Contacto</b><span>Correo, teléfono y ubicación</span>
       </a>
     </div>
   </div>
@@ -3548,7 +3599,7 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
 
     <p class="documentos__nota js-revelar">
       <svg class="icon" aria-hidden="true"><use href="#ico-abajo"></use></svg>
-      Seleccione un <strong>año</strong> para desplegar la lista de documentos disponibles para consultar y descargar.
+      <span>Seleccione un <strong>año</strong> para desplegar la lista de documentos disponibles para consultar y descargar.</span>
     </p>
 
     <div class="anios" id="documentosPorAnio"></div>
@@ -5118,6 +5169,13 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
     });
   };
   var hay = function (v) { return v !== undefined && v !== null && String(v).trim() !== ''; };
+  var limpiarTitulo = function (t) {
+    return String(t || '')
+      .replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}\u{1F1E6}-\u{1F1FF}\u{2B00}-\u{2BFF}]/gu, '')
+      .replace(/\s{2,}/g, ' ')
+      .replace(/^[\s\-–—·,]+|[\s\-–—·,]+$/g, '')
+      .trim();
+  };
   var ico = function (n, clase) { return '<svg class="' + (clase || 'icon') + '" aria-hidden="true"><use href="#ico-' + n + '"></use></svg>'; };
   var img = function (ruta, respaldo) { return esc(hay(ruta) ? ruta : respaldo); };
   var sinTildes = function (t) {
@@ -5732,7 +5790,7 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           (hay(n.fotos) ? '<p class="detalle__fotos">' + ico('camara') + ' Esta publicación tiene ' + esc(n.fotos) + ' ' + (Number(n.fotos) === 1 ? 'fotografía' : 'fotografías') + ' en la página oficial de Facebook.' + (Number(n.fotos_descargadas) > 0 && Number(n.fotos_descargadas) < Number(n.fotos) ? ' Aquí se muestran ' + esc(n.fotos_descargadas) + '; para verlas todas, abra la publicación en Facebook.' : '') + '</p>' : '') +
           (galeriaN.length > 1 ? '<div class="detalle__carrusel noticia__carrusel" data-intervalo="2500" role="group" aria-roledescription="carrusel" aria-label="Todas las fotografías de esta publicación">' +
             galeriaN.map(function (src, k) {
-              return '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="600" loading="lazy" decoding="async" alt="' + esc((n.titulo || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')') + '">';
+              return '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="600" loading="lazy" decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')' + '">';
             }).join('') +
             '<span class="carrusel__puntos" aria-hidden="true">' + galeriaN.map(function (_, k) { return '<i' + (k === 0 ? ' class="is-activo"' : '') + '></i>'; }).join('') + '</span>' +
           '</div>' : '') +
@@ -5744,13 +5802,13 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
         if (rotacionN.length > 1) {
           mediaN = '<div class="card__media noticia__carrusel" data-intervalo="2000">' + marcaN +
             rotacionN.map(function (src, k) {
-              return '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + (k === 0 ? '' : ' loading="lazy"') + ' decoding="async" alt="' + esc((n.titulo || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + rotacionN.length + ')') + '">';
+              return '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + (k === 0 ? '' : ' loading="lazy"') + ' decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + rotacionN.length + ')' + '">';
             }).join('') +
             '<span class="carrusel__puntos" aria-hidden="true">' + rotacionN.map(function (_, k) { return '<i' + (k === 0 ? ' class="is-activo"' : '') + '></i>'; }).join('') + '</span>' +
           '</div>';
         } else {
           mediaN = '<div class="card__media">' + marcaN +
-            '<img src="' + img(rotacionN[0] || n.imagen, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + ' loading="lazy" decoding="async" alt="' + esc(n.titulo || 'Noticia institucional') + '">' +
+            '<img src="' + img(rotacionN[0] || n.imagen, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + ' loading="lazy" decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + '">' +
           '</div>';
         }
         return '<article class="card noticia" data-cat="' + esc(n.categoria || '') + '">' +
@@ -5758,7 +5816,7 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           '<div class="card__body">' +
             '<p class="noticia__fecha">' + ico('calendario') + ' ' + esc(n.fecha || '') +
               (hay(n.categoria) ? ' &middot; ' + esc(n.categoria) : '') + '</p>' +
-            '<h3>' + esc(n.titulo || '') + '</h3>' +
+            '<h3>' + esc(limpiarTitulo(n.titulo)) + '</h3>' +
             '<p>' + esc(n.resumen || '') + '</p>' +
             '<div class="card__pie">' +
               (hay(n.fotos) ? '<span class="noticia__fotos">' + ico('camara') + ' ' + esc(n.fotos) + ' ' + (Number(n.fotos) === 1 ? 'fotografía' : 'fotografías') + '</span>' : '') +
@@ -5836,7 +5894,7 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
           listaAnt.innerHTML = anterioresN.map(function (n) {
             var u = String(n.enlace || '').trim();
             var seguro = /^https?:\/\/[^\s<>"']+$/i.test(u) ? u : '';
-            var titulo = esc(n.titulo || 'Publicación institucional');
+            var titulo = esc(limpiarTitulo(n.titulo) || 'Publicación institucional');
             var fecha = hay(n.fecha) ? '<span class="anteriores__fecha">' + esc(n.fecha) + '</span>' : '';
             if (seguro) {
               return '<li><a href="' + esc(seguro) + '" target="_blank" rel="noopener">' +
@@ -6575,6 +6633,22 @@ input,select,textarea,progress{accent-color:var(--ierp-oro)}
     cuandoSeVea();
   }
 }());
+</script>
+<script>
+(function(){
+  var controles = [document.querySelector('.audio-panel'), document.querySelector('#volverArriba')];
+  var temporizador;
+  function revisar(){
+    if ((window.scrollY || 0) > 260) {
+      controles.forEach(function(e){ if (e) e.classList.add('control-oculto'); });
+    }
+    clearTimeout(temporizador);
+    temporizador = setTimeout(function(){
+      controles.forEach(function(e){ if (e) e.classList.remove('control-oculto'); });
+    }, 1200);
+  }
+  window.addEventListener('scroll', revisar, {passive:true});
+})();
 </script>
 </body>
 </html>
