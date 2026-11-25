@@ -1,0 +1,240 @@
+/* =====================================================================
+   BOTONES 3D PROFESIONALES — I.E.R. Puerto Rosario (26/11/2026)
+   ---------------------------------------------------------------------
+   Relieve suave, color institutional y espacios cómodos.
+   Se carga DESPUÉS de las hojas anteriores para dar el acabado final.
+  ===================================================================== */
+
+:root{
+  --b3d-claro:var(--verde-500,#2e7fbf);
+  --b3d-oscuro:var(--verde-800,#14507f);
+  --b3d-borde:var(--oro,var(--warm-500,#c9a227));
+  --b3d-repliegue:rgba(6,28,52,.26);
+  --b3d-sombra:0 6px 14px rgba(6,28,52,.22);
+}
+
+/* ---------- Botones principales ------------------------------------- */
+.btn{
+  --btn-bg:linear-gradient(160deg,var(--b3d-claro),var(--b3d-oscuro));
+  --btn-fg:#fff;
+  --btn-bd:rgba(255,255,255,.28);
+  display:inline-flex;align-items:center;justify-content:center;gap:.58rem;
+  min-height:44px;padding:.72rem 1.3rem;
+  border:1px solid var(--btn-bd);border-radius:.85rem;
+  background:var(--btn-bg);color:var(--btn-fg);
+  font-weight:650;font-size:.95rem;letter-spacing:.01em;line-height:1.2;
+  text-decoration:none;cursor:pointer;white-space:normal;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.38),
+             inset 0 -3px 7px rgba(0,0,0,.16),
+             0 4px 0 var(--b3d-repliegue),
+             var(--b3d-sombra);
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease,
+             background .18s ease,color .18s ease,border-color .18s ease;
+}
+.btn:hover{
+  transform:translateY(-2px);filter:brightness(1.05);color:var(--btn-fg);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),
+             inset 0 -3px 7px rgba(0,0,0,.12),
+             0 6px 0 var(--b3d-repliegue),
+             0 12px 22px rgba(6,28,52,.28);
+}
+.btn:active{
+  transform:translateY(3px);filter:none;
+  box-shadow:inset 0 2px 6px rgba(0,0,0,.26),0 1px 0 var(--b3d-repliegue);
+}
+.btn:focus-visible{outline:3px solid var(--warm-400);outline-offset:3px}
+.btn .icon{width:1.1em;height:1.1em;flex:none}
+
+/* Variantes con el mismo relieve, pero en tonos distintos */
+.btn--secondary{
+  --btn-bg:linear-gradient(160deg,#fff,#e9f1f8);
+  --btn-fg:var(--verde-800,#10315a);
+  --btn-bd:rgba(201,162,39,.55);
+}
+.btn--outline{
+  --btn-bg:linear-gradient(160deg,#fff,#eef5fb);
+  --btn-fg:var(--verde-800,#10315a);
+  --btn-bd:rgba(26,98,153,.45);
+}
+.btn--ghost{
+  --btn-bg:linear-gradient(160deg,#fff,#f0f2f6);
+  --btn-fg:var(--gris-700,#3f3f47);
+  --btn-bd:rgba(120,130,145,.35);
+}
+.btn--claro{
+  --btn-bg:linear-gradient(160deg,rgba(255,255,255,.28),rgba(255,255,255,.1));
+  --btn-fg:#fff;--btn-bd:rgba(255,255,255,.6);
+  text-shadow:0 1px 3px rgba(0,0,0,.5);
+  --b3d-repliegue:rgba(6,28,52,.16);
+}
+.btn--sm{min-height:38px;padding:.5rem .95rem;font-size:.86rem}
+.btn--bloque,.btn--block{width:100%}
+.btn--peligro{
+  --btn-bg:linear-gradient(160deg,#fff,#fdf1ee);
+  --btn-fg:#a3341f;--btn-bd:#ecc9c0;
+}
+.btn--azul{
+  --btn-bg:linear-gradient(160deg,var(--azul-600,#1f5f8f),var(--azul-800,#08243f));
+  --btn-fg:#fff;--btn-bd:rgba(255,255,255,.28);
+}
+/* Evita texto blanco sobre botones claros al pasar el mouse */
+.btn--secondary:hover,.btn--secondary:focus-visible{--btn-fg:var(--verde-800,#10315a)}
+.btn--outline:hover,.btn--outline:focus-visible{--btn-fg:var(--verde-800,#10315a)}
+.btn--ghost:hover,.btn--ghost:focus-visible{--btn-fg:var(--gris-700,#3f3f47)}
+.btn--claro:hover,.btn--claro:focus-visible{--btn-fg:#fff}
+.btn[aria-disabled="true"],.btn.is-disabled,.boton[disabled]{
+  background:linear-gradient(160deg,#e6eaf0,#d5dbe4)!important;
+  color:#7b8b99!important;border-color:#cbd2dc!important;
+  box-shadow:none!important;transform:none!important;filter:none!important;
+  cursor:not-allowed;text-shadow:none;
+}
+.adm-side__pie .btn{
+  background:rgba(255,255,255,.12)!important;color:#fff!important;
+  box-shadow:none;border-color:rgba(255,255,255,.18);
+}
+
+/* ---------- Accesos rápidos: tarjetas 3D con color ------------------ */
+.rapidos__grid{gap:1.05rem}
+.rapido{
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;text-align:center;
+  padding:1.2rem .75rem;border-radius:16px;text-decoration:none;color:#eaf2fb;
+  background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.045));
+  border:1px solid rgba(255,255,255,.19);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),
+             inset 0 -4px 10px rgba(0,0,0,.12),
+             0 5px 0 rgba(2,12,26,.22),0 10px 18px rgba(2,12,26,.24);
+  transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s ease,
+             background .22s ease,border-color .22s ease;
+}
+.rapido:hover,.rapido:focus-visible{
+  transform:translateY(-4px);
+  background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.08));
+  border-color:var(--b3d-borde);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),
+             inset 0 -4px 10px rgba(0,0,0,.1),
+             0 8px 0 rgba(2,12,26,.2),0 16px 26px rgba(2,12,26,.3);
+}
+.rapido:active{transform:translateY(2px);box-shadow:inset 0 3px 8px rgba(0,0,0,.25)}
+.rapido__icono,.rapido:nth-child(n) .rapido__icono{
+  width:3.05rem;height:3.05rem;border-radius:14px;display:grid;place-items:center;
+  color:#13233a;
+  background:linear-gradient(145deg,#ffe6a6,var(--ierp-sol,#c9a227));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.65),
+             inset 0 -3px 7px rgba(0,0,0,.18),0 4px 10px rgba(2,12,26,.3);
+}
+.rapido__icono .icon{width:1.5rem;height:1.5rem;color:currentColor}
+.rapido:nth-child(2) .rapido__icono{background:linear-gradient(145deg,#a9f5ec,var(--ierp-turquesa,#12b3a6))}
+.rapido:nth-child(3) .rapido__icono{background:linear-gradient(145deg,#bfeaff,var(--ierp-celeste,#41b8e6))}
+.rapido:nth-child(4) .rapido__icono{background:linear-gradient(145deg,#ffcadd,var(--ierp-rosa,#e2557b))}
+.rapido:nth-child(5) .rapido__icono{background:linear-gradient(145deg,#d8d2ff,#7f6cf0)}
+.rapido:nth-child(6) .rapido__icono{background:linear-gradient(145deg,#cdf3d3,#3fb75c)}
+.rapido:nth-child(7) .rapido__icono{background:linear-gradient(145deg,#bcd9ff,#2e7fbf)}
+.rapido:nth-child(8) .rapido__icono{background:linear-gradient(145deg,#ffe6a6,var(--ierp-sol,#c9a227))}
+.rapido b{font-size:.95rem;line-height:1.2;color:#fff}
+.rapido span{font-size:.78rem;line-height:1.35;color:#c8dcef}
+
+/* ---------- Filtros y chips ----------------------------------------- */
+.chip,.doc-filtro{
+  border:1px solid var(--gris-300);border-radius:999px;
+  background:linear-gradient(160deg,#fff,#f1f4f8);
+  color:var(--gris-700,#3f3f47);font-weight:650;cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 0 rgba(11,37,69,.1),0 4px 8px rgba(11,37,69,.08);
+  transition:transform .16s ease,box-shadow .16s ease,background .16s ease,color .16s ease;
+}
+.chip:hover,.doc-filtro:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 #fff,0 3px 0 rgba(11,37,69,.12),0 6px 12px rgba(11,37,69,.12)}
+.chip:active,.doc-filtro:active{transform:translateY(2px);box-shadow:inset 0 2px 5px rgba(11,37,69,.18)}
+.chip[aria-pressed="true"],.doc-filtro.is-activo{
+  background:linear-gradient(160deg,var(--b3d-claro),var(--b3d-oscuro));
+  border-color:rgba(255,255,255,.3);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 7px rgba(0,0,0,.16),0 3px 0 var(--b3d-repliegue),0 6px 12px rgba(6,28,52,.2);
+}
+.chip[aria-pressed="true"]:hover,.doc-filtro.is-activo:hover{color:#fff}
+.doc-filtro span{background:rgba(11,37,69,.08);color:inherit}
+.doc-filtro.is-activo span{background:rgba(255,255,255,.2)}
+
+/* ---------- Controles redondos y de acordeón ------------------------ */
+.nav-toggle,.hero__ctrl,.visor__nav,.cerrar,.buscar__abrir,.buscar__limpiar,
+.volver-arriba,.btn-audio,.audio-fondo{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),
+             inset 0 -3px 6px rgba(0,0,0,.12),
+             0 3px 0 rgba(6,28,52,.2),0 6px 12px rgba(6,28,52,.18);
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
+}
+.nav-toggle:hover,.hero__ctrl:hover,.visor__nav:hover,.cerrar:hover,
+.buscar__abrir:hover,.buscar__limpiar:hover,.volver-arriba:hover,.btn-audio:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),
+             inset 0 -3px 6px rgba(0,0,0,.1),
+             0 5px 0 rgba(6,28,52,.16),0 10px 18px rgba(6,28,52,.22);
+}
+.nav-toggle:active,.hero__ctrl:active,.visor__nav:active,.cerrar:active,
+.buscar__abrir:active,.volver-arriba:active,.btn-audio:active{
+  transform:translateY(2px);box-shadow:inset 0 2px 5px rgba(0,0,0,.22)
+}
+.acordeon__boton,.texto-plegable__boton{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 2px 0 rgba(11,37,69,.08);
+  transition:background .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.acordeon__boton:hover,.texto-plegable__boton:hover{
+  transform:translateY(-1px);
+  box-shadow:inset 0 1px 0 #fff,0 3px 0 rgba(11,37,69,.1),0 5px 10px rgba(11,37,69,.08);
+}
+
+/* ---------- Espacios más cómodos ------------------------------------ */
+.hero__acciones{gap:1rem;margin-top:1.8rem}
+.hero__pie{margin-top:1rem}
+.rapidos{padding:2.6rem 0 3rem}
+.card__pie{gap:.7rem;flex-wrap:wrap}
+.doc-resumen{margin:.3rem 0 1.1rem}
+.doc-filtros{margin:1.1rem 0 .45rem;gap:.6rem}
+
+@media (max-width:520px){
+  .hero__acciones{gap:.7rem;margin-top:1.4rem}
+  .hero__acciones .btn{width:100%}
+  .rapidos__grid{gap:.7rem}
+  .rapido{padding:1rem .6rem}
+  .chip,.doc-filtro{padding:.42rem .75rem;font-size:.82rem}
+}
+
+/* ---------- Botones dorados de subir.html y panel admin ------------- */
+.boton{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  min-height:44px;padding:.72rem 1.25rem;border-radius:.85rem;
+  border:1px solid rgba(255,255,255,.42);
+  background:linear-gradient(160deg,#e7ca73,#b98e16);color:#1d1a10;
+  font-weight:700;font-size:.95rem;line-height:1.2;text-decoration:none;cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),
+             inset 0 -3px 7px rgba(90,63,0,.2),
+             0 4px 0 rgba(90,63,0,.26),0 8px 15px rgba(90,63,0,.2);
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
+}
+.boton:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.boton:active{transform:translateY(3px);box-shadow:inset 0 2px 6px rgba(90,63,0,.3)}
+.boton--suave{
+  background:linear-gradient(160deg,#fff,#e9dfc0);color:#3a321a;
+  border-color:rgba(185,142,22,.45);
+}
+.boton--peligro{
+  background:linear-gradient(160deg,#f5a99b,#c6472f);color:#fff;
+  border-color:rgba(255,255,255,.35);
+}
+.boton--sm{min-height:36px;padding:.45rem .85rem;font-size:.85rem}
+.adm-nav button,.icono-btn{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),
+             inset 0 -3px 6px rgba(0,0,0,.14),0 3px 0 rgba(6,28,52,.18);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.adm-nav button:hover,.icono-btn:hover{transform:translateY(-2px)}
+.adm-nav button:active,.icono-btn:active{transform:translateY(2px)}
+
+/* Respeta a quien pide menos movimiento */
+@media (prefers-reduced-motion:reduce){
+  .btn,.rapido,.chip,.doc-filtro,.nav-toggle,.hero__ctrl,.visor__nav,
+  .cerrar,.buscar__abrir,.buscar__limpiar,.volver-arriba,.btn-audio,
+  .audio-fondo,.acordeon__boton,.texto-plegable__boton,.boton{
+    transition:none!important;
+  }
+  .btn:hover,.rapido:hover,.chip:hover,.doc-filtro:hover,
+  .nav-toggle:hover,.hero__ctrl:hover,.visor__nav:hover,.cerrar:hover,
+  .volver-arriba:hover,.btn-audio:hover,.boton:hover{transform:none!important}
+}
