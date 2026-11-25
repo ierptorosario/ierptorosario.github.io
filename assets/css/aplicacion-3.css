@@ -1,0 +1,300 @@
+/* =====================================================================
+   4. BARRA SUPERIOR (ubicación y canales institucionales)
+   ===================================================================== */
+.topbar{background:var(--verde-900);color:#cfe4d8;font-size:.84rem}
+.topbar__inner{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;align-items:center;justify-content:space-between;padding-block:.5rem}
+.topbar__item{display:flex;align-items:center;gap:.45rem;margin:0;min-width:0}
+.topbar__item .icon{color:var(--verde-300)}
+.topbar__item--pendiente{color:#a8c4b3}
+.topbar__item--pendiente .icon{color:#8fb3a0}
+.topbar__grupo{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;align-items:center}
+.topbar__item a{color:#e6eefa;text-decoration:none;border-bottom:1px solid rgba(230,242,234,.45);font-weight:600}
+.topbar__item a:hover{color:#fff;border-bottom-color:#fff}
+.red-enlace{display:inline-flex;align-items:center;gap:.35rem;text-decoration:none;border-bottom:1px solid currentColor;font-weight:600}
+.red-enlace:hover{opacity:.82}
+.red-enlace + .red-enlace{margin-left:.9rem}
+.icon--mini{width:.82em;height:.82em}
+.red-enlace .icon--mini{opacity:.6}
+.detalle__fuente{margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--gris-200)}
+
+/* =====================================================================
+   6. ENCABEZADO Y NAVEGACIÓN
+   ===================================================================== */
+.site-header{
+  position:sticky;top:0;z-index:80;
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--gris-200);
+  transition:box-shadow var(--transicion);
+}
+.site-header.is-scrolled{box-shadow:0 8px 26px rgba(11,42,74,.10)}
+.site-header__inner{display:flex;align-items:center;gap:1rem;min-height:var(--header-h)}
+
+.marca{display:flex;align-items:center;gap:.85rem;text-decoration:none;color:inherit;margin-right:auto;min-width:0}
+.marca__escudo{
+  width:56px;height:56px;flex:none;border-radius:12px;
+  background:#fff;border:1px solid var(--verde-100);
+  display:grid;place-items:center;padding:3px;
+}
+.marca__escudo img{width:100%;height:100%;object-fit:contain}
+.marca__texto{display:flex;flex-direction:column;min-width:0;gap:0}
+.marca__texto strong{
+  font-family:var(--fuente-titulo);font-weight:700;color:var(--verde-900);
+  font-size:clamp(.92rem,.85rem + .35vw,1.08rem);line-height:1.08;
+}
+/* Nombre de la sede en dos líneas: «Institución Educativa Rural» y, muy
+   cerca, «Puerto Rosario». */
+.marca__texto .marca__linea1{line-height:1.08}
+.marca__texto .marca__linea2{line-height:1.02}
+.marca__texto small{color:var(--gris-500);font-size:.78rem;letter-spacing:.02em}
+
+.nav-toggle{
+  display:none;align-items:center;gap:.5rem;background:#fff;color:var(--verde-800);
+  border:1.6px solid var(--gris-300);border-radius:999px;padding:.5rem .9rem;
+  font-weight:650;font-size:.9rem;cursor:pointer;
+}
+.nav-toggle:hover{border-color:var(--verde-300);background:var(--verde-50)}
+.nav-toggle .icon{width:1.3rem;height:1.3rem}
+.nav-toggle__cerrar{display:none}
+body.nav-abierto .nav-toggle__abrir{display:none}
+body.nav-abierto .nav-toggle__cerrar{display:inline-flex}
+
+.main-nav ul{display:flex;align-items:center;gap:.15rem;list-style:none;margin:0;padding:0}
+.main-nav a{
+  display:block;padding:.55rem .8rem;border-radius:999px;text-decoration:none;
+  color:var(--verde-900);font-weight:600;font-size:.94rem;white-space:nowrap;
+  transition:background var(--transicion),color var(--transicion);
+}
+.main-nav a:hover{background:var(--verde-50);color:var(--verde-800)}
+.main-nav a[aria-current="true"]{background:var(--verde-100);color:var(--verde-800)}
+
+/* =====================================================================
+   7. PORTADA PRINCIPAL (hero)
+   ===================================================================== */
+.hero{position:relative;overflow:hidden;background:var(--verde-900)}
+.hero__carrusel{position:absolute;inset:0}
+.hero__fondo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .55s ease}
+.hero__fondo.is-activa{opacity:1}
+/* Video corto de la institución: fondo vivo de la portada (estilo Bishop Dunne) */
+.hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+@media (prefers-reduced-motion:reduce){.hero__video{display:none}}
+.hero__controles{
+  position:absolute;z-index:3;right:clamp(.7rem,3vw,2rem);bottom:clamp(.7rem,3vw,1.6rem);
+  display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;
+}
+.hero__ctrl{
+  all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
+  width:2.75rem;height:2.75rem;border-radius:999px;cursor:pointer;
+  background:rgba(255,255,255,.17);border:1px solid rgba(255,255,255,.4);color:#fff;
+}
+.hero__ctrl:hover{background:rgba(255,255,255,.32)}
+.hero__ctrl:focus-visible{outline:3px solid var(--warm-400);outline-offset:2px}
+.hero__puntos{display:flex;gap:.2rem;align-items:center;padding-inline:.2rem}
+.hero__punto{
+  all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
+  width:1.6rem;height:1.6rem;border-radius:999px;cursor:pointer;
+}
+/* El punto se ve delgadito, pero la zona para tocarlo con el dedo mide 24x24 */
+.hero__punto::before{
+  content:"";width:.68rem;height:.68rem;border-radius:999px;
+  background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.62);
+  transition:background .2s ease,border-color .2s ease;
+}
+.hero__punto[aria-selected="true"]::before{background:#fff}
+.hero__punto:focus-visible{outline:3px solid var(--warm-400);outline-offset:3px}
+.hero__controles[hidden]{display:none}
+@media (max-width:640px){
+  .hero__controles{right:.55rem;bottom:.55rem;gap:.35rem}
+  .hero__ctrl{width:2.75rem;height:2.75rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero__fondo{transition:none}
+}
+.hero__velo{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(100deg,rgba(6,26,44,.96) 0%,rgba(12,48,32,.9) 40%,rgba(16,66,40,.66) 74%,rgba(16,66,40,.45) 100%),
+    linear-gradient(to top,rgba(6,26,44,.72),rgba(6,26,44,0) 62%);
+}
+.hero__inner{position:relative;z-index:2;padding:clamp(3.2rem,9vw,7rem) 0 clamp(2.6rem,6vw,4.5rem)}
+.hero__caja{max-width:44rem}
+.hero h1{color:#fff;text-shadow:0 3px 20px rgba(0,0,0,.28)}
+.hero__kicker{
+  display:inline-flex;align-items:center;gap:.55rem;color:#d8f0e2;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);
+  padding:.4rem .95rem;border-radius:999px;font-size:.79rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;
+}
+.hero__texto{color:#e4f2e9;font-size:clamp(1rem,.95rem + .45vw,1.22rem);max-width:40rem;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.hero__acciones{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.7rem}
+.hero__pie{
+  position:relative;z-index:2;display:flex;gap:.9rem;align-items:flex-start;
+  border-top:1px solid rgba(255,255,255,.22);padding:1rem 0 1.4rem;color:#c9d9ea;font-size:.83rem;
+}
+.hero__pie .icon{color:var(--warm-400);margin-top:.2rem}
+
+/* =====================================================================
+   9. SECCIONES ESPECÍFICAS
+   ===================================================================== */
+/* --- 9.1 Quiénes somos: panel de texto + acordeón --------------- */
+.panel-doble{display:grid;gap:clamp(1.4rem,3vw,2.6rem);align-items:start}
+.panel-doble__texto{background:#fff;border:1px solid var(--gris-200);border-radius:var(--radio-lg);padding:clamp(1.3rem,3vw,2rem);box-shadow:var(--sombra-1)}
+.panel-doble__lateral{display:grid;gap:1rem}
+/* La reseña histórica y los paneles de acordeón deben verse iguales que el
+   resto del sitio: mismo tamaño de letra y mismo espaciado. */
+.panel-doble__texto h3{font-size:1.16rem;margin:0 0 .55rem}
+.panel-doble__texto p, .acordeon__panel p{font-size:.97rem;line-height:1.45;margin:0 0 .8rem}
+.panel-doble__texto p:last-child, .acordeon__panel p:last-child{margin-bottom:0}
+
+.acordeon{border:1px solid var(--gris-200);border-radius:var(--radio-lg);background:#fff;overflow:hidden;box-shadow:var(--sombra-1)}
+.acordeon__item+.acordeon__item{border-top:1px solid var(--gris-200)}
+.acordeon__boton{
+  width:100%;display:flex;align-items:center;gap:.9rem;text-align:left;
+  background:transparent;border:0;padding:1.05rem 1.2rem;cursor:pointer;
+  font-weight:700;color:var(--verde-900);font-size:1rem;
+}
+.acordeon__boton:hover{background:var(--verde-50)}
+.acordeon__boton .icon:first-child{color:var(--verde-600)}
+.acordeon__boton .icon:last-child{margin-left:auto;transition:transform var(--transicion);color:var(--gris-500)}
+.acordeon__boton[aria-expanded="true"] .icon:last-child{transform:rotate(180deg)}
+.acordeon__panel{padding:0 1.2rem 1.25rem;color:var(--gris-700);font-size:.97rem}
+.acordeon__panel[hidden]{display:none}
+.acordeon__panel h4{margin:1rem 0 .4rem;font-size:1rem;color:var(--verde-800)}
+.lista-valores{margin:.2rem 0 .8rem;padding-left:1.15rem;color:var(--gris-700);font-size:.95rem;line-height:1.45}
+.lista-valores li{margin:.15rem 0}
+.lista-valores--chips{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;padding:0;margin:.2rem 0 .8rem}
+.lista-valores--chips li{background:var(--verde-100);color:var(--verde-800);border-radius:999px;padding:.28rem .75rem;font-size:.85rem;font-weight:600}
+.bandera{width:min(230px,72%);margin:.7rem auto .35rem}
+.bandera img{display:block;width:100%;height:auto;border:1px solid var(--gris-200);border-radius:6px;box-shadow:var(--sombra-1)}
+
+/* --- 9.2 Oferta educativa: tabla editable ----------------------- */
+.tabla-scroll{overflow-x:auto;border:1px solid var(--gris-200);border-radius:var(--radio);background:#fff;box-shadow:var(--sombra-1)}
+table.tabla{width:100%;border-collapse:collapse;min-width:640px;font-size:.94rem}
+table.tabla caption{text-align:left;padding:.9rem 1rem 0;color:var(--gris-500);font-size:.86rem}
+table.tabla th,table.tabla td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--gris-200);vertical-align:top}
+table.tabla thead th{background:var(--verde-50);color:var(--verde-900);font-size:.82rem;text-transform:uppercase;letter-spacing:.07em}
+table.tabla tbody tr:last-child th,table.tabla tbody tr:last-child td{border-bottom:0}
+
+/* --- 9.3 Proyectos: filtros ------------------------------------- */
+.filtros{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.6rem}
+.chip{
+  background:#fff;border:1.6px solid var(--gris-300);color:var(--verde-800);
+  border-radius:999px;padding:.45rem .95rem;font-size:.88rem;font-weight:600;cursor:pointer;
+  transition:all var(--transicion);
+}
+.chip:hover{border-color:var(--verde-500);background:var(--verde-50)}
+.chip[aria-pressed="true"]{background:var(--verde-700);border-color:var(--verde-700);color:#fff}
+.chip__n{font-size:.75rem;opacity:.75;margin-left:.3rem}
+
+/* --- 9.4 Buscadores --------------------------------------------- */
+.buscador{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1.6rem}
+.buscador__campo{
+  position:relative;flex:1 1 18rem;max-width:34rem;
+}
+.buscador__campo .icon{position:absolute;left:.95rem;top:50%;transform:translateY(-50%);color:var(--gris-500);pointer-events:none}
+.buscador input[type="search"]{
+  width:100%;padding:.8rem 1rem .8rem 2.8rem;border:1.6px solid var(--gris-300);
+  border-radius:999px;background:#fff;font-size:.97rem;color:var(--tinta);
+}
+.buscador input[type="search"]:focus{border-color:var(--verde-500)}
+.buscador__contador{font-size:.86rem;color:var(--gris-500);margin:0}
+.buscador__anio{display:flex;align-items:center;gap:.45rem}
+.buscador__anio label{font-size:.86rem;font-weight:600;color:var(--gris-700)}
+.buscador__anio select{
+  padding:.62rem 2.3rem .62rem .95rem;border:1.6px solid var(--gris-300);border-radius:999px;
+  background:#fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right .75rem center;
+  background-size:1.05rem;font:inherit;font-size:.94rem;color:var(--tinta);appearance:none;cursor:pointer;
+}
+.buscador__anio select:focus{border-color:var(--verde-500);outline:none}
+.sin-resultados{
+  border:1.6px dashed var(--gris-300);border-radius:var(--radio);background:#fff;
+  padding:2rem 1.4rem;text-align:center;color:var(--gris-700);
+}
+.sin-resultados .icon{width:2rem;height:2rem;color:var(--gris-400);margin-bottom:.5rem}
+[hidden]{display:none !important}
+
+/* --- 9.5 Noticias ------------------------------------------------ */
+.noticia__fecha{font-size:.82rem;color:var(--gris-500);display:inline-flex;align-items:center;gap:.4rem}
+.noticia__etiqueta{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--verde-600)}
+.noticia__fotos{display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;font-weight:650;color:var(--verde-700)}
+.noticia__fotos .icon{width:1rem;height:1rem}
+.card__fotos{
+  position:absolute;top:.6rem;right:.6rem;z-index:3;display:inline-flex;align-items:center;gap:.3rem;
+  background:rgba(8,36,63,.82);color:#fff;font-size:.76rem;font-weight:700;
+  padding:.25rem .55rem;border-radius:999px;backdrop-filter:blur(2px);
+}
+.card__fotos .icon{width:.95rem;height:.95rem}
+.detalle__fotos{
+  display:flex;align-items:center;gap:.5rem;margin-top:1rem;padding:.7rem .9rem;
+  background:var(--verde-100);border-radius:var(--radio-sm);font-size:.9rem;color:var(--verde-900);font-weight:600;
+}
+.detalle__fotos .icon{width:1.2rem;height:1.2rem;color:var(--verde-700);flex:none}
+.detalle__etiquetas{font-size:.82rem;color:var(--verde-700);font-weight:600;word-spacing:.15em;margin-top:.8rem}
+/* Carrusel automático de fotografías en las noticias */
+.noticia__carrusel{overflow:hidden}
+.carrusel__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease}
+.carrusel__img.is-activa{opacity:1}
+.carrusel__puntos{position:absolute;left:0;right:0;bottom:.5rem;z-index:3;display:flex;justify-content:center;gap:.35rem}
+.carrusel__puntos i{width:.42rem;height:.42rem;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(8,36,63,.35);transition:background .3s ease,transform .3s ease}
+.carrusel__puntos i.is-activo{background:#fff;transform:scale(1.25)}
+.detalle__galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.5rem;margin-top:.9rem}
+.detalle__galeria img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radio-sm);border:1px solid var(--gris-200)}
+/* Carrusel de la ventana «Leer más»: muestra todas las fotos de la publicación. */
+.detalle__carrusel{position:relative;margin-top:.9rem;aspect-ratio:4/3;border-radius:var(--radio-sm);overflow:hidden;background:var(--gris-100);border:1px solid var(--gris-200)}
+.detalle__carrusel .carrusel__puntos{bottom:.65rem}
+
+/* --- 9.6 Publicaciones anteriores de Facebook (solo título + enlace) --- */
+.noticias__anteriores{
+  margin-top:2rem;padding:1.1rem 1.2rem;border-radius:var(--radio-md);
+  background:linear-gradient(150deg,#ffffff,#f3f8fd);
+  border:1px solid #d5e3f0;box-shadow:0 14px 34px rgba(11,37,69,.09);
+}
+.noticias__anteriores-titulo{
+  display:flex;align-items:center;gap:.5rem;margin:0 0 .35rem;
+  font-size:1.02rem;color:var(--ierp-azul-900);
+}
+.noticias__anteriores-titulo .icon{width:1.15rem;height:1.15rem;color:var(--oro-oscuro)}
+.noticias__anteriores-ayuda{margin:0 0 .8rem;font-size:.84rem;color:var(--gris-500)}
+.noticias__anteriores-lista{list-style:none;margin:0;padding:0;display:grid;gap:.3rem}
+.noticias__anteriores-lista li{
+  display:flex;align-items:baseline;justify-content:space-between;gap:.8rem;
+  padding:.5rem .65rem;border-radius:10px;border-bottom:1px dashed rgba(11,37,69,.12);
+}
+.noticias__anteriores-lista li:last-child{border-bottom:0}
+.noticias__anteriores-lista a{
+  display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;
+  color:var(--ierp-azul-800);text-decoration:none;font-size:.9rem;line-height:1.35;
+}
+.noticias__anteriores-lista a:hover .anteriores__titulo{text-decoration:underline}
+.anteriores__titulo{font-weight:600}
+.anteriores__ver{
+  display:inline-flex;align-items:center;gap:.3rem;font-size:.76rem;font-weight:700;
+  color:var(--oro-oscuro);text-transform:uppercase;letter-spacing:.04em;
+}
+.anteriores__ver .icon{width:.85rem;height:.85rem}
+.anteriores__fecha{font-size:.78rem;color:var(--gris-500);white-space:nowrap}
+@media (max-width:700px){
+  .noticias__anteriores-lista li{flex-direction:column;gap:.2rem}
+}
+@media (prefers-reduced-motion: reduce){.carrusel__img{transition:none}}
+
+/* --- 9.6 Galería ------------------------------------------------- */
+.galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:.9rem}
+.galeria__item{
+  position:relative;padding:0;border:1px solid var(--gris-200);border-radius:var(--radio);
+  overflow:hidden;background:#fff;cursor:zoom-in;box-shadow:var(--sombra-1);
+  transition:transform var(--transicion),box-shadow var(--transicion);
+}
+.galeria__item:hover{transform:translateY(-3px);box-shadow:var(--sombra-2)}
+.galeria__item img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.galeria__item figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(to top,rgba(8,36,63,.9),rgba(8,36,63,.05));
+  color:#fff;font-size:.79rem;padding:1.6rem .7rem .55rem;text-align:left;line-height:1.35;
+}
+.galeria__zoom{
+  position:absolute;top:.6rem;right:.6rem;width:2rem;height:2rem;border-radius:999px;
+  display:grid;place-items:center;background:rgba(255,255,255,.92);color:var(--verde-800);
+}
+.galeria__boton{all:unset;display:block;width:100%;cursor:zoom-in}
+.galeria__boton:focus-visible{outline:3px solid var(--warm-400);outline-offset:3px}

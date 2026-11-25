@@ -1,0 +1,21 @@
+/* Mejoras senior 26/11/2026: WebP sin cambiar el diseño y filtros de documentos */
+picture{display:contents}
+.doc-filtros{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 .35rem}
+.doc-filtro{
+  border:1px solid var(--gris-300);background:#fff;color:var(--gris-700);
+  border-radius:999px;padding:.45rem .85rem;font-size:.85rem;font-weight:600;
+  cursor:pointer;transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+.doc-filtro span{
+  display:inline-block;margin-left:.25rem;padding:0 .4rem;border-radius:999px;
+  background:var(--gris-100);color:var(--gris-600);font-size:.75rem;font-weight:700;
+}
+.doc-filtro:hover{border-color:var(--ierp-azul-500);color:var(--ierp-azul-700)}
+.doc-filtro.is-activo{background:var(--ierp-azul-700);border-color:var(--ierp-azul-700);color:#fff}
+.doc-filtro.is-activo span{background:rgba(255,255,255,.2);color:#fff}
+.doc-filtro:focus-visible{outline:2px solid var(--ierp-dorado);outline-offset:2px}
+.doc-resumen{margin:.25rem 0 1rem;color:var(--gris-600);font-size:.9rem;line-height:1.5}
+@media (max-width:520px){
+  .doc-filtro{padding:.4rem .7rem;font-size:.8rem}
+  .doc-resumen{font-size:.85rem}
+}

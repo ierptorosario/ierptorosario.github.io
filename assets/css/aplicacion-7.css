@@ -1,0 +1,52 @@
+/* Ajustes finales 26/11/2026: controles discretos y botones sobrios */
+@media (max-width:520px){
+  .audio-panel{left:.45rem;bottom:.45rem;padding:.2rem;gap:.15rem;opacity:.78}
+  .audio-panel .audio-fondo{width:2.2rem;height:2.2rem}
+  .audio-panel__vol input{width:3rem}
+  .audio-panel:hover,.audio-panel:focus-within{opacity:1}
+  .volver-arriba{right:.45rem;bottom:.45rem;padding:.3rem .6rem .3rem .3rem;font-size:.72rem}
+  .volver-arriba img{width:26px;height:26px}
+  .section{padding:2.4rem 0}
+  .rapidos__grid{gap:.55rem}
+  .rapido{padding:.8rem .55rem}
+}
+.audio-panel.control-oculto,.volver-arriba.control-oculto{
+  opacity:0!important;transform:translateY(12px);pointer-events:none
+}
+
+/* Botones: sin relieves, sin degradados vistosos, líneas limpias */
+.btn{
+  --btn-bg:var(--ierp-azul-700);--btn-fg:#fff;--btn-bd:var(--ierp-azul-700);
+  border-width:1px;border-radius:.6rem;font-weight:600;letter-spacing:.01em;
+  box-shadow:none;
+}
+.btn:hover{transform:none;box-shadow:0 2px 7px rgba(11,37,69,.18);filter:brightness(.96)}
+.btn:active{transform:none;box-shadow:none}
+.btn--secondary{--btn-bg:#fff;--btn-fg:var(--ierp-azul-800);--btn-bd:var(--gris-300)}
+.btn--outline{--btn-bg:transparent;--btn-fg:var(--ierp-azul-700);--btn-bd:var(--ierp-azul-600)}
+.btn--ghost{--btn-bg:transparent;--btn-fg:var(--gris-700);--btn-bd:var(--gris-300)}
+.btn--sm{border-width:1px}
+/* Evita que el hover deje texto blanco sobre botones claros */
+.btn--secondary:hover,.btn--secondary:focus-visible{--btn-fg:var(--ierp-azul-800)}
+.btn--outline:hover,.btn--outline:focus-visible{--btn-fg:var(--ierp-azul-700)}
+.btn--ghost:hover,.btn--ghost:focus-visible{--btn-fg:var(--gris-700)}
+
+/* Los últimos menús se abren hacia la izquierda para no sacar la página */
+.site-header .menu__item:nth-last-child(-n+2) > .submenu{left:auto;right:0}
+
+/* Accesos rápidos: tarjetas planas, mismos iconos sobrios */
+.rapido{
+  padding:1.05rem .7rem;border-radius:.7rem;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);
+  transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.rapido:hover,.rapido:focus-visible{
+  transform:translateY(-2px);background:rgba(255,255,255,.1);
+  border-color:rgba(255,255,255,.32);box-shadow:0 6px 14px rgba(2,12,26,.22);
+}
+.rapido__icono,.rapido:nth-child(n) .rapido__icono{
+  width:2.8rem;height:2.8rem;border-radius:.65rem;
+  background:rgba(255,255,255,.1);color:#f2e2ad;box-shadow:none;
+}
+.rapido b{font-size:.92rem;font-weight:600;color:#fff}
+.rapido span{font-size:.76rem;color:#c0d2e4}

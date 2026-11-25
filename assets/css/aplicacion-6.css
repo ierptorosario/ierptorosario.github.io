@@ -1,0 +1,293 @@
+/* =====================================================================
+   AJUSTES FINALES
+   Se escriben de últimas para que tengan prioridad sobre los demás.
+   ===================================================================== */
+
+/* --- 1. Texto con el espacio entre línea y línea más ajustado --- */
+.noticia p,.proyecto p,.card p,.detalle p,.docente b,.docente span,.docente small{line-height:1.42}
+
+/* --- 2. Botón flotante con la imagen de la institución: volver al inicio --- */
+.volver-arriba{
+  width:auto;height:auto;border-radius:999px;
+  padding:.4rem .95rem .4rem .45rem;
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:linear-gradient(135deg,#123a63,#061426);
+  color:#f7e7b8;border:1px solid #c9a227;
+  font-size:.82rem;font-weight:700;letter-spacing:.02em;
+  opacity:1;visibility:visible;transform:none;
+  box-shadow:0 12px 28px rgba(4,16,33,.42);
+  z-index:220;
+}
+.volver-arriba img{
+  width:34px;height:34px;border-radius:50%;background:#fff;padding:2px;object-fit:contain;flex:none;
+}
+.volver-arriba:hover{color:#fff;background:linear-gradient(135deg,#18508a,#0a2440)}
+@media (max-width:520px){
+  .volver-arriba{padding:.35rem .8rem .35rem .35rem;font-size:.78rem}
+  .volver-arriba img{width:30px;height:30px}
+}
+
+/* --- 3. Botón «Salir» en una esquina del visor y de la ventana --- */
+.cerrar{
+  top:.55rem;right:.55rem;width:auto;height:auto;border-radius:999px;
+  padding:.45rem .9rem;display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.82rem;font-weight:700;background:#b23a2a;color:#fff;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);z-index:6;
+}
+.cerrar .icon{width:1rem;height:1rem}
+.cerrar:hover{background:#8f2c1f;color:#fff}
+
+/* --- 4. Listado de docentes --- */
+.docentes__titulo{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:1.02rem;margin:1.5rem 0 .7rem;
+}
+.docentes__titulo:first-child{margin-top:0}
+.docentes__n{
+  font-size:.74rem;font-weight:700;color:#6b5a1e;background:#f6eccf;
+  border:1px solid rgba(201,162,39,.55);border-radius:999px;padding:.08rem .5rem;
+}
+.docentes__grid{
+  display:grid;gap:.7rem;list-style:none;margin:0;padding:0;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));
+}
+.docente{
+  background:#fff;border:1px solid #e3e3e9;border-radius:14px;padding:.8rem .9rem;
+  display:flex;flex-direction:column;gap:.2rem;
+  transition:border-color .25s,box-shadow .25s,transform .25s;
+}
+.docente:hover{border-color:#c9a227;box-shadow:0 12px 24px rgba(4,16,33,.12);transform:translateY(-3px)}
+.docente b{font-size:.97rem;color:#0b2545;line-height:1.2}
+.docente__cargo{font-size:.8rem;color:#5a6b7e}
+.docente__area{font-size:.78rem;color:#8a6d1f;font-weight:700}
+@media (prefers-reduced-motion:reduce){
+  .docente:hover{transform:none}
+}
+
+/* --- 5. Videos dentro de las noticias y los proyectos --- */
+.detalle video,#modalCuerpo video{
+  display:block;margin:.8rem auto;border-radius:14px;background:#000;
+  width:auto;max-width:100%;max-height:70vh;height:auto;
+  box-shadow:0 10px 24px rgba(4,16,33,.25);
+}
+
+/* --- 6. Audio de fondo: botón + barra de volumen, discretos --- */
+.audio-panel{
+  position:fixed;left:.6rem;bottom:.6rem;z-index:70;
+  display:flex;align-items:center;gap:.35rem;
+  padding:.28rem .55rem .28rem .28rem;border-radius:999px;
+  background:rgba(11,37,69,.72);border:1px solid rgba(201,162,39,.45);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  opacity:.5;transition:opacity .25s ease;
+}
+.audio-panel:hover,.audio-panel:focus-within{opacity:1}
+.audio-panel .audio-fondo{
+  position:static;left:auto;bottom:auto;width:2.05rem;height:2.05rem;
+  background:transparent;border:0;opacity:1;
+}
+.audio-panel .audio-fondo:hover,.audio-panel .audio-fondo:focus-visible{
+  background:rgba(255,255,255,.14);transform:none;opacity:1;
+}
+.audio-panel__vol{display:flex;align-items:center;margin:0}
+.audio-panel__vol input{
+  -webkit-appearance:none;appearance:none;margin:0;width:4.6rem;height:1.5rem;
+  background:transparent;cursor:pointer;
+}
+.audio-panel__vol input::-webkit-slider-runnable-track{
+  height:.3rem;border-radius:999px;
+  background:linear-gradient(90deg,var(--ierp-oro) var(--nivel,5%),rgba(255,255,255,.28) var(--nivel,5%));
+}
+.audio-panel__vol input::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:.95rem;height:.95rem;margin-top:-.32rem;
+  border-radius:50%;background:#f7e7b8;border:1px solid rgba(11,37,69,.7);
+  box-shadow:0 2px 6px rgba(0,0,0,.45);
+}
+.audio-panel__vol input::-moz-range-track{height:.3rem;border-radius:999px;background:rgba(255,255,255,.28)}
+.audio-panel__vol input::-moz-range-progress{height:.3rem;border-radius:999px;background:var(--ierp-oro)}
+.audio-panel__vol input::-moz-range-thumb{
+  width:.95rem;height:.95rem;border-radius:50%;background:#f7e7b8;border:1px solid rgba(11,37,69,.7);
+}
+.audio-panel__vol input:focus-visible{outline:3px solid var(--warm-400);outline-offset:2px}
+@media (max-width:520px){
+  .audio-panel{padding:.24rem .45rem .24rem .24rem}
+  .audio-panel__vol input{width:3.6rem}
+}
+
+/* --- 7. Textos largos plegados a cuatro líneas --- */
+.texto-plegable__cuerpo{position:relative}
+.texto-plegable--cortado .texto-plegable__cuerpo{
+  max-height:5.9em;overflow:hidden;
+  -webkit-mask-image:linear-gradient(#000 60%,transparent 100%);
+  mask-image:linear-gradient(#000 60%,transparent 100%);
+}
+.texto-plegable__boton{
+  margin-top:.55rem;display:inline-flex;align-items:center;gap:.35rem;
+  padding:.42rem .95rem;border-radius:999px;cursor:pointer;
+  font:inherit;font-size:.84rem;font-weight:700;
+  color:#0b2545;background:#f6eccf;border:1px solid rgba(201,162,39,.65);
+  transition:background .25s ease,transform .25s ease;
+}
+.texto-plegable__boton[hidden]{display:none}
+.texto-plegable__boton:hover{background:#f0dfae;transform:translateY(-1px)}
+.texto-plegable__boton .icon{width:.9rem;height:.9rem;transition:transform .25s ease}
+.texto-plegable__boton[aria-expanded="true"] .icon{transform:rotate(180deg)}
+@media (prefers-reduced-motion:reduce){
+  .texto-plegable__boton:hover{transform:none}
+}
+
+/* --- Página más corta: accesos unidos y noticias por partes --- */
+.rapidos{padding-bottom:2rem}
+.section--pegada{padding-top:1.2rem}
+.section__head--compacto{margin-bottom:1rem}
+.section__head--compacto h2{margin-bottom:.3rem}
+.noticias__vermas{margin:1.7rem 0 0;text-align:center}
+.noticias__vermas[hidden]{display:none}
+/* Enlace discreto del pie para que rectoría suba documentos oficiales */
+.enlace-subir{color:#c9d9ea;font-size:.85rem;opacity:.85}
+.enlace-subir:hover{opacity:1;color:#fff}
+
+/* Zonas para tocar con el dedo: ningún enlace queda por debajo de 24 px,
+   ni en el computador ni en el celular. */
+.horarios__lista a{min-height:1.75rem}
+.noticias__anteriores-lista a{padding-block:.35rem}
+.mapa-caja__pie a{display:inline-block;padding-block:.2rem}
+.footer-col a{min-height:1.75rem;align-items:center}
+.footer-col li>.icon,.footer-col a .icon{margin-top:0}
+.footer-legal a{padding-block:.3rem;display:inline-block}
+.topbar__item a{padding-block:.2rem}
+.red-enlace{padding-block:.15rem}
+
+/* =====================================================================
+   18. ACABADO FINO (nivel superior)
+   Detalles que hacen que el sitio se sienta cuidado y profesional:
+   las secciones respiran, las tarjetas son parejas, las tablas se leen
+   sin perderse y lo que se imprime sale bien.
+   ===================================================================== */
+
+/* --- Un solo sistema de tarjetas (radios y elevación parejos) --- */
+.video-card{border-radius:var(--radio-lg)}
+.rapido{border-radius:var(--radio)}
+.doc:hover,.enlace-card:hover,.docente:hover{transform:translateY(-4px)}
+
+/* --- Tablas: números siempre alineados, fila que se resalta y la
+       primera columna (la hora) fija cuando la tabla se corre de lado --- */
+table.horario{font-variant-numeric:tabular-nums}
+table.horario thead th{border-bottom:2px solid var(--ierp-oro)}
+table.horario tbody tr:hover td{background:#f2f7fd}
+table.horario tbody tr:hover th{background:#e2eefb}
+table.horario tr.es-pausa:hover th,table.horario tr.es-pausa:hover td{background:#fdf4dc}
+table.horario thead th:first-child,
+table.horario tbody th{position:sticky;left:0;z-index:2}
+table.horario thead th:first-child{z-index:4}
+.horarios__tabla-scroll,.tabla-scroll{scrollbar-width:thin;scrollbar-color:rgba(201,162,39,.9) #e6ecf3}
+.horarios__tabla-scroll::-webkit-scrollbar,.tabla-scroll::-webkit-scrollbar{height:.6rem}
+.horarios__tabla-scroll::-webkit-scrollbar-track,.tabla-scroll::-webkit-scrollbar-track{background:#e9eef4;border-radius:999px}
+.horarios__tabla-scroll::-webkit-scrollbar-thumb,.tabla-scroll::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#c9a227,#e2c15a);border-radius:999px}
+
+/* --- Celular: ninguna caja con tabla ancha puede empujar la página ---
+       (un elemento de rejilla no se encoge solo; sin esto, el cuadro de la
+       «semana completa» del horario se salía de la pantalla del celular) */
+.horarios__bloques > *,
+.horarios__bloque,
+.acordeon__item,
+.acordeon__panel,
+.tabla-scroll,
+.horarios__tabla-scroll{min-width:0;max-width:100%}
+
+/* --- Controles del navegador y cifras con el sello de la casa --- */
+input,select,textarea,progress{accent-color:var(--ierp-oro)}
+.footer-contador b,.cifra,.cifras b{font-variant-numeric:tabular-nums}
+
+/* --- Al imprimir: títulos en negro (el dorado se perdería en el papel),
+       sin adornos y las tablas completas --- */
+@media print{
+  .section{padding:0 0 1rem}
+  .section__head{margin-bottom:.7rem}
+  .topbar,.main-header,.audio-panel,.volver-arriba,.footer,.buscador,.noticias__vermas,
+  .horarios__dias,.horarios__descargas{display:none !important}
+  .section--azul,.cifras{background:#fff !important;color:#000 !important}
+  .section__head h2,.section__head h3,h3{
+    background:none !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+    filter:none !important;animation:none !important;
+  }
+  .js-revelar{opacity:1 !important;transform:none !important}
+  .horarios__tabla-scroll,.tabla-scroll{overflow:visible !important;border:0;box-shadow:none}
+  table.horario{min-width:0;box-shadow:none}
+  .card,.doc,.docente,.espacio,.video-card,.nivel{box-shadow:none !important;break-inside:avoid}
+  video,iframe{display:none !important}
+}
+
+/* --- Mapa real (OpenStreetMap): compacto, bonito y sin gastar datos --- */
+.mapa-caja{max-width:520px}
+.mapa-caja__lienzo{position:relative;height:clamp(220px,46vw,280px);background:#e9eff5;overflow:hidden}
+.mapa-caja__lienzo img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover}
+.mapa-caja .leaflet-container{font:inherit;background:#e9eff5}
+.mapa-caja .leaflet-control-attribution{font-size:.66rem;line-height:1.3;background:rgba(255,255,255,.88)}
+.mapa-caja .leaflet-control-zoom a{color:#0b2545;font-weight:700}
+/* Las marcas del mapa: un punto dorado y su nombre. No reciben clics
+   (así el dedo nunca queda atrapado en el mapa). */
+.marca-ier,.marca-ier *{pointer-events:none}
+.marca-ier__punto{
+  position:absolute;left:-.42rem;top:-.42rem;width:.84rem;height:.84rem;border-radius:50%;
+  background:radial-gradient(circle at 34% 32%,#f6dc85,#c9a227);border:2px solid #fff;
+  box-shadow:0 0 0 .3rem rgba(201,162,39,.3),0 2px 6px rgba(0,0,0,.35)
+}
+.marca-ier--azul .marca-ier__punto{
+  background:radial-gradient(circle at 34% 32%,#7ba4d4,#123a63);
+  box-shadow:0 0 0 .3rem rgba(18,58,99,.25),0 2px 6px rgba(0,0,0,.35)
+}
+.marca-ier__texto{
+  position:absolute;left:0;top:.6rem;transform:translateX(-50%);white-space:nowrap;
+  padding:.16rem .52rem;border-radius:999px;background:rgba(9,30,56,.93);color:#fff;
+  font-size:.68rem;font-weight:700;letter-spacing:.01em;box-shadow:0 2px 8px rgba(0,0,0,.3)
+}
+
+/* --- Celular: la barra de arriba cabe en un solo renglón ---
+   Antes medía 159 px y, junto con la cabecera, gastaba 228 px de pantalla
+   antes de ver contenido. El correo y el Facebook no se pierden: siguen
+   como botones grandes en la sección «Hablemos» y en el pie de página. */
+@media (max-width:560px){
+  .topbar__inner{flex-wrap:nowrap;gap:.5rem;padding-block:.42rem}
+  .topbar__grupo{flex-wrap:nowrap;gap:.55rem;min-width:0}
+  #topCorreo,#topRedes{display:none}
+  .topbar__item{font-size:.8rem;white-space:nowrap}
+  .topbar__item a{padding-block:.35rem}
+  .buscar{margin-left:auto}
+  .buscar__abrir{min-width:2.2rem;min-height:2.2rem}
+  .buscar.is-abierto input[type=search],
+  .buscar:focus-within input[type=search]{width:min(40vw,170px)}
+}
+
+/* --- Fotos de las noticias y de los proyectos: se ven completas y se pueden
+   ampliar con un toque. Antes se recortaban para llenar un marco de 16:10 y
+   los afiches con texto quedaban cortados o ilegibles. --- */
+.noticia .card__media{background:#0d1b26}
+.noticia .card__media img{object-fit:contain}
+.card__media img{cursor:zoom-in}
+.card__media img:focus-visible{outline:3px solid var(--oro-oscuro);outline-offset:-3px}
+.card__video{
+  position:absolute;left:.5rem;bottom:.5rem;z-index:3;
+  display:inline-flex;align-items:center;gap:.3rem;
+  background:rgba(8,14,22,.86);color:#fff;font-size:.75rem;font-weight:700;
+  letter-spacing:.04em;padding:.28rem .6rem;border-radius:999px;
+}
+.card__video .icon{width:.9rem;height:.9rem}
+.detalle__video{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;
+  margin:0 0 .9rem;padding:.7rem .9rem;border-radius:var(--radio-sm);
+  background:var(--verde-100);color:var(--verde-900);font-size:.92rem;
+}
+.detalle__video .icon{width:1.1rem;height:1.1rem;flex:none}
+.visor__figura figcaption{display:flex;flex-direction:column;gap:.45rem}
+.visor__abrir{
+  display:inline-flex;align-items:center;gap:.4rem;align-self:flex-start;
+  font-weight:700;color:var(--verde-700);text-decoration:underline;
+}
+.visor__abrir .icon{width:1rem;height:1rem}
+.visor__abrir[hidden]{display:none}
+@media (max-width:560px){ .detalle__video{font-size:.88rem} }
+
+/* --- Quien pide menos movimiento, no lo recibe --- */
+@media (prefers-reduced-motion:reduce){
+  .doc:hover,.enlace-card:hover,.docente:hover{transform:none}
+}
