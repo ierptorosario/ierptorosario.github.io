@@ -1,0 +1,100 @@
+/* =====================================================================
+   EFECTOS PROFESIONALES UNIFICADOS — I.E.R. Puerto Rosario (27/11/2026)
+   ---------------------------------------------------------------------
+   Se carga DESPUÉS de botones-3d.css. Da brillo al pasar, onda al hacer
+   clic, elevación/hundimiento, foco dorado, entrada escalonada y aviso
+   de carga. Una sola regla para los 132 controles de las 3 páginas.
+   ===================================================================== */
+
+:root{
+  --fx-dur:.2s;
+  --fx-oro:#d8b24a;
+  --fx-brillo:rgba(255,255,255,.42);
+  --fx-onda:rgba(255,255,255,.5);
+}
+
+/* ---------- Regla única: mismo ritmo para todo control -------------- */
+.btn,.boton,.rapido,.chip,.doc-filtro,.acordeon__boton,.texto-plegable__boton,
+.nav-toggle,.hero__ctrl,.visor__nav,.cerrar,.buscar__abrir,.buscar__limpiar,
+.volver-arriba,.btn-audio,.adm-nav button,.icono-btn,button{
+  position:relative;
+  transition-duration:var(--fx-dur)!important;
+}
+
+/* ---------- Recorrido de luz al pasar el mouse --------------------- */
+.btn::after,.boton::after,.rapido::after,.chip::after,.doc-filtro::after,
+.acordeon__boton::after,.texto-plegable__boton::after,
+.nav-toggle::after,.hero__ctrl::after,.visor__nav::after,.cerrar::after,
+.buscar__abrir::after,.buscar__limpiar::after,.volver-arriba::after,
+.btn-audio::after,.adm-nav button::after,.icono-btn::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(115deg,transparent 32%,var(--fx-brillo) 50%,transparent 68%);
+  transform:translateX(-135%);transition:transform var(--fx-dur) ease;
+  z-index:2;
+}
+.btn:hover::after,.btn:focus-visible::after,.boton:hover::after,.boton:focus-visible::after,
+.rapido:hover::after,.rapido:focus-visible::after,.chip:hover::after,.chip:focus-visible::after,
+.doc-filtro:hover::after,.doc-filtro:focus-visible::after,
+.acordeon__boton:hover::after,.texto-plegable__boton:hover::after,
+.nav-toggle:hover::after,.hero__ctrl:hover::after,.visor__nav:hover::after,
+.cerrar:hover::after,.buscar__abrir:hover::after,.buscar__limpiar:hover::after,
+.volver-arriba:hover::after,.btn-audio:hover::after,
+.adm-nav button:hover::after,.icono-btn:hover::after{
+  transform:translateX(135%);
+}
+
+/* ---------- Elevación y hundimiento más notables ------------------ */
+.btn:hover,.boton:hover{transform:translateY(-3px) scale(1.015)}
+.btn:active,.boton:active{transform:translateY(4px) scale(.99)}
+.rapido:hover{transform:translateY(-5px) scale(1.012)}
+.rapido:active{transform:translateY(3px) scale(.99)}
+.chip:hover,.doc-filtro:hover{transform:translateY(-2px)}
+.chip:active,.doc-filtro:active{transform:translateY(1px)}
+
+/* ---------- Foco dorado visible con teclado ----------------------- */
+.btn:focus-visible,.boton:focus-visible,.rapido:focus-visible,.chip:focus-visible,
+.doc-filtro:focus-visible,.acordeon__boton:focus-visible,.texto-plegable__boton:focus-visible,
+.nav-toggle:focus-visible,.hero__ctrl:focus-visible,.visor__nav:focus-visible,
+.cerrar:focus-visible,.buscar__abrir:focus-visible,.buscar__limpiar:focus-visible,
+.volver-arriba:focus-visible,.btn-audio:focus-visible,
+.adm-nav button:focus-visible,.icono-btn:focus-visible,button:focus-visible{
+  outline:3px solid var(--fx-oro)!important;
+  outline-offset:3px;
+  box-shadow:0 0 0 6px rgba(216,178,74,.22)!important;
+}
+
+/* ---------- Onda circular al hacer clic (la crea el JS) ------------ */
+.fx-onda{
+  position:absolute;border-radius:50%;background:var(--fx-onda);
+  width:14px;height:14px;margin:-7px 0 0 -7px;pointer-events:none;z-index:3;
+  animation:fx-onda-anim .55s ease-out forwards;
+}
+@keyframes fx-onda-anim{to{transform:scale(5);opacity:0}}
+
+/* ---------- Aviso de carga en formularios ------------------------- */
+.fx-cargando{opacity:.78!important;cursor:progress!important}
+.fx-cargando .fx-estado{
+  font-size:.82em;font-weight:600;margin-left:.5rem;
+  animation:fx-pulso 1s ease-in-out infinite;
+}
+@keyframes fx-pulso{50%{opacity:.45}}
+
+/* ---------- Entrada escalonada de tarjetas ------------------------ */
+.fx-revelar{opacity:0;transform:translateY(16px)}
+.fx-revelar.fx-visto{
+  opacity:1;transform:none;
+  transition:opacity var(--fx-dur) ease,transform var(--fx-dur) ease;
+}
+
+/* ---------- Quien pide menos movimiento no ve animaciones --------- */
+@media (prefers-reduced-motion:reduce){
+  .btn::after,.boton::after,.rapido::after,.chip::after,.doc-filtro::after,
+  .acordeon__boton::after,.texto-plegable__boton::after,
+  .nav-toggle::after,.hero__ctrl::after,.visor__nav::after,.cerrar::after,
+  .buscar__abrir::after,.buscar__limpiar::after,.volver-arriba::after,
+  .btn-audio::after,.adm-nav button::after,.icono-btn::after{display:none}
+  .btn:hover,.boton:hover,.rapido:hover,.chip:hover,.doc-filtro:hover,
+  .btn:active,.boton:active,.rapido:active{transform:none}
+  .fx-revelar{opacity:1!important;transform:none!important}
+  .fx-onda,.fx-cargando .fx-estado{animation:none}
+}
