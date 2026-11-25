@@ -107,7 +107,7 @@
     <div id="cajaClave">
       <label for="clave">Clave de publicación</label>
       <input id="clave" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_... (o github_pat_...)">
-      <p class="ayuda">Se pega <b>una sola vez</b>: después esta página la recuerda en este equipo y usted solo escribe el nombre del documento y elige el PDF.</p>
+      <p class="ayuda">Se pega <b>una sola vez</b>: después esta página la recuerda en este equipo y usted solo escribe el nombre del documento y elige el archivo (PDF o Word).</p>
       <button class="boton" type="button" id="btnGuardarClave">Guardar y comprobar</button>
       <button class="boton boton--suave" type="button" id="btnPegarClave" style="margin-left:.45rem">Pegar desde el portapapeles</button>
     </div>
@@ -125,7 +125,7 @@
 
   <!-- ============================ PASO 2: SUBIR ============================ -->
   <section class="tarjeta oculto" id="tarjetaSubir">
-    <h2><span class="paso">2</span> Subir un documento (PDF)</h2>
+    <h2><span class="paso">2</span> Subir un documento (PDF o Word)</h2>
     <p class="ayuda">
       El documento aparece solo en la sección <b>Documentos</b> del sitio, organizado por año y por tipo.
       Tarda uno o dos minutos en verse en internet.
@@ -152,9 +152,9 @@
       <label for="descripcion">Descripción corta (opcional)</label>
       <textarea id="descripcion" rows="2" maxlength="200" placeholder="Por ejemplo: Proyecto Educativo Institucional aprobado para el año 2026."></textarea>
 
-      <label for="archivo">Archivo PDF <span aria-hidden="true">*</span></label>
-      <input id="archivo" type="file" accept="application/pdf,.pdf" required>
-      <p class="ayuda">Solo archivos PDF, máximo 20 MB. Si el PDF pesa mucho, guárdelo con menos calidad antes de subirlo.</p>
+      <label for="archivo">Archivo del documento (PDF o Word) <span aria-hidden="true">*</span></label>
+      <input id="archivo" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+      <p class="ayuda">PDF o Word (.doc o .docx), máximo 20 MB. Si el archivo pesa mucho, guárdelo con menos calidad o divídalo antes de subirlo.</p>
 
       <div style="margin-top:1rem">
         <button class="boton" type="submit" id="btnSubir">Subir al sitio</button>
@@ -174,7 +174,7 @@
       Aquí está <b>todo</b> lo que hoy se ve en la sección <b>Documentos</b>, sea de esta página o
       del sitio. Si un documento está desactualizado o se subió por equivocación, pulse
       <b>Quitar de la web</b>: deja de verse en uno o dos minutos y <b>se puede restaurar</b>
-      desde aquí mismo. Quitar no borra el PDF; para borrarlo hay un botón aparte.
+      desde aquí mismo. Quitar no borra el archivo; para borrarlo hay un botón aparte.
     </p>
 
     <div class="fila">
@@ -194,7 +194,7 @@
       <h3 style="margin:1.7rem 0 .3rem;font-size:1.05rem;color:var(--azul)">Quitados de la web</h3>
       <p class="ayuda">
         Estos ya no se ven en el sitio. Pulse <b>Restaurar</b> si fue un error, o
-        <b>Borrar el PDF</b> si ya no se necesita (eso sí es definitivo).
+        <b>Borrar el archivo</b> si ya no se necesita (eso sí es definitivo).
       </p>
       <ul class="lista-docs" id="listaQuitados"></ul>
     </div>
@@ -466,7 +466,7 @@
        · datos/documentos-automaticos.js → los subidos desde esta página
        · datos/documentos-ocultos.js     → los que rectoría quitó de la web
 
-     Quitar un documento solo lo esconde (se puede restaurar). Borrar el PDF
+     Quitar un documento solo lo esconde (se puede restaurar). Borrar el archivo
      es una acción aparte y definitiva. Así nadie borra algo sin querer.
      ------------------------------------------------------------------ */
   var RUTA_OCULTOS = 'datos/documentos-ocultos.js';
@@ -545,7 +545,7 @@
     });
   }
 
-  /* Un documento se puede quitar por su archivo PDF o, si no tiene PDF,
+  /* Un documento se puede quitar por su archivo o, si no tiene archivo,
      por su título. Así también se pueden quitar los de solo texto. */
   function estaOculto(d) {
     if (!d) return false;
@@ -559,7 +559,7 @@
     });
   }
 
-  /* Botones de un documento: quitar, o restaurar y borrar el PDF. */
+  /* Botones de un documento: quitar, o restaurar y borrar el archivo. */
   function botonesDe(d, quitado) {
     var der = document.createElement('span');
     der.className = 'der';
@@ -570,7 +570,7 @@
       ver.href = d.archivo;
       ver.target = '_blank';
       ver.rel = 'noopener';
-      ver.textContent = 'Ver PDF';
+      ver.textContent = 'Abrir archivo';
       der.appendChild(ver);
     }
 
@@ -586,7 +586,7 @@
         var borrar = document.createElement('button');
         borrar.type = 'button';
         borrar.className = 'boton boton--peligro boton--sm';
-        borrar.textContent = 'Borrar el PDF';
+        borrar.textContent = 'Borrar el archivo';
         borrar.addEventListener('click', function () { borrarPdf(d); });
         der.appendChild(borrar);
       }
@@ -712,7 +712,7 @@
     if (!confirm('¿Quitar «' + (d.titulo || '') + '» de la sección Documentos?\n\n' +
       'Deja de verse en la web en uno o dos minutos.\n' +
       'Se puede restaurar desde esta misma página.\n' +
-      (tienePdf ? 'El archivo PDF NO se borra.' : 'Este documento no tiene archivo PDF.'))) return;
+      (tienePdf ? 'El archivo NO se borra.' : 'Este documento no tiene archivo.'))) return;
     var lista = ocultos.slice();
     if (!estaOculto(d)) {
       lista.push({ archivo: d.archivo || '', titulo: d.titulo || '', fecha: hoyTexto() });
