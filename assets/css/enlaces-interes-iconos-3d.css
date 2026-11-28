@@ -1,0 +1,88 @@
+/* =====================================================================
+   ICONOS 3D DE "ENLACES DE INTERÉS" — I.E.R. Puerto Rosario (29/11/2026)
+   Mismo acabado que los íconos de Información oficial: color, relieve,
+   brillo arriba, sombra abajo y elevación al pasar el mouse o tocar.
+   No cambia textos ni enlaces.
+   ===================================================================== */
+:root{
+  --en3d-dur:.25s;
+  --en3d-brillo:rgba(255,255,255,.72);
+  --en3d-sombra:rgba(11,37,69,.26);
+}
+
+/* 12 tarjetas, 12 tonos institucionales (oro, azul, verde, turquesa) */
+.enlace-card__icono{
+  position:relative;overflow:hidden;isolation:isolate;
+  width:3.15rem;height:3.15rem;flex:0 0 3.15rem;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:15px;border:1px solid rgba(255,255,255,.7);
+  background:linear-gradient(150deg,#f7d982 0%,#c9a227 55%,#a8811b 100%);
+  color:#2b2103;
+  box-shadow:
+    inset 0 2px 1px var(--en3d-brillo),
+    inset 0 -4px 8px rgba(0,0,0,.18),
+    0 5px 0 rgba(126,96,16,.85),
+    0 9px 14px var(--en3d-sombra);
+  transition:transform var(--en3d-dur) ease,box-shadow var(--en3d-dur) ease,filter var(--en3d-dur) ease;
+}
+.enlace-card__icono::before{
+  content:'';position:absolute;inset:2px 3px auto;height:38%;border-radius:12px 12px 45% 45%;
+  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,0));pointer-events:none;
+}
+.enlace-card__icono svg{
+  width:1.55rem;height:1.55rem;position:relative;z-index:1;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.22));
+}
+.enlace-card:nth-child(6n+2) .enlace-card__icono{
+  background:linear-gradient(150deg,#8fc6ec 0%,#2f79b5 55%,#1d5a8c 100%);
+  color:#fff;box-shadow:inset 0 2px 1px var(--en3d-brillo),inset 0 -4px 8px rgba(0,0,0,.22),0 5px 0 #174b74,0 9px 14px var(--en3d-sombra);
+}
+.enlace-card:nth-child(6n+3) .enlace-card__icono{
+  background:linear-gradient(150deg,#a8dfb6 0%,#3f9c62 55%,#2c7549 100%);
+  color:#fff;box-shadow:inset 0 2px 1px var(--en3d-brillo),inset 0 -4px 8px rgba(0,0,0,.22),0 5px 0 #225c39,0 9px 14px var(--en3d-sombra);
+}
+.enlace-card:nth-child(6n+4) .enlace-card__icono{
+  background:linear-gradient(150deg,#8de0dc 0%,#2a9d9a 55%,#1e7573 100%);
+  color:#fff;box-shadow:inset 0 2px 1px var(--en3d-brillo),inset 0 -4px 8px rgba(0,0,0,.22),0 5px 0 #175e5c,0 9px 14px var(--en3d-sombra);
+}
+.enlace-card:nth-child(6n+5) .enlace-card__icono{
+  background:linear-gradient(150deg,#b7a7ee 0%,#6f5cc0 55%,#534294 100%);
+  color:#fff;box-shadow:inset 0 2px 1px var(--en3d-brillo),inset 0 -4px 8px rgba(0,0,0,.22),0 5px 0 #41347a,0 9px 14px var(--en3d-sombra);
+}
+.enlace-card:nth-child(6n+6) .enlace-card__icono{
+  background:linear-gradient(150deg,#f3b2a1 0%,#c96f52 55%,#a6553d 100%);
+  color:#fff;box-shadow:inset 0 2px 1px var(--en3d-brillo),inset 0 -4px 8px rgba(0,0,0,.22),0 5px 0 #85442f,0 9px 14px var(--en3d-sombra);
+}
+.enlace-card:hover .enlace-card__icono,
+.enlace-card:focus-within .enlace-card__icono{
+  transform:translateY(-4px);filter:brightness(1.06);
+  box-shadow:inset 0 2px 1px var(--en3d-brillo),inset 0 -4px 8px rgba(0,0,0,.2),0 8px 0 rgba(0,0,0,.28),0 14px 20px var(--en3d-sombra);
+}
+.enlace-card:active .enlace-card__icono{
+  transform:translateY(2px) scale(.98);
+  box-shadow:inset 0 2px 1px var(--en3d-brillo),inset 0 -2px 5px rgba(0,0,0,.25),0 2px 0 rgba(0,0,0,.3);
+}
+
+/* Flecha con el mismo relieve */
+.enlace-card__flecha{
+  display:flex;align-items:center;justify-content:center;
+  width:2.5rem;height:2.5rem;border-radius:50%;
+  background:linear-gradient(150deg,#f7d982,#c9a227);
+  color:#2b2103;border:1px solid rgba(255,255,255,.65);
+  box-shadow:inset 0 2px 1px var(--en3d-brillo),inset 0 -3px 6px rgba(0,0,0,.18),0 4px 0 rgba(126,96,16,.85),0 7px 12px var(--en3d-sombra);
+  transition:transform var(--en3d-dur) ease;
+}
+.enlace-card:hover .enlace-card__flecha{transform:translateX(3px) translateY(-2px)}
+
+/* Foco visible con borde dorado */
+.enlace-card:focus-visible{outline:3px solid #d8b24a;outline-offset:3px}
+
+@media (max-width:520px){
+  .enlace-card__icono{width:2.8rem;height:2.8rem;flex-basis:2.8rem;border-radius:13px}
+  .enlace-card__icono svg{width:1.4rem;height:1.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .enlace-card__icono,.enlace-card__flecha{transition:none}
+  .enlace-card:hover .enlace-card__icono,.enlace-card:active .enlace-card__icono,
+  .enlace-card:hover .enlace-card__flecha{transform:none}
+}
