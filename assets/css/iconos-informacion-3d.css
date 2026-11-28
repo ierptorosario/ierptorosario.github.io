@@ -1,0 +1,101 @@
+/* =====================================================================
+   ICONOS DE «INFORMACIÓN OFICIAL DE LA INSTITUCIÓN» — 3D con relieve
+   I.E.R. Puerto Rosario · 27/11/2026
+   Cuatro colores institucionales, luz alta, sombra baja y brillo al pasar.
+   Solo ajusta la presentación: no cambia datos ni textos.
+   ===================================================================== */
+.cifras__grid {
+  gap: 1.15rem;
+}
+
+.cifra {
+  border-color: rgba(201, 162, 39, .32);
+  background: linear-gradient(160deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .04));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 8px 20px rgba(0, 20, 38, .28);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.cifra:hover {
+  transform: translateY(-3px);
+  border-color: rgba(201, 162, 39, .62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 14px 28px rgba(0, 20, 38, .38);
+}
+
+.cifra__icono {
+  position: relative;
+  isolation: isolate;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 15px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .34);
+  background: linear-gradient(155deg, #ffd97a 0%, #c9a227 55%, #8c6b12 100%);
+  box-shadow: inset 0 2px 1px rgba(255, 255, 255, .70),
+              inset 0 -4px 8px rgba(60, 40, 0, .38),
+              0 5px 0 rgba(90, 66, 8, .65),
+              0 10px 16px rgba(0, 16, 32, .42);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+
+.cifra__icono::before {
+  content: '';
+  position: absolute;
+  inset: 3px 4px auto;
+  height: 42%;
+  border-radius: 12px 12px 60% 60%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .38), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.cifra__icono .icon {
+  position: relative;
+  z-index: 1;
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .30));
+}
+
+/* Colores distintos por dato, con el mismo acabado metálico */
+.cifras__grid .cifra:nth-child(2) .cifra__icono {
+  background: linear-gradient(155deg, #8fd0ff 0%, #2f86d8 55%, #14507f 100%);
+  box-shadow: inset 0 2px 1px rgba(255, 255, 255, .70),
+              inset 0 -4px 8px rgba(0, 24, 60, .38),
+              0 5px 0 rgba(11, 50, 90, .65),
+              0 10px 16px rgba(0, 16, 32, .42);
+}
+
+.cifras__grid .cifra:nth-child(3) .cifra__icono {
+  background: linear-gradient(155deg, #8fe3c3 0%, #2fa77e 55%, #16684f 100%);
+  box-shadow: inset 0 2px 1px rgba(255, 255, 255, .70),
+              inset 0 -4px 8px rgba(0, 50, 30, .38),
+              0 5px 0 rgba(10, 70, 50, .65),
+              0 10px 16px rgba(0, 16, 32, .42);
+}
+
+.cifras__grid .cifra:nth-child(4) .cifra__icono {
+  background: linear-gradient(155deg, #c1d7ff 0%, #6c8fd8 55%, #3a5599 100%);
+  box-shadow: inset 0 2px 1px rgba(255, 255, 255, .70),
+              inset 0 -4px 8px rgba(10, 20, 60, .38),
+              0 5px 0 rgba(30, 45, 90, .65),
+              0 10px 16px rgba(0, 16, 32, .42);
+}
+
+.cifra:hover .cifra__icono,
+.cifra:focus-within .cifra__icono {
+  transform: translateY(-3px) scale(1.05);
+  filter: brightness(1.08);
+  box-shadow: inset 0 2px 1px rgba(255, 255, 255, .78),
+              inset 0 -4px 8px rgba(0, 0, 0, .30),
+              0 8px 0 rgba(20, 50, 70, .55),
+              0 16px 24px rgba(0, 16, 32, .48);
+}
+
+.cifra:active .cifra__icono {
+  transform: translateY(2px) scale(.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cifra, .cifra__icono { transition: none; }
+  .cifra:hover, .cifra:hover .cifra__icono { transform: none; }
+}
