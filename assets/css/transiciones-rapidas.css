@@ -28,6 +28,16 @@
   transition: transform .35s ease !important;
 }
 
+/* Cubre cualquier fondo azul que quede en imágenes al cambiar */
+.card__media, .card__media::before, .card__media::after,
+.noticia__carrusel, .noticia__carrusel::before,
+.carrusel__img, .hero__fondo, .hero__fondo::before,
+.detalle__carrusel, .visor__figura, .visor__figura img,
+.espacio__foto, .nivel__foto, .nivel__foto img {
+  background: transparent !important;
+  background-image: none !important;
+}
+
 /* Si el sistema pide reducir movimiento, no hay transición */
 @media (prefers-reduced-motion: reduce) {
   .carrusel__img,
