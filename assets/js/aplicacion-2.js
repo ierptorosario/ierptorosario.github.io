@@ -399,7 +399,7 @@
         '<img class="hero__fondo' + (i === 0 ? ' is-activa' : '') + '" src="' +
         img(f.src, 'assets/img/hero-paisaje.svg') + '" width="960" height="540" alt="' +
         esc(hay(f.alt) ? f.alt : 'Fotografía de la institución') + '"' +
-        (i === 0 ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async"></picture>';
+        (i === 0 ? ' fetchpriority="high"' : '') + ' decoding="async"></picture>';
     }).join('');
 
     var controles = qs('#heroControles');
@@ -610,7 +610,7 @@
         var titulo = hay(g.titulo) ? g.titulo : 'Imagen institucional';
         return '<figure class="galeria__item" role="group">' +
           '<button type="button" class="galeria__boton" aria-label="Ampliar imagen: ' + esc(titulo) + '">' +
-            '<picture>' + webpFuentes(g.src, 'assets/img/hero-paisaje.svg') + '<img src="' + img(g.src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500" loading="lazy" decoding="async" alt="' + esc(hay(g.alt) ? g.alt : titulo) + '"></picture>' +
+            '<picture>' + webpFuentes(g.src, 'assets/img/hero-paisaje.svg') + '<img src="' + img(g.src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500" decoding="async" alt="' + esc(hay(g.alt) ? g.alt : titulo) + '"></picture>' +
             '<figcaption>' + esc(titulo) + '</figcaption>' +
             '<span class="galeria__zoom" aria-hidden="true">' + ico('zoom') + '</span>' +
           '</button></figure>';
@@ -677,7 +677,7 @@
           (hay(n.fotos) ? '<p class="detalle__fotos">' + ico('camara') + ' Esta publicación tiene ' + esc(n.fotos) + ' ' + (Number(n.fotos) === 1 ? 'fotografía' : 'fotografías') + ' en la página oficial de Facebook.' + (Number(n.fotos_descargadas) > 0 && Number(n.fotos_descargadas) < Number(n.fotos) ? ' Aquí se muestran ' + esc(n.fotos_descargadas) + '; para verlas todas, abra la publicación en Facebook.' : '') + '</p>' : '') +
           (galeriaN.length > 1 ? '<div class="detalle__carrusel noticia__carrusel" data-intervalo="2000" role="group" aria-roledescription="carrusel" aria-label="Todas las fotografías de esta publicación">' +
             galeriaN.map(function (src, k) {
-              return '<picture>' + webpFuentes(src, 'assets/img/hero-paisaje.svg') + '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="600" loading="lazy" decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')' + '"></picture>';
+              return '<picture>' + webpFuentes(src, 'assets/img/hero-paisaje.svg') + '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="600" decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')' + '"></picture>';
             }).join('') +
             '<span class="carrusel__puntos" aria-hidden="true">' + galeriaN.map(function (_, k) { return '<i' + (k === 0 ? ' class="is-activo"' : '') + '></i>'; }).join('') + '</span>' +
           '</div>' : '') +
@@ -689,13 +689,13 @@
         if (rotacionN.length > 1) {
           mediaN = '<div class="card__media noticia__carrusel" data-intervalo="2000">' + marcaN +
             rotacionN.map(function (src, k) {
-              return '<picture>' + webpFuentes(src, 'assets/img/hero-paisaje.svg') + '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + (k === 0 ? '' : ' loading="lazy"') + ' decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + rotacionN.length + ')' + '"></picture>';
+              return '<picture>' + webpFuentes(src, 'assets/img/hero-paisaje.svg') + '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + (k === 0 ? '' : '') + ' decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + rotacionN.length + ')' + '"></picture>';
             }).join('') +
             '<span class="carrusel__puntos" aria-hidden="true">' + rotacionN.map(function (_, k) { return '<i' + (k === 0 ? ' class="is-activo"' : '') + '></i>'; }).join('') + '</span>' +
           '</div>';
         } else {
           mediaN = '<div class="card__media">' + marcaN +
-            '<picture>' + webpFuentes(rotacionN[0] || n.imagen, 'assets/img/hero-paisaje.svg') + '<img src="' + img(rotacionN[0] || n.imagen, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + ' loading="lazy" decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + '"></picture>' +
+            '<picture>' + webpFuentes(rotacionN[0] || n.imagen, 'assets/img/hero-paisaje.svg') + '<img src="' + img(rotacionN[0] || n.imagen, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + ' decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + '"></picture>' +
           '</div>';
         }
         return '<article class="card noticia" data-cat="' + esc(n.categoria || '') + '">' +
@@ -818,7 +818,7 @@
         );
         return '<article class="card proyecto" data-cat="' + esc(p.area || '') + '">' +
           '<div class="card__media">' +
-            '<picture>' + webpFuentes(p.imagen, 'assets/img/innovacion.svg') + '<img src="' + img(p.imagen, 'assets/img/innovacion.svg') + '" width="800" height="500" loading="lazy" decoding="async" alt="' + esc(p.titulo || 'Proyecto institucional') + '"></picture>' +
+            '<picture>' + webpFuentes(p.imagen, 'assets/img/innovacion.svg') + '<img src="' + img(p.imagen, 'assets/img/innovacion.svg') + '" width="800" height="500" decoding="async" alt="' + esc(p.titulo || 'Proyecto institucional') + '"></picture>' +
           '</div>' +
           '<div class="card__body">' +
             '<p class="noticia__etiqueta">' + esc(nombreArea(p.area)) + '</p>' +
