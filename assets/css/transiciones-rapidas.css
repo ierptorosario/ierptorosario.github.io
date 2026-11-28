@@ -1,0 +1,38 @@
+/* ====================================================================
+   TRANSICIONES RÁPIDAS DE FOTOS — I.E.R. Puerto Rosario (28/11/2026)
+   Evita el fondo azul entre foto y foto: el carrusel cambia en 0,18 s
+   y el fondo de las tarjetas deja de ser azul claro.
+   ==================================================================== */
+
+/* Fondo neutro mientras carga: ya no se ve azul durante el relevo */
+.card__media,
+.detalle__carrusel,
+.visor__figura,
+.espacio__foto,
+.nivel__foto {
+  background: #fff !important;
+}
+
+/* Relevo rápido de las fotos del carrusel (noticias y visor) */
+.carrusel__img {
+  transition: opacity .18s linear !important;
+}
+
+/* Relevo rápido de la foto principal del inicio */
+.hero__fondo {
+  transition: opacity .18s linear !important;
+}
+
+/* Otras fotos que cambian de opacidad */
+.nivel__foto img {
+  transition: opacity .18s linear, transform .35s ease !important;
+}
+
+/* Si el sistema pide reducir movimiento, no hay transición */
+@media (prefers-reduced-motion: reduce) {
+  .carrusel__img,
+  .hero__fondo,
+  .nivel__foto img {
+    transition: none !important;
+  }
+}
