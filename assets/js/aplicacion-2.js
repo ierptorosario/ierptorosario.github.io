@@ -109,8 +109,8 @@
       var imgs = qsa('.carrusel__img', c);
       if (imgs.length < 2 || prefiereMenosMovimiento) return;
       var puntos = qsa('.carrusel__puntos i', c);
-      var intervalo = parseInt(c.getAttribute('data-intervalo') || '400', 10);
-      if (isNaN(intervalo) || intervalo < 150) intervalo = 400;
+      var intervalo = parseInt(c.getAttribute('data-intervalo') || '2000', 10);
+      if (isNaN(intervalo) || intervalo < 100) intervalo = 2000;
       var i = 0, pausado = false;
       var pausar = function () { pausado = true; };
       var seguir = function () { pausado = false; };
@@ -419,7 +419,7 @@
     var pausado = false;
     var reducir = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     var zona = caja.parentNode || caja;
-    var INTERVALO = 700; // las fotografías de la portada cambian cada 2 segundos
+    var INTERVALO = 2000; // las fotografías de la portada cambian cada 2 segundos
 
     /* La portada muestra únicamente las tres fotografías de la comunidad
        educativa (docentes y estudiantes). El video del recorrido por los
@@ -675,7 +675,7 @@
           avisoVideo +
           (hay(n.detalle) ? n.detalle : '<p>' + esc(n.resumen || '') + '</p>') +
           (hay(n.fotos) ? '<p class="detalle__fotos">' + ico('camara') + ' Esta publicación tiene ' + esc(n.fotos) + ' ' + (Number(n.fotos) === 1 ? 'fotografía' : 'fotografías') + ' en la página oficial de Facebook.' + (Number(n.fotos_descargadas) > 0 && Number(n.fotos_descargadas) < Number(n.fotos) ? ' Aquí se muestran ' + esc(n.fotos_descargadas) + '; para verlas todas, abra la publicación en Facebook.' : '') + '</p>' : '') +
-          (galeriaN.length > 1 ? '<div class="detalle__carrusel noticia__carrusel" data-intervalo="500" role="group" aria-roledescription="carrusel" aria-label="Todas las fotografías de esta publicación">' +
+          (galeriaN.length > 1 ? '<div class="detalle__carrusel noticia__carrusel" data-intervalo="2000" role="group" aria-roledescription="carrusel" aria-label="Todas las fotografías de esta publicación">' +
             galeriaN.map(function (src, k) {
               return '<picture>' + webpFuentes(src, 'assets/img/hero-paisaje.svg') + '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="600" loading="lazy" decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + galeriaN.length + ')' + '"></picture>';
             }).join('') +
@@ -687,7 +687,7 @@
           (esVideo ? '<span class="card__video">' + ico('video') + ' Video</span>' : '');
         var mediaN;
         if (rotacionN.length > 1) {
-          mediaN = '<div class="card__media noticia__carrusel" data-intervalo="400">' + marcaN +
+          mediaN = '<div class="card__media noticia__carrusel" data-intervalo="2000">' + marcaN +
             rotacionN.map(function (src, k) {
               return '<picture>' + webpFuentes(src, 'assets/img/hero-paisaje.svg') + '<img class="carrusel__img' + (k === 0 ? ' is-activa' : '') + '" src="' + img(src, 'assets/img/hero-paisaje.svg') + '" width="800" height="500"' + atrAmpliar + (k === 0 ? '' : ' loading="lazy"') + ' decoding="async" alt="' + esc(limpiarTitulo(n.titulo) || 'Noticia institucional') + ' (foto ' + (k + 1) + ' de ' + rotacionN.length + ')' + '"></picture>';
             }).join('') +
