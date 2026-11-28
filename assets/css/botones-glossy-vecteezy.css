@@ -68,19 +68,26 @@
   }
 }
 
-/* Ajustes finales 29/11/2026: botones visibles y accesos compactos */
-.comunidad .btn--ghost,#comunidad .btn--ghost,section#comunidad .btn{
+/* Ajustes finales 29/11/2026: accesos rapidos con relieve uniforme */
+#comunidad .btn,.comunidad .btn--ghost,section#comunidad .btn{
   background-color:#d8b24a!important;color:#17325a!important;
-  border-color:rgba(255,255,255,.75)!important;padding:.5rem .9rem!important;font-size:.85rem!important;
-  min-height:34px!important;border-radius:999px!important
+  padding:.55rem 1rem!important;min-height:0!important;
 }
 .rapidos .rapido,.rapido{
   border-radius:.75rem!important;padding:.85rem .65rem!important;
-  background-image:none!important;background-color:rgba(255,255,255,.06)!important;
-  border:1px solid rgba(255,255,255,.14)!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 3px 8px rgba(2,12,26,.18)!important;
-  min-height:0!important;transition:transform .2s ease,background .2s ease!important
+  background-image:none!important;background-color:#d8b24a!important;
+  border:1px solid #f4df9c!important;color:#17325a!important;
+  box-shadow:inset 0 2px 1px rgba(255,255,255,.65),inset 0 -4px 8px rgba(0,0,0,.2),0 3px 0 #a8811b,0 6px 12px rgba(9,28,54,.28)!important;
+  min-height:0!important;transition:transform .2s ease,box-shadow .2s ease!important;
 }
-.rapidos .rapido:hover,.rapido:hover{transform:translateY(-2px)!important;background-color:rgba(255,255,255,.11)!important;box-shadow:0 6px 12px rgba(2,12,26,.24)!important}
-.rapido__icono{width:2.5rem!important;height:2.5rem!important;border-radius:.55rem!important;background:rgba(255,255,255,.1)!important;color:#f2e2ad!important;box-shadow:none!important;background-image:none!important}
-.rapido b{font-size:.9rem!important}.rapido span{font-size:.75rem!important}
+.rapidos .rapido:hover,.rapido:hover{
+  transform:translateY(-3px)!important;
+  box-shadow:inset 0 2px 1px rgba(255,255,255,.65),inset 0 -4px 8px rgba(0,0,0,.2),0 6px 0 #a8811b,0 10px 18px rgba(9,28,54,.34)!important;
+}
+.rapidos .rapido:active,.rapido:active{transform:translateY(3px)!important;box-shadow:inset 0 3px 6px rgba(0,0,0,.3)!important}
+.rapido__icono,.rapido:nth-child(n) .rapido__icono{
+  width:2.5rem!important;height:2.5rem!important;border-radius:.65rem!important;
+  background-image:none!important;background-color:#f4df9c!important;color:#17325a!important;
+  box-shadow:inset 0 2px 1px rgba(255,255,255,.8),inset 0 -3px 6px rgba(0,0,0,.18),0 2px 0 #a8811b!important;
+}
+.rapido b,.rapido span{color:#17325a!important}
