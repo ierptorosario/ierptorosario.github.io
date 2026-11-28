@@ -655,11 +655,9 @@
       function tarjetaNoticia(n) {
         var galeriaN = (Array.isArray(n.imagenes) ? n.imagenes.filter(function (s) { return hay(s); }) : []);
         if (galeriaN.length < 2 && hay(n.imagen)) galeriaN = [n.imagen];
-        /* La tarjeta rota como máximo 3 fotos (las primeras); en «Leer más»
-           se ven TODAS las de la publicación. Así la portada no muestra
-           cualquier foto del álbum y se ahorra memoria. */
-        var MAX_ROTACION = 3;
-        var rotacionN = galeriaN.slice(0, MAX_ROTACION);
+        /* La tarjeta rota TODAS las fotos descargadas de la publicación,
+           para que el carrusel muestre el total real (3, 20, etc.). */
+        var rotacionN = galeriaN;
         /* Publicación con video: no se incrusta (el sitio debe funcionar sin
            internet), pero se avisa y se enlaza para verlo completo. */
         var esVideo = n.video === true;

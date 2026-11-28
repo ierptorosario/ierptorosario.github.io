@@ -4,28 +4,28 @@
    y el fondo de las tarjetas deja de ser azul claro.
    ==================================================================== */
 
-/* Fondo neutro mientras carga: ya no se ve azul durante el relevo */
+/* Sin fondo: el contenedor no pinta color mientras cambia la foto */
 .card__media,
 .detalle__carrusel,
 .visor__figura,
 .espacio__foto,
 .nivel__foto {
-  background: #fff !important;
+  background: transparent !important;
 }
 
-/* Relevo rápido de las fotos del carrusel (noticias y visor) */
+/* Relevo inmediato de las fotos del carrusel (noticias y visor) */
 .carrusel__img {
-  transition: opacity .18s linear !important;
+  transition: none !important;
 }
 
-/* Relevo rápido de la foto principal del inicio */
+/* Relevo inmediato de la foto principal del inicio */
 .hero__fondo {
-  transition: opacity .18s linear !important;
+  transition: none !important;
 }
 
 /* Otras fotos que cambian de opacidad */
 .nivel__foto img {
-  transition: opacity .18s linear, transform .35s ease !important;
+  transition: transform .35s ease !important;
 }
 
 /* Si el sistema pide reducir movimiento, no hay transición */
