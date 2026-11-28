@@ -1,0 +1,69 @@
+/* =====================================================================
+   BOTONES GLOSSY COLORIDOS (estilo Vecteezy adaptado, CSS puro)
+   I.E.R. Puerto Rosario — 28/11/2026
+   Formas redondeadas, degradados vibrantes, reflejo blanco arriba,
+   borde metalico y sombra interior abajo. No se copian vectores.
+   ===================================================================== */
+:root{
+  --gl-oro:#d8b24a;--gl-oro-claro:#ffe9a8;
+  --gl-rojo:#e5484d;--gl-verde:#2f9e5f;--gl-azul:#2c7ad6;
+  --gl-naranja:#ef8a2b;--gl-morado:#8b5fd6;--gl-cian:#22a7b8;
+  --gl-refl:rgba(255,255,255,.65);--gl-somb:0 5px 12px rgba(9,28,54,.28);
+  --gl-borde:rgba(255,255,255,.6);
+}
+
+/* Regla unica: todos los controles heredan el acabado glossy */
+.btn,.boton,.rapido,.chip,.doc-filtro,.acordeon__boton,
+.texto-plegable__boton,.nav-toggle,.hero__ctrl,.visor__nav,
+.cerrar,.buscar__abrir,.buscar__limpiar,.volver-arriba,
+.btn-audio,.adm-nav button,.icono-btn,.enlace-card__flecha,button{
+  border-radius:999px!important;
+  background-image:linear-gradient(180deg,var(--gl-refl) 0%,rgba(255,255,255,0) 46%)!important;
+  border:1px solid var(--gl-borde)!important;
+  box-shadow:inset 0 2px 1px var(--gl-refl),inset 0 -4px 7px rgba(0,0,0,.2),var(--gl-somb)!important;
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease!important;
+}
+.btn,.boton{background-color:var(--gl-azul)!important;color:#fff!important}
+.btn:hover,.boton:hover,.rapido:hover,.chip:hover,.doc-filtro:hover,
+.nav-toggle:hover,.hero__ctrl:hover,.visor__nav:hover,.cerrar:hover,
+.buscar__abrir:hover,.buscar__limpiar:hover,.volver-arriba:hover,
+.btn-audio:hover,.icono-btn:hover,.enlace-card__flecha:hover{
+  transform:translateY(-3px) scale(1.02)!important;filter:brightness(1.07)!important;
+  box-shadow:inset 0 2px 1px var(--gl-refl),inset 0 -4px 7px rgba(0,0,0,.2),0 9px 18px rgba(9,28,54,.34)!important;
+}
+.btn:active,.boton:active,.rapido:active,.chip:active,button:active{
+  transform:translateY(3px) scale(.99)!important;
+  box-shadow:inset 0 3px 6px rgba(0,0,0,.3)!important;
+}
+:focus-visible{outline:3px solid var(--gl-oro)!important;outline-offset:2px}
+
+/* Colores por variante y por posicion (circulo, pastilla, cuadrado redondeado) */
+.btn--secondary,.boton--suave,.chip,.doc-filtro{background-color:var(--gl-oro)!important;color:#17325a!important}
+.btn--outline{background-color:#fff!important;color:#14507f!important}
+.btn--ghost,.enlace-card__flecha{background-color:#f4f7fb!important;color:#14507f!important}
+.btn--claro{background-color:var(--gl-cian)!important;color:#fff!important}
+.btn--peligro,.boton--peligro{background-color:var(--gl-rojo)!important;color:#fff!important}
+.btn--azul,.adm-nav button{background-color:var(--gl-azul)!important;color:#fff!important}
+.rapido:nth-child(8n+1),.chip:nth-child(5n+1),.doc-filtro:nth-child(5n+1){background-color:var(--gl-oro)!important}
+.rapido:nth-child(8n+2),.chip:nth-child(5n+2),.doc-filtro:nth-child(5n+2){background-color:var(--gl-azul)!important;color:#fff!important}
+.rapido:nth-child(8n+3),.chip:nth-child(5n+3),.doc-filtro:nth-child(5n+3){background-color:var(--gl-verde)!important;color:#fff!important}
+.rapido:nth-child(8n+4),.chip:nth-child(5n+4),.doc-filtro:nth-child(5n+4){background-color:var(--gl-naranja)!important;color:#fff!important}
+.rapido:nth-child(8n+5),.chip:nth-child(5n+5),.doc-filtro:nth-child(5n+5){background-color:var(--gl-morado)!important;color:#fff!important}
+.rapido:nth-child(8n+6){background-color:var(--gl-cian)!important;color:#fff!important}
+.rapido:nth-child(8n+7){background-color:var(--gl-rojo)!important;color:#fff!important}
+.rapido:nth-child(8n+8){background-color:var(--gl-oro-claro)!important;color:#17325a!important}
+.rapido b,.rapido span{color:inherit!important}
+.nav-toggle,.hero__ctrl,.visor__nav,.cerrar,.buscar__abrir,.buscar__limpiar,
+.volver-arriba,.btn-audio,.icono-btn{background-color:var(--gl-oro)!important;color:#17325a!important;min-width:44px;min-height:44px}
+
+@media (max-width:520px){
+  .btn,.boton{padding:.75rem 1.1rem!important;font-size:.95rem}
+  .rapido{padding:.9rem .6rem!important}
+}
+@media (prefers-reduced-motion:reduce){
+  .btn,.boton,.rapido,.chip,.doc-filtro,.nav-toggle,.hero__ctrl,
+  .visor__nav,.cerrar,.buscar__abrir,.buscar__limpiar,.volver-arriba,
+  .btn-audio,.icono-btn,.enlace-card__flecha,button{
+    transition:none!important;transform:none!important
+  }
+}
